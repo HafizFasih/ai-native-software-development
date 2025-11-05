@@ -214,7 +214,7 @@ cd calculator-project
 ```
 **Step 4: Verify Project Structure**
 
-After initialization, you should see:
+After initialization, you should see the following directory structure.
 
 ```
 calculator-project/
@@ -231,17 +231,13 @@ calculator-project/
 └── .gitignore
 ```
 
+Note: The `specs/` and `history/` directories will appear when we create our first specification.
+
 **Explanation of Directories**:
 
 - **`.specify/`** - Framework infrastructure (read-only templates and tools)
 - **`specs/`** - Your specification artifacts (what you write)
 - **`history/`** - Knowledge capture (ADRs and PHRs for traceability)
-
-Note: The `specs/` and `history/` directories will appear when we create our first specification.
-
----
-
-For the rest of this chapter, all examples will show **Claude Code**. If you're using Gemini CLI or any other AI tool, the commands are identical.
 
 ---
 
@@ -258,7 +254,7 @@ Open Claude Code (or your chosen AI tool) in the `calculator-project` directory:
 # Launch Claude Code interface
 claude
 
-# OR
+# OR GEMINI
 gemini
 ```
 
@@ -369,13 +365,3 @@ architecture (You → Orchestrator → Subagents), what is MY job at each phase?
 
 (I'm trying to understand that I'm architect/validator, not coder)
 ```
-
-### Expected Outcomes
-
-After these prompts, you should understand:
-
-✅ **Spec-Kit Plus is a methodology framework**, independent of any AI tool
-✅ **ADRs** (explicit, long-term decisions) and **PHRs** (automatic, collaboration logs) capture knowledge
-✅ **Your role is intent + validation**, not implementation
-✅ **Six commands form the workflow**: specify → clarify → plan → adr → tasks → implement
-✅ **You're ready for Lesson 2** (Constitution creation) with confidence
