@@ -251,7 +251,12 @@ const Quiz: React.FC<QuizProps> = ({
 
           {/* Immediate Feedback Section */}
           {showFeedback && (
-            <div className={`${styles.feedbackSection} ${isAnswerCorrect ? styles.feedbackCorrect : styles.feedbackIncorrect}`}>
+            <div
+              className={`${styles.feedbackSection} ${isAnswerCorrect ? styles.feedbackCorrect : styles.feedbackIncorrect}`}
+              role="region"
+              aria-live="polite"
+              aria-label="Question feedback"
+            >
               <div className={styles.feedbackHeader}>
                 {isAnswerCorrect ? (
                   <>
@@ -304,10 +309,18 @@ const Quiz: React.FC<QuizProps> = ({
             <button
               onClick={handleBack}
               disabled={currentQuestion === 0}
+              aria-disabled={currentQuestion === 0}
+              aria-describedby={currentQuestion === 0 ? "back-button-help" : undefined}
               className={`${styles.navButton} ${styles.backButton}`}
+              title={currentQuestion === 0 ? 'You are on the first question' : ''}
             >
               ← Back
             </button>
+            {currentQuestion === 0 && (
+              <span id="back-button-help" className={styles.srOnly}>
+                You are on the first question. Cannot go back.
+              </span>
+            )}
 
             {currentQuestion === displayedQuestions.length - 1 ? (
               <button
@@ -319,14 +332,23 @@ const Quiz: React.FC<QuizProps> = ({
                 Submit Quiz
               </button>
             ) : (
-              <button
-                onClick={handleNext}
-                disabled={!showFeedback}
-                className={`${styles.navButton} ${styles.nextButton}`}
-                title={!showFeedback ? 'Please answer the question first' : ''}
-              >
-                Next →
-              </button>
+              <>
+                <button
+                  onClick={handleNext}
+                  disabled={!showFeedback}
+                  aria-disabled={!showFeedback}
+                  aria-describedby={!showFeedback ? "next-button-help" : undefined}
+                  className={`${styles.navButton} ${styles.nextButton}`}
+                  title={!showFeedback ? 'Please answer the question first' : ''}
+                >
+                  Next →
+                </button>
+                {!showFeedback && (
+                  <span id="next-button-help" className={styles.srOnly}>
+                    Please answer the question first to proceed to the next question.
+                  </span>
+                )}
+              </>
             )}
           </div>
         </div>
