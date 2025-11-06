@@ -226,8 +226,8 @@ Result: Length doesn't reveal answer; students must understand concept
 **Q: What if one option naturally needs to be longer to be accurate?**
 A: Choose the random variation strategy. Ensure correct answer appears equally across all length categories throughout the quiz.
 
-**Q: How strict is the ±2 words tolerance?**
-A: For equal length strategy, ±2 words is acceptable (e.g., 8, 9, 10 words all OK). Beyond that, adjust wording.
+**Q: How strict is the ±3 words tolerance?**
+A: For equal length strategy, ±3 words is acceptable (e.g., 8, 9, 10 words all OK). Beyond that, adjust wording.
 
 **Q: Can I mix strategies within a quiz?**
 A: No. Choose ONE strategy and apply consistently. Mixing creates unpredictability and potential new patterns.

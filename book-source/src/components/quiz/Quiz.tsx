@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import styles from './Quiz.module.css';
 
 export interface QuizQuestion {
@@ -6,27 +6,50 @@ export interface QuizQuestion {
   options: [string, string, string, string];
   correctOption: 0 | 1 | 2 | 3;
   explanation?: string;
+  source?: string; // e.g., "Lesson 1: Understanding Mutability"
 }
 
 export interface QuizProps {
   title?: string;
   questions: QuizQuestion[];
-  passingScore?: number;
+  questionsPerBatch?: number; // Number of questions to show per batch (default: 15-20)
 }
+
+// Utility function to shuffle array
+const shuffleArray = <T,>(array: T[]): T[] => {
+  const shuffled = [...array];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+};
 
 const Quiz: React.FC<QuizProps> = ({
   title = "Quiz",
   questions,
-  passingScore = 70
+  questionsPerBatch = 15
 }) => {
+  // Initialize displayed questions on mount
+  const [displayedQuestions, setDisplayedQuestions] = useState<QuizQuestion[]>(() => {
+    const shuffled = shuffleArray(questions);
+    return shuffled.slice(0, questionsPerBatch);
+  });
+
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [selectedAnswers, setSelectedAnswers] = useState<(number | null)[]>(
-    new Array(questions.length).fill(null)
+    new Array(displayedQuestions.length).fill(null)
   );
+  const [showFeedback, setShowFeedback] = useState(false);
   const [showResults, setShowResults] = useState(false);
   const [answeredQuestions, setAnsweredQuestions] = useState<Set<number>>(new Set());
 
   const handleAnswerSelect = (optionIndex: number) => {
+    // Only allow selection if not already answered
+    if (answeredQuestions.has(currentQuestion)) {
+      return;
+    }
+
     const newAnswers = [...selectedAnswers];
     newAnswers[currentQuestion] = optionIndex;
     setSelectedAnswers(newAnswers);
@@ -34,17 +57,22 @@ const Quiz: React.FC<QuizProps> = ({
     const newAnswered = new Set(answeredQuestions);
     newAnswered.add(currentQuestion);
     setAnsweredQuestions(newAnswered);
+
+    // Show feedback immediately after answer
+    setShowFeedback(true);
   };
 
   const handleNext = () => {
-    if (currentQuestion < questions.length - 1) {
+    if (currentQuestion < displayedQuestions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
+      setShowFeedback(false);
     }
   };
 
   const handleBack = () => {
     if (currentQuestion > 0) {
       setCurrentQuestion(currentQuestion - 1);
+      setShowFeedback(false);
     }
   };
 
@@ -53,23 +81,29 @@ const Quiz: React.FC<QuizProps> = ({
   };
 
   const handleReset = () => {
+    // Shuffle questions again for new batch
+    const newShuffled = shuffleArray(questions);
+    const newBatch = newShuffled.slice(0, questionsPerBatch);
+
+    setDisplayedQuestions(newBatch);
     setCurrentQuestion(0);
-    setSelectedAnswers(new Array(questions.length).fill(null));
+    setSelectedAnswers(new Array(newBatch.length).fill(null));
     setShowResults(false);
+    setShowFeedback(false);
     setAnsweredQuestions(new Set());
   };
 
   const calculateScore = () => {
     let correct = 0;
     selectedAnswers.forEach((answer, index) => {
-      if (answer === questions[index].correctOption) {
+      if (answer === displayedQuestions[index].correctOption) {
         correct++;
       }
     });
     return {
       correct,
-      total: questions.length,
-      percentage: Math.round((correct / questions.length) * 100)
+      total: displayedQuestions.length,
+      percentage: Math.round((correct / displayedQuestions.length) * 100)
     };
   };
 
@@ -77,16 +111,14 @@ const Quiz: React.FC<QuizProps> = ({
   const allAnswered = selectedAnswers.every(answer => answer !== null);
 
   if (showResults) {
-    const passed = score.percentage >= passingScore;
-
     return (
       <div className={styles.quizContainer}>
         <div className={styles.resultsCard}>
           <div className={styles.resultsHeader}>
-            <h2 className={styles.resultsTitle}>Quiz Results</h2>
-            <div className={`${styles.scoreCircle} ${passed ? styles.passed : styles.failed}`}>
+            <h2 className={styles.resultsTitle}>Quiz Complete</h2>
+            <div className={styles.scoreCircle}>
               <div className={styles.scorePercentage}>{score.percentage}%</div>
-              <div className={styles.scoreLabel}>Score</div>
+              <div className={styles.scoreLabel}>Your Score</div>
             </div>
           </div>
 
@@ -105,23 +137,14 @@ const Quiz: React.FC<QuizProps> = ({
             </div>
           </div>
 
-          <div className={`${styles.resultMessage} ${passed ? styles.passMessage : styles.failMessage}`}>
-            {passed ? (
-              <>
-                <span className={styles.resultIcon}>🎉</span>
-                <strong>Congratulations!</strong> You passed the quiz!
-              </>
-            ) : (
-              <>
-                <span className={styles.resultIcon}>📚</span>
-                <strong>Keep Learning!</strong> Review the material and try again.
-              </>
-            )}
+          <div className={styles.resultMessage}>
+            <span className={styles.resultIcon}>📚</span>
+            <strong>Great effort!</strong> You answered {score.correct} out of {score.total} questions correctly.
           </div>
 
           <div className={styles.detailedResults}>
             <h3 className={styles.detailedResultsTitle}>Question Review</h3>
-            {questions.map((q, index) => {
+            {displayedQuestions.map((q, index) => {
               const userAnswer = selectedAnswers[index];
               const isCorrect = userAnswer === q.correctOption;
 
@@ -171,9 +194,10 @@ const Quiz: React.FC<QuizProps> = ({
     );
   }
 
-  const question = questions[currentQuestion];
+  const question = displayedQuestions[currentQuestion];
   const selectedAnswer = selectedAnswers[currentQuestion];
-  const progress = ((currentQuestion + 1) / questions.length) * 100;
+  const progress = ((currentQuestion + 1) / displayedQuestions.length) * 100;
+  const isAnswerCorrect = selectedAnswer === question.correctOption;
 
   return (
     <div className={styles.quizContainer}>
@@ -181,7 +205,7 @@ const Quiz: React.FC<QuizProps> = ({
         <div className={styles.quizHeader}>
           <h2 className={styles.quizTitle}>{title}</h2>
           <div className={styles.questionCounter}>
-            Question {currentQuestion + 1} of {questions.length}
+            Question {currentQuestion + 1} of {displayedQuestions.length}
           </div>
         </div>
 
@@ -201,24 +225,77 @@ const Quiz: React.FC<QuizProps> = ({
                 key={index}
                 className={`${styles.optionButton} ${
                   selectedAnswer === index ? styles.selected : ''
+                } ${
+                  showFeedback && index === question.correctOption ? styles.correctOption : ''
+                } ${
+                  showFeedback && selectedAnswer === index && !isAnswerCorrect ? styles.incorrectOption : ''
                 }`}
                 onClick={() => handleAnswerSelect(index)}
+                disabled={answeredQuestions.has(currentQuestion)}
               >
                 <span className={styles.optionLetter}>
                   {String.fromCharCode(65 + index)}
                 </span>
                 <span className={styles.optionText}>{option}</span>
-                {selectedAnswer === index && (
-                  <span className={styles.checkmark}>✓</span>
+                {showFeedback && index === question.correctOption && (
+                  <span className={styles.correctCheckmark}>✓</span>
+                )}
+                {showFeedback && selectedAnswer === index && !isAnswerCorrect && (
+                  <span className={styles.incorrectMark}>✗</span>
                 )}
               </button>
             ))}
           </div>
+
+          {/* Immediate Feedback Section */}
+          {showFeedback && (
+            <div className={`${styles.feedbackSection} ${isAnswerCorrect ? styles.feedbackCorrect : styles.feedbackIncorrect}`}>
+              <div className={styles.feedbackHeader}>
+                {isAnswerCorrect ? (
+                  <>
+                    <span className={styles.feedbackIcon}>✓</span>
+                    <strong>Correct!</strong>
+                  </>
+                ) : (
+                  <>
+                    <span className={styles.feedbackIcon}>✗</span>
+                    <strong>Incorrect</strong>
+                  </>
+                )}
+              </div>
+
+              {!isAnswerCorrect && (
+                <div className={styles.feedbackYourAnswer}>
+                  <strong>Why your answer was wrong:</strong>
+                  <p>
+                    You selected: <span className={styles.incorrectText}>{question.options[selectedAnswer]}</span>
+                  </p>
+                  <p className={styles.feedbackExplanationText}>
+                    This answer is incorrect. The correct answer is:{' '}
+                    <span className={styles.correctText}>{question.options[question.correctOption]}</span>
+                  </p>
+                </div>
+              )}
+
+              {question.explanation && (
+                <div className={styles.feedbackExplanation}>
+                  <strong>Explanation:</strong>
+                  <p>{question.explanation}</p>
+                </div>
+              )}
+
+              {question.source && (
+                <div className={styles.feedbackSource}>
+                  <strong>Source:</strong> {question.source}
+                </div>
+              )}
+            </div>
+          )}
         </div>
 
         <div className={styles.navigationSection}>
           <div className={styles.answeredIndicator}>
-            Answered: {answeredQuestions.size} / {questions.length}
+            Answered: {answeredQuestions.size} / {displayedQuestions.length}
           </div>
 
           <div className={styles.navigationButtons}>
@@ -230,7 +307,7 @@ const Quiz: React.FC<QuizProps> = ({
               ← Back
             </button>
 
-            {currentQuestion === questions.length - 1 ? (
+            {currentQuestion === displayedQuestions.length - 1 ? (
               <button
                 onClick={handleSubmit}
                 disabled={!allAnswered}
@@ -242,7 +319,9 @@ const Quiz: React.FC<QuizProps> = ({
             ) : (
               <button
                 onClick={handleNext}
+                disabled={!showFeedback}
                 className={`${styles.navButton} ${styles.nextButton}`}
+                title={!showFeedback ? 'Please answer the question first' : ''}
               >
                 Next →
               </button>
@@ -251,13 +330,18 @@ const Quiz: React.FC<QuizProps> = ({
         </div>
 
         <div className={styles.questionDots}>
-          {questions.map((_, index) => (
+          {displayedQuestions.map((_, index) => (
             <button
               key={index}
               className={`${styles.dot} ${
                 index === currentQuestion ? styles.activeDot : ''
               } ${answeredQuestions.has(index) ? styles.answeredDot : ''}`}
-              onClick={() => setCurrentQuestion(index)}
+              onClick={() => {
+                if (answeredQuestions.has(index)) {
+                  setCurrentQuestion(index);
+                  setShowFeedback(true);
+                }
+              }}
               title={`Question ${index + 1}`}
             />
           ))}

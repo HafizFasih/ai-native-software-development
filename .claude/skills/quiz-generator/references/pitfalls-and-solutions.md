@@ -1,6 +1,6 @@
-# Common Pitfalls & Solutions
+# Common Pitfalls & Solutions (v4.0)
 
-This document catalogues the 10 most common mistakes when creating quizzes and their solutions.
+This document catalogues the top 12 most common mistakes when creating 50-question quizzes with immediate feedback and source attribution.
 
 ---
 
@@ -22,28 +22,39 @@ d) Not real
 
 **Issue:** Option b is obviously longest; students will always pick it
 
-**Solution:**
-- **Approach 1:** Make all options equal length (±2 words)
+**Solution (v4.0 - REQUIRED):**
+- **All options must be within ±3 words of each other** (MANDATORY for v4.0)
   ```
   a) AI makes coding faster without planning (7 words)
   b) AI reduces rework through upfront clarity (7 words)
   c) AI eliminates the need for testing (7 words)
   d) AI allows developers to skip documentation (7 words)
+
+  Range: 7, 7, 7, 7 → All exactly 7 words ✅
   ```
 
-- **Approach 2:** Deliberately vary lengths (5, 10, 15, 20 words) → but randomize correct answer across all lengths
+- **Valid Range Example:**
   ```
-  Question 1: correct answer is 5 words
-  Question 2: correct answer is 15 words
-  Question 3: correct answer is 8 words
-  Question 4: correct answer is 12 words
-  (No pattern - longest ≠ always correct)
+  a) AI improves code quality (4 words)
+  b) AI reduces costly rework cycles (5 words)
+  c) AI speeds development with automation (5 words)
+  d) AI enables faster reliable systems (5 words)
+
+  Range: 4, 5, 5, 5 → Within ±3 ✅
+  (If had 15 words: 15, 5, 5, 5 = NOT within ±3 ❌)
   ```
+
+**Critical Anti-Cheating Measures:**
+- [ ] **Count words for EVERY option in ALL 50 questions** (manual verification required)
+- [ ] **Verify longest option is NOT the correct answer** (across all 50 questions)
+- [ ] **Ensure correct answer not correlated with word count** (scan entire quiz for bias)
+- [ ] All options within ±3 words (not ±2, ±3 is the tolerance)
 
 **Prevention:**
-- [ ] Check word count of each option for every question
-- [ ] Verify longest option ≠ always/usually correct
-- [ ] Apply ONE consistent strategy (equal or random) throughout quiz
+- [ ] Count word count of each option for every question (do not skip)
+- [ ] Verify longest option ≠ always/usually correct across all 50
+- [ ] For each question, verify correct answer not deliberately made longest/shortest
+- [ ] Spot-check 10 random questions with word counts recorded
 
 **Reference:** See [option-length-strategy.md](./option-length-strategy.md) for detailed guidance.
 
@@ -99,7 +110,60 @@ B is correct because... [comprehensive explanation here]
 
 ---
 
-## Pitfall 3: Testing Recall Instead of Understanding
+## Pitfall 3: Missing or Incorrect Source Field (NEW in v4.0)
+
+**Problem:** Questions don't include `source` field, or source field has wrong format (includes chapter, wrong lesson number, etc.)
+
+**Example (❌ BAD):**
+```javascript
+{
+  question: "What is AI-native development?",
+  options: ["A", "B", "C", "D"],
+  correctOption: 1,
+  explanation: "..."
+  // Missing source field entirely!
+}
+
+// OR wrong format:
+source: "Chapter 5: Lesson 2: Understanding Mutability" // ❌ TOO DETAILED
+source: "Chapter 5" // ❌ MISSING LESSON
+source: "Lesson Understanding Mutability" // ❌ MISSING NUMBER
+```
+
+**Issue:** Students don't know which lesson covers this concept; defeats lesson attribution purpose; can't trace back to source material
+
+**Solution (v4.0 - REQUIRED):** All 50 questions MUST have source field in "Lesson N: [Lesson Title]" format
+
+**Example (✅ CORRECT):**
+```javascript
+{
+  question: "What is AI-native development?",
+  options: ["A", "B", "C", "D"],
+  correctOption: 1,
+  explanation: "...",
+  source: "Lesson 1: Understanding AI-Native Principles" // ✅ CORRECT FORMAT
+}
+```
+
+**Format Rules:**
+- ✅ `"Lesson N: [Title]"` (e.g., "Lesson 1: Understanding Variables")
+- ✅ Lesson number matches actual lesson position in chapter
+- ✅ Title matches lesson file name exactly
+- ❌ Don't include chapter (chapter is implied by quiz file)
+- ❌ Don't include extra words like "Chapter 5" or "Part 1"
+- ❌ Don't use different numbering (must be 1-indexed)
+
+**Prevention:**
+- [ ] Verify ALL 50 questions have source field (not 49, not "some")
+- [ ] Check format for all 50: "Lesson N: Title" only
+- [ ] Verify lesson numbers are 1-indexed (1, 2, 3, ... not 0, 1, 2)
+- [ ] Verify lesson titles match actual lesson files exactly
+- [ ] No chapter numbers in source field
+- [ ] No typos in lesson titles
+
+---
+
+## Pitfall 4: Testing Recall Instead of Understanding
 
 **Problem:** Questions test memorization of facts rather than conceptual understanding
 
@@ -139,7 +203,7 @@ B is correct because... [comprehensive explanation here]
 
 ---
 
-## Pitfall 4: Random Distractors Without Purpose
+## Pitfall 5: Random Distractors Without Purpose
 
 **Problem:** Options are obviously wrong or unrelated; don't test specific misconceptions
 
@@ -181,7 +245,7 @@ d) They eliminate need for communication [Tests misconception: specs replace dia
 
 ---
 
-## Pitfall 5: Incomplete Coverage of Material
+## Pitfall 6: Incomplete Coverage of Material
 
 **Problem:** Focus only on Lesson 1-2, ignore Lessons 3-4; some topics have zero questions
 
@@ -223,7 +287,7 @@ Total: 25 questions, ALL lessons covered
 
 ---
 
-## Pitfall 6: Answer Patterns
+## Pitfall 7: Answer Patterns
 
 **Problem:** Correct answers follow obvious patterns (a, b, c, d, a, b, c, d...) or cluster heavily in one position
 
@@ -273,7 +337,7 @@ No obvious pattern when reading sequentially: b,a,c,d,a,d,c,a,b,d,a,b,d,c,b,c,d,
 
 ---
 
-## Pitfall 7: Weak Explanations
+## Pitfall 8: Weak Explanations
 
 **Problem:** Explanations are too short, don't explain "why," or just confirm answer without teaching
 
@@ -331,7 +395,7 @@ not shortcuts.
 
 ---
 
-## Pitfall 8: Incorrect File Naming
+## Pitfall 9: Incorrect File Naming
 
 **Problem:** File named `02_quiz.md` (doesn't follow lesson naming convention, doesn't identify chapter)
 
@@ -372,54 +436,61 @@ Result: 05_chapter_02_quiz.md
 
 ---
 
-## Pitfall 9: Rigid Question Count
+## Pitfall 10: Insufficient Question Count (v4.0 CRITICAL)
 
-**Problem:** Forcing exactly 25 questions when material needs 22 or 28; either omits topics or adds filler
+**Problem:** Creating 20-30 questions instead of 50; misses the point of v4.0 architecture
 
-**Example (❌ BAD):**
+**Example (❌ BAD - OLD APPROACH):**
 ```
-Chapter has 6 lessons with varying complexity:
-- Forcing exactly 25 questions results in:
-  - Lesson 6 (most complex) gets only 3 questions (insufficient)
-  - Lesson 2 (simple) gets 5 questions (too many, forced)
-  - Added 2 filler questions to reach 25 (padding)
+Thinking: "This chapter needs 25 questions for a focused quiz"
+Result: Created 25-question quiz
+Problem: No batching! No spaced repetition! No room for retakes with different content!
 ```
 
-**Issue:** Arbitrary count doesn't match material; leads to gaps or padding
+**Issue:** 20-30 questions insufficient for batching and spaced repetition model. With only 25 questions, if you display 15-20, students see most/all content on first attempt. No value in "Try Another Batch" button.
 
-**Solution:** Use 20-30 as flexible range; prioritize comprehensive coverage over arbitrary count
+**Solution (v4.0 - REQUIRED):** Always 50 questions minimum for proper batching/retake
 
-**Example (✅ GOOD):**
+**Why 50?**
 ```
-Chapter has 6 lessons with varying complexity:
-- Use 28 questions (not rigid 25):
-  - Lesson 1 (foundational): 4 questions
-  - Lesson 2 (simple): 3 questions
-  - Lesson 3 (moderate): 5 questions
-  - Lesson 4 (complex): 6 questions
-  - Lesson 5 (moderate): 5 questions
-  - Lesson 6 (critical): 5 questions
-Total: 28 questions, comprehensive coverage, no filler
+Example batching (50 questions):
+- First attempt: Shows batch of 15 questions (random selection)
+- Student retakes: Shows different batch of 15 questions (different content!)
+- Second retake: Shows another unique batch of 15 questions
+- Creates spaced repetition: 3+ exposures to different material
+
+With only 25 questions:
+- First attempt: Shows 15 questions (60% of all content)
+- Student retakes: Shows 15 questions (likely overlap 10-12 questions from first attempt)
+- No novelty; students see same content repeatedly → poor learning
 ```
 
-**When to Use Different Counts:**
-- **20 questions:** Shorter chapter (3-4 lessons), simpler material
-- **25 questions:** Standard chapter (4-5 lessons), balanced complexity
-- **30 questions:** Longer chapter (6-7 lessons), complex material
-- **Max 30 questions:** Never exceed (cognitive load limit)
+**Example (✅ CORRECT):**
+```
+Chapter has 5 lessons:
+- Create 50 comprehensive questions:
+  - Lesson 1: 10 questions
+  - Lesson 2: 10 questions
+  - Lesson 3: 10 questions
+  - Lesson 4: 10 questions
+  - Lesson 5: 10 questions
+Total: 50 questions, batched as 15-20 per session
+Enables meaningful retakes with new content each time
+```
 
 **Prevention:**
-- [ ] Analyze chapter complexity BEFORE deciding question count
-- [ ] Allocate based on material depth (not arbitrary count)
-- [ ] Use flexible 20-30 range for comprehensive coverage
-- [ ] Ensure ALL major topics covered (no omissions)
-- [ ] Never add filler questions just to reach arbitrary count
+- [ ] **Always create 50 questions** (non-negotiable for v4.0)
+- [ ] **Never reduce to 20-30** (breaks batching architecture)
+- [ ] Verify question count reaches exactly 50 before finalizing
+- [ ] If material insufficient for 50, add more aspects/edge cases
+- [ ] Never pad with filler to reach 50; ensure all questions are meaningful
+- [ ] Ensure 50-question bank provides good coverage when batched as 15-20
 
 ---
 
-## Pitfall 10: No Validation of Option Lengths
+## Pitfall 11: Unequal or Biased Option Lengths (v4.0 CRITICAL)
 
-**Problem:** Not checking word counts per question; doesn't realize 3 options are 8 words and 1 is 25 words
+**Problem:** Not verifying word counts for all options in all 50 questions; longest option correlates with correct answer
 
 **Example (❌ BAD):**
 ```
@@ -427,55 +498,92 @@ Question: What is the benefit of AI?
 
 a) Faster coding (2 words)
 b) Better quality (2 words)
-c) Improved productivity through intelligent automation that learns from developer patterns and provides context-aware suggestions (15 words)
+c) Improved productivity through intelligent automation that learns from developer patterns and provides context-aware suggestions (18 words) ← CORRECT
 d) Less errors (2 words)
 
-Problem: Didn't count words; option c is obviously longest; students will pick c
+Problem: Didn't count words; option c is obviously longest; students pick c without understanding
 ```
 
-**Issue:** Length-based guessing possible; defeats assessment integrity
+**Issue:** Length-based guessing defeats assessment; students achieve 80%+ accuracy by picking longest option
 
-**Solution:** Before finalizing, count words in each option for each question; ensure similar length or consistent variation
+**Solution (v4.0 - REQUIRED):** ALL 50 questions must have options within ±3 words, with NO correlation between length and correctness
 
-**Example (✅ GOOD):**
+**Example (✅ CORRECT):**
 ```
 Question: What is the benefit of AI?
 
-a) AI enables faster coding through intelligent automation (7 words)
-b) AI improves quality by catching errors early (7 words)
-c) AI boosts productivity with context-aware code suggestions (8 words)
-d) AI reduces errors through automated testing patterns (7 words)
+a) AI enables faster coding through automation (7 words) ← CORRECT
+b) AI improves quality by catching errors (7 words)
+c) AI boosts productivity with code suggestions (7 words)
+d) AI reduces errors through automated testing (7 words)
 
-Word counts checked: a(7), b(7), c(8), d(7) ✅
-All within ±2 words; no length-based guessing possible
+Word counts checked: a(7), b(7), c(7), d(7) ✅
+All exactly 7 words; no length-based guessing possible
+Longest option (all tied) is correct, but no pattern since all equal
 ```
 
-**Validation Process:**
-1. After writing all questions, go through each one
-2. Count words for options a, b, c, d
-3. Verify equal length (±2 words) OR deliberately varied (if random strategy)
-4. Check longest option ≠ always/usually correct
-5. Adjust wording if necessary to match chosen strategy
+**Validation Process (MANDATORY FOR ALL 50):**
+1. For EACH of the 50 questions, count words for all 4 options
+2. Verify each set is within ±3 words (e.g., range 8-11 is OK; range 5-15 is NOT)
+3. Check longest option across all 50 ≠ always/usually correct
+4. Adjust wording if any question fails checks
+5. Spot-check 10 random questions with word counts recorded
 
 **Prevention:**
-- [ ] Count words for ALL options in EVERY question
-- [ ] For equal length strategy: all within ±2 words
-- [ ] For random variation strategy: verify correct answer distributed across lengths
-- [ ] Longest option ≠ always correct (manual check)
-- [ ] Shortest option ≠ always correct (manual check)
-- [ ] Use [option-length-strategy.md](./option-length-strategy.md) for guidance
+- [ ] Count words for ALL options in ALL 50 questions (not sampling)
+- [ ] Verify all within ±3 words (not ±2, tolerance is ±3)
+- [ ] Longest option ≠ always correct across all 50
+- [ ] Correct answer not correlated with word count
+- [ ] Record spot-check word counts (5-10 random questions)
+- [ ] Manually scan for length-based bias patterns
+- [ ] Use [generation-process.md](./generation-process.md) Stage 3 for detailed guidance
 
 ---
 
-## Summary: Top 3 Critical Pitfalls
+## Pitfall 12: Not Following v4.0 Architecture
 
-If you remember nothing else, avoid these three:
+**Problem:** Treating v4.0 quiz like v3.x: creating small question sets, adding passing scores, not including source fields, etc.
 
-1. **Length-Based Guessing (Pitfall 1):** Check option word counts; longest ≠ always correct
-2. **Inline Explanations (Pitfall 2):** Answer key section AFTER quiz (not mixed with questions)
-3. **No Validation (Pitfall 10):** Always count words and verify distributions manually
+**Example (❌ BAD - v3.x thinking):**
+```javascript
+<Quiz
+  title="Chapter 5 Quiz"
+  questions={[ /* 20 questions */ ]}
+  passingScore={70}  // ❌ REMOVED IN v4.0
+/>
+// Missing: 30 questions, source fields
+```
 
-These three account for 80% of quiz quality issues.
+**Solution (v4.0 - REQUIRED):** Follow all v4.0 specifications:
+- ✅ 50 questions (not 20-30)
+- ✅ Immediate feedback per question
+- ✅ Batching with "Try Another Batch" button
+- ✅ Source field for all 50 questions
+- ✅ Equal-length options (±3 words)
+- ✅ NO passingScore prop
+- ✅ Comprehensive explanations (100-150 words each)
+
+**Prevention:**
+- [ ] Read v4.0 SKILL.md before starting
+- [ ] Read generation-process.md (all 7 stages)
+- [ ] Understand batching architecture (why 50 questions matter)
+- [ ] Don't revert to v3.x patterns
+- [ ] Use quality-checklist.md for final validation
+- [ ] Run through complete validation workflow
+
+---
+
+## Summary: Top 5 Critical Pitfalls (v4.0)
+
+If you remember nothing else, avoid these five:
+
+1. **Length-Based Guessing (Pitfall 1):** All options within ±3 words; longest ≠ always correct
+2. **Missing Source Field (Pitfall 3):** ALL 50 questions have source in "Lesson N: Title" format
+3. **Insufficient Question Count (Pitfall 10):** Always 50 questions (enables meaningful batching/retakes)
+4. **Unequal Option Lengths (Pitfall 11):** Manually verify word counts for all 50 questions
+5. **v3.x Patterns (Pitfall 12):** Follow v4.0 spec entirely (no mixing old/new approaches)
+
+These five account for 90% of v4.0 quiz failures.
 
 ---
 

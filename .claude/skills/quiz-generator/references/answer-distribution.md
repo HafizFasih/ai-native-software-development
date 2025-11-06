@@ -1,86 +1,43 @@
-# Answer Distribution - Randomization and Verification
+# Answer Distribution - Randomization and Verification (v4.0)
 
-This document details how to randomize correct answers and verify even distribution to prevent pattern-based guessing.
+This document details how to randomize correct answers across 50 questions and verify even distribution to prevent pattern-based guessing.
 
 ---
 
 ## Why This Matters
 
-**The Problem:** If correct answers follow patterns (A, B, C, D, A, B, C, D...) or cluster heavily in one position (mostly C), students can guess patterns instead of understanding material.
+**The Problem:** If correct answers follow patterns (0,1,2,3,0,1,2,3...) or cluster heavily in one index (mostly 2), students can guess patterns instead of understanding material.
 
-**The Solution:** Randomize correct answer positions and verify even distribution across a/b/c/d.
+**The Solution:** Randomize correct answer indices (0-3) and verify even distribution across ALL 50 questions. Indices 0/1/2/3 should each appear 12-13 times.
 
 ---
 
-## Distribution Targets
+## Distribution Targets (v4.0 - 50 Questions)
 
-### For 20 Questions
+### Standard for All Quizzes
 
 ```
-Option a correct: 5 times (25%)
-Option b correct: 5 times (25%)
-Option c correct: 5 times (25%)
-Option d correct: 5 times (25%)
-Total: 20 questions
+Index 0 correct: 12-13 times (24-26%)
+Index 1 correct: 12-13 times (24-26%)
+Index 2 correct: 12-13 times (24-26%)
+Index 3 correct: 12-13 times (24-26%)
+Total: 50 questions
 Max consecutive same: 2
 ```
 
 **Ideal distributions:**
-- ✅ a(5) b(5) c(5) d(5) = 20 total (perfect)
-- ✅ a(6) b(5) c(5) d(4) = 20 total (acceptable variance)
+- ✅ 0(13) 1(13) 2(12) 3(12) = 50 total (perfect)
+- ✅ 0(12) 1(13) 2(12) 3(13) = 50 total (acceptable)
+- ✅ 0(13) 1(12) 2(13) 3(12) = 50 total (perfect)
 
-**Avoid:**
-- ❌ a(10) b(4) c(3) d(3) = 20 total (uneven)
-- ❌ a(8) b(8) c(2) d(2) = 20 total (very uneven)
+**Acceptable variance (±1 from 12-13):**
+- ✅ 0(14) 1(12) 2(13) 3(11) = 50 total (within ±1)
+- ✅ 0(12) 1(12) 2(13) 3(13) = 50 total (within range)
 
----
-
-### For 25 Questions
-
-```
-Option a correct: 6-7 times (24-28%)
-Option b correct: 6-7 times (24-28%)
-Option c correct: 6-7 times (24-28%)
-Option d correct: 5-6 times (20-24%)
-Total: 25 questions
-Max consecutive same: 2
-```
-
-**Ideal distributions:**
-- ✅ a(7) b(6) c(7) d(5) = 25 total
-- ✅ a(6) b(7) c(6) d(6) = 25 total
-- ✅ a(7) b(6) c(6) d(6) = 25 total
-
-**Acceptable variance:**
-- ✅ a(8) b(6) c(6) d(5) = 25 total (±1 variance OK)
-- ✅ a(6) b(6) c(7) d(6) = 25 total
-
-**Avoid:**
-- ❌ a(10) b(5) c(5) d(5) = 25 total (uneven)
-- ❌ a(8) b(8) c(4) d(5) = 25 total (very uneven)
-- ❌ a(13) b(6) c(3) d(3) = 25 total (extremely uneven)
-
----
-
-### For 30 Questions
-
-```
-Option a correct: 7-8 times (23-27%)
-Option b correct: 7-8 times (23-27%)
-Option c correct: 7-8 times (23-27%)
-Option d correct: 7-8 times (23-27%)
-Total: 30 questions
-Max consecutive same: 2
-```
-
-**Ideal distributions:**
-- ✅ a(8) b(7) c(8) d(7) = 30 total
-- ✅ a(7) b(8) c(7) d(8) = 30 total
-- ✅ a(8) b(8) c(7) d(7) = 30 total
-
-**Avoid:**
-- ❌ a(12) b(6) c(6) d(6) = 30 total (uneven)
-- ❌ a(10) b(10) c(5) d(5) = 30 total (very uneven)
+**Avoid (uneven distributions):**
+- ❌ 0(20) 1(10) 2(10) 3(10) = 50 total (uneven)
+- ❌ 0(25) 1(15) 2(5) 3(5) = 50 total (very uneven)
+- ❌ 0(18) 1(18) 2(7) 3(7) = 50 total (clustered on 0/1)
 
 ---
 
@@ -323,29 +280,30 @@ Before finalizing quiz:
 
 ## Example: Good Distribution
 
-### 25-Question Quiz Distribution
+### 50-Question Quiz Distribution (v4.0)
 
-**Correct answers by question:**
+**Correct answers by question (using index 0/1/2/3 notation):**
 ```
-Q1: b   Q6: d   Q11: a   Q16: c   Q21: b
-Q2: a   Q7: c   Q12: b   Q17: d   Q22: a
-Q3: c   Q8: a   Q13: d   Q18: a   Q23: c
-Q4: d   Q9: b   Q14: c   Q19: b   Q24: d
-Q5: a   Q10: d  Q15: b   Q20: c   Q25: c
+Q1-10:   1,0,2,3,0,1,2,0,1,3
+Q11-20:  2,1,3,0,1,2,0,3,1,2
+Q21-30:  0,3,1,2,0,1,3,2,0,1
+Q31-40:  2,3,0,1,2,0,3,1,2,0
+Q41-50:  1,3,2,0,1,2,3,0,1,3
 ```
 
 **Tally:**
-- a: 6 times (Q2, Q5, Q8, Q11, Q18, Q22) = 24%
-- b: 6 times (Q1, Q9, Q12, Q15, Q19, Q21) = 24%
-- c: 7 times (Q3, Q7, Q14, Q16, Q20, Q23, Q25) = 28%
-- d: 6 times (Q4, Q6, Q10, Q13, Q17, Q24) = 24%
-- Total: 25 questions = 100%
+- Index 0: 13 times = 26% ✅
+- Index 1: 13 times = 26% ✅
+- Index 2: 12 times = 24% ✅
+- Index 3: 12 times = 24% ✅
+- Total: 50 questions = 100% ✅
 
 **Pattern Check:**
-- ✅ No 3+ consecutive same
-- ✅ Appears randomly distributed
-- ✅ Even distribution across a/b/c/d
-- ✅ No obvious pattern when reading sequentially: b,a,c,d,a,d,c,a,b,d,a,b,d,c,b,c,d,a,b,c,b,a,c,d,c
+- ✅ No 3+ consecutive same indices
+- ✅ Appears randomly distributed (no a,b,c,d,a,b,c,d pattern)
+- ✅ Even distribution across 0/1/2/3 (12-13 per index)
+- ✅ No obvious pattern when reading sequentially: 1,0,2,3,0,1,2,0,1,3,2,1,3,0,1,2,0,3,1,2,0,3,1,2,0,1,3,2,0,1,2,3,0,1,2,0,3,1,2,0,1,3,2,0,1,2,3,0,1,3
+- ✅ Longest run of same: 2 consecutive (no 3+ same indices)
 
 ---
 

@@ -1,6 +1,6 @@
-# Quality Checklist v3.0 - Quiz Component Validation
+# Quality Checklist v4.0 - Quiz Component Validation
 
-This document provides a comprehensive checklist for validating quiz quality when using the globally-registered Quiz component.
+This document provides a comprehensive checklist for validating quiz quality when using the globally-registered Quiz component with immediate feedback and 50-question batching.
 
 ---
 
@@ -10,16 +10,17 @@ This document provides a comprehensive checklist for validating quiz quality whe
 2. **Check every box:** Don't skip items; each is critical
 3. **Fix issues immediately:** Don't defer validation to end
 4. **Re-check after fixes:** Verify fixes didn't introduce new issues
+5. **Manual verification required:** Word counts, source fields, and distributions must be manually verified (not assumed)
 
 ---
 
 ## Content Quality
 
 ### Question Count and Focus
-- [ ] 5-10 questions total (focused assessment, not comprehensive)
-- [ ] Key concepts selected for highest impact
-- [ ] Balanced distribution across major topics
-- [ ] No attempt at comprehensive coverage (5-10 is by design)
+- [ ] **50 questions total** (comprehensive bank for repeated practice and spaced repetition)
+- [ ] All major concepts covered across all chapter lessons
+- [ ] Balanced distribution across major topics (~3-5 questions per major concept)
+- [ ] Comprehensive coverage by design (50 questions enables meaningful batching and retake scenarios)
 
 ### Question Type and Cognitive Level
 - [ ] All questions test conceptual understanding (not recall)
@@ -60,8 +61,9 @@ This document provides a comprehensive checklist for validating quiz quality whe
 
 ### Component Props
 - [ ] `title` prop: Descriptive quiz name
-- [ ] `questions` prop: Array with 5-10 question objects
-- [ ] `passingScore` prop: Set to 60-70 (60% for beginners, 70% for intermediate)
+- [ ] `questions` prop: Array with exactly 50 question objects
+- [ ] `questionsPerBatch` prop: Optional (default 15, can be 15-20)
+- [ ] NO `passingScore` prop (removed in v4.0—immediate feedback model, no pass/fail threshold)
 
 ---
 
@@ -69,21 +71,24 @@ This document provides a comprehensive checklist for validating quiz quality whe
 
 ### Distribution Targets
 - [ ] Correct answers distributed evenly across indices 0-3
-- [ ] For 8 questions: ~2 per index (25% each)
-- [ ] For 10 questions: 2-3 per index (20-30% each)
-- [ ] Total adds up to expected question count
+- [ ] For 50 questions: 12-13 per index (24-26% each) ← TARGET FOR ALL QUIZZES
+- [ ] Verification is MANUAL (count each index, don't assume)
+- [ ] Total adds up to exactly 50 questions
 
 ### Index Distribution Verification Table
 
-| Index | Count | Percentage | Target (10Q) | Status |
+| Index | Count | Percentage | Target (50Q) | Status |
 |-------|-------|------------|--------------|--------|
-| 0     | __    | __%        | 20-30%       | ☐ Pass |
-| 1     | __    | __%        | 20-30%       | ☐ Pass |
-| 2     | __    | __%        | 20-30%       | ☐ Pass |
-| 3     | __    | __%        | 20-30%       | ☐ Pass |
-| Total | __    | 100%       | 100%         | ☐ Pass |
+| 0     | __    | __%        | 24-26%       | ☐ Pass |
+| 1     | __    | __%        | 24-26%       | ☐ Pass |
+| 2     | __    | __%        | 24-26%       | ☐ Pass |
+| 3     | __    | __%        | 24-26%       | ☐ Pass |
+| Total | 50    | 100%       | 100%         | ☐ Pass |
 
-**Fill in counts manually and verify targets.**
+**CRITICAL: Count indices manually for ALL 50 questions. Example acceptable distributions:**
+- ✅ 0(13) 1(13) 2(12) 3(12) = 50 total
+- ✅ 0(12) 1(13) 2(12) 3(13) = 50 total
+- ❌ 0(20) 1(10) 2(10) 3(10) = 50 total (uneven, not acceptable)
 
 ### Pattern Checks
 - [ ] No patterns (never 0,1,2,3,0,1,2,3...)
@@ -116,14 +121,54 @@ List correctOption sequence: __, __, __, __, __, __, __, __, __, __
 - [ ] Options are clear, concise, and specific
 - [ ] No grammatical or spelling errors in options
 
+### Option Length Validation (CRITICAL - Anti-Cheating Measure)
+- [ ] **ALL 4 options within ±3 words of each other** (MUST manually count words for each option, for ALL 50 questions)
+- [ ] Longest option is NOT always/usually correct (manual verification required)
+- [ ] Correct answer NOT correlated with word count (verify across all 50)
+- [ ] Example valid range: All options 10-13 words, or all options 8-11 words
+- [ ] Example invalid: One option 8 words, one option 20 words (must fix)
+
+**Word Count Verification Process:**
+1. For EACH of the 50 questions, count words in all 4 options
+2. Verify each set is within ±3 words (e.g., 10, 11, 13, 12 = ✅ PASS)
+3. If out of range, reword option(s) to match length
+4. After adjusting lengths, verify correct answer is still in correct position
+5. Create tally to spot-check: 5 random questions with word counts shown
+
+---
+
+## Source Field Validation (REQUIRED for v4.0)
+
+### Source Field Presence
+- [ ] **All 50 questions have `source` field** (REQUIRED, not optional)
+- [ ] Format: `"Lesson N: [Lesson Title]"` (e.g., "Lesson 1: Understanding Variables")
+- [ ] Chapter number is NOT included (quiz is chapter-specific, so redundant)
+- [ ] Lesson number matches actual lesson in chapter
+- [ ] Lesson title matches lesson file exactly
+
+### Source Field Examples (✅ CORRECT)
+```
+source: "Lesson 1: Understanding Mutability"
+source: "Lesson 2: Function Scope and Closures"
+source: "Lesson 3: Debugging Techniques"
+source: "Lesson 4: Performance Optimization"
+```
+
+### Source Field Verification
+- [ ] Count: All 50 questions have source field (not assumed, manually verified)
+- [ ] Format: All follow "Lesson N: Title" pattern (no chapter number)
+- [ ] Accuracy: Lesson numbers are 1-indexed and match chapter structure
+- [ ] Consistency: Titles match lesson file names exactly
+- [ ] No typos in lesson titles or numbers
+
 ---
 
 ## Explanation Quality (CRITICAL)
 
 ### Explanation Presence
-- [ ] All explanations present (one per question)
-- [ ] Each explanation 60-150 words (comprehensive teaching)
-- [ ] Explanations are immediate feedback (after student answers)
+- [ ] All 50 explanations present (one per question, REQUIRED)
+- [ ] Each explanation 100-150 words (comprehensive immediate feedback)
+- [ ] Explanations displayed immediately after student selects answer (immediate feedback model)
 
 ### Explanation Content Structure
 - [ ] **Explains WHY correct** (2-3 sentences explaining concept deeply)
@@ -143,25 +188,31 @@ Why not the others? [Option A misconception]. [Option B misconception].
 
 ### Explanation Quality Spot-Check
 
-Check ALL 5-10 explanations for quality:
+Spot-check 10 representative explanations (20% of 50) for quality:
 
-**Questions 1-3:**
-- [ ] 60+ words
-- [ ] Explains WHY correct
-- [ ] Addresses all 3 distractors
-- [ ] Additional context provided
+**Questions 1-10 (Early batch):**
+- [ ] 100+ words
+- [ ] Explains WHY correct (2-3 sentences)
+- [ ] Addresses ALL 3 distractors (1-2 sentences each)
+- [ ] Provides real-world context or additional insight
+- [ ] Teaches through immediate feedback pattern
 
-**Questions 4-6:**
-- [ ] 60+ words
-- [ ] Explains WHY correct
-- [ ] Addresses all 3 distractors
-- [ ] Additional context provided
+**Questions 20-25 (Middle batch):**
+- [ ] 100+ words
+- [ ] Explains WHY correct (2-3 sentences)
+- [ ] Addresses ALL 3 distractors (1-2 sentences each)
+- [ ] Provides real-world context or additional insight
 
-**Questions 7-10 (if applicable):**
-- [ ] 60+ words
-- [ ] Explains WHY correct
-- [ ] Addresses all 3 distractors
-- [ ] Additional context provided
+**Questions 40-50 (Late batch):**
+- [ ] 100+ words
+- [ ] Explains WHY correct (2-3 sentences)
+- [ ] Addresses ALL 3 distractors (1-2 sentences each)
+- [ ] Provides real-world context or additional insight
+
+**Word Count Verification (Critical):**
+- [ ] Count words in 3 randomly selected explanations
+- [ ] Verify each is 100-150 words (not just assumed)
+- [ ] If any below 100, mark as failing and expand
 
 ---
 
@@ -198,23 +249,33 @@ Check ALL 5-10 explanations for quality:
 ## Pre-Submission Validation
 
 ### Final Content Review
-- [ ] Read through all 5-10 questions for clarity and accuracy
-- [ ] Verify all questions are conceptual (not recall)
-- [ ] Check all scenarios are realistic and relevant
-- [ ] Ensure high-impact topics are covered
+- [ ] Spot-check 10 random questions from across all 50 for clarity and accuracy
+- [ ] Verify all questions are conceptual (not recall, not "What is X?")
+- [ ] Check scenarios are realistic and relevant to chapter
+- [ ] Ensure all major topics covered across 50 questions
+- [ ] Verify 75%+ at Apply/Analyze level or higher
 
 ### Final Component Syntax Review
-- [ ] Spot-check first 3 question objects: syntax valid
-- [ ] Spot-check last 2 question objects: syntax valid
-- [ ] Verify all correctOption values are 0-3
-- [ ] Verify all options arrays have exactly 4 items
-- [ ] Verify all explanations are present
+- [ ] Spot-check first 5 question objects: syntax valid
+- [ ] Spot-check middle 5 question objects (Q25-Q29): syntax valid
+- [ ] Spot-check last 5 question objects (Q46-Q50): syntax valid
+- [ ] Verify ALL 50 correctOption values are 0-3 (not 1-4, not letters)
+- [ ] Verify ALL 50 options arrays have exactly 4 items
+- [ ] Verify ALL 50 explanations are present and 100-150 words
+- [ ] Verify ALL 50 have source field in "Lesson N: Title" format
 
-### Final Randomization Review
-- [ ] Count correct answer indices (0, 1, 2, 3): ____, ____, ____, ____
-- [ ] Verify distribution is roughly balanced
-- [ ] Ensure no 3+ consecutive same indices
-- [ ] Verify no obvious patterns
+### Final Randomization Review (MANUAL COUNT REQUIRED)
+- [ ] Count all 50 correctOption values by index: 0(__), 1(__), 2(__), 3(__) = 50 total
+- [ ] Verify distribution matches targets (12-13 per index acceptable)
+- [ ] Ensure no 3+ consecutive same indices (scan full list for patterns)
+- [ ] Verify no obvious pattern when reading sequence: [list correctOption sequence]
+
+### Final Option Length Review (MANUAL COUNT REQUIRED)
+- [ ] Spot-check 5 random questions for option word counts
+- [ ] Record word counts for Q1, Q13, Q25, Q37, Q49 (evenly spaced)
+- [ ] Verify each set is within ±3 words (e.g., 10-13 words all in range)
+- [ ] Confirm longest option is NOT the correct answer across all 5 spot-checks
+- [ ] If any spot-check fails, audit entire quiz for length-based bias
 
 ### Final Format Review
 - [ ] YAML frontmatter complete and valid
@@ -331,45 +392,52 @@ After completing all checks above, the following require human review:
 
 ## Checklist Summary
 
-**Critical checks (must pass):**
-1. ✅ correctOption uses 0-3 indices (NOT 1-4 or letters)
-2. ✅ Every question has exactly 4 options
-3. ✅ Index distribution verified (0-3 evenly distributed)
-4. ✅ No 3+ consecutive same indices
-5. ✅ All explanations present (60-150 words)
-6. ✅ File named correctly (`##_chapter_##_quiz.md`)
+**Critical checks (MUST PASS - v4.0 Requirements):**
+1. ✅ **50 questions total** (comprehensive bank, not fewer)
+2. ✅ correctOption uses 0-3 indices (NOT 1-4 or letters)
+3. ✅ Every question has exactly 4 options
+4. ✅ Index distribution verified (12-13 per index for 50 questions)
+5. ✅ No 3+ consecutive same indices (scan entire list)
+6. ✅ **ALL options within ±3 words** (manually verified for ALL 50)
+7. ✅ **ALL 50 have source field** ("Lesson N: [Title]" format)
+8. ✅ All explanations present (100-150 words each, for ALL 50)
+9. ✅ File named correctly (`##_chapter_##_quiz.md`)
+10. ✅ NO passingScore prop (removed in v4.0)
 
 **Secondary checks (important):**
 1. ✅ 75%+ questions at Apply level or higher
-2. ✅ Distractors test specific misconceptions
-3. ✅ Explanations address all 3 distractors
+2. ✅ Distractors test specific misconceptions (not joke options)
+3. ✅ Explanations address WHY correct AND why each distractor is wrong
 4. ✅ Quiz component syntax valid
 5. ✅ YAML frontmatter complete
 
 **If all critical checks pass:** Quiz ready for human review
-**If any critical check fails:** Fix immediately before proceeding
+**If ANY critical check fails:** Fix immediately before proceeding (critical checks are non-negotiable for v4.0)
 
 ---
 
-## Passing Score Rationale
+## Immediate Feedback Learning Model (v4.0)
 
-### Default: 70%
+**Quiz Philosophy (No Pass/Fail Threshold):**
+- Removed passing score entirely in v4.0
+- Focus shifts to immediate feedback and learning, not grading
+- Students take quizzes to learn, not to achieve a score
+- Every answer (correct or incorrect) triggers comprehensive explanation
+- Students can retake with different batch of 50 (different 15-20 questions each time)
 
-**College-Level Rigor:**
-- 70% = demonstrated competency
-- Below 70% indicates insufficient understanding for progression
-- 60% acceptable for beginners, 70-80% for intermediate/advanced
+**How Immediate Feedback Works:**
+1. Student selects answer
+2. Quiz immediately shows: correct/incorrect badge
+3. For incorrect: Shows why their answer was wrong + correct answer
+4. For all: Shows comprehensive explanation addressing all 4 options
+5. Shows source lesson attribution
+6. Student must manually click Next to continue (prevents peeking)
 
-**Why These Targets:**
-- 70% (7/10 questions) = 3 wrong answers acceptable
-- Allows for reasonable uncertainty on edge cases
-- Permits advancement with strong understanding
-- Realistic for first attempt on conceptual questions
-
-**When to Adjust:**
-- **Beginners:** 60% (6/10) to encourage first attempts
-- **Intermediate:** 70% (7/10) standard for most chapters
-- **Advanced:** 80% (8/10) for critical concepts
+**Batching and Spaced Repetition:**
+- 50-question bank enables distributed practice
+- Each retake shows different random batch (15-20 questions)
+- Students build understanding through multiple exposures
+- No scoring pressure; focus on learning
 
 ---
 
@@ -377,11 +445,13 @@ After completing all checks above, the following require human review:
 
 See `example-quiz.md` for a fully-worked example with:
 - Proper YAML frontmatter
-- 8 conceptual questions at Apply/Analyze levels
-- Exactly 4 options per question
-- Randomized correctOption indices (0-3)
-- Comprehensive explanations addressing all distractors
+- 50 conceptual questions at Apply/Analyze levels
+- Exactly 4 options per question (all within ±3 words)
+- Source field for all 50 questions ("Lesson N: Title" format)
+- Randomized correctOption indices (12-13 per index)
+- Comprehensive explanations (100-150 words each) addressing all distractors
 - Proper Quiz component syntax
+- Manual verification of word counts and distributions shown
 
 ---
 
