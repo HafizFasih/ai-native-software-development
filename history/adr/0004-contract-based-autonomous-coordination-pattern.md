@@ -48,7 +48,7 @@ Phase 5: Integration validation against contract
 ### Positive
 
 1. **True Autonomy**: Agents work without constant human monitoring (enabling creative independence)
-2. **Async Coordination**: No synchronous meetings/check-ins required (scales to 10-15 agents)
+2. **Async Coordination**: No synchronous meetings/check-ins required (scales to 7-9 agents)
 3. **Integration Quality**: Explicit contracts catch boundary violations early (clean merges prove good contracts)
 4. **Transferable Pattern**: Same pattern works for coordinating junior developers, distributed teams, organizational units
 5. **Teachable**: Contract-first thinking is learnable skill (not tool-specific knowledge)

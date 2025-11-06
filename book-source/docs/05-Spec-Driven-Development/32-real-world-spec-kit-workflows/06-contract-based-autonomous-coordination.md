@@ -92,7 +92,7 @@ By the end of this lesson, you'll understand how to write contracts so clear tha
 
 ## Why Contracts Enable Autonomy
 
-Let's start with the honest truth: at Lesson 5 scale (5 agents), constant monitoring doesn't scale. At 10-15 agents, it's impossible.
+Let's start with the honest truth: at Lesson 5 scale (5 agents), constant monitoring doesn't scale. At 7-9 agents, it's impossible.
 
 ### The Monitoring Trap
 

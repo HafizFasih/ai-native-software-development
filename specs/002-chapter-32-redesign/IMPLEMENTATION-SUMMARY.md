@@ -28,7 +28,7 @@ This document summarizes the comprehensive implementation plan for Chapter 32: "
 - Focus on tool mechanics (running terminals) rather than strategic capability
 
 ### After This Redesign
-- Chapter 32 teaches **decomposition thinking** — the skill that enables 1 human to orchestrate 10-15 AI agents
+- Chapter 32 teaches **decomposition thinking** — the skill that enables 1 human to orchestrate 7-9 AI Agents
 - Students experience how **good decomposition eliminates coordination overhead**
 - Students understand transferability: decomposition patterns apply to human teams, organizational scaling, not just AI agents
 - Students graduate with portfolio-worthy project demonstrating professional capability
@@ -52,7 +52,7 @@ This document summarizes the comprehensive implementation plan for Chapter 32: "
 - Lesson 7: Background execution & monitoring (1.5 hours) — non-blocking execution enables parallelization
 - **Subtotal**: 4.5 hours, demonstrates automation amplification
 
-**Advanced: Lesson 8** (10-15 agents via meta-orchestration, OPTIONAL)
+**Advanced: Lesson 8** (7-9 agents via meta-orchestration, OPTIONAL)
 - Lesson 8: Meta-orchestration & headless mode (1.5 hours) — programmatic coordination
 - **Optional**: P2 priority, advanced B2 level, template-provided (no write-from-scratch)
 
@@ -73,7 +73,7 @@ This document summarizes the comprehensive implementation plan for Chapter 32: "
 - SC-003: 75%+ successfully integrate with minimal conflicts
 - SC-004: Can explain decomposition thinking to non-technical stakeholders
 - SC-005: 70%+ understand transferability (human teams, organizational scaling)
-- SC-013: 60%+ understand scaling pathway (2-3 → 5-7 → 10-15 agents)
+- SC-013: 60%+ understand scaling pathway (2-3 → 5-7 → 7-9 agents)
 
 **40% Tool Proficiency** (Secondary Learning Objective):
 - SC-006: Achieve 2.5x+ speedup with parallel workflow
@@ -358,7 +358,7 @@ Each lesson includes:
 
 ## Conclusion
 
-This implementation plan transforms Chapter 32 from a toy simulation exercise to a **professionally grounded, pedagogically rigorous course that teaches decomposition thinking** — the strategic capability that enables 1 human to coordinate 10-15 AI agents or scale to human team management.
+This implementation plan transforms Chapter 32 from a toy simulation exercise to a **professionally grounded, pedagogically rigorous course that teaches decomposition thinking** — the strategic capability that enables 1 human to coordinate 7-9 AI Agents or scale to human team management.
 
 **Key Differentiators**:
 - Emphasis on thinking patterns (60%) over tool mechanics (40%)

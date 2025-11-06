@@ -75,9 +75,9 @@ That's team leadership.
 
 You've proven you can coordinate parallel work. Now comes the harder question: **How far does that ability scale?**
 
-In this lesson, you'll move from the comfortable world of 3 features (where you've proven success) to the threshold of 5-7 features (where patterns start breaking), with your eyes on 10-15 agents (where a different approach becomes necessary). This is the FIRST CLIMAX—not just managing more work, but understanding the fundamental principles that determine whether decomposition thinking scales or collapses under its own weight.
+In this lesson, you'll move from the comfortable world of 3 features (where you've proven success) to the threshold of 5-7 features (where patterns start breaking), with your eyes on 7-9 agents (where a different approach becomes necessary). This is the FIRST CLIMAX—not just managing more work, but understanding the fundamental principles that determine whether decomposition thinking scales or collapses under its own weight.
 
-By the end of this lesson, you'll understand exactly what works, what breaks, and why the path to 10-15 agent coordination requires contract-based coordination and SpecKit orchestration (which you'll learn in Lessons 6-7).
+By the end of this lesson, you'll understand exactly what works, what breaks, and why the path to 7-9 agent coordination requires contract-based coordination and SpecKit orchestration (which you'll learn in Lessons 6-7).
 
 ---
 
@@ -446,7 +446,7 @@ As you grow from 5 to 7 features, manual effort increases dramatically. You'll n
 
 ### Scaling to 10-15 Features: SpecKit-Orchestrated Coordination
 
-At 10-15 agents, you can't manage them like you manage 3 agents. You can't manually coordinate every session, check every integration point, or monitor every merge.
+At 7-9 agents, you can't manage them like you manage 3 agents. You can't manually coordinate every session, check every integration point, or monitor every merge.
 
 You need **SpecKit orchestration**: where SpecKit Plus itself coordinates parallel agent work:
 - You define the contract (integration requirements) via `/sp.specify`
@@ -460,7 +460,7 @@ You need **SpecKit orchestration**: where SpecKit Plus itself coordinates parall
 - Autonomous execution with safety boundaries
 - Completion notification without polling
 
-The foundation is what you're building now: **decomposition thinking.** The difference at 10-15 agents is that SpecKit Plus coordinates execution while you focus on strategy.
+The foundation is what you're building now: **decomposition thinking.** The difference at 7-9 agents is that SpecKit Plus coordinates execution while you focus on strategy.
 
 ### The Scaling Path Visualized
 

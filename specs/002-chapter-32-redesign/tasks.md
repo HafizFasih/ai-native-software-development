@@ -30,7 +30,7 @@ This task checklist breaks Chapter 32 implementation into specific, testable dev
 3. **How to Validate It's Done Right**:
    - Code execution tests (all scripts must run without errors)
    - Cognitive load verification (count concepts, verify ≤ limit)
-   - Scale connection validation (search for "10-15 agents", verify frequency)
+   - Scale connection validation (search for "7-9 agents", verify frequency)
    - CEFR proficiency alignment checks
 
 4. **Examples**:
@@ -201,13 +201,13 @@ Every lesson task MUST include comprehensive technical references so ANY worker 
 - **Code examples**: Must be copy-paste ready, tested on macOS/Linux
 - **Cognitive load**: Max N concepts (list them explicitly)
 - **Skills proficiency**: CEFR level (A2/B1/B2) with validation criteria
-- **Engagement**: Scale connection validation (10-15 agents mentioned X times)
+- **Engagement**: Scale connection validation (7-9 agents mentioned X times)
 - **Reading level**: Grade 10-12 (Hemingway Editor check)
 
 **4. Validation Checklist** (Testable acceptance):
 - [ ] Run all code examples - must work without errors
 - [ ] Count new concepts - verify ≤ cognitive load limit
-- [ ] Search for "10-15 agents" - must appear 3+ times
+- [ ] Search for "7-9 agents" - must appear 3+ times
 - [ ] Test Try With AI prompts - verify helpful responses
 - [ ] Check CEFR alignment - content matches stated proficiency level
 
@@ -248,39 +248,39 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
 **Priority**: MUST
 **Effort**: 2 hours
 
-**Description**: Create chapter overview document that LEADS with the transformative vision: 1 human managing 10-15 AI agents
+**Description**: Create chapter overview document that LEADS with the transformative vision: 1 human managing 7-9 AI Agents
 
 **Acceptance Criteria**:
 - [ ] File exists at `/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/bbb/book-source/docs/05-Spec-Driven-Development/32-real-world-spec-kit-workflows/README.md`
 - [ ] Matches directory structure from `specs/book/directory-structure.md`
 - [ ] **Opening hook** (first 2 paragraphs):
-  - LEADS with the vision: "Imagine orchestrating 10-15 AI agents simultaneously..."
+  - LEADS with the vision: "Imagine orchestrating 7-9 AI Agents simultaneously..."
   - Establishes the transformation: "From managing 1 agent to coordinating 10-15"
   - States the outcome: "Build in 3 hours what takes 30 hours traditionally"
 - [ ] Includes:
-  - **What You'll Learn** section emphasizing scale progression (2-3 → 5-7 → 10-15 agents)
+  - **What You'll Learn** section emphasizing scale progression (2-3 → 5-7 → 7-9 agents)
   - **Prerequisites** section explicitly listing Chapters 30-31, 5, 7, 8
   - **Time Commitment** section (10-12 hours to 10x capability, 6-8 hours fast-track)
   - **The Journey** section showing progression:
     - Lessons 1-4: Master 2-3 agents manually
     - Lessons 5-7: Scale to 5-7 agents with automation
-    - Lesson 8: REALIZE the vision - 10-15 agents with meta-orchestration
+    - Lesson 8: REALIZE the vision - 7-9 agents with meta-orchestration
     - Lesson 9: Prove it - portfolio-worthy capstone
 - [ ] YAML frontmatter:
   ```yaml
   ---
-  title: "Chapter 32: The Super AI Orchestra - Managing 10-15 AI Agents"
+  title: "Chapter 32: The Super AI Orchestra - Managing 7-9 AI Agents"
   chapter: 32
   part: 5
   sidebar_position: 4
-  description: "Master decomposition thinking to orchestrate 10-15 AI agents and achieve 10x productivity"
+  description: "Master decomposition thinking to orchestrate 7-9 AI Agents and achieve 10x productivity"
   ---
   ```
-- [ ] **10-15 Agent Vision Validation**:
+- [ ] **7-9 agent Vision Validation**:
   - ✅ Vision mentioned in first paragraph
-  - ✅ Clear progression path to 10-15 agents shown
+  - ✅ Clear progression path to 7-9 agents shown
   - ✅ Lesson 8 framed as "vision realization" not "optional advanced"
-  - ✅ Student understands: "This chapter enables me to manage 10-15 agents"
+  - ✅ Student understands: "This chapter enables me to manage 7-9 agents"
 - [ ] No grammatical errors, clear and engaging tone
 - [ ] Matches existing chapter READMEs in style and structure
 
@@ -292,7 +292,7 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
    - `/Users/mjs/Documents/code/panaversity-official/tutorgpt-build/bbb/book-source/docs/05-Spec-Driven-Development/31-spec-kit-plus-hands-on/README.md` (Chapter 31 - direct prerequisite)
 3. **Directory Structure**: `specs/book/directory-structure.md` (naming conventions)
 4. **Chapter Index**: `specs/book/chapter-index.md` (chapter titles, numbers)
-5. **Vision Reference**: `specs/002-chapter-32-redesign/spec.md` (read Executive Summary for 10-15 agent vision framing)
+5. **Vision Reference**: `specs/002-chapter-32-redesign/spec.md` (read Executive Summary for 7-9 agent vision framing)
 6. **Docusaurus YAML frontmatter docs**: https://docusaurus.io/docs/markdown-features/front-matter
 
 **Implementation Guidance**:
@@ -360,12 +360,12 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
   - Code examples have clear comments
   - Inclusive language (diverse examples)
 - [ ] No separate "Key Takeaways" or "What's Next" sections (use Try With AI as closure only)
-- [ ] **10-15 Agent Scale Connection** (CRITICAL):
-  - ✅ Introduction explicitly states: "You're learning to manage 2-3 agents NOW to scale to 10-15 agents LATER"
-  - ✅ Section 4 (Integration Contracts) connects to scale: "Integration contracts that work for 3 agents will work for 10-15 agents"
-  - ✅ Section 5 (Reflection) includes question: "How would this workflow change with 10-15 agents instead of 3?"
+- [ ] **7-9 agent Scale Connection** (CRITICAL):
+  - ✅ Introduction explicitly states: "You're learning to manage 2-3 agents NOW to scale to 7-9 agents LATER"
+  - ✅ Section 4 (Integration Contracts) connects to scale: "Integration contracts that work for 3 agents will work for 7-9 agents"
+  - ✅ Section 5 (Reflection) includes question: "How would this workflow change with 7-9 agents instead of 3?"
   - ✅ Try With AI prompt: "Ask your AI: 'How would I set up worktrees for 10 agents simultaneously?'"
-  - ✅ Student understands: "I'm building the foundation for 10-15 agent orchestration"
+  - ✅ Student understands: "I'm building the foundation for 7-9 agent orchestration"
 
 **Technical References**:
 1. **Lesson Style Guide**: `.claude/output-styles/lesson.md` (YAML frontmatter structure, section format)
@@ -390,7 +390,7 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
 **Implementation Guidance**:
 - **Git worktree script**: Provide bash script with OS-specific handling (macOS: `git worktree add ../feature-001-auth feature-001-auth`, Linux/Windows variations)
 - **Integration contract template**: Create markdown table showing: Feature | Depends On | Provides | Data Format
-- **Code example comments**: Explain WHY each step matters for 10-15 agent scale (not just WHAT it does)
+- **Code example comments**: Explain WHY each step matters for 7-9 agent scale (not just WHAT it does)
 - **Reflection worksheet**: Include time tracking table: Task | Sequential Time | Parallel Time | Speedup Factor
 - **Try With AI prompts**:
   1. "Explain how git worktrees enable true isolation for parallel development"
@@ -401,12 +401,12 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
 - **Code examples**: All scripts must be copy-paste ready and tested on macOS/Linux
 - **Cognitive load**: Max 7 new concepts (list them: worktree, feature branch, parallel spec, integration contract, PHR routing, feature numbering, time tracking)
 - **Skills proficiency**: CEFR A2 level (recognition + simple application with scaffolding)
-- **Engagement**: Each section answers "Why does this matter for 10-15 agents?" within first 2 paragraphs
+- **Engagement**: Each section answers "Why does this matter for 7-9 agents?" within first 2 paragraphs
 
 **Validation**:
 - [ ] Run git worktree script on fresh repo - must create 3 worktrees without errors
 - [ ] Verify cognitive load: Count new concepts, confirm ≤7
-- [ ] Check scale connection: Search lesson for "10-15 agents" - must appear 3+ times
+- [ ] Check scale connection: Search lesson for "7-9 agents" - must appear 3+ times
 - [ ] Test Try With AI prompts with Claude Code CLI - verify they produce helpful responses
 
 ---
@@ -440,9 +440,9 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
   - Exercise 5: Time tracking and analysis
 - [ ] Try With AI section (15 min, 3 prompts)
 - [ ] Duration: 90 minutes estimated
-- [ ] **10-15 Agent Scale Connection** (CRITICAL):
+- [ ] **7-9 agent Scale Connection** (CRITICAL):
   - ✅ Introduction: "You're learning to manage 2-3 agents' planning simultaneously - essential for scaling to 10-15"
-  - ✅ Section 3 (Plan Quality): "Good decomposition = clean plans. Bad decomposition = complex plans. At 10-15 agent scale, bad decomposition becomes unmanageable."
+  - ✅ Section 3 (Plan Quality): "Good decomposition = clean plans. Bad decomposition = complex plans. At 7-9 agent scale, bad decomposition becomes unmanageable."
   - ✅ Section 6 (Reflection): "How would parallel planning change with 10 worktrees? What becomes harder? What stays the same?"
   - ✅ Try With AI prompt: "Design a terminal management strategy for monitoring 10 parallel planning sessions"
   - ✅ Student understands: "Parallel planning proves decomposition quality before implementation"
@@ -502,14 +502,14 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
 - **Code examples**: tmux script must work on macOS/Linux (tested)
 - **Cognitive load**: 7 concepts (parallel planning, plan quality indicators, terminal multiplexing, dependency analysis, integration risks, time tracking, reflection)
 - **Skills proficiency**: A2/B1 (simple application with scaffolding + independent application to familiar problems)
-- **Scale connection**: "10-15 agents" mentioned 5+ times
+- **Scale connection**: "7-9 agents" mentioned 5+ times
 - **Reading level**: Grade 10-12
 
 **Validation Checklist**:
 - [ ] Run tmux script - must create 3-pane layout successfully
 - [ ] Test plan quality rubric - can differentiate good/bad decomposition
 - [ ] Count concepts - verify = 7
-- [ ] Search "10-15 agents" - verify appears 5+ times
+- [ ] Search "7-9 agents" - verify appears 5+ times
 - [ ] Test Try With AI prompts - verify helpful analysis responses
 
 ---
@@ -549,9 +549,9 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
   - "Tests failing after merge" dependency diagnosis
 - [ ] Try With AI section (3 prompts focused on merge conflict meaning)
 - [ ] Duration: 120 minutes
-- [ ] **10-15 Agent Scale Connection** (CRITICAL):
-  - ✅ Introduction: "You're proving decomposition works at 2-3 agent scale - the patterns you learn here work for 10-15 agents"
-  - ✅ Section 5 (Merge Conflicts): "Merge conflicts = feedback on decomposition quality. At 10-15 agent scale, many conflicts = system design problem, not merge problem."
+- [ ] **7-9 agent Scale Connection** (CRITICAL):
+  - ✅ Introduction: "You're proving decomposition works at 2-3 agent scale - the patterns you learn here work for 7-9 agents"
+  - ✅ Section 5 (Merge Conflicts): "Merge conflicts = feedback on decomposition quality. At 7-9 agent scale, many conflicts = system design problem, not merge problem."
   - ✅ Section 7 (Reflection): "You integrated 3 features. What would change with 10 features? What decomposition patterns prevent integration chaos?"
   - ✅ Try With AI prompt: "Analyze this merge conflict - does it indicate a decomposition problem or just overlapping work?"
   - ✅ Student understands: "Clean merges prove good decomposition; conflicts teach better decomposition"
@@ -626,7 +626,7 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
 - **Merge conflict examples**: Real conflicts from actual parallel development, not synthetic
 - **Integration tests**: Must verify cross-feature functionality, not just individual features
 - **Cognitive load**: 7-9 concepts (B1 level allows slightly higher load)
-- **Scale connection**: "10-15 agents" mentioned 5+ times
+- **Scale connection**: "7-9 agents" mentioned 5+ times
 - **Troubleshooting guide**: Must address real pain points (not theoretical)
 
 **Validation Checklist**:
@@ -634,7 +634,7 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
 - [ ] Introduce intentional conflict, test resolution guide clarity
 - [ ] Run integration tests - must verify cross-feature functionality
 - [ ] Count concepts - verify ≤ 9 (B1 limit)
-- [ ] Search "10-15 agents" - verify appears 5+ times
+- [ ] Search "7-9 agents" - verify appears 5+ times
 - [ ] Test Try With AI prompts - verify conflict analysis quality
 
 ---
@@ -665,11 +665,11 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
 - [ ] Try With AI section (3 prompts on scalability and redesign)
 - [ ] Duration: 90 minutes
 - [ ] Key insight: Transferability (how this applies to human teams, not just AI agents)
-- [ ] **10-15 Agent Scale Connection** (CRITICAL):
+- [ ] **7-9 agent Scale Connection** (CRITICAL):
   - ✅ Introduction: "You've mastered 2-3 agents. Now you're preparing for 5-7 agents, with eyes on 10-15"
-  - ✅ Section 3 (What Breaks): "At 10-15 agent scale, communication complexity explodes - decomposition quality becomes CRITICAL"
-  - ✅ Section 6 (Path to Scaling): "The path from 5 to 10-15 agents: automation (Lessons 5-7) + meta-orchestration (Lesson 8)"
-  - ✅ Section 7 (Reflection): "Could you manage 10-15 agents with current decomposition approach? What would need to change?"
+  - ✅ Section 3 (What Breaks): "At 7-9 agent scale, communication complexity explodes - decomposition quality becomes CRITICAL"
+  - ✅ Section 6 (Path to Scaling): "The path from 5 to 7-9 agents: automation (Lessons 5-7) + meta-orchestration (Lesson 8)"
+  - ✅ Section 7 (Reflection): "Could you manage 7-9 agents with current decomposition approach? What would need to change?"
   - ✅ Student understands: "Decomposition thinking scales; manual coordination doesn't"
 
 **Technical References**:
@@ -729,14 +729,14 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
 - **Visualizations**: Must clearly show complexity growth (3→5→10 features)
 - **Real-world examples**: Must be specific (not "companies do this") - cite actual systems
 - **Cognitive load**: 9-10 concepts (B1/B2 level allows higher complexity for analysis)
-- **Scale connection**: "10-15 agents" mentioned 7+ times (preparing for Lessons 5-8)
+- **Scale connection**: "7-9 agents" mentioned 7+ times (preparing for Lessons 5-8)
 - **Transferability**: Must explicitly connect to human team coordination
 
 **Validation Checklist**:
 - [ ] Visualizations render correctly (ASCII or diagrams)
 - [ ] Decomposition rubric can assess real systems
 - [ ] Count concepts - verify ≤ 10 (B1/B2 limit)
-- [ ] Search "10-15 agents" - verify appears 7+ times
+- [ ] Search "7-9 agents" - verify appears 7+ times
 - [ ] Test Try With AI prompts - verify architectural analysis quality
 - [ ] Verify transferability: "human teams" mentioned 3+ times
 
@@ -773,9 +773,9 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
   - Exercise 4: Run validation locally and in CI/CD, compare results
 - [ ] Try With AI section (3 prompts on validation design and decomposition feedback)
 - [ ] Key principle: Automation is only valuable when decomposition is clear
-- [ ] **10-15 Agent Scale Connection** (CRITICAL):
-  - ✅ Introduction: "You're scaling to 5-7 agents with automation - approaching the 10-15 agent vision"
-  - ✅ Section 1 (Why Automation): "At 10-15 agent scale, manual validation is impossible - automation becomes mandatory"
+- [ ] **7-9 agent Scale Connection** (CRITICAL):
+  - ✅ Introduction: "You're scaling to 5-7 agents with automation - approaching the 7-9 agent vision"
+  - ✅ Section 1 (Why Automation): "At 7-9 agent scale, manual validation is impossible - automation becomes mandatory"
   - ✅ Section 5 (Scaling Validation): "This validation setup works for 5 features today, 15 features tomorrow - same workflow"
   - ✅ Try With AI prompt: "Design a validation system that could handle 15 parallel spec generations"
   - ✅ Student understands: "Automation amplifies good decomposition"
@@ -827,13 +827,13 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
 - **GitHub Actions workflow**: Must run successfully on test repo
 - **Validation script**: Must catch real spec quality issues
 - **Cognitive load**: 8 concepts (B1 level)
-- **Scale connection**: "10-15 agents" mentioned 5+ times
+- **Scale connection**: "7-9 agents" mentioned 5+ times
 
 **Validation Checklist**:
 - [ ] Run GitHub Actions workflow - must validate spec successfully
 - [ ] Test with bad spec - must fail validation correctly
 - [ ] Count concepts - verify ≤ 8
-- [ ] Search "10-15 agents" - verify appears 5+ times
+- [ ] Search "7-9 agents" - verify appears 5+ times
 
 ---
 
@@ -1284,11 +1284,11 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
   - Script showing how to explain project to employers/interviewers
 - [ ] Try With AI section (3 prompts: reflection feedback, narrative polish, retrospective insights)
 - [ ] Celebration/completion messaging
-- [ ] **10-15 Agent Scale Connection** (CRITICAL):
+- [ ] **7-9 agent Scale Connection** (CRITICAL):
   - ✅ Introduction: "You're about to PROVE you can orchestrate 5+ agents - demonstrating the path to 10-15"
-  - ✅ Section 2 (Execution): "You're running the workflow that scales to 10-15 agents"
+  - ✅ Section 2 (Execution): "You're running the workflow that scales to 7-9 agents"
   - ✅ Section 5 (Reflection): "You just orchestrated 5 agents. What would change with 10? With 15?"
-  - ✅ Section 6 (Portfolio Narrative): "Frame your capability: 'I can orchestrate 10-15 AI agents to build multi-feature systems 10x faster'"
+  - ✅ Section 6 (Portfolio Narrative): "Frame your capability: 'I can orchestrate 7-9 AI Agents to build multi-feature systems 10x faster'"
   - ✅ Student completes chapter believing: "I AM a Super AI Orchestrator"
 
 **Technical References**:
@@ -1344,7 +1344,7 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
   in 60 minutes vs 150 minutes sequentially - a 2.5x productivity gain.
 
   This skill scales: the same decomposition thinking that coordinates 3 AI
-  agents can coordinate 10-15 agents, junior developers, or distributed teams."
+  agents can coordinate 7-9 agents, junior developers, or distributed teams."
   ```
 
 - **Try With AI Prompts**:
@@ -1357,7 +1357,7 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
 - **Time tracking worksheet**: Must show actual gains (not theoretical)
 - **Portfolio narrative**: Must emphasize thinking over tools
 - **Cognitive load**: 10 concepts (B1-B2 level capstone)
-- **Scale connection**: "10-15 agents" mentioned 8+ times (this is the proof)
+- **Scale connection**: "7-9 agents" mentioned 8+ times (this is the proof)
 - **Celebration**: Must feel like accomplishment, not just "chapter done"
 
 **Validation Checklist**:
@@ -1365,7 +1365,7 @@ Every lesson task MUST include this validation checklist in acceptance criteria:
 - [ ] Verify time tracking worksheet captures parallel vs sequential accurately
 - [ ] Check portfolio narrative examples - emphasize strategic capability
 - [ ] Count concepts - verify ≤ 10
-- [ ] Search "10-15 agents" - verify appears 8+ times
+- [ ] Search "7-9 agents" - verify appears 8+ times
 - [ ] Verify celebration messaging: Student feels "I accomplished something significant"
 
 ---
@@ -1661,7 +1661,7 @@ For each starter (task app, blog, API wrapper):
 - [ ] **Lesson 8** (3 prompts):
   - Prompt 1: "Review my orchestration script. What improvements would help it scale to 10-15 features?"
   - Prompt 2: "Explain my orchestration script step-by-step. Where are potential failure points?"
-  - Prompt 3: "How would I modify this to ensure all 10-15 agents work in true parallel?"
+  - Prompt 3: "How would I modify this to ensure all 7-9 agents work in true parallel?"
   - Expected outcomes documented
 
 - [ ] **Lesson 9** (3 prompts):
@@ -1792,7 +1792,7 @@ For each starter (task app, blog, API wrapper):
 - Lesson 5: Automation 1 (CI/CD gates quality)
 - Lesson 6: Automation 2 (MCP provides shared context)
 - Lesson 7: Automation 3 (background execution enables true parallelization)
-- Lesson 8: Meta-orchestration (programmatic orchestration, 10-15 agents)
+- Lesson 8: Meta-orchestration (programmatic orchestration, 7-9 agents)
 - Lesson 9: Integration (capstone project synthesis, measurement, portfolio)
 
 ---

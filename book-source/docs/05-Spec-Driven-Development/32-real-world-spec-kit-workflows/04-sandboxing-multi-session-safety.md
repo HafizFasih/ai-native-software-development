@@ -145,7 +145,7 @@ With sandboxing, your Super Orchestrator is resilient:
 - Bad sessions are contained; others continue
 - Resource limits prevent cascading failures
 - Isolation prevents information leakage between sessions
-- You can safely spawn 10-15 agents without fear
+- You can safely spawn 7-9 agents without fear
 
 **The bottom line:** If you don't sandbox your sessions, you cannot safely build a Super Orchestrator at scale. Sandboxing isn't a nice-to-have feature—it's the security foundation that makes the entire orchestration approach viable.
 

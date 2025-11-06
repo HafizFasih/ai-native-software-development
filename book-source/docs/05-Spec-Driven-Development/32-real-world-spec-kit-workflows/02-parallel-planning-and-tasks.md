@@ -277,7 +277,7 @@ What does this tell you? **The dashboard decomposition was too ambitious.** It s
 - feature-003a: Basic dashboard (transaction list, user stats)
 - feature-003b: Advanced analytics (trends, predictions)
 
-A plan that's 12 pages signals that the decomposition was poor. At 10-15 agent scale, bad decomposition becomes unmanageable. Imagine trying to run 15 planning sessions where half of them result in 12-page complexity avalanches. You'd spend more time coordinating across complex dependencies than you saved through parallelization.
+A plan that's 12 pages signals that the decomposition was poor. At 7-9 agent scale, bad decomposition becomes unmanageable. Imagine trying to run 15 planning sessions where half of them result in 12-page complexity avalanches. You'd spend more time coordinating across complex dependencies than you saved through parallelization.
 
 ### Reading Plan Quality as a Signal
 
@@ -484,7 +484,7 @@ Did all three plans follow the same patterns for API design, error handling, and
 
 On a scale of 1-10, how confident are you that these three features can be implemented independently without major integration surprises? What would increase your confidence?
 
-**Question 4: Scaling to 10-15 Agents**
+**Question 4: Scaling to 7-9 agents**
 
 Imagine you had 10 parallel decompositions instead of 3. How would parallel planning change?
 
@@ -582,7 +582,7 @@ The skill here is not "believe the AI" but "AI + your judgment = better thinking
 - ✓ 3 task lists generated in parallel (~20 min)
 - ✓ Evaluated your decomposition quality using the rubric
 - ✓ Identified any hidden dependencies or decomposition issues
-- ✓ Reflected on how parallel planning scales to 10-15 agents
+- ✓ Reflected on how parallel planning scales to 7-9 agents
 - ✓ Designed a terminal management strategy for larger-scale parallelization
 
 You now understand that **decomposition quality is proven through parallelization**. Good decomposition = clean parallel planning. Bad decomposition = chaos. This principle scales directly from 3 agents to 10, to 100.

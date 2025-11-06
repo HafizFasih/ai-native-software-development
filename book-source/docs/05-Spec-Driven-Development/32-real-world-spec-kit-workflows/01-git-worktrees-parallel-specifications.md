@@ -44,10 +44,10 @@ learning_objectives:
     bloom_level: "Apply"
     assessment_method: "Documentation of integration points between 3 specs showing data formats and dependencies"
 
-  - objective: "Understand how parallel specification design enables 10-15 agent orchestration"
+  - objective: "Understand how parallel specification design enables 7-9 agent orchestration"
     proficiency_level: "A2"
     bloom_level: "Understand"
-    assessment_method: "Reflection on scaling from 3 to 10-15 agents; analysis of what changes in workflow"
+    assessment_method: "Reflection on scaling from 3 to 7-9 agents; analysis of what changes in workflow"
 
 cognitive_load:
   new_concepts: 7
@@ -69,13 +69,13 @@ version: "1.0.0"
 
 # Git Worktrees & Parallel Specifications
 
-## Introduction: The Bottleneck Most Teams Miss
+## The Bottleneck Most Teams Miss
 
 Imagine you have three features to build. Normally, you'd do them one at a time: finish Feature A, then start Feature B, then start Feature C. Your entire team sits idle while one person writes specifications. This is the **sequential bottleneck** that keeps teams slow.
 
 But here's what top engineering teams do differently: they work on all three specifications **at the same time**, in complete isolation, without anyone's work interfering with anyone else's. How? **Git worktrees**.
 
-In this lesson, you're learning to manage **2-3 agents NOW to scale to 10-15 agents LATER**. You'll see that parallel development isn't just faster—it's the foundation for orchestrating teams of AI agents. When you move from 3 agents to 10-15 agents, the same patterns apply, scaled up.
+In this lesson, you're learning to manage **2-3 agents NOW to scale to 7-9 agents LATER**. You'll see that parallel development isn't just faster—it's the foundation for orchestrating teams of AI agents. When you move from 3 agents to 7-9 agents, the same patterns apply, scaled up.
 
 By the end of this lesson, you'll have 3 feature specifications written in parallel, a clear understanding of how they integrate, and the confidence to extend this pattern to any team size.
 
@@ -121,7 +121,7 @@ This matters because **time saved is exponential**:
 - **Parallel approach with 3 worktrees**: 30 min per spec, all 3 simultaneously = 30 minutes total
 - **Saved**: 60 minutes (67% reduction)
 
-At 10-15 agents running in parallel, that's the difference between a 6-hour planning phase and a 1-hour phase.
+At 7-9 agents running in parallel, that's the difference between a 6-hour planning phase and a 1-hour phase.
 
 ---
 
@@ -136,9 +136,6 @@ Start with a clean project directory:
 ```bash
 mkdir my-parallel-project
 cd my-parallel-project
-git init
-git config user.name "Your Name"
-git config user.email "your@email.com"
 
 # Create initial commit so branches have a base
 touch README.md
@@ -325,7 +322,7 @@ Track the timing:
 - **Parallel**: All 3 running simultaneously = **30 minutes total**
 - **Time saved**: 60 minutes (67%)
 
-At 10-15 agents, this scaling pattern means the difference between **9 hours of sequential planning** and **1 hour of parallel planning**.
+At 7-9 agents, this scaling pattern means the difference between **9 hours of sequential planning** and **1 hour of parallel planning**.
 
 ### Code Example 2: Feature Specification Template
 
@@ -492,7 +489,7 @@ Complete this table to understand the speedup:
 
 **Key insight**: The speedup isn't magic—it's simple math. 3 tasks done in parallel take 1/3 the time as 3 tasks done sequentially.
 
-At 10-15 agents:
+At 7-9 agents:
 
 | Scenario | Sequential | Parallel | Speedup |
 |----------|-----------|----------|---------|
@@ -524,7 +521,7 @@ This analysis teaches you **decomposition thinking**: knowing which features can
 
 Now answer the hard question:
 
-**"How would this workflow change with 10-15 agents instead of 3?"**
+**"How would this workflow change with 7-9 agents instead of 3?"**
 
 Write your answer:
 
@@ -544,7 +541,7 @@ These are the real challenges of scaling. You're solving them now with 3 agents 
 
 The founder could spec all 3 features in parallel, then run 3 code-generation agents in parallel. Total time: 2 hours instead of 9.
 
-This is the pattern that scales to 10-15 agents.
+This is the pattern that scales to 7-9 agents.
 
 ### Real-World Example 3: Academic Research—Distributed Team Coordination
 
@@ -569,7 +566,7 @@ Use **Claude Code CLI** (or your preferred AI companion from earlier chapters). 
 
 ```bash
 cd my-parallel-project
-claude code
+claude
 ```
 
 ### Prompt Set 1: Validate Your Integration Contracts
@@ -639,7 +636,7 @@ What would change in:
 5. Validation (how do I verify all contracts are compatible?)
 ```
 
-**Expected outcome**: AI outlines the architectural changes needed to scale from 3 to 10-15 agents. This prepares you for Chapter 33.
+**Expected outcome**: AI outlines the architectural changes needed to scale from 3 to 7-9 agents. This prepares you for Chapter 33.
 
 ---
 
@@ -652,19 +649,3 @@ AI will suggest architectural improvements and identify potential integration is
 - Risk assessment (AI helps identify risks, you prioritize)
 
 Don't blindly accept AI suggestions for contracts that affect multiple teams. Review, question, and validate.
-
----
-
-## Validation Checkpoint
-
-Before moving to Lesson 2, verify:
-
-- [ ] **3 worktrees created** (`git worktree list` shows all 3)
-- [ ] **3 parallel specs completed** (one per feature directory)
-- [ ] **Integration contracts documented** (you identified 3+ connection points)
-- [ ] **Time tracking completed** (you have parallel vs sequential comparison)
-- [ ] **Scaling analysis written** (you answered the 10-15 agent question)
-- [ ] **Try With AI prompts tested** (you ran at least one prompt, got feedback)
-- [ ] **Scale connection recognized** (you understand this lesson foundation for 10-15 agents)
-
-Once all 7 items are complete, you're ready for Lesson 2: **Scaling to Full Parallel Workflows** (Plan & Tasks in Parallel).

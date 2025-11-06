@@ -10,7 +10,7 @@
 
 ## Executive Summary
 
-The tasks.md file for Chapter 32 redesign is **COMPLETE, COMPREHENSIVE, AND READY FOR IMPLEMENTATION**. All requested enhancements have been successfully added, including comprehensive technical references for every lesson task, explicit 10-15 agent scale connections, and complete code templates.
+The tasks.md file for Chapter 32 redesign is **COMPLETE, COMPREHENSIVE, AND READY FOR IMPLEMENTATION**. All requested enhancements have been successfully added, including comprehensive technical references for every lesson task, explicit 7-9 agent scale connections, and complete code templates.
 
 **Key Metrics**:
 - **Total Lines**: 2,111 lines
@@ -26,8 +26,8 @@ The tasks.md file for Chapter 32 redesign is **COMPLETE, COMPREHENSIVE, AND READ
 ### ✅ Section 1: Structural Completeness
 
 **All Required Sections Present**:
-- [x] North Star Vision (1 Human + 10-15 AI Agents)
-- [x] Student Journey visualization (1 → 2-3 → 5-7 → 10-15 agent progression)
+- [x] North Star Vision (1 Human + 7-9 AI Agents)
+- [x] Student Journey visualization (1 → 2-3 → 5-7 → 7-9 agent progression)
 - [x] Technical References Template
 - [x] Scale Connection Validation Template
 - [x] 11 implementation phases
@@ -63,7 +63,7 @@ The tasks.md file for Chapter 32 redesign is **COMPLETE, COMPREHENSIVE, AND READ
 - Implementation Guidance sections: 11 occurrences (template + 10 tasks)
 - Quality Standards sections: 11 occurrences (template + 10 tasks)
 - Validation Checklist sections: 9 occurrences (all lesson tasks)
-- 10-15 Agent Scale Connection sections: 10 occurrences (template + 9 lessons)
+- 7-9 agent Scale Connection sections: 10 occurrences (template + 9 lessons)
 
 ---
 
@@ -88,17 +88,17 @@ The tasks.md file for Chapter 32 redesign is **COMPLETE, COMPREHENSIVE, AND READ
 
 ---
 
-### ✅ Section 4: Vision Centrality (10-15 Agent Focus)
+### ✅ Section 4: Vision Centrality (7-9 agent Focus)
 
-**The "1 Human + 10-15 AI Agents" vision is central throughout the document**:
+**The "1 Human + 7-9 AI Agents" vision is central throughout the document**:
 
-- **Total "10-15 agent" mentions**: 81 occurrences
+- **Total "7-9 agent" mentions**: 81 occurrences
 - **Required frequency**: 3-8 mentions per lesson
 - **Actual frequency**: Exceeds requirements significantly
 
 **Key Vision Elements**:
 - [x] North Star Vision section (lines 15-63)
-- [x] Student Journey shows progression to 10-15 agents
+- [x] Student Journey shows progression to 7-9 agents
 - [x] Every lesson task has Scale Connection validation
 - [x] Lesson 8 positioned as THE CLIMAX (not optional)
 - [x] Lesson 8 priority: MUST (THIS IS THE PAYOFF)
@@ -106,9 +106,9 @@ The tasks.md file for Chapter 32 redesign is **COMPLETE, COMPREHENSIVE, AND READ
 - [x] Capstone portfolio narrative emphasizes capability
 
 **Evidence**:
-- 81 mentions of "10-15 agent" throughout document
+- 81 mentions of "7-9 agent" throughout document
 - Lesson 8 marked: "Priority: MUST (THIS IS THE PAYOFF)"
-- Lesson 8 note: "THIS IS THE CLIMAX - where students SEE the 10-15 agent vision realized. Not optional - this is where everything clicks."
+- Lesson 8 note: "THIS IS THE CLIMAX - where students SEE the 7-9 agent vision realized. Not optional - this is where everything clicks."
 
 ---
 
@@ -128,7 +128,7 @@ The tasks.md file for Chapter 32 redesign is **COMPLETE, COMPREHENSIVE, AND READ
 - Phase name: "Phase 4: THE CLIMAX — Vision Realization (Lesson 8)"
 - Opening hook: "This is it. Everything you've learned builds to this moment..."
 - Content includes: Student RUNS 5-agent orchestration script and SEES it work
-- Explicit section: "The Path to 10-15 Agents"
+- Explicit section: "The Path to 7-9 agents"
 - Climax messaging: "You just witnessed the vision. 1 script orchestrated 5 agents."
 
 **Evidence**: Verified at lines 950-969 (Task 4.1 structure)
@@ -144,7 +144,7 @@ Each task includes:
 2. **How to do it**: Complete code templates, Try With AI prompts (3 per lesson), worksheets, real-world examples
 3. **How to validate**: Quality standards, cognitive load limits, CEFR proficiency levels, reading level
 4. **Testable acceptance**: 4-6 specific checklist items per task
-5. **Scale connection**: 5 checkboxes ensuring 10-15 agent vision is central
+5. **Scale connection**: 5 checkboxes ensuring 7-9 agent vision is central
 
 **Example (Task 2.2 - Lesson 2)**:
 - Technical References: 7 categories (lesson style guide, plan section, git worktree docs, session management articles, Claude Code docs, planning frameworks, example lessons)
@@ -163,7 +163,7 @@ Each task includes:
 
 - Primary learning objective: Decomposition thinking (breaking systems into parallelizable units)
 - Secondary learning objective: Tool proficiency (git worktrees, Claude Code, SpecKit Plus)
-- Every lesson answers: "Why does this matter for coordinating 10-15 agents?"
+- Every lesson answers: "Why does this matter for coordinating 7-9 agents?"
 - Tools framed as "vehicles for experiencing decomposition patterns"
 - Success criteria measure capability, not tool knowledge
 - Portfolio narrative emphasizes transferable skill
@@ -183,11 +183,11 @@ Each task includes:
 |--------------|--------|----------|
 | All lesson tasks have technical references | ✅ PASS | 9/9 tasks complete |
 | All code templates present and complete | ✅ PASS | 10/10 templates verified |
-| 10-15 agent vision central (81 mentions) | ✅ PASS | Exceeds requirements |
+| 7-9 agent vision central (81 mentions) | ✅ PASS | Exceeds requirements |
 | Lesson 8 positioned as THE CLIMAX | ✅ PASS | Priority MUST, climax framing |
 | Tasks self-contained for execution | ✅ PASS | All 5 required sections present |
 | 60/40 thinking-to-tooling ratio maintained | ✅ PASS | Decomposition thinking primary |
-| Student Journey progression clear | ✅ PASS | 1→2-3→5-7→10-15 agents |
+| Student Journey progression clear | ✅ PASS | 1→2-3→5-7→7-9 agents |
 | Transferability explicitly taught | ✅ PASS | Lesson 4 + portfolio narrative |
 
 **No critical issues found.**
@@ -222,11 +222,11 @@ Each task includes:
 
 - [x] All 9 lesson tasks have comprehensive technical references (what to read, how to do it, how to validate)
 - [x] All code templates present and complete (10/10 templates verified)
-- [x] 10-15 agent vision central throughout (81 mentions, every lesson connected)
+- [x] 7-9 agent vision central throughout (81 mentions, every lesson connected)
 - [x] Lesson 8 positioned as THE CLIMAX with MUST priority
 - [x] Tasks are self-contained and executable without conversation context
 - [x] 60/40 thinking-to-tooling ratio maintained throughout
-- [x] Student Journey shows clear progression (1→2-3→5-7→10-15 agents)
+- [x] Student Journey shows clear progression (1→2-3→5-7→7-9 agents)
 - [x] Transferability explicitly taught (AI agents → human teams → organizational scaling)
 - [x] Quality standards defined for every task (cognitive load, CEFR levels, reading level)
 - [x] Validation checklists provide testable acceptance criteria
@@ -235,7 +235,7 @@ Each task includes:
 
 > The tasks.md file for Chapter 32 redesign (specs/002-chapter-32-redesign/tasks.md) has been comprehensively reviewed and validated. All structural elements, technical references, code templates, and quality standards are present and complete.
 >
-> The document successfully maintains focus on the transformative "1 Human + 10-15 AI Agents" vision throughout all phases and tasks. Lesson 8 is properly positioned as THE CLIMAX where students witness the vision realized.
+> The document successfully maintains focus on the transformative "1 Human + 7-9 AI Agents" vision throughout all phases and tasks. Lesson 8 is properly positioned as THE CLIMAX where students witness the vision realized.
 >
 > All tasks are self-contained with complete implementation guidance, enabling ANY worker (human or AI) to execute them efficiently without conversation context.
 >
@@ -263,7 +263,7 @@ Each task includes:
 6. Review with human before proceeding to next lesson
 
 **Critical Success Factors**:
-- Maintain 10-15 agent vision centrality (check Scale Connection validation)
+- Maintain 7-9 agent vision centrality (check Scale Connection validation)
 - Keep 60/40 thinking-to-tooling ratio (decomposition thinking primary)
 - Ensure all code examples are copy-paste ready and tested
 - Verify Try With AI prompts generate helpful responses
@@ -284,7 +284,7 @@ Each task includes:
 ### Major Enhancements Made (2025-11-06)
 
 **1. Added North Star Vision Section** (User feedback: "we have lost focus")
-- Created explicit "1 Human + 10-15 AI Agents" transformative promise
+- Created explicit "1 Human + 7-9 AI Agents" transformative promise
 - Added Student Journey visualization showing progression
 - Positioned vision as central organizing principle
 
@@ -294,7 +294,7 @@ Each task includes:
 - Added complete code templates (10 templates, 200+ lines of code)
 
 **3. Added Scale Connection Validation Template** (Ensures vision centrality)
-- Requires every lesson to connect to 10-15 agent vision
+- Requires every lesson to connect to 7-9 agent vision
 - 5-checkbox validation for scale connection
 - Frequency requirements (3-8 mentions per lesson)
 

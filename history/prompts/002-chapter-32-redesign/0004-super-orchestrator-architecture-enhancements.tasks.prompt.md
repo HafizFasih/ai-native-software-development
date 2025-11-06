@@ -44,7 +44,7 @@ Performed comprehensive enhancement of tasks.md to clarify Super Orchestrator ar
 
 ### 1. North Star Vision Enhanced (lines 43-83)
 
-**BEFORE**: "1 Human Seamlessly Managing 10-15 AI Agents"
+**BEFORE**: "1 Human Seamlessly Managing 7-9 AI Agents"
 **AFTER**: "Super Orchestrator Managing 10-15 Independent Claude Sessions"
 
 **Added Super Orchestrator Architecture Diagram**:
@@ -78,7 +78,7 @@ Super Orchestrator (bash script / meta-agent)
 
 ### 2. Student Journey Reframed (lines 84-118)
 
-**BEFORE**: "Managing 1 AI agent → ... → 10-15 agents"
+**BEFORE**: "Managing 1 AI agent → ... → 7-9 agents"
 **AFTER**: "Managing 1 Claude Code session → Building Super Orchestrator → Spawning 10-15 sessions"
 
 **Key Changes**:
@@ -88,7 +88,7 @@ Super Orchestrator (bash script / meta-agent)
 
 ### 3. Scale Connection Template Updated (lines 177-200)
 
-**BEFORE**: "10-15 Agent Scale Connection"
+**BEFORE**: "7-9 agent Scale Connection"
 **AFTER**: "Super Orchestrator Scale Connection"
 
 **Validation Checklist Reframed**:
@@ -126,15 +126,15 @@ Super Orchestrator (bash script / meta-agent)
 ### 5. Lesson 8 (THE CLIMAX) - Massively Enhanced (Task 4.1, lines 1000-1154)
 
 **Title Change**:
-- BEFORE: "Meta-Orchestration: The 10-15 Agent Reality"
+- BEFORE: "Meta-Orchestration: The 7-9 agent Reality"
 - AFTER: "Building the Super Orchestrator"
 
 **Description Change**:
-- BEFORE: "Demonstrating 1 human orchestrating 10-15 AI agents"
+- BEFORE: "Demonstrating 1 human orchestrating 7-9 AI Agents"
 - AFTER: "Students write and run a Super Orchestrator script that spawns 5 independent Claude Code sessions via headless mode, each building features in isolation with own worktree + MCP + agents"
 
 **Opening Hook Updated**:
-- BEFORE: "You're about to see 1 human orchestrate 10-15 AI agents simultaneously"
+- BEFORE: "You're about to see 1 human orchestrate 7-9 AI Agents simultaneously"
 - AFTER: "You're about to build a Super Orchestrator script that spawns 10-15 independent Claude Code sessions, each building features in parallel with zero coordination complexity"
 
 **Content Structure Reframed** (9 sections):

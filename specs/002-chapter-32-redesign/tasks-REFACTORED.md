@@ -161,7 +161,7 @@ PROOF OF MASTERY (Lesson 8):
 2. Keep technical content (sandbox setup, isolation tests)
 3. Update framing: Move from "before Super Orchestrator" to "before scaling to 5+ agents"
 4. Add forward references to L5 (FIRST CLIMAX)
-5. Simplify: Remove references to "10-15 agent orchestration" (that's L7)
+5. Simplify: Remove references to "7-9 agent orchestration" (that's L7)
 
 **Validation**:
 - [ ] Sandboxing positioned as prerequisite for L5 scaling

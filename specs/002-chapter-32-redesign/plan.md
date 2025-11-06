@@ -498,7 +498,7 @@ This implementation plan transforms Chapter 32 from toy simulation to **two prac
 6. **Reflection: Automation as Enabler** (10 min)
    - Journaling: "How does automation amplify my decomposition quality?"
    - Analysis: What validation checks would I need for 5 features? 10 features?
-   - Strategic thinking: How would I scale validation to 10-15 agents?
+   - Strategic thinking: How would I scale validation to 7-9 agents?
 
 **Content Elements**:
 - **Code examples**:
@@ -586,7 +586,7 @@ This implementation plan transforms Chapter 32 from toy simulation to **two prac
 6. **Reflection: Shared Context as Coordination Mechanism** (10 min)
    - Journaling: "How did shared context change how I decomposed features?"
    - Analysis: What decisions in my specs were informed by MCP data?
-   - Strategic thinking: "How would I scale MCP context to coordinate 10-15 agents?"
+   - Strategic thinking: "How would I scale MCP context to coordinate 7-9 agents?"
 
 **Content Elements**:
 - **Code examples**:
@@ -707,13 +707,13 @@ This implementation plan transforms Chapter 32 from toy simulation to **two prac
 **Duration**: 1.5 hours
 **Complexity Tier**: Advanced (B2/Upper-Intermediate) — OPTIONAL lesson (P2 priority)
 
-**Learning Objective**: Students understand how headless mode enables programmatic orchestration of 10-15 AI agents without human terminal management, demonstrating the ultimate scaling pathway
+**Learning Objective**: Students understand how headless mode enables programmatic orchestration of 7-9 AI Agents without human terminal management, demonstrating the ultimate scaling pathway
 
 **Skills Taught** (CEFR Proficiency Framework):
 - **Headless Mode Execution** — B2 (Upper-Intermediate/Advanced) — Technical — Students can invoke Claude Code headless; capture JSON output; maintain session context
 - **Orchestration Script Development** — B2 (Upper-Intermediate/Advanced) — Technical — Students can write bash/python scripts that spawn multiple headless sessions programmatically
 - **Session Management Across Phases** — B2 (Upper-Intermediate/Advanced) — Technical — Students use `--resume` flag to maintain context across Specify → Plan → Tasks → Implement workflow
-- **Decomposition at Scale** — B2 (Upper-Intermediate/Advanced) — Conceptual — Students understand that 10-15 agent orchestration is possible ONLY with excellent decomposition (poor decomposition = coordination chaos)
+- **Decomposition at Scale** — B2 (Upper-Intermediate/Advanced) — Conceptual — Students understand that 7-9 agent orchestration is possible ONLY with excellent decomposition (poor decomposition = coordination chaos)
 
 **Key Concepts** (max 10 for B2):
 1. What headless mode is (non-interactive Claude Code execution via CLI)
@@ -734,10 +734,10 @@ This implementation plan transforms Chapter 32 from toy simulation to **two prac
 
 **Content Outline**:
 
-1. **The Vision: 1 Human + 10-15 AI Agents** (15 min)
+1. **The Vision: 1 Human + 7-9 AI Agents** (15 min)
    - Lessons 1-3: Manual coordination of 2-3 agents (proven to work, demonstrated 3x speedup)
    - Lessons 4-7: Automation amplified coordination (CI/CD, MCP, background execution)
-   - Lesson 8: Meta-orchestration (programmatic coordination of 10-15 agents)
+   - Lesson 8: Meta-orchestration (programmatic coordination of 7-9 agents)
    - Question: What enables this scale? Excellent decomposition. Without it, chaos.
 
 2. **Understanding Headless Mode** (20 min)
@@ -794,11 +794,11 @@ This implementation plan transforms Chapter 32 from toy simulation to **two prac
    - Logging: Capture all outputs to logs/ directory for audit trail
    - Dashboard: Simple progress file showing which features are in which phase
 
-6. **Scaling to 10-15 Agents** (15 min)
+6. **Scaling to 7-9 agents** (15 min)
    - Lessons learned from 5-feature orchestration:
      - What worked well (parallelization benefit, clean integration with good decomposition)
      - What broke (decomposition problems surface earlier at 5 features; 10 features = even more critical)
-   - Why 10-15 agents require EXCELLENT decomposition:
+   - Why 7-9 agents require EXCELLENT decomposition:
      - At 3 features: OK decomposition works
      - At 5 features: Good decomposition required
      - At 10-15 features: EXCELLENT decomposition absolutely required
@@ -812,7 +812,7 @@ This implementation plan transforms Chapter 32 from toy simulation to **two prac
    - Observe: All 5 features processed in parallel, total time ≈ 1 sequential workflow
    - Reflection: "This is what 1 human + 5 AI agents looks like"
 
-8. **Path to 10-15 Agents** (10 min)
+8. **Path to 7-9 agents** (10 min)
    - Current orchestration script: Good enough for 5 features
    - Improvements for 10-15 features:
      - Better error handling (retry logic, circuit breakers)
@@ -840,7 +840,7 @@ This implementation plan transforms Chapter 32 from toy simulation to **two prac
   - Exercise 1 (guided): Run single headless command, parse JSON output
   - Exercise 2 (guided): Run orchestration script template for your 5-feature system
   - Exercise 3 (optional): Modify orchestration script for your specific needs (add logging, change parallelism)
-  - Exercise 4 (reflection): Analyze orchestration script, discuss what would need to change for 10-15 agents
+  - Exercise 4 (reflection): Analyze orchestration script, discuss what would need to change for 7-9 agents
 
 - **Real-world context**:
   - How Anthropic uses similar patterns for internal development
@@ -852,7 +852,7 @@ This implementation plan transforms Chapter 32 from toy simulation to **two prac
 - **Prompts**:
   1. "Review my orchestration script. What improvements would help it scale to 10-15 features?"
   2. "Explain how my orchestration script works step-by-step. Where are the potential failure points?"
-  3. "How would I modify this to ensure all 10-15 agents work in true parallel, without bottlenecks?"
+  3. "How would I modify this to ensure all 7-9 agents work in true parallel, without bottlenecks?"
 - **Expected Outcome**: Students understand meta-orchestration as strategic capability; recognize decomposition as ultimate bottleneck
 
 ---
@@ -876,7 +876,7 @@ This implementation plan transforms Chapter 32 from toy simulation to **two prac
 4. Portfolio narrative: What story does your project tell?
 5. Transferability: How does this apply beyond AI agents?
 6. Reflection and learning: What would you do differently?
-7. Scaling pathway: From solo + 3 agents to team + 10-15 agents
+7. Scaling pathway: From solo + 3 agents to team + 7-9 agents
 8. Business value: Why decomposition thinking matters
 9. Continuous improvement: How to refine your decomposition approach
 10. Documentation and knowledge sharing
@@ -1045,7 +1045,7 @@ This implementation plan transforms Chapter 32 from toy simulation to **two prac
   - Key: Students understand automation as decomposition amplifier, not replacement
 
 - **Lesson 8**: Advanced orchestration (optional)
-  - Lesson 8: Meta-orchestration (programmatic coordination of 10-15 agents)
+  - Lesson 8: Meta-orchestration (programmatic coordination of 7-9 agents)
   - Key: Students understand ultimate scaling pathway, but not required to master it
 
 - **Lesson 9**: Integration & reflection
@@ -1187,7 +1187,7 @@ This implementation plan transforms Chapter 32 from toy simulation to **two prac
 **Why This Structure Works**:
 1. **Decomposition first**: Lessons 1-4 teach the thinking pattern, prove it works with 3 features
 2. **Automation amplifies**: Lessons 5-7 show how automation scales decomposition patterns
-3. **Orchestration demonstrates**: Lesson 8 shows ultimate scaling (10-15 agents possible only with excellent decomposition)
+3. **Orchestration demonstrates**: Lesson 8 shows ultimate scaling (7-9 agents possible only with excellent decomposition)
 4. **Capstone proves**: Lesson 9 real project demonstrates all learning outcomes simultaneously
 
 **Why Not Just Teach Tools**:
@@ -1219,7 +1219,7 @@ This implementation plan transforms Chapter 32 from toy simulation to **two prac
 - SC-003: 75%+ integrate independently-built features with minimal conflicts (Lesson 3 integration validation)
 - SC-004: Can explain decomposition thinking to non-technical stakeholders (Lesson 9 portfolio narrative)
 - SC-005: 70%+ understand transferability to junior developers/teams (Lesson 4 + Lesson 9 reflection)
-- SC-013: 60%+ understand scaling pathway 2-3 → 5-7 → 10-15 agents (Lessons 4, 8, 9)
+- SC-013: 60%+ understand scaling pathway 2-3 → 5-7 → 7-9 agents (Lessons 4, 8, 9)
 
 **Secondary Success (40% emphasis): Tool Proficiency**
 - SC-006: 70%+ achieve 2.5x+ speedup with parallel workflow (time tracking in Lessons 1-3, capstone)

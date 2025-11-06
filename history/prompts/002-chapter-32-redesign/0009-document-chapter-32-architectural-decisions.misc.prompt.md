@@ -46,7 +46,7 @@ The /sp.adr command executed the following workflow:
 **ADR-0004: Contract-Based Autonomous Coordination Pattern**
 - **Decision**: Use explicit integration contracts (contract.md) + completion hooks for multi-agent coordination
 - **Alternatives Considered**: Synchronous coordination (meetings), message-passing (event-driven), shared state (database), implicit coordination (hope for the best)
-- **Why Contract-Based Wins**: Explicit contracts eliminate coordination overhead, scale to 10-15 agents, teach transferable decomposition thinking
+- **Why Contract-Based Wins**: Explicit contracts eliminate coordination overhead, scale to 7-9 agents, teach transferable decomposition thinking
 - **Impact**: Affects Lessons 6-8, transferable to production systems and human team coordination
 
 **ADR-0005: Git Worktrees as Parallel Development Infrastructure**

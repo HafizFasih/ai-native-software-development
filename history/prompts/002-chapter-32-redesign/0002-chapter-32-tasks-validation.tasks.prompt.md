@@ -34,7 +34,7 @@ Validated existing comprehensive tasks.md file (55 pages, 50+ tasks) generated b
 
 **Validated Elements**:
 1. **Decomposition thinking emphasis** (60/40 split): Explicitly stated in Key Constraint section, reinforced throughout all 9 lessons
-2. **Technical AI orchestra**: Lesson 8 dedicated to meta-orchestration with headless mode (1 human + 10-15 AI agents vision)
+2. **Technical AI orchestra**: Lesson 8 dedicated to meta-orchestration with headless mode (1 human + 7-9 AI Agents vision)
 3. **SpecKit Plus + Claude Code CLI**: All lessons use these tools as teaching vehicles
 4. **Task organization**: 11 phases covering Chapter README → 9 lessons → code examples → exercises → review → capstone
 5. **Timeline**: 135 hours total ≈ 4-5 weeks full-time or 2-3 months part-time
@@ -58,15 +58,15 @@ Validated existing comprehensive tasks.md file (55 pages, 50+ tasks) generated b
 
 ## Outcome
 
-- ✅ Impact: **Tasks enhanced with comprehensive technical references** - tasks.md refocused on "1 Human + 10-15 AI Agents" vision with self-contained execution guidance
+- ✅ Impact: **Tasks enhanced with comprehensive technical references** - tasks.md refocused on "1 Human + 7-9 AI Agents" vision with self-contained execution guidance
 - 🧪 Tests: All validation checks passed + enhanced with technical references for execution independence
 - 📁 Files:
   - tasks.md (enhanced - now 65+ pages with comprehensive technical references for every task)
-  - 10-15 agent vision now central (North Star section, Student Journey visualization, Scale Connection Template)
+  - 7-9 agent vision now central (North Star section, Student Journey visualization, Scale Connection Template)
 - 🔁 Next prompts: `/sp.implement` to begin lesson content creation with technical references guiding execution
 - 🧠 Reflection:
   - **Major improvements**: Added comprehensive technical references to every task (what to read, how to do it, how to validate)
-  - **Vision refocused**: "1 Human + 10-15 AI Agents" is now the North Star (not buried in Lesson 8)
+  - **Vision refocused**: "1 Human + 7-9 AI Agents" is now the North Star (not buried in Lesson 8)
   - **Lesson 8 elevated**: Changed from "optional advanced" to "THE CLIMAX - Vision Realization"
   - **Self-contained tasks**: Each task now executable by ANY worker without conversation context
   - **Example references**: Complete orchestration script template included in Lesson 8 task
@@ -76,7 +76,7 @@ Validated existing comprehensive tasks.md file (55 pages, 50+ tasks) generated b
 - Failure modes observed: None - tasks.md is comprehensive and correctly structured
 - Graders run and results (PASS/FAIL):
   - Decomposition thinking emphasis: PASS (60/40 split explicit)
-  - AI orchestra vision: PASS (Lesson 8 meta-orchestration with 10-15 agents)
+  - AI orchestra vision: PASS (Lesson 8 meta-orchestration with 7-9 agents)
   - Task completeness: PASS (135 hours across 11 phases)
   - Constitution alignment: PASS (Principles 14-15 verified)
 - Prompt variant (if applicable): Standard /sp.tasks execution with validation of existing output

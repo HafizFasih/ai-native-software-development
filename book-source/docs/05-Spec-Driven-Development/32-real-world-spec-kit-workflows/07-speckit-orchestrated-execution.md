@@ -56,7 +56,7 @@ cognitive_load:
   assessment: "8 new concepts (SpecKit orchestration, contract generation, autonomous spawning, hooks, completion notifications, strategic review, integration validation, creative independence) within B2 limit of 10 ✓"
 
 differentiation:
-  extension_for_advanced: "Extend to 10 features; analyze scaling requirements; design monitoring dashboard for 10-15 agent coordination"
+  extension_for_advanced: "Extend to 10 features; analyze scaling requirements; design monitoring dashboard for 7-9 agent coordination"
   remedial_for_struggling: "Start with 3-feature system; emphasize contract.md clarity; use manual terminal spawning before tmux scripting"
 
 # Generation metadata
@@ -782,7 +782,7 @@ After running `/sp.tasks`:
 5. **Strategic Review**: Shifting from execution monitoring to strategic validation against contracts
 6. **Creative Independence**: The moment when you can delegate execution and focus on strategy
 7. **Integration Validation**: Checklist-based approach to verifying agents delivered on their contracts
-8. **Scaling Pathway**: Understanding how patterns from 5 agents extend to 10-15 agents
+8. **Scaling Pathway**: Understanding how patterns from 5 agents extend to 7-9 agents
 
 ---
 

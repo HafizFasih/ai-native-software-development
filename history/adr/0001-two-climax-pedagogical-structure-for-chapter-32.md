@@ -73,7 +73,7 @@ Restructure Chapter 32 around **two distinct pedagogical climaxes** rather than 
 
 **Alternative B: Manual Only (No Programmatic Climax)**
 - Structure: Teach manual parallel workflows (Lessons 1-4), end with capstone
-- Why rejected: Doesn't show path to 10-15 agent scale - students would see "3-5x speedup" but not understand "10x+ pathway"
+- Why rejected: Doesn't show path to 7-9 agent scale - students would see "3-5x speedup" but not understand "10x+ pathway"
 - Tradeoff: Simpler chapter but misses "Super AI Orchestrator" vision from book preface
 
 **Alternative C: Purely Automated (Skip Manual Phase)**

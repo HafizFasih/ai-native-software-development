@@ -153,7 +153,7 @@ END: Master of parallel SpecKit Plus (manual AND programmatic)
 
 ### 2. spec.md - Updated Executive Summary (lines 10-36)
 
-**Before**: Generic "orchestrate 10-15 AI agents"
+**Before**: Generic "orchestrate 7-9 AI Agents"
 **After**: Two climaxes with SpecKit Plus focus
 
 ```markdown

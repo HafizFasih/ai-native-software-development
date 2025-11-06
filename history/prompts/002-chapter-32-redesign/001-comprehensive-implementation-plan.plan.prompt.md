@@ -43,7 +43,7 @@ tests_yaml: []
 ### Phase 1: Chapter Type & Pedagogical Foundation
 - **Identified Type**: Technical/Hybrid with strong conceptual emphasis (60% decomposition thinking, 40% tool proficiency)
 - **Learning Paradigm**: CEFR proficiency progression (A1/A2 → B1 → B2)
-- **Primary Objective**: Enable students to understand and apply decomposition thinking (the skill enabling 1 human to orchestrate 10-15 AI agents)
+- **Primary Objective**: Enable students to understand and apply decomposition thinking (the skill enabling 1 human to orchestrate 7-9 AI Agents)
 - **Secondary Objective**: Develop tool proficiency (git worktrees, SpecKit Plus, automation tools)
 - **Complexity Constraints**: Part 5 intermediate tier (3-4 options, max 7 concepts per A2/B1 section)
 
@@ -59,7 +59,7 @@ tests_yaml: []
   - Lesson 3 validates decomposition (integration quality proves thinking quality)
   - Lesson 4 analyzes scaling (what works at 3 → what breaks at 5-7)
   - Lessons 5-7 add automation (CI/CD, MCP, background execution amplify decomposition)
-  - Lesson 8 demonstrates ultimate scaling (10-15 agents via meta-orchestration)
+  - Lesson 8 demonstrates ultimate scaling (7-9 agents via meta-orchestration)
   - Lesson 9 integrates learning (capstone project + portfolio narrative)
 
 ### Phase 3: Skills Proficiency Mapping (CEFR/Bloom's)
@@ -158,7 +158,7 @@ tests_yaml: []
 **Why**:
 - 4 foundation lessons (to prove decomposition works with 2-3 agents)
 - 3 automation lessons (to show how automation amplifies decomposition)
-- 1 optional meta-orchestration lesson (path to 10-15 agents)
+- 1 optional meta-orchestration lesson (path to 7-9 agents)
 - 1 capstone (integration + measurement + portfolio)
 
 This structure naturally maps to progression: Manual → Automated → Meta-orchestrated → Measured
@@ -346,7 +346,7 @@ Not: "Built a system," but "I understand decomposition thinking and can prove it
 ## Potential ADR Topics (For Future Consideration)
 
 ### ADR 1: Why 9 Lessons Instead of 10 or 8?
-- **Decision**: 4 foundation (2-3 agents) + 3 automation (5-7 agents) + 1 optional advanced (10-15 agents) + 1 capstone
+- **Decision**: 4 foundation (2-3 agents) + 3 automation (5-7 agents) + 1 optional advanced (7-9 agents) + 1 capstone
 - **Tradeoff**: More granular lessons (easier pacing) vs consolidation (fewer context switches)
 - **Status**: Not yet documented (user approval required before creating ADR)
 
@@ -383,7 +383,7 @@ This planning phase has transformed the Chapter 32 specification into a **compre
 This comprehensive implementation plan translates the approved Chapter 32 specification into an actionable development roadmap. The plan balances:
 
 - **Pedagogical rigor** (CEFR/Bloom's standards) with **practical implementation** (50+ specific tasks)
-- **Ambitious vision** (teaching 1 human + 10-15 AI agents) with **realistic scope** (9 lessons, 10-12 hours, optional fast-track)
+- **Ambitious vision** (teaching 1 human + 7-9 AI Agents) with **realistic scope** (9 lessons, 10-12 hours, optional fast-track)
 - **Tool proficiency** (40%, git worktrees, SpecKit Plus, automation) with **thinking emphasis** (60%, decomposition patterns)
 - **Immediate learning** (Lessons 1-4 prove decomposition works) with **scaling potential** (Lessons 5-8 demonstrate paths to automation and meta-orchestration)
 

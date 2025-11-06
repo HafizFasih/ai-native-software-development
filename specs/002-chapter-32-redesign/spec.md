@@ -37,7 +37,7 @@ Replace Chapter 32's current conceptual simulation with **two practical learning
 
 **Outcome**: Achieve 10x+ productivity; build belief: *"I can offload management to automation, scaling effortlessly to 15+ agents."*
 
-**Note**: Goal 2 is **optional for advanced students**. Core value is achieved in Goal 1 (manual parallel workflows). Goal 2 demonstrates the ultimate scaling pathway for students who want to see 10-15 agent coordination. **Fast-track**: Complete Goal 1 + Capstone = 6-8 hours, full mastery demonstrated.
+**Note**: Goal 2 is **optional for advanced students**. Core value is achieved in Goal 1 (manual parallel workflows). Goal 2 demonstrates the ultimate scaling pathway for students who want to see 7-9 agent coordination. **Fast-track**: Complete Goal 1 + Capstone = 6-8 hours, full mastery demonstrated.
 
 ### Merged Practical Reality: Creative Human + Autonomous Orchestration
 
@@ -143,13 +143,13 @@ Tools (headless mode, orchestrator scripts) **amplify** decomposition quality—
 
 ---
 
-### User Story 3 - Meta-Orchestration: 1 Human + 10-15 AI Agents (Priority: P2)
+### User Story 3 - Meta-Orchestration: 1 Human + 7-9 AI Agents (Priority: P2)
 
 **As a** developer who understands decomposition thinking and has experienced manual parallel workflows
-**I want to** understand how meta-orchestration (headless mode, orchestration scripts) enables 1 human to coordinate 10-15 AI agents simultaneously
+**I want to** understand how meta-orchestration (headless mode, orchestration scripts) enables 1 human to coordinate 7-9 AI Agents simultaneously
 **So that** I can see the path to unlimited scale: excellent decomposition + programmatic orchestration = 10-50x productivity gains
 
-**Why this priority**: Demonstrates the "Super AI Orchestra" vision - 1 human orchestrating 10-15 autonomous AI agents. Students understand that decomposition thinking is the bottleneck: without it, even 3 agents = chaos. With excellent decomposition, 10-15 agents = manageable. This is the thinking that enables Technical AI Product Managers to coordinate at CTO-level scale.
+**Why this priority**: Demonstrates the "Super AI Orchestra" vision - 1 human orchestrating 10-15 autonomous AI agents. Students understand that decomposition thinking is the bottleneck: without it, even 3 agents = chaos. With excellent decomposition, 7-9 agents = manageable. This is the thinking that enables Technical AI Product Managers to coordinate at CTO-level scale.
 
 **Independent Test**: Can be fully tested by writing bash script that uses headless mode to generate 3 specs in parallel, verifying JSON output is captured correctly, and confirming session IDs enable context preservation across workflow phases.
 
@@ -168,8 +168,8 @@ Tools (headless mode, orchestrator scripts) **amplify** decomposition quality—
    **Then** all 5 features complete autonomously, student monitors progress via JSON parsing, and final integration produces working multi-feature system (demonstrating 1 human + 5 AI agents capability)
 
 4. **Given** student understands 5-agent orchestration
-   **When** they analyze the orchestration script and discuss scaling to 10-15 agents
-   **Then** student can articulate: (1) what changes are needed to scale (more parallelism, better monitoring, error handling), (2) why decomposition quality becomes critical at 10-15 agent scale, (3) how this thinking transfers to coordinating human teams
+   **When** they analyze the orchestration script and discuss scaling to 7-9 agents
+   **Then** student can articulate: (1) what changes are needed to scale (more parallelism, better monitoring, error handling), (2) why decomposition quality becomes critical at 7-9 agent scale, (3) how this thinking transfers to coordinating human teams
 
 ---
 
@@ -292,7 +292,7 @@ Tools (headless mode, orchestrator scripts) **amplify** decomposition quality—
 
 - **SC-005**: 70%+ of students understand **transferability** - can describe how decomposition thinking applies to coordinating junior developers, distributed teams, or organizational scaling (not just AI agents)
 
-- **SC-013**: 60%+ of students understand **path to scale** - can articulate how to progress from 2-3 agents (manual) to 5-7 agents (automated) to 10-15 agents (meta-orchestration) through decomposition thinking
+- **SC-013**: 60%+ of students understand **path to scale** - can articulate how to progress from 2-3 agents (manual) to 5-7 agents (automated) to 7-9 agents (meta-orchestration) through decomposition thinking
 
 ### Secondary Success: Tool Proficiency (40% of chapter emphasis)
 
@@ -549,14 +549,14 @@ The following are explicitly **not** included in this chapter redesign:
 - Integration MUST happen via pre-defined contracts (tests specification quality)
 - Reflection MUST identify what enabled clean integration (tests understanding of decomposition thinking)
 
-### The "Super AI Orchestra" Vision: 1 Human + 10-15 AI Agents
+### The "Super AI Orchestra" Vision: 1 Human + 7-9 AI Agents
 
 - **The Target**: 1 human orchestrating 10-15 autonomous AI agents simultaneously, each building features independently
 - **What enables this scale**: Decomposition thinking - breaking complex systems into 10-15 parallelizable units with clear integration contracts
-- **Why it works**: Good decomposition eliminates coordination overhead. Without decomposition, even 3 agents = chaos. With excellent decomposition, 10-15 agents = manageable.
+- **Why it works**: Good decomposition eliminates coordination overhead. Without decomposition, even 3 agents = chaos. With excellent decomposition, 7-9 agents = manageable.
 - **Progression**:
   - **Lessons 1-4**: Manual coordination of 2-3 agents (learn decomposition thinking)
   - **Lessons 5-7**: Automated coordination of 5-7 agents (automation amplifies good decomposition)
-  - **Lesson 8**: Meta-orchestration of 10-15 agents (programmatic orchestration at scale)
+  - **Lesson 8**: Meta-orchestration of 7-9 agents (programmatic orchestration at scale)
 - **Path to productivity**: 3x (manual 2-3 agents) → 5-7x (automated 5-7 agents) → 10-50x+ (meta-orchestration 10-15+ agents)
 - **Key insight**: The bottleneck isn't tools or terminals - it's decomposition thinking. Master decomposition, unlock unlimited scale.

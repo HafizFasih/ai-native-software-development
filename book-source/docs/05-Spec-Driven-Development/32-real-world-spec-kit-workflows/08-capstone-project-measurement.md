@@ -33,7 +33,7 @@ skills:
     category: "Conceptual"
     bloom_level: "Evaluate"
     digcomp_area: "Problem-Solving"
-    measurable_at_this_level: "Student demonstrates comprehensive understanding of decomposition patterns, scaling from 3 to 10-15 agents, and can transfer thinking to human team coordination"
+    measurable_at_this_level: "Student demonstrates comprehensive understanding of decomposition patterns, scaling from 3 to 7-9 agents, and can transfer thinking to human team coordination"
 
 learning_objectives:
   - objective: "Complete a 3-5 feature system using parallel SpecKit Plus workflow"
@@ -54,7 +54,7 @@ learning_objectives:
   - objective: "Demonstrate mastery by articulating what decomposition teaches about team coordination at scale"
     proficiency_level: "B2"
     bloom_level: "Evaluate"
-    assessment_method: "Capstone reflection addressing how learning applies to 10-15 agent coordination"
+    assessment_method: "Capstone reflection addressing how learning applies to 7-9 agent coordination"
 
 cognitive_load:
   new_concepts: 10
@@ -82,7 +82,7 @@ You've reached the capstone lesson of Chapter 32. Over the past seven lessons, y
 
 You've practiced breaking complex problems into parallelizable units. You've experienced the concrete reality: good decomposition eliminates coordination overhead. You've seen how a 3-5 feature system built sequentially takes 2-3 hours, but built in parallel takes 45 minutes — a **2.5-3x speedup** with no quality sacrifice.
 
-Now comes the final proof: a capstone project where you build something real, measure your productivity gains, and create a portfolio artifact that demonstrates to employers that you can orchestrate 10-15 agents to deliver multi-feature systems faster, cheaper, and with fewer errors.
+Now comes the final proof: a capstone project where you build something real, measure your productivity gains, and create a portfolio artifact that demonstrates to employers that you can orchestrate 7-9 agents to deliver multi-feature systems faster, cheaper, and with fewer errors.
 
 **The stakes**: This isn't just a learning exercise. This is proof of transformation. After completing this capstone, you can legitimately claim: **"I am a creative orchestrator. I can decompose complex systems, coordinate autonomous teams, and deliver at 10x productivity."**
 
@@ -573,7 +573,7 @@ This same decomposition thinking enables:
 - **Product teams**: Stakeholders don't attend daily syncs → specs are communication → decisions async
 - **Large organizations**: 100-person teams decompose same way → specs eliminate meetings
 
-The pattern scales from 1 person + 3 agents to 1 person + 10-15 agents to 10 people + 50-person org.
+The pattern scales from 1 person + 3 agents to 1 person + 7-9 agents to 10 people + 50-person org.
 
 ## How to Run
 
@@ -987,7 +987,7 @@ Add up your 5 scores and divide by 5.
 
 ---
 
-## Section 9: From 3 Features to 10-15 Agents — Scaling Reflection
+## Section 9: From 3 Features to 7-9 agents — Scaling Reflection
 
 You just built a 3-feature system using decomposition thinking. What would change if you needed to scale to 10-15 features?
 
@@ -1019,7 +1019,7 @@ You just built a 3-feature system using decomposition thinking. What would chang
 | Solution | Contract-based coordination (L6) | SpecKit orchestration (L7) |
 | Human role | Terminal manager | Creative director (specs + review) |
 
-### 10-15 Agent Reality Check
+### 7-9 agent Reality Check
 
 **Q: Can 1 person really coordinate 15 AI agents?**
 
@@ -1037,7 +1037,7 @@ This insight applies directly to human team scaling:
 - **10-15 junior developers**: Need specs and async communication (daily standups become bottleneck)
 - **50-person organization**: Needs decomposition thinking across teams, projects, product areas
 
-Your capstone project is proof you understand organizational scaling at the 10-15 agent level. This is valuable to CTOs and VPs Engineering.
+Your capstone project is proof you understand organizational scaling at the 7-9 agent level. This is valuable to CTOs and VPs Engineering.
 
 ---
 
@@ -1136,7 +1136,7 @@ I've completed Lessons 1-9 of Chapter 32 and built a capstone project. I can now
 - Design systems with clear integration contracts
 - Understand why specs eliminate coordination overhead
 
-If I wanted to scale this capability to coordinating 10-15 agents, what are the critical gaps in my understanding? What would I learn in Lesson 7 (SpecKit orchestration) that I'm missing? How would contract-based coordination differ from my manual worktree approach?
+If I wanted to scale this capability to coordinating 7-9 agents, what are the critical gaps in my understanding? What would I learn in Lesson 7 (SpecKit orchestration) that I'm missing? How would contract-based coordination differ from my manual worktree approach?
 ```
 
 **Expected Outcome**: AI reflection on your readiness for enterprise-scale coordination. Typical insights: "Your manual coordination works for 3 features. At 10-15, you need explicit integration contracts (Lesson 6) to prevent coordination overhead, and SpecKit orchestration (Lesson 7) where Claude itself coordinates parallel sessions. But these patterns only work if decomposition is excellent."
@@ -1157,7 +1157,7 @@ Employers value honesty about challenges more than perfection.
 
 ## Closing: You Are Ready
 
-You've completed Chapter 32: *The Super AI Orchestra - Managing 10-15 AI Agents*.
+You've completed Chapter 32: *The Super AI Orchestra - Managing 7-9 AI Agents*.
 
 Over eight lessons, you learned:
 1. **Lesson 1**: How to set up parallel specifications using git worktrees
@@ -1171,7 +1171,7 @@ Over eight lessons, you learned:
 
 **You learned the pattern that enables creative orchestration at scale.**
 
-Not because you're a faster coder. But because you understand how **clear specs eliminate coordination overhead**, **good decomposition enables autonomous work**, and **excellent decomposition scales to 10-15 agents or human teams**.
+Not because you're a faster coder. But because you understand how **clear specs eliminate coordination overhead**, **good decomposition enables autonomous work**, and **excellent decomposition scales to 7-9 agents or human teams**.
 
 This is the skill CTOs look for. This is how startups scale. This is how you move from "I can code" to "I can build and lead teams."
 

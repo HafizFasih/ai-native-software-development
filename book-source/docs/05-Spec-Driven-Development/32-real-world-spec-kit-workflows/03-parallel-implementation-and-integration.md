@@ -39,7 +39,7 @@ learning_objectives:
     bloom_level: "Analyze"
     assessment_method: "Student merges branches, analyzes conflicts, and explains what conflicts reveal about decomposition"
 
-  - objective: "Analyze merge conflicts as feedback on decomposition quality; understand how this pattern scales to 10-15 agents"
+  - objective: "Analyze merge conflicts as feedback on decomposition quality; understand how this pattern scales to 7-9 agents"
     proficiency_level: "B1"
     bloom_level: "Analyze"
     assessment_method: "Student articulates decomposition lessons from integration experience and explains how pattern applies at larger scale"
@@ -70,7 +70,7 @@ You've decomposed your system into 3 independent features. You've written clear 
 
 This lesson proves whether your decomposition was actually good. Here's the profound insight: **Clean merges mean excellent decomposition. Many merge conflicts mean your system design needs rethinking.** You're not struggling with git—you're learning about system architecture.
 
-This is where everything changes. Most teams decompose poorly, then waste weeks in integration hell. You're going to see why, experience it firsthand, and learn the patterns to avoid it. And here's what's remarkable: **The patterns you learn with 3 features and 3 sessions scale directly to 10-15 agents running in parallel on production systems.** Same principles. Different scale.
+This is where everything changes. Most teams decompose poorly, then waste weeks in integration hell. You're going to see why, experience it firsthand, and learn the patterns to avoid it. And here's what's remarkable: **The patterns you learn with 3 features and 3 sessions scale directly to 7-9 agents running in parallel on production systems.** Same principles. Different scale.
 
 Let's build it.
 
@@ -121,7 +121,7 @@ Take your 3 features from Lesson 2 (the 3 specifications you wrote). For each on
 
 4. **Determine merge order**: Read the graph left-to-right. That's your merge sequence.
 
-**At 10-15 agent scale**: You'd have 10-15 features with potentially complex dependency graphs. Tools like `topo-sort` (topological sorting) automatically compute merge order. The principle is identical—dependencies first—but the graph complexity is higher.
+**At 7-9 agent scale**: You'd have 10-15 features with potentially complex dependency graphs. Tools like `topo-sort` (topological sorting) automatically compute merge order. The principle is identical—dependencies first—but the graph complexity is higher.
 
 ### Pre-Merge Checklist
 
@@ -203,7 +203,7 @@ If you're leading a team with 3 people:
 
 Same principle. Different scale.
 
-**Scale note for 10-15 agents**: You'd create 10-15 worktrees (or use a distributed task queue). Agents coordinate via shared state (git commits, status files). The principle—parallel, non-blocking execution—is identical.
+**Scale note for 7-9 agents**: You'd create 10-15 worktrees (or use a distributed task queue). Agents coordinate via shared state (git commits, status files). The principle—parallel, non-blocking execution—is identical.
 
 ---
 
@@ -461,7 +461,7 @@ Common conflict scenarios and what they teach:
 | **Conflicts in database migrations** | Two features added columns to same table | Specs assumed separate tables but didn't enforce it. Database schema should be part of pre-merge checklist. |
 | **No conflicts, but tests fail** | Hidden dependency not visible in code | Spec missed an integration point. Update spec to document all integration paths. |
 
-**At 10-15 agent scale**: Merge conflicts become *systemic feedback*. One conflict = timing issue. *Many* conflicts = decomposition problem. That's when you stop, reanalyze your specifications, and replan. You don't fight through 50 conflicts—you fix the root cause.
+**At 7-9 agent scale**: Merge conflicts become *systemic feedback*. One conflict = timing issue. *Many* conflicts = decomposition problem. That's when you stop, reanalyze your specifications, and replan. You don't fight through 50 conflicts—you fix the root cause.
 
 ### The "Merge Early, Merge Often" Strategy
 
@@ -650,7 +650,7 @@ Efficiency = Parallel time / Sequential time
 
 For a 3-person team, this means: **You shipped in 1 hour what would take 1 person 2 hours.**
 
-**At 10-15 agent scale**: Imagine 10 features with similar complexity:
+**At 7-9 agent scale**: Imagine 10 features with similar complexity:
 - Sequential: 10 features × 45 min = 450 minutes = 7.5 hours
 - Parallel: ~50 minutes (clock time, longest feature)
 - Savings: **7 hours per cycle**
@@ -682,13 +682,13 @@ Answer these questions in your journal:
    - Would you merge more frequently?
    - Would you use a different dependency graph strategy?
 
-5. **At 10-15 agent scale, what would worry you?**
+5. **At 7-9 agent scale, what would worry you?**
    - "Keeping track of 15 dependency graphs?"
    - "Coordinating 15 merge operations?"
    - "What if 10 agents all depend on the same module?"
    - Write down your concerns. These inform your next-level specs.
 
-**Scale Connection**: The exact decomposition thinking you just did—identifying boundaries, dependencies, merge order—becomes *formalized* at 10-15 agent scale. You'd document a dependency graph formally, use topological sorting to compute merge order automatically, and use integration tests as your formal verification that all 15 features still work together.
+**Scale Connection**: The exact decomposition thinking you just did—identifying boundaries, dependencies, merge order—becomes *formalized* at 7-9 agent scale. You'd document a dependency graph formally, use topological sorting to compute merge order automatically, and use integration tests as your formal verification that all 15 features still work together.
 
 ---
 
@@ -721,7 +721,7 @@ Answer these questions in your journal:
 
 **Fix**: In Lesson 4, you'll redecompose. Break the large feature into smaller, more independent specs.
 
-**At 10-15 agent scale**: Balanced features mean balanced agent load. If one feature is huge, one agent will be bottlenecked. The whole team waits.
+**At 7-9 agent scale**: Balanced features mean balanced agent load. If one feature is huge, one agent will be bottlenecked. The whole team waits.
 
 ### "Tests pass individually, but integration tests fail"
 
@@ -883,4 +883,4 @@ The most common mistake: Using automation to cover up bad decomposition. Don't d
 
 ---
 
-**Next step**: In Lesson 4, you'll take this experience and scale it. You've proven the pattern works with 3 features. Now you'll design the systems and governance to make it work with 10-15 agents building in parallel. That's where professional SDD becomes truly powerful.
+**Next step**: In Lesson 4, you'll take this experience and scale it. You've proven the pattern works with 3 features. Now you'll design the systems and governance to make it work with 7-9 agents building in parallel. That's where professional SDD becomes truly powerful.
