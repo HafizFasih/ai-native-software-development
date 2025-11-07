@@ -46,6 +46,84 @@ cognitive_load:
 
 Imagine hiring a contractor to renovate your house. Before they swing a hammer, you'd ask: "Where are you starting? Show me what you're looking at." You wouldn't let them work blind, and you wouldn't work blind either.
 
+---
+
+## What is the Terminal? (Start Here If New to Command Line)
+
+**Already comfortable with Terminal/CLI?** [Skip to "Your AI Has a Location"](#your-ai-has-a-location-and-you-need-to-know-it)
+
+### The Terminal: Your Text-Based Remote Control
+
+The **Terminal** (also called Command Line or CLI) is a text interface where you type commands instead of clicking buttons. Think of it like texting instructions to your computer instead of using a mouse.
+
+**Why developers use it:**
+- **Precision**: You say exactly what you want, no hunting through menus
+- **Speed**: One command can do what takes 20 clicks
+- **Automation**: Commands can be saved and repeated
+- **AI Collaboration**: Your AI companion operates here—understanding this workspace is essential for supervising its work
+
+**Real example:**
+- **With mouse**: Open Finder → Navigate to Documents → Create folder → Name it "my-project" → Open folder
+- **With Terminal**: Type `mkdir Documents/my-project && cd Documents/my-project` (done in 2 seconds)
+
+### How to Open the Terminal
+
+**macOS:**
+1. Press `Cmd + Space` (opens Spotlight)
+2. Type "Terminal"
+3. Press Enter
+
+**Windows:**
+1. Press `Win + R`
+2. Type `cmd` or `powershell`
+3. Press Enter
+
+**Linux:**
+- Press `Ctrl + Alt + T` (on most distributions)
+
+**What you'll see:**
+A black or white window with a blinking cursor. This is your **command prompt**—where you type instructions.
+
+```bash
+user@computer:~$
+```
+
+That `$` symbol means "I'm ready for your command."
+
+### Your First Command: Say Hello
+
+Type this and press Enter:
+
+```bash
+$ echo "Hello Terminal"
+Hello Terminal
+```
+
+You just instructed your computer to display text. The `$` is not typed—it's just showing where commands start.
+
+**What just happened:**
+1. You typed `echo "Hello Terminal"` (the **command**)
+2. You pressed Enter (the **execute** signal)
+3. The Terminal printed the result: `Hello Terminal`
+
+This is how all Terminal commands work: type instruction → press Enter → see result.
+
+### Why This Matters for AI Collaboration
+
+Your AI companion (Claude Code, ChatGPT Code Interpreter, Cursor, etc.) operates in the Terminal. When you ask it to:
+- "Create a Python project"
+- "Install dependencies"
+- "Run tests"
+
+...it's typing Terminal commands for you. **Understanding this workspace** means you can:
+- **Supervise** what your AI is doing (verify it's in the right folder)
+- **Catch mistakes** before they happen (see what files it's about to modify)
+- **Build trust** (you're not blindly accepting AI actions)
+
+This lesson teaches you how to ask your AI: "Where are you? What can you see? Show me before you act."
+
+---
+
 ## Your AI Has a Location—And You Need to Know It
 
 This lesson teaches you the same habit for working with your AI companion in the terminal. Your AI assistant has a **current location** in your computer's file system, and understanding that location is the first step to supervising its work safely. You're not learning bash commands. You're learning to have effective conversations with your AI about **where it is and what it can see**.
