@@ -227,14 +227,6 @@ You're a healthcare professional, financial analyst, logistics manager, or teach
 - **Most domain experts can't build software:** They know what's needed but can't implement it
 - **You can bridge both:** With AI tools, your domain expertise + basic AI orchestration skills = production software
 
-### Real Examples
-
-**Dr. Patel, physician:** Built a clinical decision support tool for rare diseases using Claude Code. No prior programming experience. The tool synthesizes research papers and suggests diagnostic pathways. Adopted by his hospital; now licensing to others.
-
-**Lisa, former teacher:** Created an adaptive learning platform that adjusts to individual student pacing. AI handled the implementation; she provided pedagogical expertise. Raised seed funding, now has 1,000+ students using the platform.
-
-**James, supply chain manager:** Built optimization software for routing logistics that saves his company $2M annually. Promoted to Director of Technology despite having no CS degree—because he solved a real problem efficiently.
-
 The key insight: **AI doesn't replace domain expertise. It enables domain experts to build solutions without becoming full-time programmers.**
 
 ## The Adoption Curve: Where Are We?
