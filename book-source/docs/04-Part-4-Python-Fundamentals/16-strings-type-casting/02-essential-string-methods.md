@@ -113,16 +113,6 @@ print(uppercase)    # "HELLO"
 
 String methods are your tools for transforming data. Let's explore the essential ones.
 
-### Quick Reminder: Python's Built-in Functions
-
-Throughout this lesson, you'll see **built-in functions** like `len()`, `isinstance()`, and `type()` from Lesson 1. These are Python's utility tools that work with many types of data:
-
-- **`len()`** - counts characters in a string (or items in a list)
-- **`isinstance(value, type)`** - checks if a value is a specific type
-- **`type(value)`** - shows exactly what type a value is
-
-Think of these as Python's built-in helpers—ready to use anytime without importing anything. You learned these in detail in Lesson 1; here we use them to validate our string transformations.
-
 ## Case Transformation: upper() and lower()
 
 The simplest string methods change character case.

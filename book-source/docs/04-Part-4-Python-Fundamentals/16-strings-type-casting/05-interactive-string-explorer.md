@@ -91,17 +91,6 @@ This capstone project is different from exercises. Instead of following step-by-
 
 By the end of this lesson, you'll have built a tool that processes user input, demonstrates string operations, handles type conversions safely, and provides formatted output—all the essential skills you need for interactive programs.
 
-### Built-in Functions Recap
-
-Throughout this integration project, you'll use Python's **built-in functions**—utility tools that are always available without importing. Here's a quick reminder of what you learned in earlier lessons:
-
-- **`len(value)`** - counts characters in a string (Lesson 1)
-- **`isinstance(value, type)`** - checks if a value is a specific type (Lesson 1)
-- **`type(value)`** - shows what type a value is (Lesson 1)
-- **`int(value)`**, **`float(value)`**, **`str(value)`**, **`bool(value)`** - convert between types (Lesson 4)
-
-Think of these as Python's toolbox—ready to use anytime you need them. You don't need to memorize how they work internally; just know when to use each one and what it returns.
-
 ---
 
 ## Phase 1: Program Design — Describing Intent First

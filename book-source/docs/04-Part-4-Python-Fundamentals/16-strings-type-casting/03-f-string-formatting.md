@@ -86,10 +86,6 @@ F-strings let you express your intent clearly: instead of struggling with compli
 
 F-strings (formatted string literals) are strings prefixed with the letter `f` that let you embed variables and expressions directly inside the string. The `f` prefix tells Python: "This string contains Python code in curly braces—evaluate it and insert the result."
 
-### Note: Built-in Functions in F-Strings
-
-In this lesson, you'll use **built-in Python functions** like `len()` and `type()` inside f-strings. These are Python's utility tools from Lesson 1 that work with any type of data. Inside f-strings, you can call any Python function or method—the result gets converted to text and inserted into the string automatically.
-
 Here's the basic syntax:
 
 ```python
