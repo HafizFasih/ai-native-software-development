@@ -7,7 +7,6 @@ description: |
   appropriate difficulty progression. Creates exercise sets that apply cognitive science principles
   to maximize retention and skill development. Use when designing practice activities for Python
   concepts, creating homework assignments, generating problem sets, or evaluating exercise quality.
-allowed-tools: [Read, Bash, Write]
 ---
 
 ## Purpose

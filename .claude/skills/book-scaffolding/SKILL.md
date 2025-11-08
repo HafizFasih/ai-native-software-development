@@ -8,7 +8,6 @@ description: |
   that balance foundational scaffolding with advanced independence. Activate when tasks
   involve structuring books, managing cognitive load across chapters, defining part-level
   narratives, or coordinating multi-phase content development workflows.
-allowed-tools: ["Read", "Bash", "Write"]
 version: "2.0.0"
 ---
 

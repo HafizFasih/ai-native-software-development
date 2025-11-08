@@ -7,7 +7,6 @@ description: |
   Cognitive Load Theory and scaffolding strategies to create 3-7 step learning progressions.
   Use for concepts like: object-oriented programming, decorators, async/await, metaclasses,
   comprehensions, generators, context managers, or any Python feature requiring prerequisite knowledge.
-allowed-tools: [Read, Bash, Write]
 ---
 
 ## Purpose

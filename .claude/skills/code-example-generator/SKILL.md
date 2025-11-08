@@ -7,7 +7,6 @@ description: |
   progressive example sequences (simple → realistic → complex) with clear explanations of what, how,
   and why. Use when generating examples for: functions, data structures, OOP, control flow, error
   handling, or any Python concept requiring demonstration through working code.
-allowed-tools: [Read, Bash, Write]
 ---
 
 ## Purpose

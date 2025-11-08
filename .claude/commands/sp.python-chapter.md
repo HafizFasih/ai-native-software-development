@@ -12,7 +12,7 @@ description: Intelligence-driven workflow for Python chapters (12-29). Reads con
 - Skills Library: Available domain skills for this chapter
 - Context Materials: Existing pedagogical patterns (if available)
 
-**Adaptive Questions**: 0-3 targeted questions based on what intelligence can't derive (NOT hardcoded 4 questions).
+**Adaptive Questions**: 0-3 targeted questions based on what intelligence can't derive.
 
 ## User Input
 
@@ -46,7 +46,7 @@ Students don't memorize Python syntax. Instead:
 - **Validate Together**: Use isinstance(), type(), and tests to check understanding
 - **Learn from Errors**: When errors occur, ask AI "why?" and learn the pattern
 
-**Note on AIDD**: Students in Chapters 1-11 learned AIDD principles (Specification → Generation → Execution → Reflection). Part 4 applies these principles to learning Python, using the beginner-friendly "AI-Native Learning" framing. Students don't write formal specifications yet (that's Part 5+), but they DO describe intent through type hints and clear code structure.
+**Note on AIDD**: Students in Chapters 1-11 learned AIDD principles. Part 4 applies these principles to learning Python, using the beginner-friendly "AI-Native Learning" framing. Students don't write formal specifications yet (that's Part 5+), but they DO describe intent through type hints and clear code structure.
 
 ### Teaching Pattern (Every Concept)
 
@@ -113,6 +113,7 @@ exactly how reasoning chains in AI maintain state.
 **Syntax:** f-strings only, match/case (17+), modern types (`list[int]`, `X | None`)
 **Type hints:** Core (Ch 13) → Gradual Application (14-26) → Mandatory (27+)
 **Note on Type Hints:** Modern Python treats type hints as essential for clarity and specification-first thinking, not optional features. Integrate from Chapter 13 onwards.
+**MCP Documentation Source**: Python.org official docs via context7 MCP server (loads current, authoritative reference)
 
 **Security (non-negotiable):**
 - ❌ No `eval()`, `shell=True`, hardcoded secrets
@@ -197,11 +198,6 @@ exactly how reasoning chains in AI maintain state.
 
 ### Rule 5: MINIMAL FILES
 
-**Create ONLY:**
-- ✅ spec.md (what students learn)
-- ✅ plan.md (how we teach it)
-- ✅ tasks.md (implementation checklist)
-
 **Never create:**
 - ❌ index.md, _templates/, _assets/, _code-examples/, lesson-template.md, capstone-rubric.md
 
@@ -269,46 +265,46 @@ This single prompt replaces 10 pages of platform-specific troubleshooting guides
 
 ---
 
-### Rule 8: STANDARDIZED "TRY WITH AI" FORMAT
+### Rule 8: STANDARDIZED "TRY WITH AI" FORMAT (End-of-Lesson Closure)
 
-**Every lesson MUST end with "Try With AI" section** following this exact structure (verified in Chapter 1 and Chapter 13):
+**Every lesson MUST end with "Try With AI" section ONLY** following this exact structure (verified in Chapter 1 and Chapter 13):
 
 ```markdown
 ## Try With AI
 
 Use your AI companion (Claude Code or Gemini CLI). [Brief context about what you're exploring].
 
-### Prompt 1: [Descriptive Title]
+### Prompt 1: [Descriptive Title - Recall/Understand]
 \`\`\`
 [Clear, concrete prompt asking about the concept]
 \`\`\`
 
 **Expected outcome**: [What student should understand after AI response]
 
-### Prompt 2: [Descriptive Title]
+### Prompt 2: [Descriptive Title - Apply]
 \`\`\`
 [Clear, concrete prompt asking about application or edge case]
 \`\`\`
 
 **Expected outcome**: [What student learns from this]
 
-### Prompt 3: [Descriptive Title]
+### Prompt 3: [Descriptive Title - Analyze/Evaluate]
 \`\`\`
 [Prompt encouraging deeper understanding or connection to real-world use]
 \`\`\`
 
 **Expected outcome**: [Connection to AIDD or professional practice]
 
-### Prompt 4: [Descriptive Title]
+### Prompt 4: [Descriptive Title - Synthesis/Create]
 \`\`\`
 [Synthesis prompt pulling together concepts from lesson]
 \`\`\`
 
-**Expected outcome**: [Integration of understanding]
+**Expected outcome**: [Integration of understanding + forward-looking insight]
 ```
 
 **Critical requirements:**
-- ✅ Exactly 4 prompts per lesson (progressive complexity)
+- ✅ Exactly 4 prompts per lesson (progressive Bloom's levels: Remember → Understand → Apply → Analyze/Synthesize)
 - ✅ Prompts are CONCRETE and SPECIFIC (not "ask AI about X")
 - ✅ Each prompt has explicit "Expected outcome" describing what student learns
 - ✅ Prompts should include rubric-style validation ("Does this answer your spec?")
@@ -337,21 +333,125 @@ Lessons MUST end with "Try With AI" section ONLY. Prompt 4 provides cognitive cl
 
 ---
 
+### Rule 9: AI-NATIVE COLEARNING PEDAGOGY (Throughout Lessons)
+
+**CRITICAL**: Apply `ai-collaborate-teaching` skill throughout ALL lessons, not just at the end.
+
+**CoLearning Structural Elements** (must appear throughout lesson content, NOT just "Try With AI" section):
+
+#### 💬 AI Colearning Prompt (Claude Code or Gemini CLI)
+- **When**: After introducing foundational concepts
+- **Purpose**: Encourage deeper conceptual understanding with AI as co-reasoning partner
+- **Format**:
+```markdown
+#### 💬 AI Colearning Prompt
+> "Explain how [concept] works under the hood. Why did Python choose this design?"
+```
+- **Example**: "Explain how `for` loops work under the hood with iterators. Why does Python need both `for` and `while`?"
+
+#### 🎓 Instructor Commentary: "From Syntax to Semantics"
+- **When**: After code examples, before moving to next concept
+- **Purpose**: Reframe learning goals (understanding > memorization)
+- **Key Mantra**: "Syntax is cheap — semantics is gold"
+- **Format**:
+```markdown
+#### 🎓 Instructor Commentary
+> In AI-native development, you don't memorize operator precedence—you understand when arithmetic matters and ask AI when confused. Syntax is cheap; understanding is gold.
+```
+- **Example**: "In AI-driven development, you don't memorize all 47 string methods—you understand what strings DO and ask AI: 'How do I format this string?'"
+
+#### 🚀 CoLearning Challenge
+- **When**: After explaining a concept, before moving to practice
+- **Purpose**: Practice specification-driven thinking WITH AI collaboration
+- **Pattern**: Specification → AI Generation → Explanation → Understanding
+- **Format**:
+```markdown
+#### 🚀 CoLearning Challenge
+
+Ask your AI Co-Teacher:
+> "Generate a function that calculates factorial using recursion. Then explain how recursion works step-by-step, including the call stack."
+
+**Expected Outcome**: You'll understand recursion conceptually (not just syntax), see how AI generates code from specifications, and learn to validate AI output.
+```
+- **Example**: "Ask your AI: Generate a `for` loop that prints a multiplication table for 7. Then explain how `range()` works and why we use it instead of manual counting."
+
+#### ✨ Teaching Tip
+- **When**: Throughout lesson, when showing how to use Claude Code/Gemini CLI effectively
+- **Purpose**: Build AI tool literacy and effective collaboration patterns
+- **Format**:
+```markdown
+#### ✨ Teaching Tip
+> Use Claude Code to explore edge cases: "What happens if I divide by zero? Show me the error and explain what ZeroDivisionError means."
+```
+- **Example**: "Use your AI tool to explore operator precedence: 'Evaluate this step-by-step: 2 + 3 * 4. Show me the evaluation order.'"
+
+**Placement Guidelines by Proficiency Level**:
+
+- **A1-A2 (Beginner)**:
+  - 1-2 💬 prompts per lesson (foundational concepts only)
+  - 2-3 🎓 commentaries (emphasize understanding > syntax)
+  - 1-2 🚀 challenges (simple, guided)
+  - 1-2 ✨ tips (basic tool usage)
+
+- **A2-B1 (Intermediate)**:
+  - 2-3 💬 prompts per lesson (concepts + edge cases)
+  - 2-3 🎓 commentaries (connect to design patterns)
+  - 2-3 🚀 challenges (specification-driven)
+  - 2-3 ✨ tips (advanced tool usage)
+
+- **B1-B2 (Advanced)**:
+  - 3-4 💬 prompts per lesson (architectural exploration)
+  - 3-4 🎓 commentaries (professional reasoning)
+  - 3-4 🚀 challenges (complex specification-driven)
+  - 2-3 ✨ tips (orchestration patterns)
+
+**Tone Requirements for ALL Lessons**:
+- ✅ Conversational (you, your, we)
+- ✅ Exploration-focused (discover, explore, try)
+- ✅ AI partnership emphasized (co-teacher, co-reasoning partner, pair-teacher)
+- ❌ NOT documentation style
+- ❌ NOT reference manual tone
+- ❌ NOT traditional tutorial "here's how you do X" without AI collaboration context
+
+**Critical Distinctions**:
+- **CoLearning Elements** (throughout lesson): Conversational, exploration-focused, AI partnership throughout content
+- **Try With AI Section** (end of lesson): Structured 4-prompt synthesis and reflection (closure point)
+
+**Why This Matters**:
+- Students learn WITH AI, not just USING AI
+- AI positioned as intellectual partner, not autocomplete tool
+- Builds critical thinking ("Why does this work?") not rote memorization
+- Prepares for shipping era (professional AI-native development patterns)
+
+**Validation**:
+- technical-reviewer MUST check for CoLearning elements throughout
+- Missing 💬🎓🚀✨ = CRITICAL VIOLATION (regeneration required)
+- Documentation tone (not conversational) = MAJOR VIOLATION (revision required)
+
+---
+
 ## ORCHESTRATED WORKFLOW (What Actually Happens)
 
 When you run `/sp.python-chapter [N]`:
 
-### PHASE 0: Intelligent Context Gathering (Adaptive)
+### PHASE 0: Intelligent Context Gathering (Adaptive + MCP-Enhanced)
 
 **Intelligence-Driven Discovery** (not hardcoded questions):
 
 1. **Read authoritative sources**:
    - Constitution: `.specify/memory/constitution.md` (target audience, philosophy, principles)
    - Chapter Index: `specs/book/chapter-index.md` (chapter title, part, prerequisite chapters)
-   - Skills Library: `.claude/skills/` (available domain skills)
+   - Skills Library: `.claude/skills/` (available domain skills, especially ai-collaborate-teaching)
    - Existing Context: `context/part-4-python/` or `context/13_chap12_to_29_specs/` (if available)
+   - **MCP Documentation**: Python.org official docs via context7 MCP server (if available)
 
-2. **Derive chapter intelligence**:
+2. **Load Python Documentation via MCP** (WHEN AVAILABLE):
+   - Use MCP tools to fetch Python.org official docs (v3.14+)
+   - Load relevant sections for the chapter (tutorial, stdlib types, functions, chapter-specific libraries)
+   - Graceful fallback to cached context if MCP unavailable
+   - Acknowledge documentation source in outputs
+
+3. **Derive chapter intelligence**:
    - **Audience**: From constitution (Aspiring/Professional/Founders with graduated complexity)
    - **Part**: From chapter-index.md (chapter N → Part X)
    - **Complexity Tier**: From chapter number range (12-16=beginner, 17-23=intermediate, 24-29=advanced)
@@ -374,6 +474,8 @@ When you run `/sp.python-chapter [N]`:
 
 **Apply Vertical Intelligence**: Constitution + Chapter Index + Skills → Adaptive questions (not hardcoded forms).
 
+**CRITICAL**: Do NOT create git branch yet. Branch creation happens in Phase 1 AFTER spec.md is created, ensuring branch name matches spec directory name.
+
 ---
 
 ### PHASE 1: Specification (Automated + Quality Gate)
@@ -391,6 +493,15 @@ When you run `/sp.python-chapter [N]`:
   ├─ Ask: Up to 5 targeted clarification questions
   ├─ Update: spec.md with answers encoded
   └─ Report: "Spec clarified and updated."
+
+→ Create Feature Branch (AFTER spec exists)
+  ├─ Derive branch name from spec directory (e.g., specs/part-4-chapter-15/ → part-4-chapter-15)
+  ├─ Check if already on correct branch:
+  │   IF current branch == main → Create new branch matching spec directory
+  │   IF current branch matches spec directory → Stay on it
+  │   IF current branch != spec directory → Warn and ask user to switch
+  ├─ Execute: git checkout -b [spec-directory-name] (only if on main)
+  └─ Report: "✅ Branch created: [branch-name]" or "ℹ️  Already on branch: [branch-name]"
 
 WAIT: User reviews spec.md
 → User confirms: "✅ Spec approved" or provides feedback
@@ -482,27 +593,57 @@ WAIT: User reviews tasks.md + analysis report
 → Invoke: /sp.implement [chapter-slug]
   ├─ Read: specs/part-4-chapter-[N]/spec.md + plan.md + tasks.md (all approved)
   ├─ Strategy: Parallel team approach (Lessons 1-4 parallel, Lesson 5 sequential capstone)
-  ├─ Invoke: lesson-writer subagent (per lesson)
-  ├─ Apply: AI-Native Learning pattern, CEFR levels, validation-first approach
+  ├─ Invoke: lesson-writer subagent (per lesson) WITH EXPLICIT COLEARNING INSTRUCTIONS
+  ├─ Pass to lesson-writer:
+  │   CRITICAL INSTRUCTIONS FOR lesson-writer:
+  │
+  │   Apply these domain skills IN THIS ORDER:
+  │   1. ai-collaborate-teaching (CoLearning pedagogy THROUGHOUT lesson)
+  │   2. learning-objectives (aligned with CEFR proficiency levels)
+  │   3. concept-scaffolding (graduated complexity)
+  │   4. code-example-generator (Python 3.14+, type hints)
+  │   5. exercise-designer (deliberate practice)
+  │
+  │   CoLearning Structural Elements (MUST appear throughout lesson):
+  │   - 💬 AI Colearning Prompt: After foundational concepts, encourage AI exploration
+  │   - 🎓 Instructor Commentary: Emphasize "syntax cheap, semantics gold"
+  │   - 🚀 CoLearning Challenge: Practice specification-driven thinking with AI
+  │   - ✨ Teaching Tip: Build AI tool literacy and collaboration patterns
+  │
+  │   Tone Requirements:
+  │   - ✅ Conversational (you, your, we)
+  │   - ✅ Exploration-focused (discover, explore, try)
+  │   - ✅ AI partnership (co-teacher, pair-teacher)
+  │   - ❌ NOT documentation style
+  │   - ❌ NOT reference manual
+  │
+  │   Lesson Closure:
+  │   - ✅ ONLY "Try With AI" section at end (4 prompts, Bloom's progression)
+  │   - ❌ NO summaries, checklists, "what's next" after Try With AI
+  │
+  │   [Full context: spec, plan, tasks, MCP docs, AI-Native Learning pattern, CEFR levels]
+  ├─ Apply: AI-Native Learning pattern, CEFR levels, validation-first approach, CoLearning throughout
   ├─ Create: book-source/docs/04-Part-4-Python-Fundamentals/[N]-[chapter-name]/
   │   ├─ readme.md
-  │   ├─ 01-[lesson-name].md
-  │   ├─ 02-[lesson-name].md
-  │   ├─ 03-[lesson-name].md
-  │   ├─ 04-[lesson-name].md
-  │   └─ 05-[capstone-name].md (if applicable)
-  └─ Report: "All lessons implemented."
+  │   ├─ 01-[lesson-name].md (with 💬🎓🚀✨ throughout)
+  │   ├─ 02-[lesson-name].md (with 💬🎓🚀✨ throughout)
+  │   ├─ 03-[lesson-name].md (with 💬🎓🚀✨ throughout)
+  │   ├─ 04-[lesson-name].md (with 💬🎓🚀✨ throughout)
+  │   └─ 05-[capstone-name].md (if applicable, with 💬🎓🚀✨ throughout)
+  └─ Report: "All lessons implemented with CoLearning pedagogy."
 
 → Invoke: technical-reviewer (Quality Gate)
   ├─ Read: All lesson files
-  ├─ Validate: AI-Native Learning compliance, lesson closure pattern, code quality
+  ├─ Validate: AI-Native CoLearning compliance (💬🎓🚀✨ elements present throughout)
+  ├─ Check: Conversational tone (not documentation style)
+  ├─ Check: Lesson closure pattern (Try With AI ONLY, no summaries)
   ├─ Check: Part 4 language appropriateness, constitutional alignment
-  ├─ Test: All code examples (Python 3.14+)
+  ├─ Test: All code examples (Python 3.14+, modern type hints)
   ├─ Report: Validation report with PASS/CONDITIONAL PASS/FAIL
   └─ Output: VALIDATION_REPORT_CHAPTER_[N].md
 
 → If CONDITIONAL PASS or FAIL:
-  ├─ Apply fixes for critical issues
+  ├─ Apply fixes for critical issues (especially missing CoLearning elements)
   ├─ Re-run technical-reviewer
   └─ Repeat until PASS
 
@@ -546,6 +687,33 @@ WAIT: User reviews lessons + validation report
 
 ## KEY PRINCIPLES (Always Applied)
 
+### ✅ Take Context, Discuss, Make Chapters (The AI-Native Workflow)
+
+**The "Shipping Era" Approach**:
+1. **Take Context**: Load authoritative sources (constitution, chapter-index, MCP docs, existing materials)
+2. **Discuss**: Engage with user to understand intent, clarify ambiguities, align on goals
+3. **Make Chapters**: Generate production-ready content with built-in quality (CoLearning, validation, proficiency-mapping)
+
+This workflow ensures:
+- Context-aware generation (not generic templates)
+- Human-AI collaboration (not autonomous generation)
+- Quality built-in (not bolted on afterwards)
+- Shipping-ready output (not drafts requiring major revision)
+
+### ✅ AI-Native CoLearning Pedagogy First (Rule 9)
+- Apply `ai-collaborate-teaching` skill THROUGHOUT lessons (not just end)
+- CoLearning elements (💬🎓🚀✨) positioned strategically in every lesson
+- Conversational tone (you, your, we) - NOT documentation style
+- AI positioned as co-reasoning partner, not autocomplete tool
+- 40/40/20 balance: Foundation 40%, AI-Assisted 40%, Verification 20%
+- "Syntax is cheap — semantics is gold" mantra reinforced
+
+### ✅ MCP-Enhanced Intelligence (When Available)
+- Load official Python documentation via context7 MCP server
+- Fallback to cached context if MCP unavailable
+- Reference docs for technical accuracy throughout workflow
+- Documentation sources explicitly acknowledged
+
 ### ✅ AI-Native Learning First (Part 4 Appropriate)
 - Apply AI-Native Learning pattern: describe intent → explore → validate → learn from errors
 - Reference AIDD principles from Chapters 1-11 for context (not formal methodology)
@@ -575,7 +743,7 @@ WAIT: User reviews lessons + validation report
 - Max 10 concepts for advanced (Ch 24-29)
 
 ### ✅ Teaching Intelligence Preserved
-- Every phase applies AI-Native Learning principles
+- Every phase applies AI-Native CoLearning principles
 - Every phase uses teaching patterns (Book → AI Companion → AI Orchestration)
 - Every phase respects chapter boundaries
 - Every phase validates against acceptance criteria
@@ -596,22 +764,10 @@ WAIT: User reviews lessons + validation report
 #### PHASE 0: Intelligent Context Discovery (Adaptive, NOT Hardcoded)
 
 **1. Read Authoritative Sources** (Automatic, NO USER INTERACTION):
-
-```bash
-# Constitution for audience, philosophy, principles
-constitution=$(cat .specify/memory/constitution.md)
-
-# Chapter index for title, part, prerequisites
-chapter_data=$(grep "^| $CHAPTER_NUM |" specs/book/chapter-index.md)
-chapter_title=$(echo "$chapter_data" | awk -F'|' '{print $3}' | tr im)
-chapter_file=$(echo "$chapter_data" | awk -F'|' '{print $4}' | sed 's/`//g' | trim)
-
-# Skills available
-skills=$(ls -1 .claude/skills/)
-
-# Context materials (if exist)
-context_files=$(find context/ -name "*chapter-$CHAPTER_NUM*" 2>/dev/null)
-```
+- Constitution (`.specify/memory/constitution.md`): audience, philosophy, principles
+- Chapter index (`specs/book/chapter-index.md`): title, file name, part number
+- Available skills (`.claude/skills/` directory)
+- Existing context materials (`context/` directory, if any)
 
 **2. Derive Chapter Intelligence** (Automatic computation):
 
@@ -654,35 +810,14 @@ chapter_intelligence = {
 ```
 
 **3. Intelligently Determine What to Ask** (Context-adaptive):
-
-```python
-questions = []
-
-# Only ask if genuinely ambiguous or requires human judgment
-if context_files:
-    questions.append("Existing context found for this chapter. Use it or start fresh?")
-
-if chapter_title_is_broad(chapter_title):  # e.g., "Data Types" could mean many things
-    questions.append(f"'{chapter_title}' - which specific aspects should we emphasize?")
-
-if unclear_if_capstone(chapter_num, part_num):  # e.g., is this a build lesson?
-    questions.append("Should students BUILD something or focus on concepts?")
-
-# Ask only necessary questions (0-3 max, NOT hardcoded 4)
-for q in questions:
-    user_input = ask(q)
-    chapter_intelligence["user_preferences"][q] = user_input
-```
-
-**4. Create Feature Branch** (Automatic, NO USER INTERACTION):
-
-```bash
-# Derive branch name from chapter data (not hardcoded)
-branch_slug=$(echo "$chapter_file" | sed 's/\/$//; s/\`//g')  # e.g., "14-data-types"
-git checkout -b "$branch_slug"
-```
+- Only ask if genuinely ambiguous or requires human judgment
+- Example triggers: existing context found, broad chapter title, unclear capstone vs conceptual
+- Ask 0-3 targeted questions max (NOT hardcoded)
+- Store user preferences in chapter intelligence
 
 **Key Principle**: Intelligence derives from constitution + chapter-index + skills library. Only ask user when GENUINELY ambiguous or requires human creative judgment.
+
+**CRITICAL**: Do NOT create git branch in Phase 0. Branch creation happens in Phase 1 AFTER spec.md is created (see Phase 1 workflow).
 
 ---
 

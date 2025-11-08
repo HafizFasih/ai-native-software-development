@@ -7,7 +7,6 @@ description: |
   cognitive levels (Bloom's taxonomy); want balanced cognitive distribution (60%+ non-recall); or
   require rubrics for open-ended questions. Generates MCQs with diagnostic distractors, code-writing
   prompts, debugging challenges, and project-based assessments targeting deep understanding.
-allowed-tools: [Read, Bash, Write]
 ---
 
 ## Purpose

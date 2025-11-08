@@ -1,5 +1,8 @@
 ---
 name: ai-collaborate-learning
+category: "pedagogical"
+applies_to: ["all-chapters"]
+required_for: ["lesson-writer", "chapter-planner"]
 description: |
   Design learning experiences for AI-assisted software development, integrating prompt engineering pedagogy,
   AI pair programming patterns, and AI tool literacy into programming curriculum. Use this skill when
@@ -8,8 +11,8 @@ description: |
   create lessons that leverage AI tools appropriately while ensuring students build independent capability,
   critical thinking, and ethical AI use practices. Activate when designing AI-integrated curricula, creating
   prompt engineering exercises, establishing AI use policies, or assessing balance between assistance and learning.
-allowed-tools: ["Read", "Bash", "Write"]
-version: "1.0.0"
+version: "1.1.0"
+dependencies: []
 ---
 
 # AI Collaborate Learning

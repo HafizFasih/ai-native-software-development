@@ -6,7 +6,6 @@ description: |
   for curriculum planning, or ensure objectives are specific and testable rather than vague.
   This skill helps break down complex topics into progressively building learning goals with clear
   assessment methods and success criteria.
-allowed-tools: ["Read", "Bash", "Write"]
 version: "1.0.0"
 ---
 

@@ -8,7 +8,6 @@ description: |
   automatic batch shuffling on retake, no passing/failing threshold, color-coded feedback,
   theme support. Globally-registered Quiz component handles all UI/UX.
   Follows ##_chapter_##_quiz.md naming convention.
-allowed-tools: [Read, Bash, Write, Glob]
 version: 4.0.0
 ---
 
