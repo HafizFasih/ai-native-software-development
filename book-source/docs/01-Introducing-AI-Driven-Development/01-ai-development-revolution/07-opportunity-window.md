@@ -80,6 +80,10 @@ Get one character wrong—forget the colon, miss the `with` statement, use the w
 
 **New reality:** You tell the AI what you want to do: "Read the contents of a text file." The AI handles syntax, error handling, encoding, and resource cleanup. You learn by seeing correct patterns and understanding **why** they work, not memorizing **how** to type them.
 
+#### 🎓 Instructor Commentary
+
+> The barriers falling aren't making programming easier—they're removing artificial gatekeepers. The real work (understanding problems, designing solutions, validating quality) remains. AI removes the busywork, letting you focus on what actually matters.
+
 ### Gatekeeper 2: Debugging Cryptic Errors
 
 **Old reality:** You spend hours deciphering error messages like:
@@ -208,6 +212,10 @@ The transformation is so rapid that **new problems emerge faster than solutions*
 
 Each of these represents potential startup opportunities. The market is wide open.
 
+#### ✨ Teaching Tip
+
+Unsolved problems are opportunities. Every technology transition creates new challenges faster than solutions—that's where startups thrive. AI coding is moving so fast, the problem space keeps expanding.
+
 ## For Career Changers: Domain Expertise Becomes Your Superpower
 
 Perhaps the most interesting opportunity is for people with deep expertise in **non-technical domains**:
@@ -283,6 +291,12 @@ The opportunity window is open. But windows don't stay open forever.
 
 **The question is: Will you participate, or watch from the sidelines?**
 
+#### 🚀 CoLearning Challenge
+
+**Adoption Phase Check**: Ask your AI: "We're in the 'Early Majority' phase of AI coding adoption. Explain what this means: Am I too early (tools immature)? Too late (market saturated)? Or well-timed? Use the technology adoption curve to explain."
+
+**Goal**: Understand your timing advantage.
+
 In the next section, we'll address one final barrier: why traditional CS education is falling dangerously behind, and how this book fills that critical gap.
 
 ---
@@ -297,6 +311,8 @@ Where do you position yourself in this transformation?
 - **Career changer with domain expertise?** Your non-technical knowledge is your competitive advantage.
 
 Whatever your starting point, the opportunity is real. The question is what you do with it.
+
+---
 
 ## Try With AI
 

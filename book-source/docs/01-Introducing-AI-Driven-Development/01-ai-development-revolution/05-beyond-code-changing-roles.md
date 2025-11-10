@@ -99,6 +99,10 @@ Now, the same work looks like this:
 
 Your role shifted from **typing code** to **directing an AI agent**. You're orchestrating, not transcribing.
 
+#### 🎓 Instructor Commentary
+
+> This interaction pattern demonstrates the Three-Role AI Partnership: AI teaches you validation patterns you didn't specify, learns your business context (category-level discounts), and works alongside you as co-implementer. You provide intent, AI provides execution.
+
 ## The Four Dimensions of the Orchestrator Role
 
 This transformation isn't making developers obsolete. It's elevating the profession. But it requires different skills than traditional coding emphasized.
@@ -233,6 +237,10 @@ All of these require human expertise, judgment, and creativity.
 
 Additionally, because AI tools make developers more productive, the **demand for software is increasing**, not decreasing. Companies that previously couldn't afford custom software can now build it. Individuals can create tools for personal use. The market is expanding.
 
+#### ✨ Teaching Tip
+
+Higher productivity doesn't mean fewer jobs—it expands what's possible. Just like Excel made accountants more valuable (not obsolete) by enabling complex analysis at scale.
+
 ## What This Means for Your Learning Path
 
 If you're just starting:
@@ -275,6 +283,12 @@ Imagine being a professional writer before word processors existed. You spent si
 AI coding tools are doing the same for developers. You're liberated from syntax memorization, boilerplate generation, and mechanical implementation details. You can focus on what actually matters: solving problems, designing systems, and creating value.
 
 The developers who thrive in this new landscape are those who embrace the transformation rather than resist it.
+
+#### 🚀 CoLearning Challenge
+
+**Role Assessment**: Ask your AI: "I'm learning development in 2025. Which of these is MORE valuable: (A) knowing Python syntax perfectly, or (B) writing clear specifications and reviewing code quality? Explain why using concrete examples."
+
+**Check**: Does the AI prioritize specification and review skills—matching the orchestrator role this lesson describes?
 
 In the next section, we'll look ahead to where this is going: the autonomous agent era, and what it means for the future of software development.
 

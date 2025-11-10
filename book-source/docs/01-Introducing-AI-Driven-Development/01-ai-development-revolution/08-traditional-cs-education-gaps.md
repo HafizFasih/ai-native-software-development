@@ -193,6 +193,10 @@ Let's be specific about what traditional CS education doesn't teach—and why th
 
 **Graduate feedback:** Recent CS graduates consistently report being unprepared for actual development work, especially with modern AI-augmented workflows.
 
+#### ✨ Teaching Tip
+
+The biggest gap isn't technical—it's mindset. CS programs teach "solve known problems with known solutions." Real development is "solve ambiguous problems with AI collaboration." That's what this book trains.
+
 ## Why This Matters for You
 
 If you're currently in a CS program or considering one:
@@ -253,10 +257,19 @@ The solution isn't to abandon traditional education—it's to supplement it inte
 
 **Together, you're prepared for both the long-term fundamentals and the current practice realities.**
 
+#### 🚀 CoLearning Challenge
+
+**Gap Assessment**: Ask your AI: "List the 5 critical gaps from this lesson (AI collaboration, spec-driven development, agent orchestration, MCP, real-world problem solving). For a complete beginner, which ONE should I prioritize learning first and why?"
+
+**Check**: Does the AI recommend starting with AI collaboration or spec-driven development—the foundational skills everything else builds on?
+
+---
 
 **Has your perspective shifted?**
 
 Do you now see the transformation as real and significant? Do you understand why traditional education isn't sufficient? Do you recognize the opportunity window?
+
+---
 
 ## Try With AI
 

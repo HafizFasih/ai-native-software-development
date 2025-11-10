@@ -63,6 +63,10 @@ The kicker? Her dashboard processed real-time data for 1,200 customers, included
 
 Sarah's experience isn't unique. It's happening everywhere, to everyone in software development. Junior developers are building features that previously required senior architects. Mid-level engineers are prototyping in hours what used to take weeks. Senior developers are orchestrating autonomous agents to handle implementation details while they focus on system design and business logic.
 
+#### 🎓 Instructor Commentary
+
+> Notice Sarah's collaboration pattern: She provided **specifications** (what the dashboard should do) and **business logic** (her SaaS metrics). Claude Code handled **implementation** (database queries, security, code structure). This is the **Three-Role AI Partnership** in action—AI teaching patterns she didn't know, learning her specific context, and working alongside her as co-creator.
+
 ## This Isn't Incremental Improvement—It's Transformation
 
 Here's what makes this moment different from previous shifts in software development:
@@ -78,6 +82,10 @@ The numbers tell part of the story:
 - At the 2024 **ICPC World Finals**, Google DeepMind's Gemini achieved **gold-medal level performance**, performing as well as the world's top 20 competitive coders—and even solved a problem that no human team could solve
 
 But numbers alone don't capture the shift. What's changing is the **nature of the work itself**.
+
+#### 💬 AI Colearning Prompt
+
+> **Explore with your AI**: "Gemini achieved gold-medal performance at ICPC 2024 and solved a problem no human team could solve. What does this tell us about AI's strengths versus human strengths in coding?"
 
 ## The Question You're Asking
 
@@ -96,7 +104,19 @@ Not despite AI. **Because of it**.
 
 The barriers that kept people out of programming for fifty years—memorizing syntax, debugging cryptic error messages, understanding compiler optimization, configuring development environments—are dissolving. AI tools handle these mechanical tasks while you focus on what actually matters: **understanding problems, designing solutions, and building systems that create value**.
 
+#### ✨ Teaching Tip
+
+Think of it like automatic transmission: it didn't make driving obsolete—it made driving accessible by removing manual shifting complexity, letting you focus on navigation and decisions. AI does the same for coding.
+
+---
+
 But there's a catch. The skills that traditional computer science education emphasizes—algorithm memorization, syntax fluency, low-level implementation details—are exactly the skills AI tools are best at automating. If you're learning to code the way universities taught it in 2020, you're preparing for a job that's already obsolete.
+
+#### 🚀 CoLearning Challenge
+
+**Quick Test**: Ask your AI: "I'm learning software development in 2026. Traditional CS education emphasizes algorithm memorization and syntax fluency. What skills should I prioritize instead in the AI era? Give me 3 specific skills."
+
+**Check**: Does the AI suggest specification-writing, code review, and system design—exactly what this book teaches?
 
 ## What This Chapter Will Show You
 
@@ -126,7 +146,7 @@ Let's look at the numbers.
 
 ## Try With AI
 
-Use your AI companion tool set up (e.g., ChatGPT web, Claude Code, Gemini CLI), you may use that instead—the prompts are the same.
+Use your AI companion tool (ChatGPT, Claude, Gemini CLI)—the prompts work with any of them.
 
 ### Prompt 1: Understand The Speed Claims
 ```

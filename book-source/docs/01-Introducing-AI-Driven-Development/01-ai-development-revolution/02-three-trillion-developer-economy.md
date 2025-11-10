@@ -93,6 +93,10 @@ Consider some reference points:
 
 The $100,000 figure is actually **conservative**. Many industry analyses place the average economic impact per developer at $150,000-$200,000 annually.
 
+#### 💬 AI Colearning Prompt
+
+> **Test your understanding**: "If a developer's salary is $80K but they generate $100K+ in economic value, where does that extra value go? Ask your AI to explain the difference between salary and economic value generated."
+
 ### What Does $3 Trillion Mean?
 
 To put this in perspective:
@@ -124,6 +128,10 @@ Previous platform shifts in software development took 10-15 years to reach major
 - GitHub Copilot: launched October 2021, reached 1 million+ paid users by 2023
 - Claude Code: announced 2024, hit $500 million run rate within months
 - Overall AI tool usage: 76% of developers using or planning to use AI assistants, with 62% already using them—up from 44% last year (Stack Overflow 2024)
+
+#### 🎓 Instructor Commentary
+
+> This acceleration isn't just hype. Notice the pattern: PC revolution (12 years), Internet (10 years), Cloud (15 years), Mobile (8 years), AI coding (3 years). Each wave accelerates faster because infrastructure improves—internet speeds, cloud platforms, and now LLM APIs enable rapid adoption. You're entering during the **fastest technology transition in software history**.
 
 ## The Acceleration Paradox
 
@@ -157,6 +165,10 @@ Paradoxically, as AI tools become more powerful, the number of people who identi
 
 The traditional gatekeepers to programming—memorizing syntax, understanding low-level implementation details, mastering complex toolchains—have been removed. The result is democratization, not displacement.
 
+#### ✨ Teaching Tip
+
+AI doesn't shrink the developer market—it expands who can be a developer. Think: spreadsheets didn't eliminate accountants; they made financial analysis accessible to everyone, expanding the field.
+
 ## Historical Precedent: When Industries Disrupted Themselves
 
 Software disrupting itself has few direct historical parallels, but one comparison stands out:
@@ -181,6 +193,10 @@ Whether you're a beginner, an experienced developer, or an educator, understandi
 
 4. **The skills that matter are changing.** If you're learning what AI tools are best at (syntax, boilerplate, standard patterns), you're competing with automation. If you're learning what humans uniquely provide (judgment, creativity, domain expertise, system design), you're positioning yourself for the transformed landscape.
 
+#### 🚀 CoLearning Challenge
+
+**Quick Reality Check**: Ask your AI: "The lesson claims AI is expanding the developer market, not shrinking it. Explain why this is true using one concrete example from history (like spreadsheets and accountants, or calculators and mathematicians)."
+
 In the next section, we'll explore why this particular disruption—software disrupting itself—is fundamentally different from previous technology shifts, and why it's happening so fast.
 
 ---
@@ -194,6 +210,8 @@ Want to see the original analysis that inspired this chapter? Watch the full pre
 **[Watch: The $3 Trillion AI Coding Opportunity](https://www.youtube.com/watch?v=VlOAWvvjThU)**
 
 This 40-minute presentation from industry analysts provides the detailed evidence and case studies behind the $3 trillion figure, along with projections for where the market is heading.
+
+---
 
 ## Try With AI
 

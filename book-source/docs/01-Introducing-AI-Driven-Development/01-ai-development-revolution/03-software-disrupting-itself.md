@@ -148,6 +148,10 @@ This creates a **recursive improvement cycle** that has no parallel in previous 
 
 This recursion accelerates the transformation in ways that are difficult to predict but impossible to ignore.
 
+#### 💬 AI Colearning Prompt
+
+> **Test the recursion concept**: "Explain how Claude (an AI tool) helping Anthropic engineers build better versions of Claude creates a feedback loop. Why does this accelerate improvement faster than traditional software development?"
+
 ## Why This Matters: No One Is Immune
 
 In previous technology shifts, you could specialize in areas less affected by disruption:
@@ -183,6 +187,10 @@ Consider the evidence:
 
 This isn't hype or speculation. It's observable, measurable transformation happening right now.
 
+#### ✨ Teaching Tip
+
+Think of it like smartphones replacing flip phones—once the tipping point hit, adoption became inevitable. AI coding tools crossed that threshold in Summer 2025.
+
 ## What This Means for Your Learning Journey
 
 Understanding that software is disrupting itself—and that this disruption is internal, universal, fast, and inevitable—has direct implications for how you should approach learning:
@@ -194,6 +202,12 @@ Understanding that software is disrupting itself—and that this disruption is i
 3. **The barrier to entry has never been lower**. The mechanical skills that kept people out of programming for decades (memorizing APIs, debugging cryptic errors, configuring toolchains) are being automated. If you've been hesitant to learn coding, this is your moment.
 
 4. **Experienced developers need to reframe their value**. If your expertise is "I know Java syntax" or "I can write SQL queries," you're competing with automation. If your expertise is "I understand distributed systems" or "I can design secure architectures," you're more valuable than ever.
+
+#### 🚀 CoLearning Challenge
+
+**Quick Comparison**: Ask your AI: "Compare how long it took for cloud computing to reach 50% adoption (about 10 years) versus AI coding tools (about 2 years). List 3 specific reasons why AI tools are being adopted 5x faster."
+
+**Check**: Does the AI mention voluntary adoption, immediate productivity gains, and low switching costs—exactly the points this lesson covered?
 
 In the next section, we'll look at how this transformation affects every single phase of the software development lifecycle—from initial planning through deployment and operations. The disruption isn't isolated to "writing code." It's systemic.
 

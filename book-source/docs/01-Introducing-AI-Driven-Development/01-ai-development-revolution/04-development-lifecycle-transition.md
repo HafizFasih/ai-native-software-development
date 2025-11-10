@@ -104,6 +104,10 @@ AI is transforming **all** of these phases simultaneously. Let's walk through ea
 
 **What this means for you:** If you're learning AI-driven development, you need to understand how to work **with** AI planning tools to surface requirements, not just write them manually. You need to learn prompt engineering for requirements elicitation, not just documentation formatting.
 
+#### 🎓 Instructor Commentary
+
+> Notice the shift: traditional planning focused on documenting requirements. AI-era planning focuses on asking better questions—letting AI help you discover edge cases and ambiguities before implementation. This is co-learning in action: AI as collaborator, not just transcriber.
+
 ## Phase 2: Architecture & Design
 
 **Traditional approach:**
@@ -143,6 +147,10 @@ AI is transforming **all** of these phases simultaneously. Let's walk through ea
 Enterprise organizations using AI tools report productivity gains ranging from modest to substantial. Google's 2024 DORA research (surveying 39,000+ professionals) found that over a third of developers experienced moderate to extreme productivity increases, though the overall impact varies by context and implementation approach. Individual success stories from GitHub, Anthropic, and enterprise deployments demonstrate significant time savings for standard features and debugging tasks.
 
 **What this means for you:** Your value shifts from "typing speed" to "design quality and code review rigor." You become an orchestrator and editor, not primarily an author.
+
+#### 💬 AI Colearning Prompt
+
+> **Explore architectural thinking**: "I need to build a system that processes 10,000 user uploads per hour. Generate 3 different architectural approaches (serverless, containerized, hybrid) and compare their trade-offs for cost, scalability, and maintenance."
 
 ## Phase 4: Testing & Quality Assurance
 
@@ -200,6 +208,10 @@ Enterprise organizations using AI tools report productivity gains ranging from m
 
 **What this means for you:** Operations becomes proactive and predictive rather than reactive. You interpret AI insights and make strategic decisions about system health rather than manually triaging incidents.
 
+#### ✨ Teaching Tip
+
+AI doesn't eliminate the lifecycle—it compresses it. What took weeks now takes days, but you still need planning, testing, deployment, and monitoring. The sequence stays; the speed changes.
+
 ## The Compounding Effect
 
 Here's what makes this transformation particularly powerful:
@@ -239,6 +251,12 @@ The answer isn't straightforward:
 The key insight: **The development lifecycle isn't going away. It's being transformed.** Every phase still requires human judgment, creativity, and domain expertise. But the mechanical aspects of each phase—the boilerplate, the repetitive work, the standard patterns—are being automated.
 
 Your job is to figure out which side of that divide your skills fall on—and if they're on the mechanical side, to develop the judgment skills that AI can't automate.
+
+#### 🚀 CoLearning Challenge
+
+**Lifecycle Walkthrough**: Ask your AI: "Walk me through building a simple blog application, but explain what happens at each lifecycle phase (planning, design, implementation, testing, deployment, operations). Where do I make decisions, and where does AI execute?"
+
+**Goal**: Understand the full cycle, not just coding.
 
 In the next section, we'll explore this evolution in detail: how the developer role is changing from typist to orchestrator, and what that means for your career.
 

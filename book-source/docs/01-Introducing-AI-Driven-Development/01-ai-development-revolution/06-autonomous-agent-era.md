@@ -223,6 +223,10 @@ Consider an analogy: **Autonomous vehicles**. We have self-driving cars today th
 
 The same applies to autonomous coding agents. They'll handle implementation, but humans provide direction, judgment, and accountability.
 
+#### ✨ Teaching Tip
+
+Autonomy doesn't mean unsupervised—it means self-executing within boundaries you define. Like cruise control: it maintains speed autonomously, but you still steer and choose the destination.
+
 ## Preparing for the Agent Era
 
 The good news: **You don't need to wait for the future to arrive.** The skills that will matter in the autonomous agent era are the same skills that matter today:
@@ -245,6 +249,12 @@ When mobile apps became mainstream, developers who learned iOS and Android early
 
 The autonomous agent era is creating a similar opportunity window—and it's open right now.
 
+#### 🚀 CoLearning Challenge
+
+**Generation Test**: Ask your AI: "Which generation of AI tool are you? Can you autonomously break down a goal like 'build user authentication,' execute multiple steps, run tests, and iterate until it works? Or do you need me to guide each step?"
+
+**Goal**: Understand your current tool's capabilities realistically.
+
 In the next section, we'll explore why this is arguably the best time in decades to be learning software development, regardless of whether you're a beginner or making a career transition.
 
 ---
@@ -252,6 +262,8 @@ In the next section, we'll explore why this is arguably the best time in decades
 <iframe width="100%" height="400" src="https://www.youtube.com/embed/3ZPIerZkZn4" title="The $3 Trillion AI Coding Revolution" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 These videos provide additional context on the AI coding revolution and where the industry is headed.
+
+---
 
 ## Try With AI
 
