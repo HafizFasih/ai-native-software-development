@@ -211,7 +211,7 @@ But here's what DORA found in real-world data: even with the most capable AI too
 
 3. **Failure modes compound**: When AI-generated code breaks in production, the organization without incident response processes suffers more than the organization with them. The AI can't fix organizational dysfunction.
 
-**The data**: DORA tracked 2,500+ organizations in 2025. Those in the top quartile for the seven capabilities saw 28% median productivity gains. Those in the bottom quartile saw 12% median gains with 19% higher change failure rates.
+**The data**: DORA surveyed nearly 5,000 technology professionals in 2025. Organizations strong in the seven capabilities see significantly higher productivity gains from AI adoption, with more than 80% of respondents believing AI has increased their productivity.
 
 The capabilities aren't optional. They're the foundation that lets you capture the value AI offers.
 

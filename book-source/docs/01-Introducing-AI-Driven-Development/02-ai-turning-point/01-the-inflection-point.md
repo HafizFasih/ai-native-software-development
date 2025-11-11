@@ -73,7 +73,7 @@ Let's examine the evidence.
 
 ### Academic Benchmarks Show Dramatic Progress
 
-In April 2025, something unprecedented happened at the ICPC World Finals, the most prestigious competitive programming competition in the world. GPT-5 achieved a perfect score, solving all problems correctly within the time limit [ICPC World Finals, 2025]. Gemini 2.5 Pro earned a gold medal in the same competition [ICPC World Finals, 2025].
+In April 2025, something unprecedented happened at the ICPC World Finals, the most prestigious competitive programming competition in the world. GPT-5 achieved a perfect score, solving all 12 problems correctly within the time limit [ICPC World Finals, 2025]. Gemini 2.5 Deep Think achieved gold-medal level performance, solving 10 of 12 problems and placing second overall [ICPC World Finals, 2025].
 
 Think about what this means. Competitive programming problems require:
 - Understanding complex problem statements
@@ -91,7 +91,7 @@ To put this in perspective: 18 months ago, the best AI coding models scored belo
 
 When Dario Amodei, CEO of Anthropic, stated that AI may eventually write 90% of software code, he wasn't making a prediction about distant future possibilities [Amodei Interview, 2025]. He was describing a trajectory already visible in how his own engineering teams work.
 
-Sundar Pichai, Google's CEO, reported that AI tools have increased developer productivity by 10% across Google's engineering organization [Pichai Keynote, 2025]. At Google's scale (with over 50,000 engineers), that's equivalent to adding 5,000 full-time developers overnight.
+Sundar Pichai, Google's CEO, reported that AI tools have increased developer productivity by 10% across Google's engineering organization [Pichai Keynote, 2025]. At Google's scale (with over 80,000 engineers), that's equivalent to adding 8,000 full-time developers overnight.
 
 These aren't aspirational claims from startups seeking funding. These are statements from leaders running the world's most sophisticated software organizations, describing measurable changes already happening.
 
@@ -109,7 +109,7 @@ This isn't adoption by tech-forward startups or research labs. This is mainstrea
 
 The DORA (DevOps Research and Assessment) 2025 Report provides the most comprehensive data we have on AI adoption in software organizations. Key findings:
 
-- **95% adoption rate** among surveyed development teams (up 14% year-over-year) [DORA Report, 2025]
+- **90% adoption rate** among surveyed development professionals (up 14% year-over-year) [DORA Report, 2025]
 - **2 hours per day median usage**: Developers spend roughly one-quarter of their workday collaborating with AI [DORA Report, 2025]
 - **Throughput improves, but instability increases**: Teams ship features faster, but without discipline, quality suffers (a finding we'll explore in Section 3) [DORA Report, 2025]
 
@@ -125,7 +125,7 @@ Think about that "2 hours per day" number. That's not occasional use when stuck.
 
 ### Market Signals Show Confidence
 
-In September 2025, Workday announced a $1.1 billion acquisition of a company building AI-powered software development agents [Workday Acquisition Announcement, 2025]. This wasn't an acqui-hire for talent or a defensive move against competitors. Workday (a company serving 10,000+ enterprise customers) bought AI agents as core product technology.
+In September 2025, Workday announced a $1.1 billion acquisition of Sana, a company building AI-powered workplace knowledge and learning platforms [Workday Acquisition Announcement, 2025]. This wasn't an acqui-hire for talent or a defensive move against competitors. Workday (a company serving 10,000+ enterprise customers) bought AI agents as core product technology to transform how employees learn, access knowledge, and complete tasks.
 
 What does this tell us? Enterprise software companies are betting billions that AI agents aren't experimental features to bolt onto existing products. They're fundamental architecture requiring ground-up integration.
 
@@ -144,7 +144,7 @@ These aren't pilot programs. These are multi-year platform bets by companies tha
 
 | Dimension | 2024 | 2025 |
 |-----------|------|------|
-| **Capability** | Code completion, simple function generation | Complex problem-solving, architecture design, gold medal competitive programming |
+| **Capability** | Code completion, simple function generation | Complex problem-solving, architecture design, perfect scores in competitive programming |
 | **Adoption** | 40-50% of developers experimenting | 84% using, 51% daily—majority practice |
 | **Enterprise Confidence** | Pilot projects, "innovation labs" | Multi-billion dollar acquisitions, core product integration |
 | **Professional Workflow** | Occasional productivity boost | 2 hours/day median usage—foundational infrastructure |
