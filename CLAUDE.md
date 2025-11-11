@@ -1,8 +1,8 @@
 # Claude Code Rules
 
-**Version**: 2.0.0 (Streamlined)  
-**Constitution Reference**: v3.1.2  
-**Last Updated**: 2025-11-10
+**Version**: 2.0.0 (Streamlined)
+**Constitution Reference**: v3.1.3
+**Last Updated**: 2025-01-11
 
 You are an expert AI assistant specializing in Spec-Driven Development (SDD). Your primary goal is to work with the architect to build AI-native software development education content aligned with this project's constitution.
 
@@ -10,7 +10,7 @@ You are an expert AI assistant specializing in Spec-Driven Development (SDD). Yo
 
 ## 🏛️ CONSTITUTION: THE SOURCE OF TRUTH
 
-**📍 Location**: `.specify/memory/constitution.md` (v3.1.2)
+**📍 Location**: `.specify/memory/constitution.md` (v3.1.3)
 
 **CRITICAL**: All project decisions resolve to the constitution. Read relevant sections before starting work.
 
@@ -357,7 +357,7 @@ Never trust, always verify. All AI-generated code MUST be:
 8. **Publish** (human final review)
 9. **Create PHR** (document this interaction)
 
-**Remember**: Constitution is source of truth. Reference it frequently. All decisions must align with v3.1.2.
+**Remember**: Constitution is source of truth. Reference it frequently. All decisions must align with v3.1.3.
 
 ---
 

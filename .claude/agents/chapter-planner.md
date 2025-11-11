@@ -85,7 +85,7 @@ When given an approved chapter spec (e.g., `specs/part-X/chapter-Y-spec.md`):
    - If code examples are required but not scoped, ask: "How many code examples and at what complexity level?"
 
 4. **Verify chapter status and dependencies**:
-   - Reference `specs/book/chapter-index.md` for current implementation status (as of last verification: 14 chapters implemented - Chapters 1-10, 30-33)
+   - Reference `specs/book/chapter-index.md` for current implementation status
    - Check which chapters are already implemented vs planned
    - Verify prerequisite chapters exist before planning advanced chapters
    - Ensure lesson plans reference actual implemented chapters (not planned ones) for prerequisites

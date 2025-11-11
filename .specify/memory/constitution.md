@@ -1,9 +1,18 @@
 <!--
 Sync Impact Report:
-Version: 3.1.2
+Version: 3.1.3
 Created: 2025-10-28
-Last Refactored: 2025-01-10
+Last Refactored: 2025-01-11
 Rationale: PARADIGM SHIFT from "teaching Python programming" to "AI-native software development methodology". This is a BREAKING CHANGE that reframes the entire book from learning syntax to learning specification-first development.
+
+Changes in v3.1.3 (2025-01-11):
+- CONTEXT POISONING FIX: Removed all hardcoded chapter number references from constitution
+- DYNAMIC REFERENCES: All chapter/part counts now defer to chapter-index.md (single source of truth)
+- CONSTITUTION AS RULEBOOK: Removed Part-by-Part Breakdown (implementation detail, not governance)
+- BOOK STRUCTURE SIMPLIFIED: Section III now contains only structural philosophy and progressive complexity rules
+- CHAPTER INDEX REBUILT: Updated to 12 parts, 83 chapters based on remaining work plan
+- AGENT CLEANUP: Removed stale status info from chapter-planner.md
+- Impact: Eliminates context poisoning from outdated chapter references; constitution is now pure governance
 
 Changes in v3.1.2 (2025-01-10):
 - VALIDATED MULTIPLIER: Replaced "99x" with "10x to 99x" mindset-dependent framework with mathematical validation
@@ -88,7 +97,7 @@ Templates Aligned:
 
 # AI Native Software Development: Colearning Agentic AI with Python and TypeScript – The AI & Spec Driven Way — Project Constitution
 
-**Version:** 3.1.2 | **Ratified:** 2025-10-31 | **Last Amended:** 2025-01-10
+**Version:** 3.1.3 | **Ratified:** 2025-10-31 | **Last Amended:** 2025-01-11
 
 ---
 
@@ -466,7 +475,7 @@ Specification-Driven Development (SDD) using Spec-Kit Plus is THE core methodolo
 
 **What This Means:**
 
-- Part 5 (4 chapters) dedicated entirely to Spec-Driven Development methodology
+- Part 5 dedicated entirely to Spec-Driven Development methodology
 - ALL projects use Spec-Kit Plus structure: spec.md → plan.md → tasks.md → implementation
 - Students practice writing specifications WITH AI assistance (iterative refinement)
 - Constitution, ADR, PHR concepts explained and practiced as real development artifacts
@@ -475,9 +484,9 @@ Specification-Driven Development (SDD) using Spec-Kit Plus is THE core methodolo
 
 **Application:**
 
-- Chapter 30-33 (Part 5) teach SDD formally
-- ALL subsequent chapters (34-55) apply SDD to every project
-- Refer to `specs/book/chapter-index.md` for specific chapter assignments
+- Part 5 chapters teach SDD formally
+- ALL subsequent parts apply SDD to every project
+- Refer to `specs/book/chapter-index.md` for specific chapter assignments and current status
 
 ### The 10x to 99x Multiplier: How Mindset Determines Productivity
 
@@ -559,9 +568,9 @@ The difference between 10x and 99x isn't just tools—it's **transformation**:
 **The Key Insight:**
 
 You don't **get** 99x—you **grow into** 99x through mindset transformation:
-- **Chapter 1-10:** Learn tools (2-3x, AI-Assisted)
-- **Chapter 11-30:** Master specs (5-10x, AI-Driven) ← Most readers plateau here
-- **Chapter 31-56:** Think like architect (50-99x, AI-Native) ← The transformation
+- **Parts 1-3:** Learn tools (2-3x, AI-Assisted)
+- **Parts 4-5:** Master specs (5-10x, AI-Driven) ← Most readers plateau here
+- **Parts 6+:** Think like architect (50-99x, AI-Native) ← The transformation
 
 **This book teaches all three levels.** Your multiplier depends on how deeply you embrace the paradigm shift from "coder" to "specification designer" to "system orchestrator."
 
@@ -989,8 +998,8 @@ Professional AI-native developers MUST be proficient in both Python (reasoning/b
 
 **What This Means:**
 
-- Python standards: 3.13+, type hints mandatory, modern syntax (Part 4: 19 chapters)
-- TypeScript standards: 5.3+, strict mode, ES2024 target (Part 8: 3 chapters)
+- Python standards: 3.13+, type hints mandatory, modern syntax (Part 4 chapters - see chapter-index.md)
+- TypeScript standards: 5.3+, strict mode, ES2024 target (TypeScript part chapters - see chapter-index.md)
 - Students learn specification-writing in both languages
 - Code examples demonstrate language-appropriate use cases
 - Projects integrate Python backends with TypeScript frontends
@@ -999,9 +1008,9 @@ Professional AI-native developers MUST be proficient in both Python (reasoning/b
 
 **Application:**
 
-- Part 4: Python mastery (Chapters 11-29)
-- Part 8: TypeScript mastery (Chapters 38-40)
-- Parts 9-13: Integration (realtime agents, voice, full-stack deployment)
+- Part 4: Python mastery (see chapter-index.md for chapter list)
+- TypeScript part: TypeScript mastery (see chapter-index.md for chapter list)
+- Later parts: Integration (realtime agents, voice, full-stack deployment)
 - All full-stack projects require both languages
 
 ---
@@ -1014,11 +1023,11 @@ All projects MUST demonstrate production deployment with cloud-native patterns, 
 
 **What This Means:**
 
-- Docker containerization for all projects (Part 10)
-- Kubernetes orchestration for multi-service systems (Part 10)
-- Database integration (PostgreSQL, vector stores) (Part 11)
-- Event-driven architecture patterns (Kafka, Dapr) (Part 12)
-- Stateful agent deployment (Dapr actors, workflows) (Part 13)
+- Docker containerization for all projects (Containerization part)
+- Kubernetes orchestration for multi-service systems (Orchestration part)
+- Database integration (PostgreSQL, vector stores) (Database part)
+- Event-driven architecture patterns (Kafka, Dapr) (Event-driven part)
+- Stateful agent deployment (Dapr actors, workflows) (Stateful agents part)
 - CI/CD pipelines and deployment automation
 - Monitoring, logging, and observability (structured logging, metrics, tracing)
 - Security best practices (secrets management, authentication, authorization)
@@ -1026,7 +1035,7 @@ All projects MUST demonstrate production deployment with cloud-native patterns, 
 
 **Application:**
 
-- Parts 10-13 dedicated to production deployment (9 chapters)
+- Later parts dedicated to production deployment (see chapter-index.md for structure)
 - All projects include Dockerfiles and Kubernetes manifests
 - Deployment examples tested and working (not theoretical)
 - Real cloud deployment demonstrated
@@ -1290,124 +1299,33 @@ All chapters MUST be validated against this checklist before publication.
 
 ## III. Book Structure
 
-The book MUST follow a 13-part progressive structure building from AI-native mindset through production deployment.
+**Authoritative Reference**: `specs/book/chapter-index.md` defines all chapters, their part assignments, titles, key topics, and file names. This is THE definitive source for book structure and implementation status.
 
-**Authoritative Reference**: `specs/book/chapter-index.md` defines all chapters, their part assignments, titles, key topics, and file names. This is THE definitive source.
+**Structural Philosophy** (Progressive Learning Path):
 
-**Structural Philosophy**:
+The book follows a progressive structure building from AI-native mindset through production deployment:
 
-1. **Mindset Shift (Parts 1-2)**: Understand AI-native revolution, meet the tools
-2. **Communication Skills (Part 3)**: Learn to communicate with AI (prompting, context)
-3. **Foundation Languages (Parts 4, 8)**: Python for reasoning, TypeScript for interaction
-4. **Methodology (Part 5)**: Spec-Driven Development as core workflow
-5. **Agent Systems (Parts 6-7)**: Build agentic AI with OpenAI SDK and MCP
-6. **Production Deployment (Parts 9-13)**: Real-time, voice, containers, orchestration, state
+1. **Mindset Shift**: Understand AI-native revolution, meet the tools
+2. **Communication Skills**: Learn to communicate with AI (prompting, context)
+3. **Foundation Languages**: Python for reasoning, TypeScript for interaction
+4. **Methodology**: Spec-Driven Development as core workflow
+5. **Agent Systems**: Build agentic AI with SDK integration
+6. **Production Deployment**: Real-time, voice, containers, orchestration, state
 
-**Progressive Complexity**:
+**Progressive Complexity** (Scaffolding Strategy):
 
-- **Parts 1-3**: Beginner-friendly, maximum scaffolding, 2 options max
-- **Parts 4-5**: Intermediate, moderate scaffolding, 3-4 options
-- **Parts 6-8**: Advanced, minimal scaffolding, realistic options
-- **Parts 9-13**: Professional, no artificial limits, production focus
-
-### Part-by-Part Breakdown (56 Chapters Total)
-
-**Part 1: Introducing AI-Driven Development (4 chapters)**
-
-- Problem Solved: Why does software development work differently now?
-- Scaffolding: Maximum (complete beginners)
-- Key Learning: Paradigm shift from manual coding to AI collaboration
-
-**Part 2: AI Tool Landscape (4 chapters)**
-
-- Problem Solved: What tools exist and how do they differ?
-- Scaffolding: High (tool literacy building)
-- Key Learning: Tool selection based on context and tradeoffs
-
-**Part 3: Markdown, Prompt & Context Engineering (3 chapters)**
-
-- Problem Solved: How do I communicate effectively with AI?
-- Scaffolding: High (foundational communication skill)
-- Key Learning: Markdown as AI's language, prompt engineering as core development competency
-
-**Part 4: Python: The Language of AI Agents (19 chapters)**
-
-- Problem Solved: How do I build reasoning/backend systems?
-- Scaffolding: Graduated (high → moderate → low across 19 chapters)
-- Key Learning: Python 3.13+ for AI-native backends with type hints
-
-**Part 5: Spec-Driven Development (4 chapters)**
-
-- Problem Solved: How do I turn ideas into specifications AI can execute?
-- Scaffolding: Moderate (methodology learning)
-- Key Learning: Specification-first as THE core development skill
-
-**Part 6: Agentic AI Fundamentals with OpenAI Agents SDK in Python (3 chapters)**
-
-- Problem Solved: How do I build autonomous agent systems?
-- Scaffolding: Low (assumes Python + spec-driven proficiency)
-- Key Learning: Agent architecture, reasoning, tool use
-
-**Part 7: MCP Fundamentals with FastMCP (3 chapters)**
-
-- Problem Solved: How do I give agents access to external tools/data?
-- Scaffolding: Low (advanced topic)
-- Key Learning: Model Context Protocol server design
-
-**Part 8: TypeScript: The Language of Realtime and Interaction (3 chapters)**
-
-- Problem Solved: How do I build interaction/frontend layers?
-- Scaffolding: Moderate (new language, familiar concepts)
-- Key Learning: TypeScript for UIs, realtime, voice with strict types
-
-**Part 9: Building Realtime and Voice Agents (3 chapters)**
-
-- Problem Solved: How do I build interactive agent experiences?
-- Scaffolding: Low (integration of prior knowledge)
-- Key Learning: WebSockets, WebRTC, voice interfaces
-
-**Part 10: Containerization & Orchestration using Docker and Kubernetes (3 chapters)**
-
-- Problem Solved: How do I deploy agents to production?
-- Scaffolding: Minimal (professional deployment)
-- Key Learning: Docker, Kubernetes, cloud-native patterns
-
-**Part 11: Data, State, and Memory using PostgreSQL, Graph, and Vector Databases (3 chapters)**
-
-- Problem Solved: How do I give agents persistent memory?
-- Scaffolding: Minimal (assumes deployment knowledge)
-- Key Learning: Database integration, state management, vector search
-
-**Part 12: Event-Driven Architecture using Kafka and Dapr (2 chapters)**
-
-- Problem Solved: How do I build scalable, decoupled systems?
-- Scaffolding: None (professional architecture)
-- Key Learning: Event-driven patterns, pub/sub, Dapr integration
-
-**Part 13: Stateful Agents using Dapr Actors and Dapr Workflows (2 chapters)** 🔵
-
-- Problem Solved: How do I build complex, stateful agent orchestrations?
-- Scaffolding: None (advanced production patterns)
-- Key Learning: Dapr actors, workflow orchestration
-
-### 🔵 Future State: Complete Book Structure
-
-**Total**: 56 chapters across 13 parts (aspirational target described above)
-
-### Current Implementation Status
-
-**For actual chapter counts and completion status**:
-→ See **`specs/book/chapter-index.md`** (tracks which chapters exist vs planned)
+- **Early Parts**: Beginner-friendly, maximum scaffolding, 2 options max
+- **Middle Parts**: Intermediate, moderate scaffolding, 3-4 options
+- **Advanced Parts**: Minimal scaffolding, realistic options, multiple valid approaches
+- **Professional Parts**: No artificial limits, production complexity, business context
 
 **Key References**:
 
-- **`specs/book/chapter-index.md`** — Chapter titles, numbers, topics, and **completion status** (✅ = exists, 🔵 = planned)
-  - This is the single source of truth for "how many chapters exist"
-  - Updates: Maintained as chapters are added; no need to update constitution
+- **`specs/book/chapter-index.md`** — Chapter titles, numbers, topics, and **completion status** (✅ = exists, 📋 = planned)
+  - Single source of truth for "how many chapters/parts exist"
+  - Updates maintained as chapters are added; no need to update constitution
 - **`specs/book/directory-structure.md`** — File paths, folder organization (WHERE to put chapters)
 - **`book-source/docs/`** — Actual content directory (see structure by example)
-
-**Cross-Reference Note**: Constitution describes the aspirational 13-part Future State above. For current implementation progress, always check `specs/book/chapter-index.md`.
 
 ---
 
@@ -1639,10 +1557,10 @@ Three specialized agents manage the SDD loop phases (located in `.claude/agents/
 
 The book is complete and successful when:
 
-- [ ] All 56 chapters written and validated
+- [ ] All planned chapters written and validated (see chapter-index.md for count)
 - [ ] All code examples tested and working (both Python and TypeScript)
 - [ ] All chapters follow Constitution principles (especially spec-first workflow)
-- [ ] Pedagogical flow coherent across all 13 parts
+- [ ] Pedagogical flow coherent across all parts
 - [ ] No contradictions across chapters
 - [ ] All cross-references valid
 - [ ] Technical accuracy verified by domain experts
