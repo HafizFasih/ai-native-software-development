@@ -179,6 +179,10 @@ By using **bold** on feature names and key constraints, anyone reading this spec
 
 Notice how the emphasis makes it easy to scan and understand what matters. Without bold, every word has equal weight and it's harder to find the key ideas.
 
+#### 💬 AI Colearning Prompt
+
+> **Explore with your AI**: "I'm learning about emphasis in markdown specifications. Can you explain when to use bold vs italic? Give me examples of technical terms that should be bold and situations where italic emphasis is more appropriate. Use a software specification context."
+
 ---
 
 ## Concept 2: Links - Connecting to Resources
@@ -263,6 +267,10 @@ Now readers can click through and see:
 
 This **dramatically improves clarity** because you're not just describing, you're *showing* where to find more information.
 
+#### 🎓 Expert Insight
+
+> Links transform specifications from isolated documents into networked knowledge. When you reference official documentation, you're not just pointing to resources—you're establishing provenance and authority. Professional specifications include links to: API documentation, language standards, architectural decision records (ADRs), related issues/tickets, and design references. This creates a knowledge graph that both humans and AI can navigate to understand context and rationale.
+
 ---
 
 ## Example 3: Invalid Link Syntax (Common Error)
@@ -328,6 +336,22 @@ Put images in a folder (like `images/` or `assets/`) and reference them:
 ```
 
 **For beginners**: Start with online image URLs (from GitHub, documentation sites). Later you can add local images to your projects.
+
+#### 🤝 Practice Exercise
+
+**Quick Practice**: Collaborate with your AI to improve visual communication:
+
+"I'm writing a specification for a task management app. I want to show:
+1. What the main menu looks like
+2. How tasks are displayed
+3. The app's architecture (user → app → file storage)
+
+Can you:
+- Suggest what images I should include
+- Recommend tools for creating diagrams (free/simple options)
+- Help me write descriptive alt text for accessibility"
+
+**What you're practicing**: Using AI to plan visual documentation. The AI suggests tools and approaches, you make the final decisions.
 
 ### AI Native Approach: Let AI Help with Images
 
@@ -557,6 +581,10 @@ When you can write a clear specification, you can:
 - Collaborate with others (and AI) effectively
 
 That's **professional-level development** – even if you haven't written a single line of code yet.
+
+#### 🎓 Expert Insight
+
+> This integration lesson demonstrates the core AI-native skill: **decomposing complex work into clear specifications**. You started with structure (headings), added organization (lists), showed examples (code blocks), emphasized key points (bold/italic), and connected to resources (links/images). Each element you added made your intent clearer to AI agents. This is exactly how professional developers work—building specifications iteratively, refining clarity at each step, using AI to validate and implement. You've learned the specification layer of AIDD, which is the most valuable skill in the AI-native era.
 
 ---
 
