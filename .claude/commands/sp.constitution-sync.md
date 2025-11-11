@@ -78,7 +78,7 @@ Bring existing chapter content into **authentic alignment** with constitutional 
 **Output Style Requirements**:
 - 💬 **AI Colearning Prompts** (1-4 per lesson): Exploration-focused questions
 - 🎓 **Instructor Commentaries** (2-4 per lesson): Pedagogical insights
-- 🚀 **CoLearning Challenges** (1-4 per lesson): Hands-on practice
+- 🤝 **CoLearning Challenges** (1-4 per lesson): Hands-on practice
 - ✨ **Teaching Tips** (1-3 per lesson): Conceptual clarity
 - **Lesson Closure**: "Try With AI" is final section (no post-sections)
 
@@ -117,7 +117,7 @@ Read .specify/memory/constitution.md
 #### Step 1.2: Categorize by Impact and Context
 
 **High-Impact Requirements** (must be present in ALL lessons):
-- CoLearning elements (💬🎓🚀✨) demonstrating Three-Role Partnership
+- CoLearning elements (💬🎓🤝✨) demonstrating Three-Role Partnership
 - Lesson closure pattern ("Try With AI" is final section, no post-sections)
 - No forward references (pedagogical ordering: concepts introduced before use)
 - Conversational, exploration-focused tone (not documentation style)
@@ -192,13 +192,13 @@ Read [lesson-file-path]
 **Presence**:
 - Are 💬 AI Colearning Prompts present? (Expected: 1-4 per lesson)
 - Are 🎓 Instructor Commentaries present? (Expected: 2-4 per lesson)
-- Are 🚀 CoLearning Challenges present? (Expected: 1-4 per lesson)
+- Are 🤝 CoLearning Challenges present? (Expected: 1-4 per lesson)
 - Are ✨ Teaching Tips present? (Expected: 1-3 per lesson)
 
 **Quality** (more important than quantity):
 - Do 💬 prompts encourage **exploration** ("What happens if...") or just "Ask AI to write X"?
 - Do 🎓 commentaries provide **pedagogical insight** (why this matters) or just restate content?
-- Do 🚀 challenges practice **co-learning** (iteration, validation) or passive copying?
+- Do 🤝 challenges practice **co-learning** (iteration, validation) or passive copying?
 - Are ✨ tips **actionable** and contextual (not generic platitudes)?
 
 ##### 2. Three-Role AI Partnership (High Impact)
@@ -335,7 +335,7 @@ Read [lesson-file-path]
 - ✅ No pedagogical ordering violations
 
 **What this involves**:
-- Insert 💬🎓🚀✨ elements at natural break points (after concepts introduced, before transitions)
+- Insert 💬🎓🤝✨ elements at natural break points (after concepts introduced, before transitions)
 - Remove post-sections (e.g., "What's Next" after "Try With AI")
 - Enhance existing content with partnership language (minimal rewording)
 - Validate: Ensure insertions feel natural, not forced
@@ -346,7 +346,7 @@ Read [lesson-file-path]
 - Lesson with excellent narrative and examples
 - Missing CoLearning elements (0/4 types present)
 - Good conversational tone already
-- **Decision**: Add 4 targeted insertions (💬🎓🚀✨ one each) at natural points
+- **Decision**: Add 4 targeted insertions (💬🎓🤝✨ one each) at natural points
 
 ##### Option 2: Enhanced Regeneration (Preserve good parts, regenerate problem areas)
 
@@ -481,26 +481,42 @@ Look for:
 - **Natural** in placement (enhances, doesn't interrupt)
 - **Conversational** in tone (not preachy or mechanical)
 
+**Writing Style Guidelines** (apply to ALL CoLearning elements):
+- ✅ Use natural conversational language ("Help me understand" not "Ask your AI to explain")
+- ✅ Avoid ALL CAPS for emphasis (use *italic* or **bold** sparingly instead)
+- ✅ Use em-dash (—) only for parenthetical thoughts, not to connect phrases
+- ✅ Placeholders in square brackets should be lowercase: [describe your situation]
+- ✅ Use commas for natural list flow within sentences
+- ✅ Keep prompts feeling like dialogue with AI partner, not commands
+- ✅ Bold only key terms that need emphasis, not decorative
+
 **Examples**:
 
 **💬 AI Colearning Prompt** (after introducing developer role evolution):
 ```markdown
 #### 💬 AI Colearning Prompt
 
-> **Explore with your AI**: "The lesson mentions developers shifting from 'typist' to 'orchestrator.' Ask your AI to explain this transition using a concrete analogy from another profession that went through similar transformation."
+> **Explore with your AI**: "The lesson mentions developers shifting from 'typist' to 'orchestrator.' Help me understand this transition using a concrete analogy from another profession that went through similar transformation."
 ```
 
 **Quality check**:
 - ✅ Encourages exploration (not just "ask AI to explain")
 - ✅ Demonstrates AI as Teacher (student learns from AI)
 - ✅ Specific to lesson content (developer role evolution)
-- ✅ Conversational tone
+- ✅ Conversational tone (natural, not command-driven)
+
+**Style Guidelines**:
+- Use natural conversational language ("Help me understand" not "Ask your AI")
+- Avoid ALL CAPS for emphasis (use italic *emphasis* or bold **emphasis** sparingly)
+- Use em-dash (—) only for parenthetical breaks, not to join phrases
+- Placeholders in square brackets should be lowercase: [describe your situation]
+- Keep prompts feeling like natural dialogue with AI partner
 
 **🎓 Instructor Commentary** (after explaining Three-Role Partnership):
 ```markdown
 #### 🎓 Instructor Commentary
 
-> Notice how this partnership is **bidirectional**: You specify what you need (AI learns your intent), AI suggests patterns you don't know yet (you learn from AI), and together you create what neither could alone. This isn't "using a tool"—it's co-creation.
+> Notice how this partnership is bidirectional. You specify what you need (AI learns your intent), AI suggests patterns you don't know yet (you learn from AI), and together you create what neither could alone. This isn't "using a tool"—it's co-creation.
 ```
 
 **Quality check**:
@@ -509,13 +525,18 @@ Look for:
 - ✅ Enhances understanding (not just repeating content)
 - ✅ Natural placement (after concept introduction)
 
-**🚀 CoLearning Challenge** (practicing specification-writing):
+**Style Guidelines**:
+- Use bold sparingly (only for key terms that need emphasis, not decorative)
+- Keep commentary conversational and flowing
+- Avoid excessive formatting that interrupts reading flow
+
+**🤝 CoLearning Challenge** (practicing specification-writing):
 ```markdown
-#### 🚀 CoLearning Challenge
+#### 🤝 CoLearning Challenge
 
 **Quick Test**: Ask your AI: "I want to build a simple to-do list app. What information do you need from me to implement it well?"
 
-**What you're practicing**: Specification-writing. The AI will ask about features, data structure, UI preferences—showing you what good specs include.
+**What you're practicing**: Specification-writing. The AI will ask about features, data structure, UI preferences, showing you what good specs include.
 ```
 
 **Quality check**:
@@ -523,6 +544,11 @@ Look for:
 - ✅ Demonstrates AI as Student (adapts to your specs)
 - ✅ Teaches "Specs Are the New Syntax" principle
 - ✅ Low barrier to entry (quick test)
+
+**Style Guidelines**:
+- Use em-dash (—) only for parenthetical thoughts, not to connect list items
+- Use commas for natural list flow within sentences
+- Keep challenge instructions clear and concise
 
 **✨ Teaching Tip** (clarifying concept):
 ```markdown
@@ -615,7 +641,7 @@ Invoke lesson-writer:
 - Constitutional Constraints:
   - Emphasize Three-Role AI Partnership throughout
   - Conversational, exploration-focused tone
-  - Add CoLearning elements naturally (💬🎓🚀✨)
+  - Add CoLearning elements naturally (💬🎓🤝✨)
   - "Specs Are the New Syntax" framing for code examples
   - No forward references
 - Output: [lesson file path]
@@ -671,7 +697,7 @@ Invoke lesson-writer:
 - Plan: [plan.md lesson section]
 - Constitutional Framework:
   - Build Three-Role AI Partnership from start (demonstrate in narrative, not just add elements)
-  - Natural CoLearning element integration (not mechanical insertion)
+  - Natural CoLearning element integration (💬🎓🤝✨ not mechanical insertion)
   - Conversational, exploration-focused tone throughout
   - "Specs Are the New Syntax" emphasis (for code lessons)
   - No forward references (pedagogical ordering strict)
@@ -805,7 +831,7 @@ Invoke technical-reviewer:
 ## Constitutional Compliance Achieved
 
 ✅ All 18 constitutional principles verified compliant
-✅ CoLearning elements (100% coverage, quality-checked)
+✅ CoLearning elements (💬🎓🤝✨ 100% coverage, quality-checked)
 ✅ Lesson closure pattern (100% compliant)
 ✅ Pedagogical ordering (no forward references)
 ✅ Three-Role Partnership (demonstrated authentically throughout)
@@ -824,7 +850,7 @@ Invoke technical-reviewer:
    git commit -m "Constitution sync: Chapter [N] aligned with v3.1.2
 
    - Integrated Three-Role AI Partnership throughout
-   - Added CoLearning elements (💬🎓🚀✨) naturally
+   - Added CoLearning elements (💬🎓🤝✨) naturally
    - Fixed lesson closure violations
    - Preserved excellent narrative quality"
    ```
