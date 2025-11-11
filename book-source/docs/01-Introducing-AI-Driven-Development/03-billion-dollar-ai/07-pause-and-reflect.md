@@ -84,10 +84,6 @@ Why? Is there a problem in that market that frustrates you personally? A workflo
 
 What gives you an unfair advantage in that layer? Domain expertise? Relationships? Technical depth?
 
-#### 🎓 Instructor Commentary
-
-> Your "unfair advantage" doesn't have to be technical—it can be **access** (you know people in the vertical), **insight** (you've experienced the problem firsthand), or **credibility** (you worked in the industry). Non-technical founders often have stronger advantages than engineers because they understand customer pain deeply. Technical skills can be learned or partnered; domain insight is harder to fake.
-
 ---
 
 ## Reflection 3: Your PPP Strategy
@@ -100,9 +96,9 @@ When do you think you'd reach critical mass (60-80 customers)? What would trigge
 
 Consider writing your answers down. Reflection becomes clear when you externalize it.
 
-#### ✨ Teaching Tip
+#### 🎓 Expert Insight
 
-The PPP timeline isn't arbitrary—it matches the time required to build **trust** in B2B markets. Enterprise customers don't buy from unknowns. Phase 1-2 earns trust by solving real problems without threatening incumbents. Phase 3 (pivot) works because you've proven reliability. Rushing the timeline breaks trust; patience compounds it.
+> The PPP timeline isn't arbitrary—it matches the time required to build trust in B2B markets. Enterprise customers don't buy from unknowns. Phase 1-2 earns trust by solving real problems without threatening incumbents. Phase 3 (pivot) works because you've proven reliability. Rushing the timeline breaks trust; patience compounds it.
 
 ## The Mindset Shift
 
@@ -112,11 +108,12 @@ Traditional software companies are limited by how fast they can hire and onboard
 
 This is why a solo developer generating $500M is no longer surprising. **It's the inevitable outcome of this new economics.**
 
-#### 🚀 CoLearning Challenge
+#### 🤝 Practice Exercise
 
-**Quick Test**: Ask your AI: "I'm thinking about [your vertical market]. Help me identify ONE workflow in this vertical that's 90% mechanical (AI can automate) and 10% judgment (I provide strategy). Describe the workflow in detail." Then validate: Is the 90-10 split realistic for this workflow, or would it require more human judgment than AI estimates?
+Ask your AI Co-Teacher:
+> "I'm thinking about [your vertical market]. Help me identify ONE workflow in this vertical that's 90% mechanical (AI can automate) and 10% judgment (I provide strategy). Describe the workflow in detail."
 
-**What you're practicing**: Applying all Chapter 3 frameworks (90-10 rule, vertical intelligence, PPP strategy) to YOUR specific opportunity, then reality-checking with your domain knowledge.
+**Expected Outcome**: You'll practice applying all Chapter 3 frameworks (90-10 rule, vertical intelligence, PPP strategy) to your specific opportunity, then reality-check AI assessments with your domain knowledge. This teaches strategic thinking about automation opportunities.
 
 ---
 
