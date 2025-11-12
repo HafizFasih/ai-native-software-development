@@ -162,6 +162,14 @@ Now the AI **knows**:
 
 The structure removes ambiguity. You're not teaching the AI to guess — you're giving it clear labels.
 
+#### 💬 AI Colearning Prompt
+
+> **Explore with your AI**: "I just learned that structured text helps AI understand requirements better. Can you show me two versions of a simple project description—one unstructured paragraph and one using markdown structure? Use a coffee shop ordering app as the example. Then explain which version would be clearer for you to implement."
+
+#### 🎓 Expert Insight
+
+> Notice how structure isn't just about making text look nice. When you add markdown headings and lists, you're creating **semantic meaning** that AI can parse. This is why markdown is called "structured text"—the structure itself communicates intent. In professional development, clear structure reduces implementation errors and speeds up development cycles.
+
 ---
 
 ## Concept 2: Markdown as the "Intent Layer" in AIDD
@@ -218,6 +226,23 @@ The AI reads this (Layer 2), plans the implementation, and generates Python code
 
 **The key**: Because your specification used structure (lists for features, clear sections), the AI didn't have to guess what "reminders" means or how they should be sorted.
 
+#### 🤝 Practice Exercise
+
+> **Ask your AI**: "I want to test how structure affects code generation. First, implement this unstructured request: 'Make an app that converts temperatures.' Now implement this structured version:
+>
+> Temperature Converter
+>
+> Features:
+> - Convert Fahrenheit to Celsius
+> - Convert Celsius to Fahrenheit
+> - Display formula used
+>
+> Expected Output:
+> Enter temperature: 32F
+> Result: 0°C (Formula: (32-32) × 5/9)
+>
+> Compare the two results. Which specification led to more accurate code? What did the structured version communicate that the unstructured one didn't?"
+
 ---
 
 ## Real-World Context: Where You'll Use Markdown
@@ -253,6 +278,10 @@ When you build software, you create documentation explaining how it works. Docum
 When you ask ChatGPT or Claude to generate code, you can format your request with markdown structure to get better results. Instead of a paragraph, you give the AI a structured specification.
 
 **In all these cases**, markdown is the format that bridges human intent and machine action.
+
+#### 🎓 Expert Insight
+
+> Here's what makes markdown powerful in AI-native development: it's both human-readable and machine-parseable. You don't need special software to read it (unlike Word docs), yet it has enough structure for AI to extract meaning. This dual nature makes it the universal format for specifications, documentation, and AI communication. Professional development teams use markdown for everything from project READMEs to architecture decision records (ADRs).
 
 ---
 

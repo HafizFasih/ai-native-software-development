@@ -141,6 +141,10 @@ print(result)  # Should print: 8
 
 This shows the AI: "This is what the code should look like."
 
+#### 💬 AI Colearning Prompt
+
+> **Explore with your AI**: "I'm learning about code blocks in markdown. Can you show me what happens when I specify expected output in my specification vs when I don't? Create two versions of a spec for a greeting program—one with a code block showing exact output format, one without. Then explain which would produce more consistent results."
+
 ---
 
 ## Concept 2: Language Tags (For Clarity)
@@ -199,6 +203,10 @@ print(greet("Alice"))
 
 The `python` tag makes it clear this is Python code to implement.
 
+#### 🎓 Expert Insight
+
+> Language tags do more than just enable syntax highlighting. They tell AI agents which language interpreter to use, which libraries might be available, and which syntax rules apply. When you tag a block as `python`, the AI knows to generate Python 3.13+ syntax. When you tag it as `bash`, the AI knows these are shell commands. This prevents the AI from mixing syntaxes or generating code for the wrong language—a common error when language context is ambiguous.
+
 ---
 
 ## Concept 3: Inline Code (Single Backticks)
@@ -237,6 +245,14 @@ Use single backticks for:
 - Function names like `get_weather()` are in backticks
 
 This makes the specification much clearer.
+
+#### 🤝 Practice Exercise
+
+> **Ask your AI**: "Here's a specification without inline code formatting:
+>
+> 'Run pip install requests to install dependencies, then edit config.py with your API key, and run python weather.py to start the app.'
+>
+> Rewrite this with proper inline code formatting using backticks. Then explain why the formatted version is clearer. What happens if I don't format command names—how does that affect readability?"
 
 ---
 
@@ -400,6 +416,10 @@ When you use code blocks correctly, AI agents can:
 4. **Follow command syntax** - "These inline codes are commands to run"
 
 Good code block usage = clearer specifications = better AI-generated code.
+
+#### 🎓 Expert Insight
+
+> In professional development, code blocks serve as executable documentation. When you show expected output in a fenced code block, that becomes the acceptance test—did the generated code produce exactly this output? This practice, called "specification by example," reduces ambiguity dramatically. Teams using spec-by-example report 60-80% fewer clarification requests during implementation because everyone (human and AI) can see exactly what "correct" looks like.
 
 ---
 
