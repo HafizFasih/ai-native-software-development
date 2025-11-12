@@ -412,6 +412,8 @@ This is **defensive programming**: check before you act.
 You already know `.get()` handles this:
 
 ```python
+inventory: dict[str, int] = {"apples": 5, "oranges": 3}
+
 quantity = inventory.get("grapes", 0)  # 0 if not found
 print(quantity)  # 0
 ```
@@ -419,6 +421,8 @@ print(quantity)  # 0
 **Pattern 2: Safe deletion with check**
 
 ```python
+inventory: dict[str, int] = {"apples": 5, "oranges": 3}
+
 if "bananas" in inventory:
     del inventory["bananas"]
     print("Bananas removed")
@@ -429,6 +433,8 @@ else:
 Or more idiomatically with `pop()`:
 
 ```python
+inventory: dict[str, int] = {"apples": 5, "oranges": 3}
+
 # This is cleaner than checking first
 quantity_removed = inventory.pop("bananas", None)
 if quantity_removed is not None:
@@ -542,6 +548,7 @@ print(word_counts)
 Or more concisely with `.get()`:
 
 ```python
+words: list[str] = ["apple", "banana", "apple", "cherry", "apple"]
 word_counts: dict[str, int] = {}
 
 for word in words:

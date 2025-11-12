@@ -424,8 +424,19 @@ Print all three values.
 
 ```python
 # Extend your solution from Exercise 1
+book: dict[str, str | int] = {
+    "title": "Python Mastery",
+    "author": "Jane Smith",
+    "pages": 320
+}
+
 publisher = book.get("publisher", "Unknown Publisher")
-# ... continue with rating and pages
+rating = book.get("rating", 0.0)
+pages_count = book.get("pages")
+
+print(f"Publisher: {publisher}")
+print(f"Rating: {rating}")
+print(f"Pages: {pages_count}")
 ```
 
 **Check your understanding**: Why does `.get()` not raise a KeyError?

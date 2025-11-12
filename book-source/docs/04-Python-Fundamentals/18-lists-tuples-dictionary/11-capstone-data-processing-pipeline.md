@@ -130,6 +130,13 @@ Each student is a **dict** (key-value mapping for field access by name), stored 
 ### Step 3: Filtered Data (List Comprehension)
 
 ```python
+students: list[dict[str, str | float]] = [
+    {"name": "Alice", "major": "Computer Science", "gpa": 3.8},
+    {"name": "Bob", "major": "Mathematics", "gpa": 3.2},
+    {"name": "Carol", "major": "Computer Science", "gpa": 3.9},
+    {"name": "Eve", "major": "Computer Science", "gpa": 3.5},
+]
+
 cs_students: list[dict[str, str | float]] = [
     student for student in students
     if student["major"] == "Computer Science" and student["gpa"] >= 3.5
@@ -240,6 +247,14 @@ Now that you have structured data, filter it. Let's find all Computer Science st
 #### Code Example: Filtering with List Comprehension
 
 ```python
+students: list[dict[str, str | float]] = [
+    {"name": "Alice", "major": "Computer Science", "gpa": 3.8},
+    {"name": "Bob", "major": "Mathematics", "gpa": 3.2},
+    {"name": "Carol", "major": "Computer Science", "gpa": 3.9},
+    {"name": "David", "major": "Physics", "gpa": 3.1},
+    {"name": "Eve", "major": "Computer Science", "gpa": 3.5},
+]
+
 # Filter: Computer Science students with GPA >= 3.5
 cs_high_achievers: list[dict[str, str | float]] = [
     student for student in students
@@ -287,6 +302,15 @@ Filtering is useful, but aggregation is powerful. Now calculate statistics **by 
 > **📘 Note**: This aggregation pattern—grouping data and calculating statistics—is fundamental to data analysis. In Chapter 20, you'll learn to package this logic into reusable functions. For now, focus on understanding the dict-based accumulation pattern.
 
 ```python
+students: list[dict[str, str | float]] = [
+    {"name": "Alice", "major": "Computer Science", "gpa": 3.8},
+    {"name": "Bob", "major": "Mathematics", "gpa": 3.2},
+    {"name": "Carol", "major": "Computer Science", "gpa": 3.9},
+    {"name": "David", "major": "Physics", "gpa": 3.1},
+    {"name": "Eve", "major": "Computer Science", "gpa": 3.5},
+    {"name": "Frank", "major": "Mathematics", "gpa": 3.6},
+]
+
 # Initialize empty dict to store statistics by major
 stats: dict[str, dict[str, float | int]] = {}
 
@@ -583,6 +607,14 @@ Sort students by GPA (highest first) before output:
 > **📘 Note**: The `lambda` syntax below is a shorthand for defining small, inline operations. You'll learn lambda functions in Chapter 20. For now, just understand: `key=lambda s: s["gpa"]` means "sort by the 'gpa' field of each student dict."
 
 ```python
+students: list[dict[str, str | float]] = [
+    {"name": "Alice", "major": "Computer Science", "gpa": 3.8},
+    {"name": "Bob", "major": "Mathematics", "gpa": 3.2},
+    {"name": "Carol", "major": "Computer Science", "gpa": 3.9},
+    {"name": "David", "major": "Physics", "gpa": 3.1},
+    {"name": "Eve", "major": "Computer Science", "gpa": 3.5},
+]
+
 top_students: list[dict[str, str | float]] = sorted(
     students,
     key=lambda s: s["gpa"],

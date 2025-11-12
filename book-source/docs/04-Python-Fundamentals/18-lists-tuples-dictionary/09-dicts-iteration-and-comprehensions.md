@@ -625,6 +625,8 @@ print(inventory)
 Comprehensions are powerful, but if they become unreadable, use a loop instead:
 
 ```python
+prices: dict[str, float] = {"apple": 3.0, "banana": 7.5, "cherry": 4.0, "date": 10.0}
+
 # ✓ Clear comprehension
 data: dict[str, float] = {k: v * 2 for k, v in prices.items() if v > 5}
 

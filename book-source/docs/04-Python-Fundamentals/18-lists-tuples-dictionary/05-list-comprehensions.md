@@ -259,6 +259,8 @@ Order matters: the `if` condition **filters first**, then the expression is appl
 This is very Pythonic and concise. But remember: **clarity is king**. If this makes someone pause during code review, consider splitting it:
 
 ```python
+numbers: list[int] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
 # More explicit version (easier to read and debug)
 evens: list[int] = [n for n in numbers if n % 2 == 0]
 evens_doubled: list[int] = [n * 2 for n in evens]
@@ -299,6 +301,8 @@ This is syntactically correct but difficult to understand at a glance. It combin
 **Professional approach**: When you can't read your comprehension in one breath, refactor to a loop.
 
 ```python
+data: list[int] = [2, 3, 4, 5]
+
 # More readable version
 result: list[list[int]] = []
 for x in data:

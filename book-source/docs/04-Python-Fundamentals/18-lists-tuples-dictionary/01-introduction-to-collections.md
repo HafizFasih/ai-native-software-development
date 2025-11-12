@@ -370,7 +370,7 @@ Here's a complete example using all three structures together:
 
 ```python
 # Sequence: ordered list of student IDs
-student_ids: list[int] = [101, 102, 103, 104]
+student_ids: list[int] = [101, 102, 103]
 
 # Immutable: enrollment date never changes
 enrollment_date: tuple[int, int, int] = (2025, 9, 15)  # year, month, day
