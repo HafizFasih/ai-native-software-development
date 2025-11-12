@@ -145,7 +145,7 @@ Use `break` when:
 - ✅ Processing until a termination condition is met
 - ❌ You need to skip ONE iteration but continue the loop (use `continue` instead)
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 > In AI-native development, you don't memorize every use case for `break`—you understand the **early exit pattern**: "I got what I needed; no point continuing." When you recognize that pattern in your logic, `break` is your tool.
 
 ## Skipping Iterations: The `continue` Statement
@@ -178,13 +178,6 @@ for num in range(1, 11):
 - `break` → Exit the **entire loop**
 - `continue` → Skip the **current iteration** only
 
-#### 🚀 CoLearning Challenge
-
-Ask your AI Co-Teacher:
-> "Generate a for loop that prints numbers 1-20, but skips multiples of 3. Then explain how `continue` works differently from `break` with a diagram."
-
-**Expected Outcome**: You'll understand when to skip iterations vs when to exit entirely.
-
 ### Real-World Continue: Filtering Invalid Data
 
 ```python
@@ -213,9 +206,6 @@ for record in user_records:
 ```
 
 This pattern is common in **data validation**: check for problems, skip bad data, process good data.
-
-#### ✨ Teaching Tip
-> Use your AI as code reviewer: Paste a loop with complex if-else logic and ask "Could I simplify this with `continue` instead of nesting?" You'll learn when early returns make code clearer.
 
 ## Detecting Completion: The `for...else` Pattern
 
@@ -315,7 +305,7 @@ else:
 
 The `for...else` version is **shorter and more readable**—no need for a flag variable.
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 > In AI-native development, the loop-else pattern is rare but powerful. You don't memorize when to use it—you recognize the "search with failure case" scenario. When you need to know "Did I find it or exhaust all options?", loop-else is your answer.
 
 ## While...Else: Retry with Limit
@@ -424,12 +414,11 @@ When you ask your AI to validate user input, it might generate code using `try` 
 
 The key learning here is **how `break` and `continue` work together**, not exception handling.
 
-#### 🚀 CoLearning Challenge
+#### 🤝 Practice Exercise
 
-Ask your AI Co-Teacher:
-> "Generate a while loop that asks users to enter numbers. Use `continue` to skip negative numbers (with a warning). Use `break` to exit when they enter 0. Calculate the sum of positive numbers only. Use `.isdigit()` for validation (not try-except). Then explain the flow with a step-by-step trace."
+> **Ask your AI**: "Generate a while loop that asks users to enter numbers. Use `continue` to skip negative numbers (with a warning). Use `break` to exit when they enter 0. Calculate the sum of positive numbers only. Use `.isdigit()` for validation (not try-except). Then explain the flow with a step-by-step trace."
 
-**Expected Outcome**: You'll understand how `break` and `continue` work together in the same loop.
+**Expected Outcome**: You'll understand how `break` and `continue` work together in the same loop through specification-driven practice.
 
 **Sample AI-generated solution**:
 

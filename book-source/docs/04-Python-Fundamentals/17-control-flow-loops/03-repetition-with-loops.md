@@ -208,7 +208,7 @@ Generates: 2, 4, 6, 8, 10 (starts at 2, stops before 11, increments by 2)
 
 **Key Insight:** `range(start, stop, step)` NEVER includes the `stop` value. This is Python's convention: `range(1, 11)` gives you 1-10, not 1-11.
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 > In AI-native development, you don't memorize `range()` parameters—you understand WHEN you need a number sequence. Syntax is cheap; recognizing "I need to repeat N times" is gold.
 
 ### Practical Example: Countdown Timer
@@ -295,9 +295,6 @@ print(f"Thank you! You are {age} years old.")
 - User is prompted repeatedly until they enter a valid age (1-120)
 - Once a valid age is entered, condition becomes `False` and loop exits
 
-#### ✨ Teaching Tip
-> Use your AI companion to explore edge cases: "What happens if the user enters a negative number? What if they type 'abc' instead of a number? Show me the error and explain it."
-
 ## Loop Termination Conditions: How to Avoid Infinite Loops
 
 An **infinite loop** runs forever because its condition never becomes `False`. This is one of the most common beginner errors.
@@ -351,12 +348,11 @@ Both loop types can accomplish many of the same tasks, but each has its ideal us
 - **Known count → `for` loop**
 - **Condition-based → `while` loop**
 
-#### 🚀 CoLearning Challenge
+#### 🤝 Practice Exercise
 
-Ask your AI Co-Teacher:
-> "Show me the same task (print numbers 1-5) implemented with BOTH a for loop and a while loop. Then explain when each approach is more appropriate."
+> **Ask your AI**: "Show me the same task (print numbers 1-5) implemented with BOTH a for loop and a while loop. Then explain when each approach is more appropriate."
 
-**Expected Outcome:** You'll see both implementations side-by-side and understand the tradeoffs.
+**Expected Outcome**: You'll see both implementations side-by-side and understand the tradeoffs between definite and indefinite iteration.
 
 ## AI Companion Section: Comparing For and While
 

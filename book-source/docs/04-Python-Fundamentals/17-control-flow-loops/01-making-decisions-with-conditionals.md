@@ -223,7 +223,7 @@ This line runs regardless of age.
 
 The condition `16 >= 18` is `False`, so the indented code is skipped entirely.
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 > In AI-native development, you don't memorize conditional syntax—you understand WHEN to make a decision. Syntax is cheap; recognizing "my program needs to respond differently based on conditions" is gold.
 
 ### The `if-else` Statement: Binary Decisions
@@ -277,9 +277,6 @@ else:
 ```
 
 Now `8 % 2` equals `0`, so the condition is `True` and the `if` block runs.
-
-#### 💬 AI Colearning Prompt
-> "Explain how the modulo operator `%` works and why `number % 2 == 0` detects even numbers."
 
 ### The `if-elif-else` Chain: Multiple Conditions
 
@@ -353,10 +350,9 @@ Score: 95 → Grade: A (Excellent!)
 
 The first condition matches, so Python never even checks the rest.
 
-#### 🚀 CoLearning Challenge
+#### 🤝 Practice Exercise
 
-Ask your AI Co-Teacher:
-> "Generate a Python if-elif-else statement that categorizes temperature: freezing (below 32°F), cold (32-50°F), mild (51-70°F), warm (71-85°F), or hot (above 85°F). Include type hints and expected output for temperature = 68."
+> **Ask your AI**: "Generate a Python if-elif-else statement that categorizes temperature: freezing (below 32°F), cold (32-50°F), mild (51-70°F), warm (71-85°F), or hot (above 85°F). Include type hints and expected output for temperature = 68."
 
 **Expected Outcome**: You'll understand how to structure multi-condition decision trees and see how order matters (checking ranges from high to low or low to high).
 
@@ -421,9 +417,6 @@ Final price: $108.00
 - The `or` operator connects two possible paths to discount eligibility
 - First case: member with $50+ purchase → discount
 - Second case: any purchase over $100 → discount
-
-#### ✨ Teaching Tip
-> Use Claude Code to explore boolean logic: "Show me the truth table for `and` vs `or`. Then trace this discount logic with 4 test cases: member/$40, member/$60, non-member/$90, non-member/$110."
 
 ### Nested `if` Statements: Multi-Criteria Validation
 
@@ -494,7 +487,7 @@ But nesting lets you:
 - Perform different actions at each level (calculate pricing only if eligible)
 - Make the logic easier to read and debug
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 > In AI-native development, nested conditionals are a common pattern. You don't memorize the nesting depth—you describe the decision tree to your AI: "First check X, if true then check Y, if that's true then check Z." Your AI handles the indentation and structure; you verify the logic makes sense.
 
 ---

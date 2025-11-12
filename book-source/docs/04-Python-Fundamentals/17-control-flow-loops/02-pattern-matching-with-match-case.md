@@ -269,8 +269,6 @@ print(action)
 # Expected output: Slow down
 ```
 
-**✨ Teaching Tip:** Notice how the AI preserved your intent while changing the structure. This is a great use case for your AI companion—mechanical conversions between equivalent patterns. You specify what you want ("convert to match-case"), and the AI handles the syntax details.
-
 **When you validate AI-generated code:**
 - Does it produce the same output for the same inputs? (Test with `color="red"`, `color="green"`, `color="yellow"`, `color="blue"`)
 - Are the type hints still present? ✅
@@ -318,13 +316,19 @@ print(f"{num1} {operation} {num2} = {result}")
 # With operation="%": 10 % 5 = Unknown operation: %
 ```
 
-**🎓 Instructor Commentary:**
-Notice that `case "/"` includes extra logic (checking for division by zero). You can have multiple lines of code in each case block—just keep them indented. Also notice the type hint `int | float | str` on `result`—this is a **union type** that says "result can be an integer, a float, or a string." Modern Python lets you express this clearly.
+#### 🎓 Expert Insight
+> Notice that `case "/"` includes extra logic (checking for division by zero). You can have multiple lines of code in each case block—just keep them indented. Also notice the type hint `int | float | str` on `result`—this is a **union type** that says "result can be an integer, a float, or a string." Modern Python lets you express this clearly.
 
 **Your job when reviewing this code:**
 - Test all four operations: `+`, `-`, `*`, `/`
 - Test the division by zero case (change `num2` to `0`)
 - Test an unknown operation (change `operation` to `"%"`)
+
+#### 🤝 Practice Exercise
+
+> **Ask your AI**: "Create a match-case statement that converts numeric grades (1-5) to letter grades: 5='A', 4='B', 3='C', 2='D', 1='F'. Include type hints and handle invalid grades with the wildcard pattern. Then explain when match-case is preferable to if/elif for this scenario."
+
+**Expected Outcome**: You'll understand how match-case provides clearer structure for exact value matching compared to if/elif chains, and practice specification-writing for AI-generated code.
 
 ---
 

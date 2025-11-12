@@ -206,7 +206,7 @@ age, has_recommendation, has_health_clearance = 70, False, True
 
 Each level of indentation represents a deeper decision in the tree.
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 > In AI-native development, you don't memorize nesting patterns—you understand the decision logic you need, then ask your AI to structure it clearly. The key skill is **describing your multi-criteria logic** so AI can help you implement it correctly.
 
 ---
@@ -260,9 +260,6 @@ Multiplication Table (1 to 10):
 2. **Inner loop** (`col`): For EACH row, runs 10 times (columns 1-10)
 3. **Total iterations**: 10 × 10 = 100 calculations
 
-#### 💬 AI Colearning Prompt
-> "Trace through the first 3 iterations of both loops when size=3. What are the values of `row`, `col`, and `product` at each step?"
-
 **Key insight**: The inner loop **completes all its iterations** for each single iteration of the outer loop. Think of it like reading a book: for each page (outer loop), you read every line on that page (inner loop) before turning to the next page.
 
 ---
@@ -311,13 +308,6 @@ Final sum of positive numbers: 29
 ```
 
 **Pattern**: The loop visits **every** item, but the `if` statement controls **which** items get processed.
-
-#### 🚀 CoLearning Challenge
-
-Ask your AI Co-Teacher:
-> "Generate code that finds all even numbers in a list and stores them in a new list. Use a for loop with an if statement to filter even numbers. Include type hints and explain the filtering logic. **Use inline code without functions.**"
-
-**Expected Outcome**: You'll understand how to combine iteration with conditional filtering to build new collections.
 
 ---
 
@@ -394,9 +384,6 @@ Processing cart items:
 
 **Why this matters**: In real applications, you often need to validate prerequisites before running expensive or sensitive operations. The loop only executes when it's safe and appropriate to do so.
 
-#### 🎓 Instructor Commentary
-> In AI-native development, recognizing WHEN to nest structures is more important than memorizing HOW. Ask yourself: "Do I need to decide BEFORE repeating, or decide DURING repetition?" That question determines your structure.
-
 ---
 
 #### 🎓 Note: You Might See Functions in AI Responses
@@ -425,17 +412,11 @@ Imagine a simple grid-based game where you need to:
 2. For each cell, determine if it contains a special item
 3. Apply different rules based on the item type
 
-**Specification for AI**:
+#### 🤝 Practice Exercise
 
-#### 🚀 CoLearning Challenge
+> **Ask your AI**: "Create Python code that processes a 5×5 game grid. Each cell contains either 'empty', 'coin', or 'trap'. The code should: use nested loops to visit every cell; if the cell is 'coin', add 10 points; if 'trap', subtract 5 points; track the total score and print what's found at each position. Include type hints and detailed comments explaining the nesting structure. Use inline code without functions."
 
-Tell your AI Co-Teacher:
-> "Create Python code that processes a 5×5 game grid. Each cell contains either 'empty', 'coin', or 'trap'. The code should:
-> - Use nested loops to visit every cell
-> - If the cell is 'coin', add 10 points
-> - If the cell is 'trap', subtract 5 points
-> - Track the total score and print what's found at each position
-> Include type hints and detailed comments explaining the nesting structure. **Use inline code without functions.**"
+**Expected Outcome**: You'll understand how to combine nested loops with conditionals for two-dimensional data processing and practice specification-driven AI collaboration.
 
 **Your AI might generate something like**:
 
@@ -534,9 +515,6 @@ If you have nested loops with large ranges, consider:
 - Can you filter before looping?
 - Is there a more efficient algorithm?
 
-#### ✨ Teaching Tip
-> Use your AI to evaluate complexity: "Is this nested structure too complex? How could I simplify it while keeping the same logic?" Your AI can suggest refactoring patterns and explain the tradeoffs.
-
 **When nesting gets too deep**: If your code is indented more than 3-4 levels, consider:
 - Combining conditions with `and` / `or`
 - Using early `continue` or `break` to reduce nesting
@@ -561,9 +539,6 @@ for i in range(5):
 ```
 
 **Solution**: Configure your editor to use 4 spaces per indentation level (Python standard). Most modern editors handle this automatically.
-
-#### ✨ Teaching Tip
-> If you get `IndentationError`, paste your code into your AI and ask: "Why am I getting an Indentation error? Show me where the indentation is inconsistent."
 
 ### 2. Loop Variable Confusion in Nested Loops
 
@@ -653,9 +628,6 @@ for item in items:
 - Combine conditions with `and`/`or`
 - Use `continue` to skip early
 - Break complex logic into smaller, sequential steps
-
-#### 💬 AI Colearning Prompt
-> "Show me three ways to flatten this nested structure. Which approach is most readable and why?"
 
 ---
 
