@@ -415,6 +415,9 @@ gemini chat "Read GOTCHAS.md. I'm getting 'Too many connections' error."
 # AI immediately finds the async context manager solution
 ```
 
+#### 🎓 Expert Insight
+> Memory files (`.context/`, `CLAUDE.md`, project-specific docs) are the AI-native equivalent of developer documentation—except they're executable context, not just reference material. Teams that invest in memory files see 3-5x faster onboarding for both humans and AI because shared understanding is encoded, not assumed.
+
 ---
 
 ## Strategy 6: Example-Driven Context Engineering
@@ -945,6 +948,17 @@ Ask me for files as you need them. Don't assume."
 5. **Just-In-Time** ✓ - Let AI ask for Stripe SDK documentation when needed
 
 **All five strategies working together!**
+
+#### 💬 AI Colearning Prompt
+> "Of the five advanced strategies we covered (context curation, memory files, example-driven context, multi-agent architecture, just-in-time fetching), which one would have the biggest impact on your current project? Why?"
+
+---
+
+#### 🤝 Practice Exercise
+
+> **Ask your AI**: "We're starting a new feature that will require multiple AI sessions over several days. Design a memory file strategy that preserves context across sessions. What would you store, where would you store it, and how would you version it?"
+
+**Expected Outcome**: Your AI should propose a structured memory file system (`.context/feature-name.md` with decisions, trade-offs, open questions) with explicit versioning strategy and context refresh protocols.
 
 ---
 

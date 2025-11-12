@@ -126,8 +126,11 @@ When you work with an AI coding agent, these things take up space in the context
    - Any custom instructions you set
 
 **Important Insight:**
-Everything in the context window is "visible" to the AI.  
+Everything in the context window is "visible" to the AI.
 Anything outside the context window **doesn't exist** to the AI.
+
+#### 💬 AI Colearning Prompt
+> "What's the current size of our conversation's context window right now? Walk me through what's taking up space (conversation history, loaded files, system instructions). How close are we to hitting limits?"
 
 ---
 
@@ -274,6 +277,9 @@ Want to check if context is degrading? Try this:
 
 If the AI can't recall recent decisions, **context rot has started.**
 
+#### 🎓 Expert Insight
+> Professional AI developers don't fear context limits—they architect around them. The most effective pattern is treating context windows like scarce resources: load what you need when you need it, then release it. This mirrors how expert developers manage memory in resource-constrained environments.
+
 ---
 
 ## When to Worry About Context
@@ -382,6 +388,14 @@ Take a moment to think:
 **Question 2:** Can you explain context rot to someone else using the classroom analogy?
 
 **Question 3:** If you're working with an AI and it starts asking you to repeat information you already provided, what might be happening?
+
+---
+
+#### 🤝 Practice Exercise
+
+> **Ask your AI**: "We're starting a multi-file refactoring task. Design a context-loading strategy that keeps us under 50% context capacity throughout the workflow. Explain your reasoning."
+
+**Expected Outcome**: Your AI should propose a phased loading strategy (load architecture overview first, then specific files as needed) with explicit context management checkpoints.
 
 ---
 

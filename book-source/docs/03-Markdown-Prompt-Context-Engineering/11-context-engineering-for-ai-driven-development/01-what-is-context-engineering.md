@@ -202,6 +202,9 @@ def login(username: str, password: str) -> LoginResult:
 
 **This is the power of context engineering.**
 
+#### 💬 AI Colearning Prompt
+> "Explain the Karpathy Principle ('Prompt is program, context is RAM, AI is CPU') using an analogy from your own domain or work experience. How does this mental model change how you'd approach writing specifications?"
+
 ---
 
 ## Context Engineering vs Prompt Engineering
@@ -263,6 +266,9 @@ Quality AI Output = Perfect fit for your project
 ```
 
 **Result:** The AI generates tests that match your existing style automatically, because it has the right **context** and clear **prompts**.
+
+#### 🎓 Expert Insight
+> In AI-native development, most beginner frustration comes from treating AI like a search engine (minimal context) rather than a collaborative partner (rich context). The quality of your AI partnership is directly proportional to the quality of context you provide—not the cleverness of your prompt.
 
 ---
 
@@ -392,6 +398,14 @@ Before moving on, think about your own experience:
 **Question 2:** If you were teaching a new team member about your codebase, what files or documents would you show them first? (These are exactly what you should load as context for your AI!)
 
 **Question 3:** How is context engineering different from just writing better prompts? Can you explain it to someone in one sentence?
+
+---
+
+#### 🤝 Practice Exercise
+
+> **Ask your AI**: "Analyze my last 3 prompts to you. What context was missing that would have helped you give better responses? Suggest a context-loading strategy for our next collaboration."
+
+**Expected Outcome**: Your AI should identify specific gaps (missing project structure, unclear goals, insufficient examples) and suggest concrete context-loading techniques like progressive loading or memory files.
 
 ---
 

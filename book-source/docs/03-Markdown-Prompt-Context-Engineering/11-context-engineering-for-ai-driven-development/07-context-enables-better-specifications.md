@@ -253,6 +253,11 @@ Works Immediately
 
 ---
 
+#### 💬 AI Colearning Prompt
+> "Compare two approaches: (1) Write specification immediately, then load context to implement it, versus (2) Load context first, then write specification. What are the trade-offs? Which approach produces better specifications?"
+
+---
+
 ## The Key Insight: Context → Thinking → Specification
 
 Here's the pattern you MUST understand for AI-native development:
@@ -425,6 +430,9 @@ Testing: Pytest async fixtures, AAA pattern
 ```
 
 **Rich context enables real commitments.**
+
+#### 🎓 Expert Insight
+> The dirty secret of specification-driven development: most spec failures aren't writing failures—they're context failures. A specification written with rich context naturally includes constraints, dependencies, and edge cases. A specification written in a context vacuum requires endless clarification rounds. Context isn't preparation for specifications; context is the specification's foundation.
 
 ---
 
@@ -682,6 +690,14 @@ If **any** are true → Load more context before proceeding!
 ```
 
 **This shift is the essence of AI-native development.**
+
+---
+
+#### 🤝 Practice Exercise
+
+> **Ask your AI**: "We need to write a specification for adding search functionality to our application. Before we write any spec, what context should we load? Create a context loading checklist with rationale for each item."
+
+**Expected Outcome**: Your AI should generate a checklist like: (1) Current data model (understand what we're searching), (2) Existing UI patterns (consistency), (3) Performance requirements (scale), (4) Similar features in codebase (patterns), (5) User stories (requirements).
 
 ---
 

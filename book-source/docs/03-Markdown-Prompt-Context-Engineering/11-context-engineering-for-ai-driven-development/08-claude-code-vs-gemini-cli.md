@@ -141,6 +141,11 @@ Create a comprehensive architecture report:
 
 ---
 
+#### 💬 AI Colearning Prompt
+> "Based on the comparison between Claude Code and Gemini CLI, which tool would be better for your current project? Explain your reasoning in terms of context requirements, workflow patterns, and team dynamics."
+
+---
+
 ## Tool Strengths: When to Use Which
 
 ### Claude Code Strengths
@@ -407,6 +412,11 @@ claude "Build a payment processing feature with retry logic, idempotency, and we
 ```bash
 gemini chat --session audit "Read entire src/ directory (200 files). Find all security vulnerabilities and generate audit report."
 ```
+
+---
+
+#### 🎓 Expert Insight
+> Tool selection in AI-native development isn't about picking the "best" tool—it's about matching tool capabilities to context patterns. Claude Code excels with persistent, specification-driven workflows where context accumulates. Gemini CLI shines with exploratory, stateless interactions where fresh context matters more than continuity. Professional developers use both, switching based on the context engineering pattern the task requires.
 
 ---
 
@@ -784,6 +794,14 @@ Output as markdown report."
 | Find all API endpoints and document them | ? | Gemini CLI (pattern detection across files) |
 | Debug race condition in checkout flow | ? | Claude Code (complex logical reasoning) |
 | Audit codebase for security issues | ? | Gemini CLI (bulk scanning) |
+
+---
+
+#### 🤝 Practice Exercise
+
+> **Ask your AI**: "Analyze three recent tasks we worked on together. For each task, recommend whether Claude Code or Gemini CLI would have been the better tool choice based on the context patterns we used. Explain your reasoning."
+
+**Expected Outcome**: Your AI should evaluate each task's context characteristics (progressive vs fresh, persistent vs stateless, specification-driven vs exploratory) and make tool recommendations with clear justification.
 
 ---
 

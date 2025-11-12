@@ -481,6 +481,9 @@ Include section headers but leave content areas empty for me to fill."
 - Lose the checkpoint file (save it!)
 - Include obsolete or incorrect information
 
+#### 💬 AI Colearning Prompt
+> "Look at the files currently loaded in our context. Which ones could be compressed (summarized) versus which need full detail? Explain your compression strategy and what information you'd preserve."
+
 ---
 
 ## Strategy 2: Context Isolation
@@ -704,6 +707,9 @@ Day 1 Afternoon:
 Day 2:
 ├─ Reload checkpoints → Resume both features
 └─ Progressive Loading → Start new feature C (separate session)
+
+#### 🎓 Expert Insight
+> The most powerful context engineering skill is knowing what to exclude. Junior developers try to give AI everything; professionals give AI precisely what matters. This is the AI equivalent of the single responsibility principle—each context should have one clear purpose.
 ```
 
 **All three strategies working together!**
@@ -735,6 +741,14 @@ With isolated contexts:
 - ❌ AI confuses which task you're working on (poor isolation)
 - ❌ Checkpoint too vague to resume work from
 - ❌ Working on 3 tasks in one session and AI is confused
+
+---
+
+#### 🤝 Practice Exercise
+
+> **Ask your AI**: "We're debugging a performance issue in a 50-file codebase. Design a context isolation strategy that keeps context focused while still giving you enough information to identify the bottleneck."
+
+**Expected Outcome**: Your AI should propose a strategy like: start with performance profiling output (compressed), load only slow modules (isolated), use summaries for dependencies (compressed), with explicit context boundaries.
 
 ---
 

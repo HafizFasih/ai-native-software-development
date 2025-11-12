@@ -497,6 +497,11 @@ You: "Ugh, we decided this last week!"
 
 ---
 
+#### 💬 AI Colearning Prompt
+> "Review our recent work together. Which of the five context engineering mistakes (inconsistent loading, context overload, ignoring degradation, missing isolation, skipping validation) have we made? How could we avoid them in future sessions?"
+
+---
+
 ## Mistake #5: Mixing Unrelated Contexts
 
 ### The Mistake
@@ -679,6 +684,11 @@ claude "What are the 3 most important decisions or patterns we've established so
 
 ---
 
+#### 🎓 Expert Insight
+> Context validation is where AI-native development diverges from traditional development. In traditional dev, you validate outputs (does the code work?). In AI-native dev, you validate inputs too (is the context sufficient?). The 5-point context health check (fill level, relevance, recency, clarity, loading strategy) is as important as your test suite—it prevents AI hallucination before it happens.
+
+---
+
 ### The Weekly Context Review
 
 **Every week, reflect on your context practices:**
@@ -773,6 +783,14 @@ Date: [Today]"
 ```
 
 **This template prevents Mistakes #3 and #4.**
+
+---
+
+#### 🤝 Practice Exercise
+
+> **Ask your AI**: "Perform a 5-point context health check on our current session using the framework from this lesson: (1) Fill level, (2) Relevance, (3) Recency, (4) Clarity, (5) Loading strategy. Give each a score and suggest improvements."
+
+**Expected Outcome**: Your AI should evaluate each dimension (e.g., Fill level: 60%, relevant files loaded but some gaps; Relevance: 85%, mostly on-topic; Recency: 90%, recent work; Clarity: 75%, some ambiguous goals; Strategy: 80%, decent progressive loading) with specific improvement suggestions.
 
 ---
 
