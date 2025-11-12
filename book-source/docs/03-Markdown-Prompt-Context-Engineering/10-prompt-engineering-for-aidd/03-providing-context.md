@@ -124,6 +124,8 @@ What does the AI generate? It produces:
 
 The AIDD Context Stack has four layers, each answering a critical question the AI needs answered:
 
+![Diagram showing 4-layer context stack with vertical hierarchy: Layer 1 Project Context (What is this project?), Layer 2 Code Context (Where are we building?), Layer 3 Constraint Context (What rules apply?), Layer 4 Developer Context (Who is building and why?). Left bracket indicates complete context requires all 4 layers](/img/part-3/chapter-10/four-layer-context-stack.png)
+
 ### Layer 1: Project Context
 **The Question**: "What is this project, and what does it use?"
 

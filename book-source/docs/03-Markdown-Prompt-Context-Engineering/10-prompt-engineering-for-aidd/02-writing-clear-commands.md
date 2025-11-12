@@ -247,6 +247,8 @@ Strong commands follow a simple, repeatable structure:
 [VERB] + [TARGET] + [DESIRED OUTCOME]
 ```
 
+![Diagram showing command structure formula with three components (Verb, Target, Desired Outcome) connected by plus signs, with arrow pointing to concrete example: Create + Python function + validates email with regex](/img/part-3/chapter-10/command-structure-formula.png)
+
 Let's break this down with real examples:
 
 ### Pattern: [Verb] + [Target] + [Desired Outcome]

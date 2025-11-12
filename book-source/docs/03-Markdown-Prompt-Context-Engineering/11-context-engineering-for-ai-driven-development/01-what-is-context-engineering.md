@@ -211,6 +211,8 @@ def login(username: str, password: str) -> LoginResult:
 
 You learned prompt engineering in Chapter 10. Now let's see how context engineering complements it.
 
+![Layered foundation diagram showing relationship between context engineering (bottom layer: The Foundation, What AI Knows), prompt engineering (middle layer: The Instructions, What You Ask), with arrows pointing upward to quality AI output (top layer: Project-Perfect Code). Emphasizes context as strategic foundation and prompts as tactical instructions](/img/part-3/chapter-11/context-vs-prompt-engineering.png)
+
 ### Quick Comparison
 
 | Aspect | Prompt Engineering | Context Engineering |

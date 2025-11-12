@@ -62,6 +62,8 @@ This lesson teaches you to think like a software architect working with a builde
 
 **Definition**: Implementation logic is the explicit, step-by-step *how* you want a feature built—not just the *what*. It's numbered instructions that guide AI through your architectural decisions.
 
+<!--![Split-screen comparison showing requirements (WHAT) on left with single statement "Create a user registration system" versus implementation logic (HOW) on right with 5 numbered steps: validate email, check database, hash password, create record, return object. Arrow between sides shows transformation from vague to specific](/img/part-3/chapter-10/requirements-vs-logic-split-screen.png)-->
+
 Think of the difference this way:
 
 **Vague Requirement** (what many developers write):

@@ -66,6 +66,8 @@ The fix is a lightweight, repeatable checklist you apply every time. It keeps sp
 
 Use this sequence for every AI-generated snippet, file, or PR:
 
+![Horizontal process flow diagram showing 5-step validation checklist: Step 1 Read First (Sanity check), Step 2 Check Secrets (No credentials), Step 3 Check Issues (Safety and style), Step 4 Test It (Prove behavior), Step 5 Compare to Spec (Verify alignment). Arrows connect steps showing sequential workflow](/img/part-3/chapter-10/five-step-validation-checklist.png)
+
 #### 🎓 Expert Insight
 
 > This 5-step checklist embodies the "Validation-First" principle from the constitution. You're not just checking for bugs—you're taking professional responsibility for every line that enters your codebase. AI generates fast; you validate carefully. This balance is what makes AI-native development both fast AND safe.

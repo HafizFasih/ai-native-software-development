@@ -67,6 +67,8 @@ Think of these six components as **tools in your toolbox**:
 - 🔨 You don't use all tools for every job
 - 🪛 Knowing which tool to use when = expertise
 
+<!--![Grid of six AIDD context components in 3x2 layout: 1 Model Selection (Which AI tool?), 2 Development Tools (Code access), 3 Knowledge & Memory (What AI remembers), 4 Audio/Speech (Not for coding - de-emphasized), 5 Guardrails (Quality standards), 6 Orchestration (Workflow coordination). Component diagram shows strategic building blocks of context engineering](/img/part-3/chapter-11/six-components-aidd-context.png)-->
+
 **The Six Components:**
 1. **Model Selection** - Which AI tool for which task?
 2. **Development Tools** - How does AI access your code?

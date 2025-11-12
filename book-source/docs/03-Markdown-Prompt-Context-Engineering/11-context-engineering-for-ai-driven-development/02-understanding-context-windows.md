@@ -184,10 +184,12 @@ This is the most important concept in this lesson.
 
 **Context rot** is the gradual degradation of AI performance as the context window fills up.
 
+![Three-stage progression diagram showing context window degradation: Stage 1 Healthy (20% full: fast, accurate, remembers all), Stage 2 Degrading (60% full: slower, some errors, minor inconsistencies), Stage 3 Rot (90% full: very slow, forgets, major problems). Arrows show progression from healthy to critical state](/img/part-3/chapter-11/context-window-fill-states.png)
+
 **The Pattern:**
 
 ```
-Session Start (Empty Context) 
+Session Start (Empty Context)
         ↓
     [20% Full]
     ✓ Perfect performance

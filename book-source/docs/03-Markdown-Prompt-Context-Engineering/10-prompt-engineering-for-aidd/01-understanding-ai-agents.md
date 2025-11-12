@@ -141,6 +141,7 @@ In practical terms:
 
 > **Explore with your AI**: "I understand that context windows are like short-term memory. Help me understand this through an analogy: if you're like a contractor, what's the equivalent of 'showing you blueprints' versus 'not showing blueprints' in our conversation right now?"
 
+![Diagram showing context window as a container holding conversation history and loaded files, with overflow indicator showing forgotten information outside the window boundary](/img/part-3/chapter-10/context-window-mental-model.png)
 
 **Concrete Example**:
 
