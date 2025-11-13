@@ -5,15 +5,11 @@ title: "Chapter 5: How It All Started — The Claude Code Phenomenon"
 
 # Chapter 5: How It All Started — The Claude Code Phenomenon
 
-You know *why* AI-driven development matters—and that it's happening right now, in 2025.But understanding transformation and experiencing it are two different things. 
+You know *why* AI-driven development matters—and that it's happening right now, in 2025. But understanding transformation and experiencing it are two different things. 
 
 This chapter introduces you to the first real tool you'll use: Claude Code. Not as abstract theory, but as a working development partner on your machine.
 
-Through five interconnected lessons—from origin story through installation, subagents, skills, and MCP integration - you'll move from passive understanding to active collaboration. You'll install Claude Code, set up simple collaborative partners (subagents and skills), and integrate it with external systems (MCP).
-
 The goal is **not to build a supercomputer**, but to establish Claude Code as your **collaborative thinking partner** for everything.
-
-This is where theory becomes practice.
 
 ## What You'll Learn
 

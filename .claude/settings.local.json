@@ -6,5 +6,9 @@
     "deny": [],
     "ask": []
   },
-  "alwaysThinkingEnabled": false
+  "alwaysThinkingEnabled": false,
+  "disabledMcpjsonServers": [
+    "playwright",
+    "context7"
+  ]
 }

@@ -81,7 +81,7 @@ claude --version
 
 **Expected output** (version number may vary):
 ```
-2.0.30 (Claude Code)
+2.0.37 (Claude Code)
 ```
 
 **If you see the version number**: ✅ Installation successful! Skip to [Authentication](#authentication-connecting-claude-code-to-your-account).
@@ -120,10 +120,17 @@ claude
 
 **Expected output**:
 ```
-____
+ Claude Code can be used with your Claude subscription or billed based on API usage through your 
+ Console account.
+
+ Select login method:
+
+ ❯ 1. Claude account with subscription · Pro, Max, Team, or Enterprise
+
+   2. Anthropic Console account · API usage billing
 ```
 
-**What happens**: Your default browser opens to the Claude.ai authentication page.
+Select Option 1. **What happens**: Your default browser opens to the Claude.ai authentication page.
 
 **Step 2: Log In to Claude.ai**
 
@@ -136,9 +143,8 @@ ____
 Return to your terminal. You should see:
 
 ```
-✓ Successfully authenticated with Claude.ai
-✓ API key stored securely
-You're ready to use Claude Code!
+Logged in as mr.abc@gmail.com
+Login successful. Press Enter to continue
 ```
 
 **Step 4: Test Your Setup**
@@ -156,37 +162,6 @@ claude "Hello! Can you confirm Claude Code is working?"
 > **Ask your AI**: "I just installed Claude Code. Create a simple 'Hello World' workflow that: (a) shows me Claude can read a file, (b) proposes a small change, (c) explains what it did. Use a safe test file."
 
 **Expected Outcome**: Confidence that Claude Code can read, propose changes, and explain actions—plus understanding of the approval workflow.
-
----
-
-## If Installation or Authentication Fails
-
-**Most common issues and quick fixes:**
-
-**"command not found" after npm install**:
-- Close and reopen your terminal
-- Or: `export PATH="$(npm config get prefix)/bin:$PATH"`
-
-**Browser doesn't open for authentication**:
-- Check your internet connection
-- Try again with `[command to authenticate - phase 2 will confirm correct syntax]`
-
-**Not sure what went wrong?**:
-- Check official docs: https://docs.claude.com/en/docs/claude-code/troubleshooting
-- Or ask your AI pair programmer for help debugging the error message
-
----
-
-## Pause and Reflect: You've Crossed the Bridge
-
-**If your installation and authentication succeeded**: Take a moment to appreciate what you've accomplished. Claude Code is now installed and ready to assist you. You've moved from theory to practice.
-
-**Reflection Questions**:
-- Which installation method did you choose, and why?
-- Did you encounter any issues? If so, which troubleshooting steps helped?
-- How does it feel to have an AI assistant accessible directly from your terminal?
-
-**If you're still troubleshooting**: Don't get discouraged. Installation challenges are normal, especially across different platforms and environments. Work through the troubleshooting section systematically, and don't hesitate to seek help from the community resources listed above.
 
 ---
 
@@ -218,31 +193,15 @@ Before moving forward, let's address important security considerations:
 
 Use Claude Code for this activity (preferred, since you just installed it). If you already have another AI companion tool set up (e.g., ChatGPT web, Gemini CLI), you may use that instead—the prompts are the same.
 
-### Prompt 1: Installation Troubleshooting
+### Prompt 1: Security Boundaries
 
 ```
-I'm trying to install Claude Code on [Windows / macOS / Linux] and I'm stuck at [describe where you're stuck]. Walk me through troubleshooting step-by-step. What should I check FIRST? What's the most common cause of this issue? Give me 3-5 diagnostic commands I can run to figure out what's wrong.
-```
-
-**Expected outcome:** Step-by-step troubleshooting guidance for installation issues
-
-### Prompt 2: Authentication Setup
-
-```
-I successfully installed Claude Code but I'm confused about authentication. I have [Claude.ai account / Claude Console account / both / neither]. Which authentication method should I use? Walk me through the exact steps, including where to find my credentials and what to paste where. Be very specific.
-```
-
-**Expected outcome:** Crystal-clear authentication instructions for your specific situation
-
-### Prompt 3: Security Boundaries
-
-```
-The lesson mentions 'security considerations' like file access and command execution. I'm nervous about this. Help me set up safe boundaries: What directories should I AVOID running Claude Code in? What commands should I NEVER approve? Create a 'safety checklist' I can follow until I'm more comfortable.
+I have installed Claude Code - can you share 'security considerations' like file access and command execution. I'm nervous about this. Help me set up safe boundaries: What directories should I AVOID running Claude Code in? What commands should I NEVER approve? Create a 'safety checklist' I can follow until I'm more comfortable.
 ```
 
 **Expected outcome:** Practical safety boundaries and approval criteria
 
-### Prompt 4: First Test Commands
+### Prompt 2: First Test Commands
 
 ```
 I completed installation successfully! Now I want to test it with a simple, safe first command. Give me 3-5 'Hello World' style prompts I can try RIGHT NOW that will: (a) show me Claude Code works, (b) won't break anything, (c) help me understand what it can do. Include expected outputs so I know if it's working correctly.

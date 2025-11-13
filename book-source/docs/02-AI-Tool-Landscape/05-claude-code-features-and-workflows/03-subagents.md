@@ -5,9 +5,9 @@ title: "Understanding and Using Subagents"
 
 # Understanding and Using Subagents
 
-## The Problem: Context Pollution and Specialization
-
 You've installed Claude Code and run your first commands. But as you use it more, you'll encounter a common challenge: **context pollution**.
+
+## The Problem: Context Pollution and Specialization
 
 Imagine this scenario: You're working on a Python project. You ask Claude Code to help debug a function, then to review your code for style issues, then to generate documentation, then to suggest performance optimizations. By the time you're on your fifth request, Claude Code's context includes all your previous conversations—debugging details, style discussions, documentation drafts. The conversation has become cluttered.
 
