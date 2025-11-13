@@ -1,387 +1,319 @@
 ---
-description: Intelligently design courses from book content or raw ideas - generates database-ready Python files with compelling copy
-argument-hint: [course-code] [description or "parts X-Y"]
+description: Intelligence-driven course designer using LoopFlow principles. Reads constitution + book content to generate compelling, database-ready courses automatically. Minimal questions, maximum intelligence.
+argument-hint: [course-code] [book-parts OR topic-description]
 ---
 
-# /course-designer
+# /course-designer: Intelligence-Driven Course Design
 
-## Purpose
-Design compelling, constitution-aligned courses from book content OR raw ideas. Generates database-ready Python files with professionally crafted copy using advanced copywriting techniques. Perfect for both published content and future course planning.
+**Purpose**: Generate compelling, constitution-aligned course outlines from book content OR raw ideas using **vertical intelligence** (constitution + book structure + copywriting frameworks). Goal-oriented, context-adaptive, and database-ready.
 
-## Contract
+**Intelligence Sources**:
+- Constitution: Nine Pillars, AI Development Spectrum, target audience, 10x-99x multiplier
+- Book Content: Chapter index, part READMEs, lesson structures
+- Copywriting Frameworks: AIDA, PAS, transformation narratives
+- Domain Context: Existing course patterns, market positioning
 
-**Inputs:**
-- `course_code` — Course code (e.g., "AI-400")
-- `description` — Either:
-  - Book reference: "parts 1-3" or "chapters 5-8"
-  - Raw ideas: Multi-line description of topics/concepts
-  - Context reference: "@context/folder" for external materials
+**Adaptive Workflow**: 0-3 targeted questions based on what intelligence can't derive.
 
-**Outputs:**
-Single Python file at `docs/course_outlines/py_format/{course_code}_{sanitized_name}.py` with:
-- Native Python types (lists, dicts - not JSON strings)
-- Compelling copywriting (hook → value prop → transformation)
-- Database-ready structure
-- Helper functions for easy insertion
+## User Input
 
-**Status Output:** `STATUS=WROTE PATH=docs/course_outlines/py_format/{filename}.py`
-
----
-
-## Instructions
-
-### Phase 1: Intelligence Gathering
-
-#### 1.1 Load Constitution & Copywriting Intelligence
-
-**Read Constitution:**
-```
-.specify/memory/constitution.md (v3.1.2)
+```text
+$ARGUMENTS
 ```
 
-Extract:
-- ✅ Nine Pillars framework
-- ✅ AI Development Spectrum (Assisted → Driven → Native)
-- ✅ "Specs Are the New Syntax" philosophy
-- ✅ Co-learning partnership principles
-- ✅ Target audience tiers (beginner/intermediate/advanced/professional)
-- ✅ 10x-99x multiplier mindset
+---
 
-**Activate Copywriting Intelligence:**
+## CORE PHILOSOPHY: INTELLIGENCE-DRIVEN COURSE DESIGN
 
-Use proven copywriting frameworks:
+**From**: Manual course planning with 20+ decisions
+**To**: "Design AI-400 from parts 10-13" → Compelling, ready-to-use course
 
-1. **AIDA Framework** (Attention → Interest → Desire → Action)
-   - Attention: Bold paradigm shift statement
-   - Interest: Concrete problem → solution
-   - Desire: Transformation narrative (before → after)
-   - Action: Call to mastery
+### The LoopFlow Approach
 
-2. **PAS Framework** (Problem → Agitate → Solve)
-   - Problem: Current broken state
-   - Agitate: Why it matters NOW
-   - Solve: This course as solution
+1. **User states GOAL**: "Design AI-400 from parts 10-13" OR "Create course on Docker/K8s/DAPR"
+2. **AI reads AUTHORITATIVE SOURCES**: Constitution, book content, existing courses
+3. **AI derives INTELLIGENCE**: Target audience, complexity level, tools covered, module structure
+4. **AI asks TARGETED QUESTIONS**: Only what's genuinely ambiguous (0-3 questions max)
+5. **AI generates OUTPUT**: Database-ready Python file with compelling copy
 
-3. **Storytelling Arc**
-   - Setup: Old world (line-by-line coding)
-   - Conflict: Paradigm shift (AI era demands new skills)
-   - Resolution: New world (AI-native mastery)
-
-4. **Transformation Language**
-   - From "coder" → to "architect/orchestrator"
-   - From "typing syntax" → to "specifying intent"
-   - From "debugging code" → to "validating systems"
-   - From "tool user" → to "AI co-creator"
-
-5. **Power Words & Phrases**
-   - Paradigm shift, revolution, breakthrough
-   - Master, architect, orchestrate, build
-   - Production-ready, professional-grade
-   - Autonomous, intelligent, agentic
-   - 10x-99x multiplier, exponential growth
-
-#### 1.2 Discover Content Source
-
-**If book reference (e.g., "parts 1-3"):**
-- Use Glob to find chapters in `book-source/docs/`
-- Read part-level README files
-- Extract chapter titles and learning objectives
-- Identify tools, technologies, patterns covered
-
-**If raw ideas (multi-line description):**
-- Parse topics/concepts from user description
-- Identify tools mentioned (Claude Code, Docker, Kubernetes, DAPR, etc.)
-- Determine complexity level from topics
-- Cross-reference with book content if available
-
-**If context reference (e.g., "@context/cloud/"):**
-- Read files from specified context folder
-- Extract key concepts, architectures, patterns
-- Integrate with book content where overlap exists
-
-**Content Synthesis:**
-- Map topics to Nine Pillars
-- Determine AI Development Spectrum stage (Assisted/Driven/Native)
-- Identify prerequisites
-- Note which content exists vs. planned
-
-#### 1.3 Determine Course Level
-
-Derive course code tier from complexity:
-- **AI-100 series** (Beginner): Parts 1-3, foundational AI-native thinking
-- **AI-200 series** (Intermediate/Advanced): Parts 4-8, SDD, advanced Python
-- **AI-300 series** (Professional): Parts 9-13, production agentic AI
-- **AI-400 series** (Infrastructure): Cloud-native to agent-native, Docker/K8s/DAPR
+**Why This Works**:
+- ✅ Intelligence-driven: Constitution eliminates guesswork
+- ✅ Context-aware: Book structure informs modules automatically
+- ✅ Compelling copy: Copywriting frameworks built-in
+- ✅ Database-ready: Native Python types, no manual conversion
 
 ---
 
-### Phase 2: Intelligent Course Design with Compelling Copy
+## WORKFLOW PHASES
 
-#### 2.1 Generate Course Metadata
+### PHASE 0: Intelligent Context Discovery
 
-**course_code**: User-provided or derived (AI-100/200/300/400)
+**Automatic Intelligence Gathering** (NO user interaction):
 
-**course_name**: Synthesize from:
-- Primary technology/domain
-- Key transformation (e.g., "Cloud Native to Agent Native")
-- Constitution alignment
+1. **Read Constitution** (`.specify/memory/constitution.md`):
+   - Nine Pillars framework
+   - AI Development Spectrum (Assisted → Driven → Native)
+   - "Specs Are the New Syntax" philosophy
+   - Co-learning partnership principles
+   - Target audience tiers
+   - 10x-99x multiplier mindset
 
-Format: "{Primary Tech}: {Transformation/Focus}"
+2. **Detect Content Source** (from user input):
+   - **Pattern 1**: "parts X-Y" → Book content (Glob chapters in `book-source/docs/`)
+   - **Pattern 2**: Multi-line description → Raw ideas (parse topics/tools)
+   - **Pattern 3**: "@context/path" → Context files (read specified directory)
+
+3. **Load Book Structure** (if applicable):
+   - Chapter index (`specs/book/chapter-index.md`)
+   - Part-level READMEs
+   - Chapter titles and learning objectives
+   - Tools/technologies covered
+
+4. **Derive Course Intelligence** (automatic):
+   ```python
+   # From course code
+   if course_code.startswith("AI-100"):
+       level = "beginner"
+       audience = "Aspiring (foundational)"
+       parts_range = [1, 2, 3]
+   elif course_code.startswith("AI-200"):
+       level = "intermediate"
+       audience = "Aspiring/Professional (intermediate)"
+       parts_range = [4, 5, 6, 7, 8]
+   elif course_code.startswith("AI-300"):
+       level = "professional"
+       audience = "Professional (production agentic AI)"
+       parts_range = [9, 10, 11, 12, 13]
+   elif course_code.startswith("AI-400"):
+       level = "infrastructure"
+       audience = "Professional (cloud-native to agent-native)"
+       parts_range = [10, 11, 12, 13]  # Infrastructure-focused
+
+   # From book content or topics
+   tools_detected = ["Claude Code", "Docker", "Kubernetes", "DAPR", "Python", etc.]
+   pillars_covered = [1, 2, 3, 6, 9]  # Which Nine Pillars
+   spectrum_stage = "AI-Native" or "Driven" or "Assisted"
+   ```
+
+5. **Load Copywriting Intelligence**:
+   - AIDA Framework (Attention → Interest → Desire → Action)
+   - PAS Framework (Problem → Agitate → Solve)
+   - Transformation language patterns
+   - Power words library
+
+**Adaptive Questions** (0-3 questions, ONLY if genuinely ambiguous):
+- IF course name unclear → Ask: "Course title: [suggestion] or custom?"
+- IF multiple valid module structures → Ask: "5 modules (depth) or 6 modules (breadth)?"
+- IF existing similar course → Ask: "Differentiate from AI-300 or complement it?"
+
+---
+
+### PHASE 1: Course Metadata Generation
+
+**Automatic Synthesis** (from intelligence):
+
+**course_code**: User-provided (validated: AI-100/200/300/400 format)
+
+**course_name**: Auto-generated formula:
+```
+{Primary Tech/Domain} + {Transformation Focus} + {Methodology}
+```
+
 Examples:
 - "AI-Driven Development with Python and Agentic AI"
-- "Cloud Native to Agent Native Infrastructure: Docker, Kubernetes, DAPR & Autonomous Computing"
+- "Cloud-Native AI — Learn Dapr, Docker & Kubernetes with AIDD"
 - "Specification-Driven Development: Building Software with AI Partners"
 
-**course_initials**: Extract meaningful acronym
-- Example: "CNTAN" for "Cloud Native to Agent Native"
-- Example: "AIDD-PAI" for "AI-Driven Development with Python and Agentic AI"
+**course_initials**: Extract meaningful acronym:
+- AI-Driven Development with Python and Agentic AI → "AIDD-PAI"
+- Cloud-Native AI → "CNAI"
+- Specification-Driven Development → "SDD"
 
-**created_by / updated_by**: Default to "db_admin"
+**course_description** (2-3 sentences):
+- Formula: [Hook with transformation] + [Tools to master] + [Outcome/who you become]
+- **Good**: "Build cloud-native infrastructure for intelligent agent systems. Using AI-Driven Development (AIDD), you'll learn Docker, Kubernetes, and Dapr to design and deploy production-ready AI agents with observability, scalability, and cloud-agnostic flexibility — laying the foundation for autonomous AI at scale."
+- **Bad**: "Learn about cloud technologies and containers." (too generic)
 
-#### 2.2 Craft Course Description (2-3 sentences, hook + value)
+---
 
-**Structure:**
-1. **Hook**: Bold claim or paradigm shift statement
-2. **Value**: What they'll master (tools + mindset)
-3. **Outcome**: Who they become (role transformation)
+### PHASE 2: Course Outcomes Generation (5-7 outcomes)
 
-**Copywriting Techniques:**
-- Lead with transformation, not topics
-- Use active voice and present tense
-- Emphasize AI-native methodology
-- Include specific tools/technologies
-- Connect to constitution principles
+**Automatic Structure** (Bloom's taxonomy progression):
 
-**Example (AI-400):**
+1. **Outcome 1**: Always AI-Native Mindset
+   ```
+   "Understand AI-native thinking: specs-first, validation-focused, co-learning partnership"
+   ```
+
+2. **Outcomes 2-3**: Tool/Tech Mastery (specific to course)
+   ```
+   "Master {primary tool} using {methodology} for {use case}"
+   "Partner with {AI tool} to {generate|design|orchestrate} {artifact}"
+   ```
+
+3. **Outcomes 4-5**: Pattern Application
+   ```
+   "Apply {SDD|AIDD|Pattern} to {specific task} using {tool}"
+   ```
+
+4. **Outcomes 6-7**: Production Skills (for AI-300/400)
+   ```
+   "Build production-ready {systems} with {features}"
+   "Architect autonomous {systems} that {self-organize|adapt|scale}"
+   ```
+
+**Copywriting Rules**:
+- ✅ Start with strong action verbs (Master, Build, Design, Architect, Apply, Implement)
+- ✅ Be specific about what they'll build
+- ✅ Connect to real-world production
+- ❌ Avoid "learn about", "understand basics", "explore"
+
+**Example (AI-400)**:
+```python
+[
+    "Apply Context Engineering to structure effective AI collaboration for infrastructure design",
+    "Partner with Claude Code to generate production-ready cloud configurations from specifications",
+    "Master Spec-Driven Development (SDD) to design infrastructure through clear intent, not manual YAML",
+    "Containerize AI applications with Docker using AIDD and SDD for multi-stage builds and optimization",
+    "Orchestrate agent systems on Kubernetes with AIDD and SDD using kubectl-ai and kagent",
+    "Implement Dapr Core and Dapr Workflows for cloud-agnostic state, pub/sub, and long-running processes",
+    "Build observable, scalable AI systems with OpenTelemetry, autoscaling, and automated CI/CD pipelines"
+]
 ```
-Transform from cloud-native to agent-native infrastructure. Master Docker, Kubernetes, and DAPR to build autonomous, self-organizing systems where AI agents orchestrate containers, manage workflows, and adapt to production demands. Learn the infrastructure patterns powering the next generation of AI-native applications.
-```
 
-#### 2.3 Extract Course Outcomes (5-7 outcomes, Bloom's taxonomy)
+---
 
-**Structure:** Start broad (Understand) → specific skills (Apply/Analyze) → mastery (Create)
+### PHASE 3: Long Description Generation (3-4 paragraphs)
 
-**Formula per outcome:**
-- Verb (Bloom's taxonomy: Understand/Apply/Analyze/Design/Build/Create)
-- Object (what they're learning)
-- Context (why it matters / how it connects)
-
-**Required Outcomes:**
-1. **AI-Native Mindset** (always first)
-   - "Understand AI-native thinking: specs-first, validation-focused, co-learning"
-2. **Tool/Tech Mastery** (2-3 outcomes)
-   - Specific to course (Claude Code, Docker, Python, etc.)
-3. **Pattern Application** (1-2 outcomes)
-   - SDD, AIDD, architecture patterns
-4. **Production Skills** (1-2 outcomes)
-   - Build/deploy/orchestrate real systems
-5. **Advanced Capability** (optional, for AI-300/400)
-   - Multi-agent, autonomous systems, infrastructure orchestration
-
-**Copywriting:**
-- Start with strong action verbs
-- Be specific about what they'll build
-- Connect to real-world production scenarios
-- Avoid generic phrases ("learn about", "understand basics")
-
-**Example Outcome (Good):**
-✅ "Build production-quality Docker containers orchestrated by AI agents using DAPR actors for autonomous scaling and self-healing"
-
-**Example Outcome (Bad):**
-❌ "Learn about Docker and containers"
-
-#### 2.4 Write Long Description (3-4 paragraphs, compelling narrative)
+**Automatic Narrative Structure**:
 
 **Paragraph 1: The Paradigm Shift (Hook + Problem)**
 
-Structure: "The era of X is over. The future isn't about Y; it's about Z."
-
-Copywriting techniques:
-- Bold opening statement (paradigm shift)
-- Contrast old vs. new world
-- Create urgency (why NOW matters)
-- Use emotional language (revolution, transformation)
-
-**Template:**
+Template:
 ```
-The era of [OLD PARADIGM] is over. The future isn't about [OLD SKILL];
-it's about [NEW CAPABILITY]. [COURSE FOCUS] represents [TRANSFORMATION TYPE],
-the fundamental shift from [OLD ROLE] to [NEW ROLE]. It's a [MOVEMENT/METHODOLOGY]
-that moves you from [OLD STATE] to [NEW STATE]—where you'll [NEW CAPABILITY],
-not just [OLD CAPABILITY]. This is how [DOMAIN] will be [DONE] for the next decade.
+The era of {OLD PARADIGM} is over. The future isn't about {OLD SKILL}; it's about {NEW CAPABILITY}.
+{Course Focus} {ACTION} you {NEW SKILL}, {WHERE/WHEN/HOW}. {METHODOLOGY} introduces {FRAMEWORK},
+moving you from {OLD ROLE} to {NEW ROLE}. This is how {DOMAIN} will be {DONE} for the next decade.
 ```
 
-**Example (AI-400):**
-```
-The era of static infrastructure is over. The future isn't about deploying
-containers; it's about orchestrating autonomous systems. Cloud Native to Agent
-Native represents the infrastructure revolution, the fundamental shift from
-"ops engineer" to "infrastructure architect." It's a methodology that moves you
-from "deploying services" to "designing self-organizing systems"—where you'll
-architect infrastructure that adapts, heals, and optimizes itself through AI agents.
-```
-
-**Paragraph 2: The Methodology (Solution + Framework)**
-
-Structure: Introduce framework, explain approach, emphasize uniqueness
-
-Copywriting techniques:
-- Name your methodology (AIDD, SDD, Agent-Native)
+Apply copywriting:
+- Bold opening ("era...is over")
+- Contrast (old vs new)
+- Urgency (why NOW)
 - Connect to constitution principles
-- Explain the learning approach (not just content)
-- Highlight AI partnership (co-learning)
 
-**Template:**
+**Paragraph 2: The Methodology (Solution + Approach)**
+
+Template:
 ```
-This course introduces [METHODOLOGY], the [DESCRIPTION]. You'll learn [FRAMEWORK]
-following [APPROACH]. Using [CONSTITUTION PRINCIPLE], you'll master [SKILL]
-through [METHOD]. This isn't about [OLD WAY]; it's about [NEW WAY].
+In this course, you'll learn {PRIMARY SKILL} using {METHODOLOGY}. {APPROACH DESCRIPTION}.
+Each step is {CHARACTERISTIC}. {AI PARTNERSHIP STATEMENT}. {CONSTITUTION ALIGNMENT}.
 ```
 
-**Paragraph 3: The Journey (Learning Path + Experience)**
+Apply copywriting:
+- Name methodology (AIDD, SDD, AI-Native)
+- Explain learning approach (not just content list)
+- Emphasize AI partnership
+- Connect to Nine Pillars
 
-Structure: Walk through modules, emphasize progression, show breadth
+**Paragraph 3: The Journey (Module Walk-Through)**
 
-Copywriting techniques:
-- Use journey language ("start with", "then", "finally")
-- Name 3-5 key stops (modules/topics)
-- Show progression (foundations → advanced)
+Template:
+```
+You'll {MODULE 1 ACTION}, {MODULE 1 OUTCOME}. Then {MODULE 2 ACTION}, {MODULE 2 SPECIFIC}.
+{MODULE 3 ACTION} to {MODULE 3 RESULT}. Finally, you'll {MODULE 4-5 ACTION}, {ADVANCED CAPABILITY}.
+{TOOLS LIST}. {HANDS-ON EMPHASIS}.
+```
+
+Apply copywriting:
+- Journey language ("start", "then", "finally")
+- Name 3-5 key milestones
+- Mention specific tools
 - Emphasize hands-on building
-- Mention specific tools/technologies
-
-**Template:**
-```
-You'll start with [MODULE 1 FOCUS], building [FOUNDATION]. Then [MODULE 2 FOCUS],
-where you'll [SPECIFIC SKILL]. You'll [MODULE 3 FOCUS] to [OUTCOME]. Finally,
-you'll [MODULE 4-5 FOCUS], [ADVANCED CAPABILITY]. Throughout, you'll [CO-LEARNING
-ELEMENT] with [AI TOOL] to [COLLABORATION PATTERN].
-```
 
 **Paragraph 4: The Transformation (Outcome + Call to Action)**
 
-Structure: "This isn't just X; it's Y." + who they become + economic opportunity
+Template:
+```
+This {isn't just|turns} {SURFACE LEVEL} {into|—it's} {DEEPER LEVEL}. By the end, you'll
+{NEW CAPABILITY}, not just {OLD CAPABILITY}. {MULTIPLIER STATEMENT}. {WHO YOU BECOME}.
+```
 
-Copywriting techniques:
-- Use contrast ("not just tools, but mindset")
-- Paint the future state
+Apply copywriting:
+- "Not just X; it's Y" contrast
+- Paint future state
 - Connect to 10x-99x multiplier
 - End with empowerment
 
-**Template:**
+---
+
+### PHASE 4: Learning Modules Generation (4-6 modules)
+
+**Automatic Module Structure** (from book content or topics):
+
+**Module Naming Convention**:
 ```
-This isn't just [SURFACE LEVEL]; it's [DEEPER LEVEL]. By the end, you won't just
-[OLD CAPABILITY]—you'll [NEW CAPABILITY]. You'll understand [MINDSET SHIFT] and
-[ECONOMIC OPPORTUNITY]. This is the [MULTIPLIER] advantage: [OUTCOME].
-```
-
-#### 2.5 Design Learning Modules (4-6 modules, cohesive narrative)
-
-**Module Structure:**
-
-Each module needs:
-- `module_id`: Sequential (1-6)
-- `module_name`: Format: "Theme: Specific Focus"
-- `module_description`: 2-3 sentences (purpose → skills → value)
-
-**Module Naming Convention:**
-```
-[Number]. [Conceptual Theme]: [Specific Technology/Focus]
+{Conceptual Theme}: {Specific Technology/Focus}
 ```
 
 Examples:
-- "Foundations: The AI-Native Infrastructure Paradigm"
-- "Container Orchestration: Docker with AI-Driven Development"
-- "Autonomous Systems: DAPR Actors for Agent Coordination"
+- "Foundations: Cloud Native Infrastructure for AI"
+- "Docker Fundamentals: Containerizing AI Applications"
+- "Kubernetes Basics: Orchestrating Agent Systems"
+- "DAPR Core: Cloud-Agnostic Abstractions"
+- "Production Operations: Observability, Scaling & CI/CD"
 
-**Module Description Formula:**
-1. **Sentence 1**: What this module establishes (purpose/foundation)
-2. **Sentence 2**: Specific skills/tools covered
-3. **Sentence 3**: Connection to next module or constitution principle
+**Module Description Formula** (2-3 sentences):
+1. **Purpose**: What this module establishes
+2. **Skills**: Specific tools/patterns covered
+3. **Connection**: Link to next module or constitution
 
-**Copywriting:**
-- Start each module with purpose (why this matters)
-- Use specific tool/tech names
-- Show progression across modules
-- Connect to Nine Pillars where relevant
-- Avoid generic language
-
-**Module Progression Patterns:**
-
-For AI-100/200 (Beginner/Intermediate):
-1. Foundations (paradigm/mindset)
-2. Tools Mastery (primary tool)
-3. Communication (prompt/context engineering)
-4. Core Development (language/framework)
-5. Integration/Application (putting it together)
-
-For AI-300/400 (Professional/Infrastructure):
-1. Paradigm Shift (old → new)
-2. Foundation Technology (Docker, Kubernetes, etc.)
-3. AI-Native Patterns (SDD, AIDD application)
-4. Orchestration Layer (DAPR, agents, coordination)
-5. Production Deployment (autonomous, self-healing)
-
-**Example Module (AI-400):**
+**Automatic Module Assignment** (from book chapters):
 ```python
-{
-    "module_id": 3,
-    "module_name": "Specification-Driven Containers: Docker with AIDD & SDD",
-    "module_description": "Master Docker through specification-first development,
-    where AI agents generate Dockerfiles, compose configurations, and deployment
-    scripts from your intent. Learn container patterns for AI-native applications,
-    including multi-stage builds, layer optimization, and agent-friendly networking.
-    This module bridges traditional DevOps with AI-driven infrastructure."
-}
+# Group chapters into modules (4-6 chapters per module typically)
+if parts == [1, 2, 3]:
+    modules = [
+        {"chapters": [1-4], "theme": "Foundations"},
+        {"chapters": [5-8], "theme": "Tools Mastery"},
+        {"chapters": [9-11], "theme": "Communication"},
+    ]
+elif parts == [9, 10, 11, 12, 13]:
+    modules = [
+        {"chapters": [30-33], "theme": "Agentic Foundations"},
+        {"chapters": [34-38], "theme": "Agents SDK"},
+        {"chapters": [39-43], "theme": "Multi-Agent Systems"},
+        {"chapters": [44-48], "theme": "Production Deployment"},
+    ]
 ```
 
-#### 2.6 Identify Prerequisites
-
-Extract from:
-- Constitution (general prerequisites)
-- Course level (technical prerequisites)
-- Tools/tech mentioned (required background)
-
-Format as Python list (empty if none):
-```python
-"pre_requisite": []  # For foundational courses
-"pre_requisite": ["Basic Python knowledge", "Familiarity with command line"]
-"pre_requisite": ["AI-300 or equivalent", "Docker basics", "Cloud platforms experience"]
-```
-
-#### 2.7 Media Link
-
-Default: `"https://i.postimg.cc/XYLz3tSB/course-2.webp"`
+**Copywriting for Modules**:
+- ✅ Start with purpose (why this matters)
+- ✅ Use specific tool/tech names
+- ✅ Show progression
+- ❌ Avoid generic language
 
 ---
 
-### Phase 3: Python File Generation
+### PHASE 5: Python File Generation
 
-#### 3.1 Generate Filename
+**Automatic File Creation**:
 
-Format: `{course_code}_{sanitized_course_name}.py`
+**Filename**: `{course_code}_{sanitized_course_name}.py`
 
-Sanitization rules:
+Sanitization:
 - Lowercase
-- Replace spaces with hyphens
-- Remove special characters (keep alphanumeric and hyphens)
-- Max 80 characters total
+- Spaces → hyphens
+- Remove special chars
+- Max 80 chars
 
-Examples:
-- `AI-400_cloud-native-to-agent-native-infrastructure.py`
-- `AI-300_ai-driven-development-python-agentic-ai.py`
-
-#### 3.2 Write Python File
-
-**File Structure:**
+**File Structure** (database-ready):
 
 ```python
 """
 Course: {course_name}
 Code: {course_code}
 Generated: {ISO timestamp}
-
-Database-ready course definition.
-Constitution: v3.1.2
+Constitution: v3.1.3
 """
 
 from datetime import datetime
@@ -394,32 +326,48 @@ COURSE_NAME = "{course_name}"
 COURSE_INITIALS = "{course_initials}"
 
 
-# Course definition (database-ready)
+# Course definition (database-ready with native Python types)
 course: Dict[str, Any] = {
-    "course_code": "{course_code}",
-    "course_name": "{course_name}",
-    "course_initials": "{course_initials}",
-    "course_description": """{multi-line description}""",
+    "course_code": COURSE_CODE,
+    "course_name": COURSE_NAME,
+    "course_initials": COURSE_INITIALS,
+    "course_description": """{compelling 2-3 sentence description}""",
+    "is_active": True,
+    "is_offered_now": True,
     "created_by": "db_admin",
     "updated_by": "db_admin",
-    "course_outcomes": [  # Native Python list
-        "Outcome 1",
-        "Outcome 2",
-        # ... 5-7 outcomes
+    "order": 1,  # Derived from course level
+    "program_id": 1,
+
+    # Native Python lists (NOT JSON strings)
+    "course_outcomes": [
+        "Outcome 1: AI-native mindset",
+        "Outcome 2: Tool mastery",
+        # ... 5-7 total
     ],
-    "long_description": """{multi-paragraph compelling narrative}""",
+
+    "long_description": """{
+        4-paragraph compelling narrative with:
+        - Paragraph 1: Paradigm shift hook
+        - Paragraph 2: Methodology introduction
+        - Paragraph 3: Learning journey
+        - Paragraph 4: Transformation outcome
+    }""",
+
     "learning_modules": [  # Native Python list of dicts
         {
             "module_id": 1,
-            "module_name": "Module Name",
-            "module_description": "Description"
+            "module_name": "Theme: Specific Focus",
+            "module_description": "Purpose. Skills covered. Connection."
         },
         # ... 4-6 modules
     ],
+
     "pre_requisite": [  # Native Python list (empty if none)
         "Prerequisite 1",
-        "Prerequisite 2"
+        # or []
     ],
+
     "media_link": "https://i.postimg.cc/XYLz3tSB/course-2.webp"
 }
 
@@ -434,185 +382,258 @@ def get_course_code() -> str:
     return course["course_code"]
 
 
-def get_course_name() -> str:
-    """Return course name."""
-    return course["course_name"]
-
-
-def get_course_outcomes() -> List[str]:
+def get_outcomes() -> List[str]:
     """Return list of course learning outcomes."""
     return course["course_outcomes"].copy()
 
 
-def get_learning_modules() -> List[Dict[str, Any]]:
+def get_modules() -> List[Dict[str, Any]]:
     """Return list of learning modules."""
     return [m.copy() for m in course["learning_modules"]]
 
 
-def get_prerequisites() -> List[str]:
-    """Return list of prerequisites."""
-    return course["pre_requisite"].copy()
-
-
-def validate_course() -> Dict[str, bool]:
-    """
-    Validate course data structure.
-
-    Returns:
-        Dictionary with validation results
-    """
+def validate() -> Dict[str, bool]:
+    """Validate course data structure."""
     return {
         "has_code": bool(course.get("course_code")),
         "has_name": bool(course.get("course_name")),
-        "has_outcomes": len(course.get("course_outcomes", [])) >= 4,
-        "has_modules": len(course.get("learning_modules", [])) >= 4,
-        "outcomes_are_list": isinstance(course.get("course_outcomes"), list),
-        "modules_are_list": isinstance(course.get("learning_modules"), list),
+        "outcomes_count": len(course.get("course_outcomes", [])) >= 5,
+        "modules_count": 4 <= len(course.get("learning_modules", [])) <= 6,
+        "native_types": (
+            isinstance(course.get("course_outcomes"), list) and
+            isinstance(course.get("learning_modules"), list)
+        ),
     }
 
 
 if __name__ == "__main__":
     print(f"Course: {COURSE_NAME}")
     print(f"Code: {COURSE_CODE}")
-    print(f"Outcomes: {len(get_course_outcomes())} learning outcomes")
-    print(f"Modules: {len(get_learning_modules())} learning modules")
-    print(f"Prerequisites: {len(get_prerequisites())} items")
-    print("\nValidation:", validate_course())
-    print("\n✅ Course data ready for database insertion")
+    print(f"Outcomes: {len(get_outcomes())}")
+    print(f"Modules: {len(get_modules())}")
+    print(f"\nValidation: {validate()}")
+    print("\n✅ Database-ready Python course definition")
 ```
 
-**Critical Requirements:**
-- ✅ All string fields properly escaped (triple quotes for multi-line)
-- ✅ Native Python types (list, dict - NOT JSON strings)
+**Critical Requirements**:
+- ✅ Native Python types (list, dict — NOT JSON strings)
+- ✅ Triple-quoted strings for multi-line
 - ✅ Type hints on all functions
-- ✅ Proper indentation (4 spaces)
 - ✅ ISO timestamp in header
 - ✅ Constitution version reference
 
-#### 3.3 Write to File System
+---
 
-Path: `docs/course_outlines/py_format/{filename}.py`
+## COPYWRITING FRAMEWORKS (BUILT-IN)
 
-Validate:
-- File is syntactically valid Python
-- Can be imported/executed without errors
-- All data types are correct (list, dict, not string)
+### AIDA Framework
+- **Attention**: "The era of X is over"
+- **Interest**: Concrete tools and methodologies
+- **Desire**: Transformation narrative (10x-99x multiplier)
+- **Action**: "This is how software will be built"
 
-#### 3.4 Output Summary
+### PAS Framework
+- **Problem**: "The future isn't about X"
+- **Agitate**: "It's about Y" (new capability)
+- **Solve**: "This course teaches Z"
 
-Print:
-```
-✅ Course Designed: {course_name}
-   Code: {course_code}
-   Level: {AI-100/200/300/400}
-   Outcomes: {count} items
-   Modules: {count} items
-   Prerequisites: {count} items
+### Transformation Language
+- From "coder" → to "architect"
+- From "typing syntax" → to "specifying intent"
+- From "debugging" → to "validating systems"
+- From "tool user" → to "AI co-creator"
 
-📄 File: docs/course_outlines/py_format/{filename}.py
-
-STATUS=WROTE PATH=docs/course_outlines/py_format/{filename}.py
-```
+### Power Words (Auto-Applied)
+- Paradigm shift, revolution, transformation
+- Master, architect, orchestrate, build, design
+- Production-ready, professional-grade
+- Autonomous, intelligent, agentic
+- 10x-99x multiplier, exponential
 
 ---
 
-## Copywriting Quality Checklist
+## CONSTITUTION ALIGNMENT (AUTOMATIC)
 
-Before finalizing, verify:
-
-**Course Description:**
-- ✅ Starts with transformation, not topic list
-- ✅ Mentions specific tools/technologies
-- ✅ Uses active, present-tense language
-- ✅ 2-3 sentences max (concise and punchy)
-
-**Long Description:**
-- ✅ Paragraph 1: Bold paradigm shift statement
-- ✅ Paragraph 2: Methodology/framework introduced
-- ✅ Paragraph 3: Learning journey with 3-5 key points
-- ✅ Paragraph 4: "This isn't just X; it's Y" transformation
-- ✅ Uses power words (architect, orchestrate, autonomous, mastery)
-- ✅ Avoids passive voice and generic language
-
-**Course Outcomes:**
-- ✅ 5-7 outcomes (not more, not less)
-- ✅ Start with strong action verbs (Build, Design, Architect, Master)
-- ✅ Specific and measurable (not "learn about")
-- ✅ First outcome addresses AI-native mindset
-- ✅ Final outcome(s) emphasize production/mastery
-- ✅ Bloom's taxonomy progression
-
-**Learning Modules:**
-- ✅ 4-6 modules (cohesive narrative arc)
-- ✅ Each module name follows "Theme: Specific Focus" format
-- ✅ Descriptions are 2-3 sentences (purpose → skills → connection)
-- ✅ Progressive complexity across modules
-- ✅ Specific tool/tech names (not generic)
+Before generating, verify:
+- ✅ Nine Pillars referenced (explicitly or implicitly)
+- ✅ AI Development Spectrum stage clear
+- ✅ "Specs Are the New Syntax" emphasized
+- ✅ Co-learning partnership present
+- ✅ Transformation language (role shift)
+- ✅ 10x-99x multiplier mentioned
+- ✅ Validation-first for advanced courses
+- ✅ Production-ready for AI-300/400
 
 ---
 
-## Constitution Alignment Verification
+## USAGE EXAMPLES
 
-Before writing file, confirm:
-- ✅ Nine Pillars referenced or implied
-- ✅ AI Development Spectrum stage clear (Assisted/Driven/Native)
-- ✅ "Specs Are the New Syntax" philosophy present
-- ✅ Co-learning partnership emphasized
-- ✅ Transformation language (role shift: coder → architect)
-- ✅ 10x-99x multiplier mindset mentioned or implied
-- ✅ Validation/evals mindset (for advanced courses)
-- ✅ Production-ready emphasis (for AI-300/400)
+### Example 1: Book-Based Course (Parts Reference)
 
----
-
-## Example Usage
-
-### Example 1: Book-Based Course
 ```bash
 /course-designer AI-300 "parts 9-13"
 ```
 
-### Example 2: Raw Ideas Course
+**Intelligence Derived**:
+- Level: Professional (AI-300)
+- Parts: 9-13 (Agentic AI, production deployment)
+- Tools: Python, Agents SDK, multi-agent systems
+- Audience: Professional developers
+- Spectrum: AI-Native (50-99x multiplier)
+
+**Adaptive Questions**: 0-1
+- "Course title: 'AI-Driven Development with Python and Agentic AI' or custom?"
+
+---
+
+### Example 2: Topic-Based Course (Raw Description)
+
 ```bash
 /course-designer AI-400 """
-Docker with SDD & AIDD
-Kubernetes orchestration
-DAPR for agent coordination
-DAPR Actors for autonomous systems
-DAPR Workflow for agent orchestration
+Docker containerization with SDD
+Kubernetes orchestration with kubectl-ai
+DAPR for cloud-agnostic agent systems
+DAPR Workflows for long-running processes
+Production observability with OpenTelemetry
 """
 ```
 
-### Example 3: Context Reference
+**Intelligence Derived**:
+- Level: Infrastructure (AI-400)
+- Tools: Docker, Kubernetes, DAPR, OpenTelemetry
+- Methodology: SDD, AIDD
+- Audience: Professional (infrastructure focus)
+- Pillars: 1 (AI CLI), 6 (TDD), 7 (SDD), 9 (Cloud-Native)
+
+**Adaptive Questions**: 1-2
+- "Course title: 'Cloud-Native AI — Learn Dapr, Docker & Kubernetes with AIDD' or custom?"
+- "5 modules (depth) or 6 modules (breadth)?"
+
+---
+
+### Example 3: Context-Based Course
+
 ```bash
 /course-designer AI-400 """
-@context/cloud/
+@context/cloud-native/
+Plus SDD from Part 5 (chapters 30-33)
 Plus Claude Code from Chapter 5
-Plus SDD from Part 5
 """
+```
+
+**Intelligence Derived**:
+- Reads context files from `context/cloud-native/`
+- Cross-references with chapters 30-33, chapter 5
+- Synthesizes infrastructure + SDD methodology
+- Detects tools: Claude Code, Docker, K8s, DAPR
+
+---
+
+## EXECUTION OUTPUT
+
+```
+🎯 Designing Course: AI-400
+
+📖 Reading authoritative sources...
+  ✓ Constitution v3.1.3 (Nine Pillars, AI Spectrum, target audience)
+  ✓ Book content: Parts 10-13 (25 chapters on cloud-native infrastructure)
+  ✓ Tools detected: Docker, Kubernetes, DAPR, OpenTelemetry, Claude Code
+  ✓ Copywriting frameworks loaded (AIDA, PAS, transformation patterns)
+
+🧠 Deriving course intelligence...
+  ✓ Level: AI-400 (Infrastructure / Professional)
+  ✓ Audience: Professional developers
+  ✓ Spectrum: AI-Native (50-99x multiplier)
+  ✓ Pillars: 1, 6, 7, 9 (AI CLI, TDD, SDD, Cloud-Native)
+  ✓ Methodology: SDD + AIDD
+
+🤔 Adaptive question (1):
+  Q: Course title: "Cloud-Native AI — Learn Dapr, Docker & Kubernetes with AIDD" or custom?
+  [User: Use suggested title]
+
+✅ Course Generated: Cloud-Native AI
+   Code: AI-400
+   Initials: CNAI
+   Outcomes: 7 learning outcomes
+   Modules: 5 learning modules
+   Prerequisites: 0 items
+
+📄 File: docs/course_outlines/py_format/AI-400_cloud-native-ai.py
+
+✅ Database-ready Python course definition created
+
+STATUS=WROTE PATH=docs/course_outlines/py_format/AI-400_cloud-native-ai.py
 ```
 
 ---
 
-## Success Criteria
+## QUALITY CHECKLIST (AUTOMATIC)
 
-**Output File Must:**
-- ✅ Be valid Python (no syntax errors)
-- ✅ Load and execute without errors
-- ✅ Contain native Python types (list/dict, not JSON strings)
-- ✅ Include compelling, professional copywriting
-- ✅ Align with constitution v3.1.2
-- ✅ Be located at `docs/course_outlines/py_format/{filename}.py`
+**Course Description**:
+- ✅ Starts with transformation (not topic list)
+- ✅ Mentions specific tools
+- ✅ Active, present-tense language
+- ✅ 2-3 sentences (concise)
 
-**Copywriting Must:**
-- ✅ Hook reader in first sentence
-- ✅ Paint transformation journey
-- ✅ Use specific technical terms
-- ✅ Avoid generic/passive language
-- ✅ Emphasize AI-native thinking
-- ✅ Connect to economic opportunity
+**Long Description**:
+- ✅ P1: Paradigm shift hook
+- ✅ P2: Methodology introduced
+- ✅ P3: Learning journey (3-5 points)
+- ✅ P4: "Not just X; it's Y" transformation
+- ✅ Power words used
+- ✅ No passive voice
 
-**STATUS Output:**
-```
-STATUS=WROTE PATH=docs/course_outlines/py_format/{filename}.py
-```
+**Outcomes**:
+- ✅ 5-7 outcomes
+- ✅ Strong action verbs
+- ✅ Specific and measurable
+- ✅ First = AI-native mindset
+- ✅ Final = production/mastery
+- ✅ Bloom's progression
+
+**Modules**:
+- ✅ 4-6 modules
+- ✅ "Theme: Focus" format
+- ✅ 2-3 sentence descriptions
+- ✅ Progressive complexity
+- ✅ Specific tool names
+
+**Python File**:
+- ✅ Valid syntax
+- ✅ Native types (not JSON strings)
+- ✅ Type hints
+- ✅ Helper functions
+- ✅ Validation function
+
+---
+
+## CRITICAL SUCCESS FACTORS
+
+1. **Intelligence-Driven**: Constitution + book content read FIRST, questions SECOND
+2. **Compelling Copy**: Copywriting frameworks applied automatically
+3. **Database-Ready**: Native Python types, no conversion needed
+4. **Constitutional Alignment**: Nine Pillars, spectrum, transformation language
+5. **Minimal Questions**: 0-3 questions (only genuinely ambiguous items)
+6. **Production Quality**: Professional copy, validated structure
+
+---
+
+## ONE COMMAND. MAXIMUM INTELLIGENCE. COMPELLING OUTPUT.
+
+Run `/course-designer [code] [source]` and the system:
+
+1. **Reads Constitution** → Nine Pillars, audience, spectrum, multiplier
+2. **Loads Content** → Book chapters, context files, or raw topics
+3. **Derives Intelligence** → Level, tools, modules, outcomes (automatic)
+4. **Asks Targeted Questions** → 0-3 questions (only if ambiguous)
+5. **Generates Compelling Copy** → Copywriting frameworks applied
+6. **Outputs Python File** → Database-ready, native types, validated
+
+**Result**: Professional, compelling course outline with constitutional alignment and zero manual copywriting.
+
+---
+
+**See also**:
+- `/sp.loopflow.md` - Universal SDD Loop orchestrator (similar intelligence approach)
+- `/sp.python-chapter.md` - Python chapter orchestrator (similar adaptive questions)
+- `.specify/memory/constitution.md` - Project constitution (source of truth)

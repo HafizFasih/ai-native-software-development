@@ -349,61 +349,46 @@ Lessons MUST end with "Try With AI" section ONLY. Prompt 4 provides cognitive cl
 ```
 - **Example**: "Explain how `for` loops work under the hood with iterators. Why does Python need both `for` and `while`?"
 
-#### 🎓 Instructor Commentary: "From Syntax to Semantics"
+#### 🎓 Expert Insight: "From Syntax to Semantics"
 - **When**: After code examples, before moving to next concept
-- **Purpose**: Reframe learning goals (understanding > memorization)
+- **Purpose**: Reframe learning goals (understanding > memorization); provide strategic depth
 - **Key Mantra**: "Syntax is cheap — semantics is gold"
 - **Format**:
 ```markdown
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 > In AI-native development, you don't memorize operator precedence—you understand when arithmetic matters and ask AI when confused. Syntax is cheap; understanding is gold.
 ```
 - **Example**: "In AI-driven development, you don't memorize all 47 string methods—you understand what strings DO and ask AI: 'How do I format this string?'"
 
-#### 🚀 CoLearning Challenge
-- **When**: After explaining a concept, before moving to practice
-- **Purpose**: Practice specification-driven thinking WITH AI collaboration
+#### 🤝 Practice Exercise
+- **When**: After students understand concept basics, ready for application
+- **Purpose**: Hands-on collaborative practice with AI partnership; specification-driven thinking
 - **Pattern**: Specification → AI Generation → Explanation → Understanding
 - **Format**:
 ```markdown
-#### 🚀 CoLearning Challenge
+#### 🤝 Practice Exercise
 
-Ask your AI Co-Teacher:
-> "Generate a function that calculates factorial using recursion. Then explain how recursion works step-by-step, including the call stack."
+> **Ask your AI**: "Generate a function that calculates factorial using recursion. Then explain how recursion works step-by-step, including the call stack."
 
 **Expected Outcome**: You'll understand recursion conceptually (not just syntax), see how AI generates code from specifications, and learn to validate AI output.
 ```
 - **Example**: "Ask your AI: Generate a `for` loop that prints a multiplication table for 7. Then explain how `range()` works and why we use it instead of manual counting."
 
-#### ✨ Teaching Tip
-- **When**: Throughout lesson, when showing how to use Claude Code/Gemini CLI effectively
-- **Purpose**: Build AI tool literacy and effective collaboration patterns
-- **Format**:
-```markdown
-#### ✨ Teaching Tip
-> Use Claude Code to explore edge cases: "What happens if I divide by zero? Show me the error and explain what ZeroDivisionError means."
-```
-- **Example**: "Use your AI tool to explore operator precedence: 'Evaluate this step-by-step: 2 + 3 * 4. Show me the evaluation order.'"
-
 **Placement Guidelines by Proficiency Level**:
 
 - **A1-A2 (Beginner)**:
-  - 1-2 💬 prompts per lesson (foundational concepts only)
-  - 2-3 🎓 commentaries (emphasize understanding > syntax)
-  - 1-2 🚀 challenges (simple, guided)
-  - 1-2 ✨ tips (basic tool usage)
+  - 2-3 CoLearning elements per lesson
+  - Emphasis on 💬 Prompts and 🎓 Insights (build confidence, reduce memorization anxiety)
+  - Light on 🤝 Exercises (students still building foundations)
 
 - **A2-B1 (Intermediate)**:
-  - 2-3 💬 prompts per lesson (concepts + edge cases)
-  - 2-3 🎓 commentaries (connect to design patterns)
-  - 2-3 🚀 challenges (specification-driven)
-  - 2-3 ✨ tips (advanced tool usage)
+  - 3-4 CoLearning elements per lesson
+  - Balance 💬 Prompts, 🎓 Insights, 🤝 Exercises
 
 - **B1-B2 (Advanced)**:
-  - 3-4 💬 prompts per lesson (architectural exploration)
-  - 3-4 🎓 commentaries (professional reasoning)
-  - 3-4 🚀 challenges (complex specification-driven)
-  - 2-3 ✨ tips (orchestration patterns)
+  - 4-6 CoLearning elements per lesson
+  - Emphasis on 🤝 Exercises (application and synthesis)
+  - More 🎓 Insights (architectural decisions, tradeoffs)
 
 **Tone Requirements for ALL Lessons**:
 - ✅ Conversational (you, your, we)
@@ -425,7 +410,7 @@ Ask your AI Co-Teacher:
 
 **Validation**:
 - technical-reviewer MUST check for CoLearning elements throughout
-- Missing 💬🎓🚀✨ = CRITICAL VIOLATION (regeneration required)
+- Missing 💬🎓🤝 = CRITICAL VIOLATION (regeneration required)
 - Documentation tone (not conversational) = MAJOR VIOLATION (revision required)
 
 ---
@@ -605,10 +590,9 @@ WAIT: User reviews tasks.md + analysis report
   │   5. exercise-designer (deliberate practice)
   │
   │   CoLearning Structural Elements (MUST appear throughout lesson):
-  │   - 💬 AI Colearning Prompt: After foundational concepts, encourage AI exploration
-  │   - 🎓 Instructor Commentary: Emphasize "syntax cheap, semantics gold"
-  │   - 🚀 CoLearning Challenge: Practice specification-driven thinking with AI
-  │   - ✨ Teaching Tip: Build AI tool literacy and collaboration patterns
+  │   - 💬 AI Colearning Prompt: After foundational concepts, encourage deeper exploration
+  │   - 🎓 Expert Insight: Provide strategic depth; "syntax cheap, semantics gold" mantra
+  │   - 🤝 Practice Exercise: Hands-on collaborative practice with AI partnership
   │
   │   Tone Requirements:
   │   - ✅ Conversational (you, your, we)
@@ -656,16 +640,16 @@ WAIT: User reviews tasks.md + analysis report
   ├─ Apply: AI-Native Learning pattern, CEFR levels, validation-first approach, CoLearning throughout
   ├─ Create: book-source/docs/04-Part-4-Python-Fundamentals/[N]-[chapter-name]/
   │   ├─ readme.md
-  │   ├─ 01-[lesson-name].md (with 💬🎓🚀✨ throughout)
-  │   ├─ 02-[lesson-name].md (with 💬🎓🚀✨ throughout)
-  │   ├─ 03-[lesson-name].md (with 💬🎓🚀✨ throughout)
-  │   ├─ 04-[lesson-name].md (with 💬🎓🚀✨ throughout)
-  │   └─ 05-[capstone-name].md (if applicable, with 💬🎓🚀✨ throughout)
+  │   ├─ 01-[lesson-name].md (with 💬🎓🤝 throughout)
+  │   ├─ 02-[lesson-name].md (with 💬🎓🤝 throughout)
+  │   ├─ 03-[lesson-name].md (with 💬🎓🤝 throughout)
+  │   ├─ 04-[lesson-name].md (with 💬🎓🤝 throughout)
+  │   └─ 05-[capstone-name].md (if applicable, with 💬🎓🤝 throughout)
   └─ Report: "All lessons implemented with CoLearning pedagogy."
 
 → Invoke: technical-reviewer (Quality Gate)
   ├─ Read: All lesson files
-  ├─ Validate: AI-Native CoLearning compliance (💬🎓🚀✨ elements present throughout)
+  ├─ Validate: AI-Native CoLearning compliance (💬🎓🤝 elements present throughout)
   ├─ Check: Conversational tone (not documentation style)
   ├─ Check: Lesson closure pattern (Try With AI ONLY, no summaries)
   ├─ Check: Part 4 language appropriateness, constitutional alignment
@@ -747,7 +731,7 @@ This workflow ensures:
 
 ### ✅ AI-Native CoLearning Pedagogy First (Rule 9)
 - Apply `ai-collaborate-teaching` skill THROUGHOUT lessons (not just end)
-- CoLearning elements (💬🎓🚀✨) positioned strategically in every lesson
+- CoLearning elements (💬🎓🤝) positioned strategically in every lesson
 - Conversational tone (you, your, we) - NOT documentation style
 - AI positioned as co-reasoning partner, not autocomplete tool
 - 40/40/20 balance: Foundation 40%, AI-Assisted 40%, Verification 20%

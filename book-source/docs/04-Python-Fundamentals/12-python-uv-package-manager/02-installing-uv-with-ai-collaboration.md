@@ -2,430 +2,283 @@
 title: "Installing UV with AI Collaboration"
 chapter: 12
 lesson: 2
-sidebar_position: 2
-duration_minutes: 45
+duration_minutes: 15
 
 # HIDDEN SKILLS METADATA (Institutional Integration Layer)
 # Not visible to students; enables competency assessment and differentiation
 skills:
-  - name: "Execute Installation with AI"
+  - name: "Execute Direct Installation Commands"
     proficiency_level: "A2"
     category: "Technical"
     bloom_level: "Apply"
     digcomp_area: "Problem-Solving"
-    measurable_at_this_level: "Student can successfully install UV by expressing intent to Claude Code/Gemini CLI ('Install UV on my system') and verify installation"
+    measurable_at_this_level: "Student can run platform-specific installation command and verify installation succeeded"
 
   - name: "Understand PATH Configuration"
     proficiency_level: "A2"
     category: "Conceptual"
     bloom_level: "Understand"
-    digcomp_area: "Technical Knowledge"
-    measurable_at_this_level: "Student can explain what PATH is (computer's command directory) and why installation adds UV to PATH, troubleshooting 'command not found' errors with AI"
+    digcomp_area: "Information Literacy"
+    measurable_at_this_level: "Student can explain what PATH is (computer's command registry) and why installation adds UV to PATH"
+
+  - name: "Troubleshoot Installation Issues with AI"
+    proficiency_level: "A2"
+    category: "Technical"
+    bloom_level: "Apply"
+    digcomp_area: "Problem-Solving"
+    measurable_at_this_level: "Student can identify common installation errors and work with AI to diagnose and resolve them"
 
 learning_objectives:
-  - objective: "Apply AI-driven installation workflow to set up UV on Windows/Mac/Linux"
+  - objective: "Successfully install UV on your system (Windows/Mac/Linux) using direct commands"
     proficiency_level: "A2"
     bloom_level: "Apply"
-    assessment_method: "Successfully installs UV and verifies with `uv --version`"
+    assessment_method: "Hands-on installation and verification"
 
-  - objective: "Understand platform detection and PATH configuration"
+  - objective: "Understand what happens during software installation and why PATH configuration matters"
     proficiency_level: "A2"
     bloom_level: "Understand"
-    assessment_method: "Can explain PATH and troubleshoot 'command not found' errors"
+    assessment_method: "Explanation of installation process"
+
+  - objective: "Use AI for troubleshooting when installation issues occur"
+    proficiency_level: "A2"
+    bloom_level: "Apply"
+    assessment_method: "Error scenario resolution with AI"
 
 cognitive_load:
-  new_concepts: 7
-  assessment: "7 new concepts (software installation process, PATH variable, platform differences, verification, AI platform detection, error troubleshooting, one-time setup) within A2 limit of 7 ✓"
+  new_concepts: 5
+  assessment: "5 new concepts: installation process, PATH environment variable, platform-specific differences, verification workflow, when to use AI (troubleshooting) vs. direct commands (simple tasks). Within A2 limit of 7 concepts. ✓"
 
 differentiation:
-  extension_for_advanced: "Research UV's installation script internals; compare Windows MSI vs. curl installation methods; explore PATH modification mechanisms on different platforms"
-  remedial_for_struggling: "Focus on Windows installation only; use AI to verify each step; build confidence with success before exploring cross-platform differences"
+  extension_for_advanced: "Explore manual installation from source; understand the different installation methods (curl vs. pip vs. Homebrew) and when each is appropriate"
+  remedial_for_struggling: "Focus on core goal: Run the command for your platform, verify it worked. Use AI only if you encounter errors."
 
-# Generation metadata (for traceability and maintenance)
-generated_by: "lesson-writer v1.0"
-source_spec: "specs/011-python-uv/spec.md"
-created: "2025-11-04"
-last_modified: "2025-11-04"
-git_author: "GitHub Copilot"
+# Generation metadata
+generated_by: "lesson-writer v3.0.0"
+source_spec: "specs/011-python-uv/plan.md"
+created: "2025-01-13"
+last_modified: "2025-01-13"
+git_author: "Claude Code"
 workflow: "/sp.implement"
-version: "1.0.0"
+version: "2.0.0"
 ---
 
 # Installing UV with AI Collaboration
 
-In Lesson 1, you understood *why* UV matters—it's fast, unified, and represents modern Python tooling best practices. Now comes the practical work: installing UV on your system using AI as your interactive documentation.
+## What We're About to Do
 
-This lesson demonstrates the AI-driven development workflow in action. You'll express your intent ("Install UV on my Windows/Mac/Linux system"), your AI collaborator will provide platform-specific commands, you'll execute them, and you'll verify the result. No memorization required—you'll understand *what's happening* conceptually while AI handles the mechanical details.
+You already understand **why** UV matters (from Lesson 1). Now let's get it installed on your computer.
 
-By the end of this lesson, UV will be installed and verified on your machine, and you'll understand what happened during installation (software download, PATH modification, verification workflow). You'll also know how to troubleshoot the most common installation error ("command not found") using AI guidance.
+Installation takes under 1 minute: you run one command, verify it worked, and you're done. Simple, deterministic tasks like this don't need AI—you just follow the direct instructions for your platform.
 
-## Pre-Installation: What We're About to Do
+**Where AI becomes valuable:** When something goes wrong. If you encounter errors, AI can diagnose platform-specific issues and suggest fixes.
 
-Let's demystify software installation before we start. When you install UV (or any command-line tool), three things happen:
+**In this lesson, you will:**
+1. Run the installation command for your platform (macOS, Windows, or Linux)
+2. Verify the installation worked
+3. Understand what PATH is and why it matters
+4. Learn when to use AI (troubleshooting) vs. direct commands (simple tasks)
 
-1. **Download**: Your system retrieves the UV executable (the program file) from the internet
-2. **Extract and Place**: The downloaded file is extracted (if compressed) and placed in a standard location on your computer
-3. **PATH Modification**: Your system's PATH environment variable is updated so you can run `uv` from any directory
+Let's get started. You'll be done in under 5 minutes.
 
-**What is PATH?** Think of PATH as your computer's command registry—a list of directories where your system looks for programs when you type a command in the terminal.
+## Step 1: Install UV (Direct Command)
 
-When you type `uv --version` in PowerShell (Windows), Terminal (Mac), or a shell (Linux), your system searches every directory listed in PATH until it finds an executable file named `uv` (or `uv.exe` on Windows). If UV's installation directory isn't in PATH, your system can't find it—that's the "command not found" error you might encounter.
+Pick your platform and run the command. That's it.
 
-**The installation process** we're about to follow:
-1. You'll tell your AI collaborator your operating system
-2. AI will provide the appropriate installation command for your platform
-3. You'll execute that command (AI will explain what it does)
-4. You'll verify UV installed correctly by running `uv --version`
-5. If verification fails, you'll troubleshoot with AI assistance
+### macOS or Linux
 
-Ready? Let's install UV.
+Open your terminal and run:
 
-## AI-Driven Installation Workflow
-
-This is where the AI-native approach shines. Instead of searching documentation, copying commands you don't understand, and hoping for the best, you'll express your intent clearly and let AI guide you through platform-specific installation.
-
-### Step 1: Express Your Intent
-
-Open your AI companion tool (Claude Code, Gemini CLI, or ChatGPT web interface) and use this prompt template:
-
-**Prompt Template**:
-```
-Install UV Python package manager on my [Windows/Mac/Linux] system. 
-Explain what the installation command does before I run it.
-Include verification steps after installation.
-```
-
-**Example for Windows PowerShell**:
-```
-Install UV Python package manager on my Windows system using PowerShell. 
-Explain what the installation command does before I run it.
-Include verification steps after installation.
-```
-
-### Step 2: Review AI's Response
-
-Your AI will provide a platform-specific installation command. Here's what to expect for each platform:
-
-#### Windows (PowerShell)
-
-**AI's Suggested Command**:
-```powershell
-irm https://astral.sh/uv/install.ps1 | iex
-```
-
-**AI's Explanation** (approximate):
-> This command does two things:
-> 1. `irm` (Invoke-RestMethod) downloads the UV installation script from Astral's official server
-> 2. `| iex` (pipe to Invoke-Expression) executes that script immediately
->
-> The script will:
-> - Download the UV executable for Windows
-> - Place it in `%USERPROFILE%\.local\bin\` (your user directory)
-> - Modify your PATH environment variable to include that directory
-> - No admin rights required (installs to your user profile)
-
-**What you should verify before running**:
-- URL is `https://astral.sh/uv/install.ps1` (official Astral domain)
-- You understand this is downloading and executing a script
-- You're in PowerShell (not Command Prompt or Git Bash)
-
-#### macOS (Terminal with Homebrew or curl)
-
-**Option 1: Homebrew** (if you have Homebrew installed):
-```bash
-brew install uv
-```
-
-**AI's Explanation**:
-> Homebrew is macOS's package manager. This command:
-> - Downloads UV from Homebrew's package repository
-> - Installs it to `/opt/homebrew/bin/` (Apple Silicon) or `/usr/local/bin/` (Intel)
-> - These directories are already in PATH on macOS by default
-> - Homebrew handles dependency management and updates
-
-**Option 2: curl** (if you don't have Homebrew):
 ```bash
 curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 
-**AI's Explanation**:
-> This command:
-> - `curl -LsSf` downloads the UV installation script (with follow redirects, silent mode)
-> - `| sh` pipes the script to the shell for immediate execution
-> - Installs UV to `~/.local/bin/` (your home directory)
-> - Modifies your shell configuration (~/.bashrc, ~/.zshrc) to add UV to PATH
+**What this does:**
+- Downloads the official UV installation script from Astral
+- Executes it to install UV to `~/.local/bin/` (both macOS and Linux)
+- Automatically adds UV to your PATH so you can use the `uv` command
 
-#### Linux (curl)
+**Time:** ~30 seconds
 
-**AI's Suggested Command**:
-```bash
-curl -LsSf https://astral.sh/uv/install.sh | sh
-```
+### Windows (PowerShell)
 
-**AI's Explanation** (same as macOS curl method):
-> Downloads and runs Astral's official installation script.
-> Installs to `~/.local/bin/` and updates your shell configuration.
+Open PowerShell and run:
 
-### Step 3: Execute the Command
-
-**Before you run the command**:
-1. **Verify the URL** is from an official Astral domain (`astral.sh`)
-2. **Understand what happens**: Script downloads UV, places it in a user directory, modifies PATH
-3. **Note: No sudo required** for user-space installs (if AI suggests `sudo`, ask why)
-
-**Run the command** in your terminal/PowerShell. You should see output indicating download progress and installation success.
-
-**Expected output** (approximate):
-```
-Downloading UV...
-Installing UV to /Users/yourname/.local/bin/uv
-Adding /Users/yourname/.local/bin to PATH in ~/.zshrc
-UV successfully installed!
-```
-
-**Platform Note: Windows PowerShell might require execution policy changes**
-
-If you see an error like:
-```
-... running scripts is disabled on this system
-```
-
-AI should suggest:
 ```powershell
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
 ```
 
-This allows scripts signed by trusted publishers (like Astral) to run. After this change, re-run the UV installation command.
+**What this does:**
+- Downloads the official UV installation script from Astral
+- Executes it to install UV to `C:\Users\YourName\.local\bin`
+- Automatically adds UV to your PATH
+- **Important:** Restart PowerShell after installation
 
-## Platform Detection: How AI Determines Your OS
+**Time:** ~30 seconds + PowerShell restart
 
-When you tell AI "install UV on my system," AI typically:
+## Step 2: Verify Installation
 
-1. **Checks context clues**: If you mention "PowerShell," AI assumes Windows
-2. **Asks for clarification**: If ambiguous, AI might ask "Which operating system?"
-3. **Provides multiple options**: AI might offer commands for all platforms and let you choose
+Close your terminal completely and open a new one. Then run:
 
-**Why platform-specific commands?**
-- **Windows**: Uses PowerShell scripts (.ps1) and places executables in `%USERPROFILE%\.local\bin\`
-- **macOS**: Prefers Homebrew (if available) for package management, otherwise curl + shell script
-- **Linux**: Uses curl + shell script, updates shell config files (bashrc, zshrc)
-
-Each platform has different conventions for:
-- Where to place executables (user directories differ)
-- How to modify PATH (Windows registry vs. Unix shell config files)
-- Package management ecosystems (Homebrew on Mac, apt/yum on Linux, no standard on Windows)
-
-**AI's role**: Abstract these differences. You express intent ("install UV"), AI provides the right command for your platform. You don't memorize three different installation methods—you understand the *concept* (download, place, configure PATH) and let AI handle platform specifics.
-
-#### 💬 AI Colearning Prompt
-> "Why does UV need to modify PATH instead of just installing the executable? What would happen if PATH wasn't updated?"
-
-#### 🎓 Expert Insight
-> In AI-native development, you don't memorize platform-specific installation commands (PowerShell vs. curl vs. Homebrew). You understand the installation pattern—download, place, configure PATH—and ask AI to handle your platform's specifics. Your job: verify the installation worked and understand what changed on your system.
-
-## Verification: Running `uv --version`
-
-After installation completes, verify UV is accessible:
-
-### Verification Command
-
-**Prompt to AI**:
-```
-Verify UV is installed and show me the version
-```
-
-**AI's suggested command**:
 ```bash
 uv --version
 ```
 
-**Expected output**:
+**Expected output:**
 ```
-uv 0.9.8
+uv 0.9.9
 ```
-(Version number will vary as UV updates frequently; any version 0.9.x or higher confirms installation succeeded)
 
-### If Verification Succeeds
+If you see a version number, UV is installed correctly. You're done! Skip to the "When to Use AI" section below.
 
-Congratulations! UV is installed and ready to use. You can now create projects, manage dependencies, and run Python code with UV.
-
-**What just happened** (conceptually):
-1. Installation script downloaded UV executable to a user directory
-2. That directory was added to your PATH environment variable
-3. When you typed `uv --version`, your system found the UV executable in PATH
-4. UV printed its version number, confirming it's working
-
-### If Verification Fails ("command not found")
+### What If You See "command not found"?
 
 If you see:
 ```
 uv: command not found
 ```
 
-Or (Windows):
+**This means your PATH isn't configured yet.** Now is when AI becomes useful.
+
+Jump to the "Troubleshooting with AI" section below.
+
+## Understanding PATH (2-Minute Explanation)
+
+**PATH** is your computer's "registry" of command locations. When you type `uv --version`, your computer:
+1. Looks through directories listed in PATH
+2. Finds the `uv` executable
+3. Runs it
+
+**Without PATH configured:**
 ```
-'uv' is not recognized as an internal or external command...
-```
-
-**This means**: UV is installed but not in your PATH, or your current terminal session hasn't reloaded PATH yet.
-
-**Proceed to the troubleshooting section below.**
-
-## Troubleshooting: Command Not Found
-
-The "command not found" error is the most common installation issue. It usually means one of two things:
-
-### Issue 1: PATH Not Updated in Current Session
-
-**The problem**: Installation modified your PATH, but your current terminal session started *before* the change and hasn't reloaded.
-
-**Solution: Restart your terminal**
-- **Windows**: Close PowerShell completely and open a new PowerShell window
-- **Mac/Linux**: Close Terminal and open a new Terminal window, or run `source ~/.bashrc` (Bash) or `source ~/.zshrc` (Zsh)
-
-**Then try** `uv --version` again.
-
-**AI prompt if this doesn't work**:
-```
-I restarted my terminal and still get "uv: command not found". What should I check next?
+uv: command not found  ← Computer can't find UV
 ```
 
-### Issue 2: PATH Not Modified During Installation
-
-**The problem**: Installation script didn't successfully add UV's directory to PATH.
-
-**Solution: Manually verify and add to PATH**
-
-**Prompt to AI**:
+**With PATH configured:**
 ```
-The UV installation didn't add UV to my PATH. Help me verify where UV is installed and add it to PATH manually on [Windows/Mac/Linux].
+uv 0.9.9  ← Computer found UV and ran it
 ```
 
-**AI will guide you through**:
-1. **Finding UV's installation directory**:
-   - Windows: Typically `%USERPROFILE%\.local\bin\`
-   - Mac/Linux: Typically `~/.local/bin/`
+The installation script automatically adds UV's directory to your PATH. That's why you can type `uv` from anywhere and it works.
 
-2. **Checking if UV exists there**:
-   - Windows: `Test-Path $env:USERPROFILE\.local\bin\uv.exe`
-   - Mac/Linux: `ls ~/.local/bin/uv`
+**Why this matters:** If something goes wrong during installation, understanding PATH helps you troubleshoot (with AI's help).
 
-3. **Manually adding to PATH** (if needed):
-   - **Windows** (PowerShell, persistent):
-     ```powershell
-     $env:PATH += ";$env:USERPROFILE\.local\bin"
-     [Environment]::SetEnvironmentVariable("Path", $env:PATH, "User")
-     ```
-   - **Mac/Linux** (add to shell config):
-     ```bash
-     echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc  # or ~/.zshrc
-     source ~/.bashrc  # or source ~/.zshrc
-     ```
+## When to Use AI: The Key Principle
 
-4. **Verify again**: `uv --version`
+This lesson demonstrates an important pattern:
 
-### Issue 3: Installation Failed Silently
+**Simple, deterministic tasks (like installation):**
+- ✅ Use direct commands
+- ✅ Follow platform-specific instructions
+- ✅ Takes under 1 minute
 
-**The problem**: Installation script encountered an error and UV never downloaded.
+**Complex, ambiguous problems (like troubleshooting):**
+- ✅ Use AI to diagnose platform-specific issues
+- ✅ Get context-aware fixes
+- ✅ Learn WHY something broke
 
-**Solution: Re-run installation with verbose output**
+**Don't use AI for everything.** Use it strategically when it adds value.
 
-**Prompt to AI**:
+## Troubleshooting with AI
+
+If you encountered errors during installation, **now** is when AI becomes valuable. Here are common scenarios:
+
+### Error 1: "command not found" After Installation
+
+**Open your AI CLI tool (Claude Code, Gemini CLI, or ChatGPT) and ask:**
+
 ```
-The installation might have failed. Show me how to re-install UV with verbose output so I can see what's happening.
+After installing UV, I'm getting "uv: command not found".
+I'm using [WINDOWS/MAC/LINUX].
+How do I fix this?
 ```
 
-AI might suggest checking:
-- Internet connection (can you reach `https://astral.sh`?)
-- Disk space (is there room for UV executable?)
-- Permissions (can the script write to user directories?)
+AI will diagnose:
+- Whether you need to restart your shell
+- Whether PATH was configured correctly
+- Platform-specific PATH configuration commands
 
-**Re-run installation** and watch for error messages. Share any errors with AI for diagnosis.
+### Error 2: Permission Denied
 
-#### 🤝 Practice Exercise
+**Ask your AI:**
 
-> **Ask your AI**: "Walk me through what happens step-by-step during UV installation on my [Windows/Mac/Linux] system. Then explain how I can verify UV is correctly added to my PATH."
+```
+I'm getting "Permission Denied" when trying to install UV.
+I'm using [WINDOWS/MAC/LINUX].
+What should I do?
+```
 
-**Expected Outcome**: You should understand the complete installation workflow (download → place → PATH modification) and be able to troubleshoot "command not found" errors by checking PATH configuration with AI guidance.
+AI will suggest:
+- Using `sudo` (macOS/Linux) if needed
+- Checking antivirus settings (Windows)
+- Alternative installation methods
 
-## What Happened During Installation? (Plain Language Explanation)
+### Error 3: Network Issues
 
-Let's demystify what that installation command actually did:
+**Ask your AI:**
 
-1. **Downloaded a script**: The `irm` (Windows) or `curl` (Mac/Linux) part fetched a small installation program from Astral's servers
+```
+I'm getting a network error when installing UV.
+Error: [paste exact error message]
+What should I do?
+```
 
-2. **Executed the script**: The `| iex` (Windows) or `| sh` (Mac/Linux) part ran that program immediately
+AI will help:
+- Diagnose connection issues
+- Suggest alternative download methods
+- Check if Astral's servers are down
 
-3. **The script then**:
-   - Detected your operating system and CPU architecture (Windows x64? Mac Apple Silicon? Linux x86?)
-   - Downloaded the appropriate UV executable binary for your system
-   - Created a directory in your user profile (`~/.local/bin` or equivalent)
-   - Placed the UV executable in that directory
-   - Modified your system's PATH variable to include that directory
-   - Optionally updated shell configuration files (.bashrc, .zshrc) to persist the PATH change
+## What You Just Learned
 
-4. **Result**: You can now type `uv` from any directory, and your system knows where to find it
+**The core pattern:**
+- ✅ Simple tasks (installation): Use direct commands
+- ✅ Complex problems (troubleshooting): Use AI for diagnosis
+- ✅ Don't over-engineer simple processes with AI
+- ✅ PATH makes commands available system-wide
 
-**Why user directories?** Installing to user profile (`~/.local/bin`) means:
-- No admin/sudo privileges needed
-- Your installation doesn't affect other users on the same machine
-- Safer (you can't accidentally break system-wide Python installations)
+**Key insight:** AI-driven development doesn't mean "use AI for everything." It means using AI strategically when it adds value—troubleshooting, debugging, understanding complex systems—not for simple, deterministic tasks that take 30 seconds.
 
-**Why modify PATH?** Without PATH modification, you'd need to type the full path every time: `~/.local/bin/uv --version`. PATH lets you use the short command `uv --version` from anywhere.
+This pattern will continue throughout the chapter:
+- **Creating projects**: Direct command (`uv init`)
+- **Adding dependencies**: Direct command (`uv add package-name`)
+- **Understanding why something failed**: AI collaboration
+- **Debugging complex dependency conflicts**: AI collaboration
 
-**One-time setup**: You install UV once per machine. After this, you'll use UV commands (uv init, uv add, uv run) repeatedly across many projects—no reinstallation needed unless you want to upgrade UV itself.
+---
 
 ## Try With AI
 
-Now let's practice the complete installation and verification workflow. Work through these prompts in sequence with your AI companion tool.
+Use your AI companion (ChatGPT, Claude Code, Gemini CLI, etc.) for these exercises.
 
-**Setup**: Use Claude Code, Gemini CLI, or ChatGPT web interface
+### Prompt 1: Understand PATH Deeply
 
-### Prompt 1: Installation
 ```
-Install UV package manager on my [Windows/Mac/Linux] system. 
-Explain what the installation command does before I run it. 
-Include verification steps after installation.
+I just installed UV and it updated my PATH. Explain PATH in simple terms—what is it, why does it matter, and what would happen if UV wasn't added to PATH? Use an analogy I can relate to.
 ```
 
-**What you're practicing**: Expressing clear intent, understanding commands before execution
+**Expected outcome:** Clear understanding of PATH without needing technical background.
 
-**Expected outcome**: AI provides platform-specific command with explanation. You execute it after understanding what it does.
+### Prompt 2: Troubleshoot "command not found"
 
-**Validation**: Did AI explain the download, installation location, and PATH modification? Did you understand before running?
-
-### Prompt 2: Verification
 ```
-Verify UV is installed and show me the version
+I installed UV but I'm getting "uv: command not found" when I run `uv --version`. I'm using [YOUR OS]. Walk me through diagnosing and fixing this issue step by step.
 ```
 
-**What you're practicing**: Confirming successful installation
+**Expected outcome:** Concrete troubleshooting steps tailored to your platform.
 
-**Expected outcome**: AI suggests `uv --version`. You see a version number printed.
+### Prompt 3: When to Use AI vs. Direct Commands
 
-**Validation**: Did you get a version number? If yes, installation succeeded. If "command not found," proceed to Prompt 3.
-
-### Prompt 3: Troubleshooting (if needed)
 ```
-I'm seeing "uv: command not found" after installation. What should I do?
+This lesson says "don't use AI for everything." Help me understand: when should I use AI for package management tasks, and when should I just run commands directly? Give me 3 examples of each.
 ```
 
-**What you're practicing**: Diagnosing and fixing PATH issues with AI
+**Expected outcome:** Strategic understanding of when AI adds value vs. when it's overhead.
 
-**Expected outcome**: AI suggests restarting terminal first, then checking PATH configuration if that doesn't work
+### Prompt 4: Installation Security Review
 
-**Validation**: Did AI provide step-by-step troubleshooting? Did following AI's steps resolve the issue?
-
-### Prompt 4: Conceptual Understanding
 ```
-Explain what happened during UV installation in simple terms. 
-Why did the installation need to modify my PATH? 
-What would happen if PATH wasn't updated?
+I ran this installation command: `curl -LsSf https://astral.sh/uv/install.sh | sh`
+
+Is this safe? What risks exist when running installation scripts from the internet? How can I verify this is the official UV installer?
 ```
 
-**What you're practicing**: Building conceptual understanding beyond command execution
-
-**Expected outcome**: AI explains download → place → PATH modification workflow, explains PATH's purpose
-
-**Validation**: Can you now explain to a peer what PATH is and why installation modifies it?
-
+**Expected outcome:** Understanding of installation security practices and how to verify sources.
