@@ -39,9 +39,13 @@ Make sure you have these before starting:
 
 ---
 
-## Installation: One Command
+## Installation Methods
 
-Open your terminal and run this single command:
+There are three ways to install Gemini CLI, depending on your needs:
+
+### Method 1: Global Installation (Recommended)
+
+This installs Gemini CLI permanently on your system, making it available from any directory:
 
 ```bash
 npm install -g @google/gemini-cli
@@ -49,15 +53,53 @@ npm install -g @google/gemini-cli
 
 This command downloads and installs Gemini CLI globally on your computer. You'll see text flowing by—this is normal. Wait for it to complete (usually takes 30-60 seconds).
 
-### Verify Installation
+**When to use**: When you plan to use Gemini CLI regularly across multiple projects.
 
-After installation completes, verify it worked:
+### Method 2: Run Without Installing (npx)
+
+You can run Gemini CLI without installing it permanently using `npx`:
 
 ```bash
-gemini -v
+npx @google/gemini-cli
 ```
 
-You should see a version number like `0.4.0` or higher. If you see this, installation is successful! ✓
+This downloads and runs the latest version temporarily. Each time you run this command, it checks for the latest version.
+
+**When to use**:
+- When you want to try Gemini CLI without committing to installation
+- When testing different versions
+- On shared/temporary systems where you can't install globally
+
+### Method 3: Install Specific Version
+
+You can install a specific version or release tag:
+
+```bash
+# Install latest stable version explicitly
+npm install -g @google/gemini-cli@latest
+
+# Install preview/beta version
+npm install -g @google/gemini-cli@preview
+
+# Install nightly build (bleeding edge, may be unstable)
+npm install -g @google/gemini-cli@nightly
+```
+
+**When to use**: When you need a specific version for compatibility or testing purposes.
+
+### Verify Installation
+
+After installation completes (or when using npx), verify it worked:
+
+```bash
+# If installed globally
+gemini -v
+
+# If using npx
+npx @google/gemini-cli --version
+```
+
+You should see a version number like `0.4.0` or higher. If you see this, you're ready! ✓
 
 ---
 
@@ -93,7 +135,45 @@ Your default web browser will automatically open with Google's login page. Simpl
 
 ### Step 4: You're In!
 
-After you authorize, your terminal displays the Gemini CLI interface, and you're ready to start. You'll see a prompt where you can type your questions and commands.
+After you authorize, your terminal displays the Gemini CLI interface. You'll see something like this:
+
+```
+ ███            █████████  ██████████ ██████   ██████ █████ ██████   █████ █████
+░░░███         ███░░░░░███░░███░░░░░█░░██████ ██████ ░░███ ░░██████ ░░███ ░░███
+  ░░░███      ███     ░░░  ░███  █ ░  ░███░█████░███  ░███  ░███░███ ░███  ░███
+    ░░░███   ░███          ░██████    ░███░░███ ░███  ░███  ░███░░███░███  ░███
+     ███░    ░███    █████ ░███░░█    ░███ ░░░  ░███  ░███  ░███ ░░██████  ░███
+   ███░      ░░███  ░░███  ░███ ░   █ ░███      ░███  ░███  ░███  ░░█████  ░███
+ ███░         ░░█████████  ██████████ █████     █████ █████ █████  ░░█████ █████
+░░░            ░░░░░░░░░  ░░░░░░░░░░ ░░░░░     ░░░░░ ░░░░░ ░░░░░    ░░░░░ ░░░░░
+
+Tips for getting started:
+1. Ask questions, edit files, or run commands.
+2. Be specific for the best results.
+3. /help for more information.
+
+╭────────────────────────────────────────────────────────────────────────╮
+│ >   Type your message or @path/to/file                                 │
+╰────────────────────────────────────────────────────────────────────────╯
+ ~/Your/Current/Directory       no sandbox       auto
+```
+
+**What you see:**
+- **Logo**: The "GEMINI" banner at the top
+- **Tips**: Quick start guidance (3 tips)
+- **Input Box**: Where you type your messages
+- **Status Bar** (bottom):
+  - Left: Current directory (your actual location)
+  - Middle: Sandbox status (`no sandbox` by default)
+  - Right: Mode (`auto` by default)
+
+**Note**: You might also see:
+- Context info like "Using: X context files" if you have GEMINI.md files
+- "X MCP server" if you've configured MCP servers (covered in Lesson 7)
+- Update notifications if a newer version is available
+- Git branch info if you're in a git repository
+
+**Update Notifications**: You may see a box suggesting updates—this is normal. You can update later with your package manager.
 
 #### 💬 AI Colearning Prompt
 > "Why does Gemini CLI use browser-based authentication instead of asking for a password directly in the terminal? What security advantages does this provide?"
@@ -102,22 +182,65 @@ After you authorize, your terminal displays the Gemini CLI interface, and you're
 
 ## Understanding the Gemini CLI Interface
 
-When you're inside Gemini CLI, notice these important elements:
+Now that you're inside Gemini CLI, let's understand what you're looking at:
 
-**Bottom Status Bar:**
-- **Left side**: Your current working directory (folder)
-- **Middle**: The model being used (usually `gemini-2.5-pro`)
-- **Right side**: Remaining context tokens (how much "memory" is available)
+### The Input Box
 
-**Useful Commands:**
-- Type `/help` to see all available commands
-- Type `/tools` to see what tools Gemini can use
-- Type `/stats` to see session statistics (tokens used, duration, etc.)
-- Type `/quit` or press Ctrl+C twice to exit
+The main area where you interact:
+```
+╭────────────────────────────────────────────────────────────────────────╮
+│ >   Type your message or @path/to/file                                 │
+╰────────────────────────────────────────────────────────────────────────╯
+```
+
+- Type your questions or commands here
+- Use `@path/to/file` to reference specific files
+- Press Enter to send your message
+
+### Status Bar (Bottom)
+
+The status bar shows three important pieces of information:
+
+```
+ ~/Documents/development (main*)       no sandbox       auto
+```
+
+- **Left**: Current working directory and git branch
+  - `~/Documents/development` = your location
+  - `(main*)` = git branch (asterisk means uncommitted changes)
+- **Middle**: Sandbox mode
+  - `no sandbox` = not using containerized environment
+  - `docker` or `gvisor` when sandbox is active
+- **Right**: Tool execution mode
+  - `auto` = Gemini automatically decides when to use tools
+  - `manual` = You approve each tool use
+
+### Context Information (When Configured)
+
+Once you configure Gemini CLI (in later lessons), you'll see context information at startup:
+```
+Using: 2 context files | 1 MCP server
+```
+
+- **Context files**: GEMINI.md or CONTEXT.md files (covered in Lesson 5)
+- **MCP servers**: Connected external tool servers (covered in Lesson 7)
+
+**For first-time users**: This line won't appear until you add context files or MCP servers. That's normal!
+
+### Slash Commands
+
+Type these commands at the prompt:
+
+- `/help` - See all available commands
+- `/tools` - View available tools
+- `/stats` - Session statistics
+- `/memory show` - Display persistent context
+- `/chat save <name>` - Save current conversation
+- `/quit` - Exit Gemini CLI
 
 **Shell Mode:**
-- Type `!` to switch to shell mode (run terminal commands directly)
-- Press ESC to exit shell mode
+- Type `!` followed by a command to run terminal commands
+- Example: `!ls -la` to list files
 
 #### 🎓 Expert Insight
 > In AI-native development, you don't memorize commands like `/help` or `/tools`—you explore conversationally. If you forget a command, just ask: "What commands are available?" Your AI partner tells you. The skill isn't memorization; it's knowing how to ask.
@@ -208,6 +331,104 @@ How do companies use machine learning to recommend products?
 **Step 6: When you're done, exit**
 ```
 /quit
+```
+
+---
+
+## Troubleshooting Common Issues
+
+If you encounter problems, here are solutions to common issues:
+
+### Issue 1: "npm: command not found"
+
+**Problem**: You don't have Node.js installed or it's not in your PATH.
+
+**Solution**:
+1. Install Node.js from [nodejs.org](https://nodejs.org/)
+2. Restart your terminal after installation
+3. Verify with `node --version`
+
+### Issue 2: "EACCES: permission denied" (macOS/Linux)
+
+**Problem**: npm doesn't have permission to install globally.
+
+**Solution**:
+```bash
+# Option 1: Use sudo (requires admin password)
+sudo npm install -g @google/gemini-cli
+
+# Option 2: Configure npm to use a different directory (recommended)
+mkdir ~/.npm-global
+npm config set prefix '~/.npm-global'
+echo 'export PATH=~/.npm-global/bin:$PATH' >> ~/.bashrc
+source ~/.bashrc
+npm install -g @google/gemini-cli
+```
+
+### Issue 3: "Cannot find module" after installation
+
+**Problem**: npm cache is corrupted.
+
+**Solution**:
+```bash
+npm cache clean --force
+npm install -g @google/gemini-cli
+```
+
+### Issue 4: Authentication fails or browser doesn't open
+
+**Problem**: Browser not opening or OAuth flow not completing.
+
+**Solution**:
+1. Make sure your default browser is set
+2. Try running `gemini` again
+3. If browser still doesn't open, manually copy the URL shown in terminal
+4. Check firewall settings aren't blocking the OAuth redirect
+
+---
+
+## Uninstalling Gemini CLI
+
+If you need to uninstall Gemini CLI:
+
+### Uninstall Global Installation
+
+```bash
+npm uninstall -g @google/gemini-cli
+```
+
+### Clear npx Cache
+
+If you used `npx`, clear the cache:
+
+**macOS/Linux:**
+```bash
+rm -rf "$(npm config get cache)/_npx"
+```
+
+**Windows PowerShell:**
+```powershell
+Remove-Item -Path (Join-Path $env:LocalAppData "npm-cache\_npx") -Recurse -Force
+```
+
+**Windows Command Prompt:**
+```cmd
+rmdir /s /q "%LocalAppData%\npm-cache\_npx"
+```
+
+### Complete Cleanup (Fresh Start)
+
+For a complete uninstall and reinstall:
+
+```bash
+# Uninstall
+npm uninstall -g @google/gemini-cli
+
+# Clear npm cache
+npm cache clean --force
+
+# Reinstall
+npm install -g @google/gemini-cli
 ```
 
 ---

@@ -11,22 +11,62 @@ What makes Gemini CLI particularly compelling is its accessibility. Developers g
 
 This chapter isn't about replacing Claude Code. It's about understanding **when to use each tool** and building the judgment to choose the right AI assistant for every development scenario you encounter.
 
-Recently, Google released [Gemini CLI Extensions](https://blog.google/technology/developers/gemini-cli-extensions/) which is conceptually similar to Claude Code Agent Skills. You can now also create a vertical agent skill library for Gemini CLI for your domain, startup, and company giving you a competitive advantage.
-
 By the end of this chapter, you'll have two powerful AI development tools at your command, each suited to different workflows and challenges.
 
-## What You'll Learn
+## Chapter Structure: 8 Lessons (137-150 minutes total)
 
-By the end of this chapter, you'll understand:
+### Foundation Tier (Lessons 1-3: Understanding & Setup)
+- **Lesson 1: Why Gemini CLI Matters** (15 min) - Positioning, free tier advantages, ecosystem
+- **Lesson 2: Installation, Authentication & First Steps** (15 min) - Platform-specific setup, OAuth flow, troubleshooting
+- **Lesson 3: Built-In Tools Deep Dive** (20-25 min) - File operations, shell, web fetch, search grounding
 
-- **Why Gemini CLI matters in the AI tool landscape**: The three key differentiators (open source licensing, generous free tier, 1 million token context window), how Google's response to Claude Code demonstrates rapid AI tool evolution, the strategic value of open-source AI development tools, and when to choose Gemini CLI over proprietary alternatives
+### Configuration Tier (Lessons 4-5: Customization & Management)
+- **Lesson 4: Configuration & Settings** (15-17 min) - 7-level hierarchy, .env files, security
+- **Lesson 5: Memory & Context Management** (18-20 min) - Context management, `/clear`, `/compress`, GEMINI.md
 
-- **Platform-specific installation and verification**: Complete setup process for Windows (PowerShell and Command Prompt), macOS (npm and Homebrew options, M1/M2 guidance), and Linux (Ubuntu/Debian/Fedora coverage), troubleshooting 8-10 common installation failures, and verification that `gemini --version` confirms successful installation
+### Extension Tier (Lessons 6-8: Capability Expansion)
+- **Lesson 6: Custom Slash Commands** (16-18 min) - TOML, injection patterns, namespacing
+- **Lesson 7: MCP Servers & Integration** (20 min) - CLI commands, OAuth, workflows
+- **Lesson 8: Extensions, Security & IDE Integration** (18-20 min) - Extension lifecycle, tool filtering, IDE
 
-- **Authentication with Google account and configuration**: OAuth authentication flow via browser, understanding free tier quotas (60 requests/minute, 1,000 requests/day), basic configuration customization (model selection, themes, vim mode), regional limitations and the Qwen Code alternative, and troubleshooting authentication failures
+## Learning Outcomes
 
-- **Your first Gemini CLI commands**: Basic command syntax and interactive mode, five verification commands demonstrating different capabilities, understanding the three command types (slash `/`, at `@`, passthrough `!`), interpreting AI responses with critical thinking, handling common errors, and fundamental prompting principles
+By completing this chapter, you'll be able to:
 
-- **Built-in tools for integrated workflows**: File operations (`@` commands) for code analysis and documentation understanding, web fetching for retrieving online content, Google Search grounding for current information with citations, shell integration (`!` commands) for executing system commands with AI guidance, combining multiple tools in realistic development workflows, and understanding tool limitations and security considerations
+- **Install and verify Gemini CLI** on Windows, macOS, and Linux
+- **Authenticate securely** using OAuth with free tier understanding (60 req/min, 1000 req/day)
+- **Master built-in tools**: File ops, shell, web fetch, search grounding
+- **Configure Gemini CLI** using 7-level hierarchy with environment settings
+- **Manage context** using `/clear`, `/compress`, `/chat` commands
+- **Create custom commands** with TOML and injection patterns
+- **Connect MCP servers** (Playwright, Context7, custom) using CLI
+- **Build and secure extensions** with tool filtering and IDE integration
+- **Choose the right tool** for different development scenarios
 
-- **The 1 million token context window advantage**: Translating "1 million tokens" into practical development terms (~100,000 lines of code or entire small-to-medium projects), identifying when context window size matters versus when it's irrelevant, leveraging massive context for architecture analysis and cross-file refactoring, understanding Gemini CLI's extension ecosystem and the Model Context Protocol (MCP), comparing Gemini CLI and Claude Code across 8 critical dimensions, and applying a decision framework to choose the right tool for every scenario
+## Key Concepts
+
+**Context Window**: Gemini CLI offers 1M tokens (~750K words or 100K lines of code)
+
+**Configuration Hierarchy**: 7-level precedence (CLI flags override everything down to system settings)
+
+**MCP**: Open standard connecting AI to external capabilities (browsers, APIs, databases)
+
+**Custom Commands**: Reusable prompts with `{{args}}`, `!{shell}`, `@{file}` injection
+
+**Extensions**: Pre-configured bundles of MCP servers, commands, and context
+
+## Chapter Verification Checklist
+
+By the end, verify you can:
+
+- [ ] Install Gemini CLI and run `gemini -v`
+- [ ] Use `/help` and built-in commands
+- [ ] Create custom commands with injection patterns
+- [ ] Add MCP servers with `gemini mcp add`
+- [ ] Configure project settings with `.env`
+- [ ] Use `/chat save` and `/chat resume`
+- [ ] Enable IDE integration in VS Code
+- [ ] Explain tool filtering concepts
+- [ ] Evaluate tool selection based on project requirements
+
+

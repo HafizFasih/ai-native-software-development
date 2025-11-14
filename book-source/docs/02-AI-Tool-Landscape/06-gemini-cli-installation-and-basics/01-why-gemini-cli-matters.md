@@ -61,56 +61,43 @@ The community has already built MCP servers for:
 
 Gemini CLI recently added an "Extensions" feature (similar to Claude Code's Skills) - but unlike Claude's proprietary approach, Gemini's extensions are built on the open MCP standard. Any MCP server becomes a Gemini CLI extension.
 
-## When Claude Code Is Better
+## Understanding the Tool Landscape
 
-Let's be honest: Gemini CLI isn't always the right choice. Claude Code has its own strengths:
+Different AI coding assistants serve different needs. Let's understand the key dimensions that matter when choosing a tool:
 
-**1. Integrated Experience**: Claude Code is built directly into the Claude.ai interface. No installation, no configuration, no command line. For developers who prefer web-based workflows, this is simpler.
+**Key Dimensions to Consider**:
 
-**2. Iterative Conversations**: Claude Code excels at maintaining conversational context across long, exploratory sessions. The interface is designed for back-and-forth dialogue about code.
+**1. Licensing & Access**:
+- Open source tools allow you to inspect, modify, and fork the code
+- Proprietary tools offer predictable behavior and vendor support
+- Consider: Do you need to understand or customize the tool's internals?
 
-**3. Enterprise Features**: Anthropic offers enterprise-grade support, SLAs, and compliance certifications. For regulated industries, this matters.
+**2. Cost Structure**:
+- Free tiers enable learning and experimentation without budget concerns
+- Paid services often provide enterprise features and SLAs
+- Consider: What's your usage pattern and budget reality?
 
-**4. Consistent Quality**: As a proprietary system, Claude Code offers predictable behavior and quality. You know what you're getting.
+**3. Context Window Size**:
+- Larger context windows (1M tokens) handle entire codebases at once
+- Smaller context windows (200K tokens) require working in focused chunks
+- Consider: How much code/documentation do you need visible simultaneously?
 
-**Best For**:
-- Professional developers with API budgets
-- Teams requiring vendor support
-- Projects needing SOC 2 compliance
-- Developers who prefer web interfaces
-- Exploratory coding sessions with extensive dialogue
+**4. Extensibility**:
+- MCP-based tools connect to any external data source or service
+- Proprietary systems offer curated integrations
+- Consider: Do you need custom integrations with your tools/databases?
 
-## When Gemini CLI Is Better
+**5. Interface Preference**:
+- Command-line tools integrate with terminal workflows
+- Web-based tools work across devices without installation
+- Consider: Where do you spend most of your development time?
 
-Gemini CLI shines in different scenarios:
+**6. Community vs Vendor Support**:
+- Open source communities provide flexibility and shared knowledge
+- Enterprise vendors provide contracts, SLAs, and compliance certifications
+- Consider: What level of support does your project require?
 
-**1. Learning and Education**: Students and self-learners benefit from the free tier and ability to experiment without cost concerns.
-
-**2. Large Codebase Work**: Projects with extensive codebases or documentation benefit from the 1 million token context window.
-
-**3. Custom Tool Integration**: Teams with proprietary systems can build MCP servers to integrate their tools directly into the AI workflow.
-
-**4. Open Source Projects**: Contributors to open source projects align philosophically with open source tools. Plus, they can adapt Gemini CLI to their project's needs.
-
-**5. Offline or Air-Gapped Development**: While Gemini CLI requires API access, its open source nature allows for potential local model adaptations (advanced use case).
-
-**6. Learning Tool Internals**: Developers who want to understand how AI coding assistants work can study Gemini CLI's source code.
-
-**Best For**:
-- Students and learners
-- Open source contributors
-- Large codebases or documentation sets
-- Teams needing custom integrations
-- Developers on tight budgets
-- Teaching and educational contexts
-
-#### 🤝 Practice Exercise
-
-> **Ask your AI**: "Given my situation [describe: student / professional / team lead / tight budget], which tool should I choose: Claude Code or Gemini CLI? Consider cost, context window needs, and my learning goals. Then explain the tradeoffs."
-
-**Expected Outcome**: You'll receive a personalized tool recommendation based on your specific situation, not generic advice—demonstrating AI as strategic partner, not feature list.
-
-## The Comparison at a Glance
+## Tool Comparison Reference
 
 | Dimension | Claude Code | Gemini CLI |
 |-----------|-------------|------------|
@@ -119,24 +106,25 @@ Gemini CLI shines in different scenarios:
 | **Context Window** | 200K tokens (~500 pages) | 1M tokens (~2,500 pages) |
 | **Model** | Claude Sonnet 4.5 | Gemini 2.5 Pro |
 | **Interface** | Web-based | Command line |
-| **Built-in Tools** | File ops, shell, web search | File ops, shell, web search, Google Search grounding |
-| **Extensibility** | Proprietary Skills system | Open MCP protocol |
-| **Installation** | None (web-based) | Requires Node.js setup |
+| **Built-in Tools** | File ops, shell, web search | File ops, shell, web, Google Search |
+| **Extensibility** | Skills system | MCP protocol |
+| **Installation** | None (web-based) | Requires Node.js |
 | **Platform Support** | Any browser | Windows, macOS, Linux |
-| **Community Ecosystem** | Vendor-controlled | Growing open source community |
-| **Customization** | Limited to API parameters | Full source code access |
-| **Enterprise Support** | Available with contracts | Community-based |
+| **Customization** | API parameters | Full source code |
+| **Support Model** | Enterprise contracts | Community-driven |
+
+**Note**: This table presents factual differences. Neither tool is universally "better"—the right choice depends on your specific project needs, budget, workflow preferences, and technical requirements.
 
 ## The Open Source Ecosystem Effect
 
 The most unexpected benefit of Gemini CLI being open source? It spawned forks and variations.
 
 In January 2025, Alibaba released Qwen Code—a fork of Gemini CLI that uses Alibaba's Qwen language models instead of Google's Gemini. It offers:
-- 2,000 requests per day (double Gemini's free tier)
+- 2,000 requests per day free tier
 - QwQ model integration for advanced reasoning
 - Enhanced support for Chinese language codebases
 
-This demonstrates a powerful principle: **open source tools evolve beyond their creators' vision**. Alibaba didn't ask Google for permission. They didn't wait for Google to internationalize. They forked, adapted, and served their user base.
+This demonstrates a powerful principle: **open source tools evolve beyond their creators' vision**. Alibaba forked, adapted, and served their user base's specific needs.
 
 Other forks are emerging for:
 - Regional language model providers
@@ -144,7 +132,7 @@ Other forks are emerging for:
 - Educational institutions with modified feature sets
 - Research projects studying AI-augmented development
 
-None of this would be possible with Claude Code's proprietary model.
+This ecosystem effect is characteristic of open source software—tools evolve in directions their original creators never envisioned.
 
 ## What This Means for Your Learning Journey
 
@@ -167,32 +155,32 @@ As you work through this chapter, you're not just learning "another AI tool." Yo
 
 ## Try With AI
 
-Use your AI companion tool set up (e.g., ChatGPT web, Claude Code, Gemini CLI), you may use that instead—the prompts are the same.
+Use your AI companion (ChatGPT, Claude Code, or Gemini CLI) for these exercises—the prompts work with any tool.
 
-### Prompt 1: Where Does Gemini Fit For Me?
+### Prompt 1: Understanding Tool Selection Dimensions
 ```
-Given my situation [describe yourself: student / solo developer / team lead], help me compare Claude Code and Gemini CLI for my next project. Which should I use first, and why? Consider: installation effort, cost/free tier, context window needs, and openness/extensibility.
-```
-
-**Expected outcome**: Personalized tool recommendation with trade-offs for your context.
-
-### Prompt 2: Free Tier Impact Estimator
-```
-Estimate how much I can get done on Gemini CLI’s free tier given my usage pattern [describe your typical session length and number of interactions]. Compare this to likely cost using Claude or other paid APIs for the same work.
+Explain the six key dimensions for choosing AI coding assistants from this lesson (licensing, cost, context window, extensibility, interface, support). For each dimension, give me a concrete scenario where that dimension would be the deciding factor.
 ```
 
-**Expected outcome**: Rough calculation of daily/weekly usage and cost savings to inform your tool choice.
+**Expected outcome**: Clear examples showing when each dimension matters most in real-world scenarios.
 
-### Prompt 3: Does My Codebase Fit The Context?
+### Prompt 2: Analyzing My Context Needs
 ```
-I want to work on a codebase of roughly [X files / Y lines / Z MB]. Would Claude’s ~200K token window be enough, or do I benefit from Gemini’s ~1M token window? Show how you estimate token size from files and recommend a workflow if it doesn’t fit in one shot.
-```
-
-**Expected outcome**: Practical guidance on context sizing and batching strategy if needed.
-
-### Prompt 4: Apply the Tool-Choice Framework
-```
-Using my upcoming project [describe it], evaluate whether Gemini CLI or Claude Code is the better fit (1) open source vs. proprietary (ability to inspect/modify), (2) free tier and expected usage, (3) context window needs for my code/docs size, and (4) interface/workflow fit (CLI vs. web). Give a clear recommendation, a 4‑bullet justification, and one risk/trade‑off I should watch.
+I'm working on a project with [describe: number of files, lines of code, documentation size]. Help me calculate roughly how many tokens this represents. Then explain whether a 200K token context window or 1M token context window would be more suitable, and why.
 ```
 
-**Expected outcome**: A concise, evidence-based recommendation grounded in this lesson’s factors, tailored to your project.
+**Expected outcome**: Token estimation methodology and practical guidance on context window requirements.
+
+### Prompt 3: Free Tier vs Paid Service Analysis
+```
+For a typical learning session where I make 50-100 AI requests per day over 3 months, compare the cost implications of: (1) using a free tier with limits, (2) using pay-per-use APIs, and (3) using a subscription service. What are the tradeoffs beyond just cost?
+```
+
+**Expected outcome**: Comprehensive cost analysis with non-financial tradeoffs (rate limits, features, flexibility).
+
+### Prompt 4: Project-Specific Tool Evaluation
+```
+Given this project context [describe your project: team size, budget, technical requirements, timeline], evaluate which AI coding assistant characteristics matter most. Consider: open source vs proprietary, cost structure, context window size, extensibility needs, interface preferences, and support requirements. Provide a weighted assessment.
+```
+
+**Expected outcome**: Structured evaluation framework applied to your specific project, helping you make an informed tool choice.
