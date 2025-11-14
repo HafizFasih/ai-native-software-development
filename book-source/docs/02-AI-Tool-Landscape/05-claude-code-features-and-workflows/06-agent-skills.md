@@ -6,9 +6,9 @@ duration: "8-10 min"
 
 # Agent Skills: Autonomous Expertise
 
-You've learned that Claude Code can automatically invoke **subagents** for specific tasks. But there's another, more elegant automation pattern: **Agent Skills**—capabilities that Claude discovers and applies automatically based on context.
+You've learned that **subagents** can be invoked automatically by Claude Code OR explicitly by you. Now let's explore **Agent Skills**—capabilities that are **ONLY autonomous**. You can't invoke them explicitly; Claude discovers and applies them automatically based on context.
 
-Unlike subagents (which you invoke explicitly), skills operate invisibly behind the scenes. Claude Code reads skill summaries, recognizes when a skill is relevant, and uses it—without you asking.
+**The key difference**: Subagents give you control (use them when you want). Skills operate invisibly (Claude uses them when relevant). Skills make Claude Code smarter by default—no commands needed.
 
 ---
 
@@ -20,19 +20,33 @@ Unlike subagents (which you invoke explicitly), skills operate invisibly behind 
 
 ### Contrast: Subagents vs. Skills
 
-**Subagents** (explicit delegation):
-```
-You: "Run the code-review subagent"
-Claude: Invokes code-review specialist
-```
+The key difference is **invocation control**:
 
-**Skills** (autonomous discovery):
+**Subagents** (flexible control):
+- ✅ **Autonomous**: Claude decides when to use them based on task complexity
+- ✅ **Explicit**: You can request them by name: "Use the code-review subagent"
+- **Both ways work**
+
+**Skills** (model-invoked only):
+- ✅ **Autonomous**: Claude discovers and applies them based on context
+- ❌ **Not explicit**: You **cannot** request them by name
+- **Only autonomous invocation**
+
+**Example**:
+
 ```
 You: "Review this code for quality issues"
-Claude: (internally discovers code-review skill is relevant)
-Claude: Applies code-review skill automatically
-You: Get reviewed code (didn't ask for the skill explicitly)
+
+If you have a code-review subagent:
+- Claude MAY invoke it automatically (autonomous)
+- You CAN request it: "Use the code-review subagent" (explicit)
+
+If you have a code-review skill:
+- Claude MAY apply it automatically (autonomous)
+- You CANNOT request it explicitly (skills have no names you invoke)
 ```
+
+**Why use skills?** When you want capabilities Claude applies invisibly without explicit commands. Skills make Claude Code **smarter by default**.
 
 ---
 

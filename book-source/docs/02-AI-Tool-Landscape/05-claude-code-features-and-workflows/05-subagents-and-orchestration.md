@@ -272,7 +272,8 @@ Subagents are stored as Markdown files with YAML frontmatter:
 ---
 name: code-reviewer
 description: Reviews Python code for quality and security
-tools: [Read, Grep]
+model: sonnet
+color: purple
 ---
 
 # Code Review Instructions
@@ -344,18 +345,3 @@ Use the code-reviewer subagent to analyze this file: [path to any Python file in
 ```
 
 **Expected outcome**: Your custom subagent launches, analyzes the file, returns findings to main Claude Code, which presents them to you. You'll see the one-task, one-completion pattern in action.
-
----
-
-## What You Learned
-
-- ✅ **Subagents** are specialized AI assistants with isolated context
-- ✅ **Execution model**: One task → work independently → return results → hand control back
-- ✅ **Plan subagent** (built-in) researches your code and creates multi-phase plans
-- ✅ **Custom subagents** are easy to create via `/agents` command
-- ✅ **Automatic delegation** happens when Claude Code recognizes task complexity
-- ✅ **Explicit invocation**: "Use the [name] subagent to..."
-- ✅ **Orchestration** means AI coordinating specialists toward a goal
-- ✅ **You created your first custom subagent** and tested it!
-
-**Next lesson**: You'll learn about Skills—another way to extend Claude Code's capabilities automatically.
