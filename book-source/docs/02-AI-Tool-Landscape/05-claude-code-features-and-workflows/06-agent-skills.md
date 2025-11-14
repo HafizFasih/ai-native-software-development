@@ -38,7 +38,7 @@ Based on the official documentation, subagents and skills are similar in structu
 |---------|-----------|--------|
 | **Context isolation** | ✅ Separate context window<br>✅ Separate transcript file (`agent-{id}.jsonl`)<br>Prevents main conversation pollution | ❌ Runs in main Claude Code context<br>❌ No separate transcript<br>Shares context with main conversation |
 | **Autonomous invocation** | ✅ Claude decides when to use | ✅ Claude decides when to use |
-| **Explicit invocation** | ✅ "Use the [name] subagent" | ❌ **Cannot invoke by name**<br>(model-invoked only) |
+| **Explicit invocation** | ✅ "Use the [name] subagent"<br>(Hard invocation - guaranteed) | ❌ No hard invocation<br>✅ **But you CAN guide by name**<br>"Use the [name] skill" (soft guidance) |
 | **File structure** | `.claude/agents/name.md` | `.claude/skills/name/SKILL.md` |
 | **Tool specification** | `tools:` (inherits all if omitted) | `allowed-tools:` (restricts if specified) |
 
@@ -48,34 +48,52 @@ Based on the official documentation, subagents and skills are similar in structu
 **Official quote on skill invocation**:
 > "Skills are **model-invoked**—Claude autonomously decides when to use them based on your request and the Skill's description. This is different from slash commands, which are **user-invoked**."
 
+**Important clarification**: While skills don't have *hard invocation* (no system-level trigger), **you CAN guide Claude by mentioning skill names**. This provides contextual guidance that makes Claude more likely to apply that skill.
+
 **Example**:
 
 ```
 You: "Review this code for quality issues"
 
 With a code-review subagent:
-- ✅ Claude MAY invoke it automatically (autonomous)
-- ✅ You CAN request it: "Use the code-review subagent" (explicit)
+- ✅ Hard invocation: "Use the code-review subagent" (guaranteed launch)
+- ✅ Autonomous: Claude may invoke it automatically
 - ✅ Runs in isolated context (separate transcript)
 - ✅ Main conversation stays clean
 
 With a code-review skill:
-- ✅ Claude MAY apply it automatically (autonomous)
-- ❌ You CANNOT request it by name (model-invoked only)
+- ✅ Soft guidance: "Use the code-review skill" (guides Claude's decision)
+- ✅ Autonomous: Claude may apply it automatically
 - ❌ Runs in main context (shares transcript with main conversation)
 - ❌ Adds to main conversation context
+
+You can also ask: "What skills do you have?" and Claude will list all available skills.
+Then say: "Use the code-review skill for this file" and Claude will likely apply it.
 ```
 
+**The Practical Difference**:
+
+**Hard invocation (subagents)**:
+- "Use the test-runner subagent" → System launches it (guaranteed)
+- Separate context, separate transcript
+- Use when you need isolation and guaranteed execution
+
+**Soft guidance (skills)**:
+- "Use the code-review skill" → Claude likely applies it (contextual guidance)
+- Same context, same transcript
+- Use when you want lightweight capabilities without context overhead
+
 **When to use skills over subagents**:
-- When you want pure automation (no manual invocation needed)
 - When context isolation isn't important (small, focused tasks)
-- When you want Claude to be smarter by default without overhead
+- When you want Claude to be smarter by default
+- When you want to guide by name but don't need guaranteed invocation
+- When you want minimal overhead (no separate context management)
 
 **When to use subagents over skills**:
-- When you want control over when it's used (explicit invocation)
+- When you need **guaranteed invocation** ("Use X subagent" must work)
 - When you need **context isolation** (complex tasks that shouldn't clutter main conversation)
-- When you need both autonomous AND manual invocation
-- When you want separate transcripts for specialized work
+- When you want **separate transcripts** for specialized work
+- When the task is complex enough to justify separate context overhead
 
 ---
 
