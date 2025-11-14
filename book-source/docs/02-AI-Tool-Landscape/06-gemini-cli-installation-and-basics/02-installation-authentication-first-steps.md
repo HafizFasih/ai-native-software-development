@@ -168,8 +168,8 @@ Tips for getting started:
   - Right: Mode (`auto` by default)
 
 **Note**: You might also see:
-- Context info like "Using: X context files" if you have GEMINI.md files
-- "X MCP server" if you've configured MCP servers (covered in Lesson 7)
+- Context info like "Using: X context files" if you have GEMINI.md files (covered in Lesson 4)
+- "X MCP server" if you've configured MCP servers (covered in Lesson 6)
 - Update notifications if a newer version is available
 - Git branch info if you're in a git repository
 
@@ -222,8 +222,8 @@ Once you configure Gemini CLI (in later lessons), you'll see context information
 Using: 2 context files | 1 MCP server
 ```
 
-- **Context files**: GEMINI.md or CONTEXT.md files (covered in Lesson 5)
-- **MCP servers**: Connected external tool servers (covered in Lesson 7)
+- **Context files**: GEMINI.md or CONTEXT.md files (covered in Lesson 4)
+- **MCP servers**: Connected external tool servers (covered in Lesson 6)
 
 **For first-time users**: This line won't appear until you add context files or MCP servers. That's normal!
 
