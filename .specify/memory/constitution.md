@@ -712,18 +712,20 @@ These principles are **permanent and enforced through falsifiable forcing functi
 
 **Input Required:**
 - spec.md (human-approved)
-- plan.md (9 lessons exactly)
+- plan.md (pedagogically structured lessons)
 - Intelligence Object (JSON)
 
 **Output Guaranteed:**
 - tasks.md (actionable checklist for lesson-writer)
 
 **Gate:**
-> **Plan MUST have exactly 9 lessons.**
+> **Plan MUST follow pedagogical progression (Foundation → Application → Integration → Validation → Mastery).**
 >
-> **Detection:** If plan.md has ≠ 9 lessons, STRUCTURAL VIOLATION.
+> **Lesson Count:** 5-12 lessons based on concept density (see Principle 4).
 >
-> **Action:** Chapter-planner MUST regenerate until exactly 9 lessons.
+> **Detection:** If plan.md lacks pedagogical phases OR lesson count not justified by concept complexity, STRUCTURAL VIOLATION.
+>
+> **Action:** Chapter-planner MUST structure lessons following pedagogical arc with appropriate count for content.
 
 ---
 
@@ -749,7 +751,7 @@ These principles are **permanent and enforced through falsifiable forcing functi
 #### Technical-Reviewer → Human
 
 **Input Required:**
-- Complete chapter (all 9 lessons)
+- Complete chapter (all lessons per plan)
 
 **Output Guaranteed:**
 - Pass/Fail verdict
@@ -899,15 +901,15 @@ Instead of rigid rules ("always use X"), provide conceptual vocabulary for agent
 
 **Entry Criteria:**
 - Spec approved (Gate 1 passed)
-- Plan created (9 lessons)
+- Plan created (pedagogically structured)
 
 **Validation Checklist:**
-- [ ] Exactly 9 lessons (no more, no fewer)
+- [ ] Lesson count justified by concept density (5-12 lessons, see Principle 4)
 - [ ] Lesson types correctly applied (Foundation → Application → Integration → Validation → Mastery)
 - [ ] Complexity tier matches Intelligence Object
 - [ ] Prerequisites validated (all prior chapters exist)
 - [ ] Teaching pattern varies from previous chapter (anti-convergence)
-- [ ] Cognitive load within tier limit (A2 = 7 concepts/section)
+- [ ] Cognitive load within tier limit (CEFR-aligned, see Principle 5)
 
 **Forcing Function:**
 > **If structure invalid, lesson-writer REFUSES execution.**
@@ -921,7 +923,7 @@ Instead of rigid rules ("always use X"), provide conceptual vocabulary for agent
 ### Gate 3: Factual Validation (Before Publication)
 
 **Entry Criteria:**
-- Content created (all 9 lessons)
+- Content created (all planned lessons)
 - Code examples included
 
 **Validation Checklist:**
@@ -1064,7 +1066,7 @@ Instead of rigid rules ("always use X"), provide conceptual vocabulary for agent
 - [ ] ZERO chapters with code shown before specification
 - [ ] ZERO chapters with untested code examples
 - [ ] ZERO hallucinated APIs or features
-- [ ] 100% of chapters have exactly 9 lessons
+- [ ] 100% of chapters follow pedagogical structure (Foundation → Mastery)
 - [ ] 90%+ of chapters pass Gate 3 on first validation (constitutional alignment strong)
 
 **Coherence Metrics:**
