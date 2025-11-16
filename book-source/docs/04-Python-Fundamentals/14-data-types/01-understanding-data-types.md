@@ -5,7 +5,6 @@ lesson: 1
 duration_minutes: 40
 proficiency_level: "CEFR A2"
 blooms_level: "Understand"
-cognitive_load: 6
 
 # HIDDEN SKILLS METADATA (Institutional Integration Layer)
 # Not visible to students; enables competency assessment and differentiation
@@ -196,9 +195,9 @@ Python organizes all data into categories. Here's the complete overview. Don't m
 | **Numeric** | int, float, complex | Numbers | 42, 3.14, 2+3j |
 | **Text** | str | Words, sentences, characters | "Alice", "hello@example.com" |
 | **Boolean** | bool | True or False | True, False |
-| **Collections** | list, tuple, dict, set, range | Groups of items | [1, 2, 3], {"name": "Alice"} |
+| **Collections** | list, tuple, dict, set, range | Groups of items | [1, 2, 3], \{"name": "Alice"\} |
 | **Binary** | bytes, bytearray, memoryview | Raw file/network data | Image files, network packets |
-| **Mapping** | dict | Key-value pairs | {"age": 25, "name": "Alice"} |
+| **Mapping** | dict | Key-value pairs | \{"age": 25, "name": "Alice"\} |
 | **Special** | NoneType | Absence of value | None |
 
 **Message for now**: "We'll explore each of these in detail soon!" For this lesson, we're building a foundation.
@@ -229,7 +228,7 @@ Here's a practical question pattern you can use to figure out what type you need
 
 5. **Is it multiple items together?** (list of scores, dictionary of user info)
    - Answer: **Collection** (list, dict, tuple, set, or range)
-   - Examples: [85, 90, 88] (list of scores), {"name": "Alice", "age": 25} (dictionary)
+   - Examples: [85, 90, 88] (list of scores), \{"name": "Alice", "age": 25\} (dictionary)
 
 6. **Is it "nothing"?** (no value, hasn't been set yet)
    - Answer: **None**
@@ -322,7 +321,7 @@ Below are 10 data examples. For each one, decide which type category it belongs 
 6. `25.99` — What type? Why?
 7. `"alice@example.com"` — What type? Why?
 8. `False` — What type? Why?
-9. `{"name": "Alice", "age": 25}` — What type? Why?
+9. `\{"name": "Alice", "age": 25\}` — What type? Why?
 10. `None` — What type? Why?
 
 **Checking your work**: Look at the Type Decision Framework above. For each example, ask "What kind of data is this?" Your answer should match the framework.

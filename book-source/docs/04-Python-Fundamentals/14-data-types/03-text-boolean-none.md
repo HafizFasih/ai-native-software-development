@@ -337,7 +337,7 @@ Understanding truthy/falsy values prepares you for Chapter 17, where you'll lear
 - Testing if a user has premium status (boolean check)
 
 **AI Prompt Used for this section:**
-"Create a Python script that demonstrates truthy and falsy values. Show examples of False-evaluating values (0, '', [], {}, None) and truthy values (1, 'hello', [1,2], {'a': 1}). Use bool() to convert each to True/False."
+""Create a Python script that demonstrates truthy and falsy values. Show examples of False-evaluating values (0, '', [], \{\}, None) and truthy values (1, 'hello', [1,2], \{'a': 1\}). Use bool() to convert each to True/False.""
 
 **Generated Code**:
 ```python
