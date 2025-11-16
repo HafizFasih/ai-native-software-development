@@ -277,17 +277,60 @@ html[data-theme='dark'] .pana-chat__footer {
   align-items: center;
 }
 
+.pana-chat__input-container {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
 .pana-chat__input {
   flex: 1;
+  width: 100%;
   padding: 14px 20px;
+  padding-right: 50px; /* Space for voice indicator and small mic button */
   border: 2px solid rgba(0, 31, 63, 0.15);
   border-radius: 28px;
   font-size: 14px;
   outline: none;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   background: #ffffff;
   color: #1a1a1a;
   font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', system-ui, sans-serif;
+  will-change: border-color, box-shadow;
+}
+
+/* Listening state - active voice input */
+.pana-chat__input--listening {
+  border-color: #dc2626;
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1), 0 2px 8px rgba(220, 38, 38, 0.15);
+  animation: pulse-border 2s ease-in-out infinite;
+}
+
+@keyframes pulse-border {
+  0%, 100% {
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1), 0 2px 8px rgba(220, 38, 38, 0.15);
+  }
+  50% {
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.2), 0 2px 12px rgba(220, 38, 38, 0.25);
+  }
+}
+
+/* Processing state - after voice input ends */
+.pana-chat__input--processing {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  opacity: 0.8;
+}
+
+html[data-theme='dark'] .pana-chat__input--listening {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15), 0 2px 8px rgba(239, 68, 68, 0.2);
+}
+
+html[data-theme='dark'] .pana-chat__input--processing {
+  border-color: #60a5fa;
+  box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.15);
 }
 
 .pana-chat__input:focus {
@@ -315,6 +358,136 @@ html[data-theme='dark'] .pana-chat__input:focus {
 
 html[data-theme='dark'] .pana-chat__input::placeholder {
   color: #666666;
+}
+
+/* Voice Wave Indicator - shows active listening */
+.pana-chat__voice-indicator {
+  position: absolute;
+  right: 16px;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+}
+
+.pana-chat__voice-wave {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  height: 20px;
+}
+
+.pana-chat__voice-wave span {
+  width: 3px;
+  background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+  border-radius: 2px;
+  animation: voice-wave 1.2s ease-in-out infinite;
+}
+
+html[data-theme='dark'] .pana-chat__voice-wave span {
+  background: linear-gradient(135deg, #ef4444 0%, #f87171 100%);
+}
+
+.pana-chat__voice-wave span:nth-child(1) {
+  height: 8px;
+  animation-delay: 0s;
+}
+
+.pana-chat__voice-wave span:nth-child(2) {
+  height: 16px;
+  animation-delay: 0.2s;
+}
+
+.pana-chat__voice-wave span:nth-child(3) {
+  height: 12px;
+  animation-delay: 0.4s;
+}
+
+@keyframes voice-wave {
+  0%, 100% {
+    transform: scaleY(0.5);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+/* Small Voice Button - appears inside input when text exists */
+.pana-chat__small-voice-btn {
+  position: absolute;
+  right: 12px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(0, 31, 63, 0.08);
+  border: 1px solid rgba(0, 31, 63, 0.15);
+  color: #001f3f;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 10;
+}
+
+html[data-theme='dark'] .pana-chat__small-voice-btn {
+  background: rgba(170, 170, 170, 0.1);
+  border-color: rgba(170, 170, 170, 0.2);
+  color: #aaaaaa;
+}
+
+.pana-chat__small-voice-btn:hover:not(:disabled) {
+  background: rgba(0, 31, 63, 0.15);
+  border-color: rgba(0, 31, 63, 0.25);
+  color: #001428;
+  transform: scale(1.1);
+}
+
+html[data-theme='dark'] .pana-chat__small-voice-btn:hover:not(:disabled) {
+  background: rgba(170, 170, 170, 0.2);
+  border-color: rgba(170, 170, 170, 0.3);
+  color: #ffffff;
+}
+
+.pana-chat__small-voice-btn:active:not(:disabled) {
+  transform: scale(0.95);
+  background: rgba(0, 31, 63, 0.2);
+}
+
+html[data-theme='dark'] .pana-chat__small-voice-btn:active:not(:disabled) {
+  background: rgba(170, 170, 170, 0.25);
+}
+
+.pana-chat__small-voice-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Small Voice Button - Listening State (Red/Pulse) */
+.pana-chat__small-voice-btn--listening {
+  background: linear-gradient(135deg, #dc2626 0%, #ef4444 50%, #f87171 100%);
+  border-color: #dc2626;
+  color: #ffffff;
+  animation: pulse-small-voice 1.5s ease-in-out infinite;
+}
+
+html[data-theme='dark'] .pana-chat__small-voice-btn--listening {
+  background: linear-gradient(135deg, #dc2626 0%, #ef4444 50%, #f87171 100%);
+  border-color: #ef4444;
+  color: #ffffff;
+}
+
+@keyframes pulse-small-voice {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.4);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.2);
+  }
 }
 
 .pana-chat__send-btn {
@@ -404,6 +577,156 @@ html[data-theme='dark'] .pana-chat__send-btn:active:not(:disabled) {
   }
 
   .pana-chat__send-btn {
+    width: 46px;
+    height: 46px;
+  }
+}
+
+/* Message Sources and Metadata */
+.pana-chat__message-sources {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  font-size: 12px;
+}
+
+html[data-theme='dark'] .pana-chat__message-sources {
+  border-top-color: rgba(170, 170, 170, 0.15);
+}
+
+.pana-chat__sources-label {
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+html[data-theme='dark'] .pana-chat__sources-label {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.pana-chat__source-item {
+  padding: 4px 8px;
+  margin: 4px 0;
+  background: rgba(0, 0, 0, 0.03);
+  border-radius: 6px;
+  font-size: 11px;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+html[data-theme='dark'] .pana-chat__source-item {
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.pana-chat__message-note {
+  margin-top: 10px;
+  padding: 8px 12px;
+  background: rgba(0, 123, 255, 0.1);
+  border-radius: 8px;
+  font-size: 12px;
+  color: rgba(0, 123, 255, 0.9);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+html[data-theme='dark'] .pana-chat__message-note {
+  background: rgba(100, 150, 255, 0.15);
+  color: rgba(150, 200, 255, 0.9);
+}
+
+.pana-chat__note-icon {
+  font-size: 14px;
+}
+
+/* Voice Input Button */
+.pana-chat__voice-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #001428 0%, #001f3f 50%, #003366 100%);
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(0, 31, 63, 0.25);
+}
+
+html[data-theme='dark'] .pana-chat__voice-btn {
+  background: linear-gradient(135deg, #555555 0%, #666666 50%, #777777 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.pana-chat__voice-btn:hover:not(:disabled) {
+  transform: scale(1.08) translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 31, 63, 0.35);
+}
+
+.pana-chat__voice-btn:active:not(:disabled) {
+  transform: scale(0.92);
+  box-shadow: 0 2px 8px rgba(0, 31, 63, 0.2);
+}
+
+html[data-theme='dark'] .pana-chat__voice-btn:hover:not(:disabled) {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+html[data-theme='dark'] .pana-chat__voice-btn:active:not(:disabled) {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.pana-chat__voice-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Listening State - Pulsing Animation */
+.pana-chat__voice-btn--listening {
+  animation: pulse-voice 1.5s ease-in-out infinite;
+  background: linear-gradient(135deg, #dc2626 0%, #ef4444 50%, #f87171 100%);
+}
+
+html[data-theme='dark'] .pana-chat__voice-btn--listening {
+  background: linear-gradient(135deg, #dc2626 0%, #ef4444 50%, #f87171 100%);
+}
+
+@keyframes pulse-voice {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.4);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(220, 38, 38, 0.6);
+  }
+}
+
+html[data-theme='dark'] .pana-chat__voice-btn--listening {
+  animation: pulse-voice-dark 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse-voice-dark {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.5);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(220, 38, 38, 0.7);
+  }
+}
+
+/* Mobile Responsive for Voice Button */
+@media (max-width: 768px) {
+  .pana-chat__voice-btn {
     width: 46px;
     height: 46px;
   }
