@@ -176,15 +176,12 @@ print(x is y)          # False! (different objects, no caching for large integer
 When might you use `id()` in practice? Mostly for debugging or learning how Python works. But here's a practical example:
 
 ```python
-def create_greeting() -> str:
-    greeting: str = "hello"
-    return greeting
+# Creating two greetings to compare their identity
+greeting1: str = "hello"
+greeting2: str = "hello"
 
-g1: str = create_greeting()
-g2: str = create_greeting()
-
-print(g1 == g2)  # True (same value)
-print(id(g1) == id(g2))  # Might be True! (Python optimizes string literals)
+print(greeting1 == greeting2)  # True (same value)
+print(id(greeting1) == id(greeting2))  # Might be True! (Python optimizes string literals)
 ```
 
 ---
@@ -407,7 +404,7 @@ Create a program that:
 4. Converts the result back to a string
 5. Prints a complete sentence
 
-**Challenge**: What happens if the user enters "twenty five" instead of "25"? Your program will crash. Can you handle that? (Hint: This is exception handling, coming in Part 5, but try catching it with try/except!)
+**Note**: What happens if the user enters "twenty five" instead of "25"? Your program will crash. We'll learn how to handle such errors gracefully in Chapter 21 (Exception Handling).
 
 ---
 
@@ -605,57 +602,51 @@ In real applications, you can't trust user input. Someone might enter "twenty-fi
 Here's the structure. Your job is to complete the validation logic:
 
 ```python
-def validate_user_profile() -> None:
-    """Validate user profile data for registration."""
-    print("=== User Profile Validator ===\n")
+# User Profile Validator
+# A real-world data validation program
 
-    # Step 1: Collect user input
-    print("Enter your profile information:")
-    name: str = input("Name: ")
-    age_input: str = input("Age: ")
-    email: str = input("Email: ")
+print("=== User Profile Validator ===\n")
 
-    print("\n--- Validation Results ---\n")
+# Step 1: Collect user input
+print("Enter your profile information:")
+name: str = input("Name: ")
+age_input: str = input("Age: ")
+email: str = input("Email: ")
 
-    # Step 2: Validate name (should be non-empty string)
-    # TODO: Check if name is non-empty
-    # TODO: Check if name contains only letters and spaces
-    name_valid: bool = len(name) > 0 and isinstance(name, str)
-    print(f"Name '{name}': {'✓ Valid' if name_valid else '✗ Invalid'}")
+print("\n--- Validation Results ---\n")
 
-    # Step 3: Validate and convert age
-    # TODO: Try converting age_input to int
-    # TODO: Check if age is reasonable (e.g., 0-120)
-    try:
-        age: int = int(age_input)
-        age_valid: bool = 0 < age < 120
-        print(f"Age {age}: {'✓ Valid' if age_valid else '✗ Invalid (out of range)'}")
-    except ValueError:
-        print(f"Age '{age_input}': ✗ Invalid (not a number)")
-        age_valid = False
+# Step 2: Validate name (should be non-empty string)
+# TODO: Check if name is non-empty
+# TODO: Check if name contains only letters and spaces
+name_valid: bool = len(name) > 0 and isinstance(name, str)
+print(f"Name '{name}': {'✓ Valid' if name_valid else '✗ Invalid'}")
 
-    # Step 4: Validate email (basic check: contains @)
-    # TODO: Check if email contains @ symbol
-    # TODO: Check if email is non-empty
-    email_valid: bool = "@" in email and len(email) > 0
-    print(f"Email '{email}': {'✓ Valid' if email_valid else '✗ Invalid'}")
+# Step 3: Validate and convert age
+# TODO: Convert age_input to int (assumes valid number for now)
+# TODO: Check if age is reasonable (e.g., 0-120)
+# Note: We'll handle errors properly in Chapter 21 (Exception Handling)
+age: int = int(age_input)  # Assumes valid number for now
+age_valid: bool = 0 < age < 120
+print(f"Age {age}: {'✓ Valid' if age_valid else '✗ Invalid (out of range)'}")
 
-    # Step 5: Overall validation result
-    print("\n--- Summary ---")
-    all_valid: bool = name_valid and age_valid and email_valid
+# Step 4: Validate email (basic check: contains @)
+# TODO: Check if email contains @ symbol
+# TODO: Check if email is non-empty
+email_valid: bool = "@" in email and len(email) > 0
+print(f"Email '{email}': {'✓ Valid' if email_valid else '✗ Invalid'}")
 
-    # TODO: Display final validation status
-    print(f"Profile Status: {'✓ APPROVED' if all_valid else '✗ REJECTED'}")
+# Step 5: Overall validation result
+print("\n--- Summary ---")
+all_valid: bool = name_valid and age_valid and email_valid
 
-    # Step 6: Show type information (educational)
-    print("\n--- Type Information ---")
-    print(f"Name type: {type(name)}")
-    if age_valid:
-        print(f"Age type: {type(age)} (converted from {type(age_input)})")
-    print(f"Email type: {type(email)}")
+# TODO: Display final validation status
+print(f"Profile Status: {'✓ APPROVED' if all_valid else '✗ REJECTED'}")
 
-# Run the validator
-validate_user_profile()
+# Step 6: Show type information (educational)
+print("\n--- Type Information ---")
+print(f"Name type: {type(name)}")
+print(f"Age type: {type(age)} (converted from {type(age_input)})")
+print(f"Email type: {type(email)}")
 ```
 
 ### Example Output
@@ -688,9 +679,9 @@ Email type: <class 'str'>
 This project teaches you:
 - **Type validation** — Checking data is the right type before using it
 - **Type casting** — Converting user input (always strings) to appropriate types
-- **Error handling** — Gracefully handling invalid data with try/except
 - **isinstance()** — Verifying types programmatically
 - **Real-world patterns** — This is how production systems validate user data
+- **Note**: Full error handling with try/except is covered in Chapter 21
 
 ### Capstone Extensions (Stretch Goals)
 
@@ -708,57 +699,79 @@ Once your validator works, enhance it:
 
 ### Exercise 1: Type Inspection Challenge
 
-Write a function `analyze_value()` that takes any value and returns a dictionary with:
-- `type_name` — String name of the type
-- `is_numeric` — Boolean (is it int or float?)
-- `is_truthy` — Boolean (would it be True in an if statement?)
-- `can_be_string` — Boolean (can you convert it to string without error?)
+Write a program that analyzes different values and shows their type properties:
+- Type name
+- Whether it's numeric (int or float)
+- Whether it's truthy (would be True in an if statement)
+- Whether it can be converted to string
 
 ```python
-def analyze_value(val: int | float | str | bool | None) -> dict:
-    """Analyze a value's type properties."""
-    result: dict = {
-        "type_name": str(type(val)),
-        "is_numeric": isinstance(val, (int, float)),
-        "is_truthy": bool(val),
-        "can_be_string": True,  # Everything can become a string!
-    }
-    return result
+# Exercise 1: Type Inspection Challenge
+# Analyze different values and show their type information
 
-# Test it
-print(analyze_value(42))
-print(analyze_value("hello"))
-print(analyze_value(None))
+# Test different values
+value1 = 42
+value2 = "hello"
+value3 = 3.14
+value4 = True
+value5 = None
+
+print("=== Type Inspection Results ===\n")
+
+# Analyze value1
+print(f"Value: {value1}")
+print(f"  Type: {type(value1)}")
+print(f"  Is numeric? {isinstance(value1, (int, float))}")
+print(f"  Is truthy? {bool(value1)}")
+print(f"  Can be string? {isinstance(str(value1), str)}")
+print()
+
+# Analyze value2
+print(f"Value: {value2}")
+print(f"  Type: {type(value2)}")
+print(f"  Is numeric? {isinstance(value2, (int, float))}")
+print(f"  Is truthy? {bool(value2)}")
+print(f"  Can be string? {isinstance(str(value2), str)}")
+print()
+
+# TODO: Analyze value3, value4, and value5 following the same pattern
 ```
 
 ### Exercise 2: Casting Chain Challenge
 
-Write a function that:
-1. Takes a string input
+Write a program that:
+1. Starts with a string value
 2. Converts it to int
 3. Converts that int to float
-4. Converts that float to bool
+4. Converts that float back to string
 5. Prints each step and its type
 
-Handle errors gracefully (what if the user enters "abc"?).
-
 ```python
-def casting_chain(value_str: str) -> None:
-    """Demonstrate type casting chain."""
-    try:
-        step1: int = int(value_str)
-        print(f"String '{value_str}' → int: {step1} (type: {type(step1)})")
+# Exercise 2: Type Casting Chain
+# Demonstrate converting through multiple types
 
-        step2: float = float(step1)
-        print(f"int {step1} → float: {step2} (type: {type(step2)})")
+original: str = "42"
+print(f"Original: '{original}' (type: {type(original).__name__})")
 
-        step3: bool = bool(step2)
-        print(f"float {step2} → bool: {step3} (type: {type(step3)})")
-    except ValueError as e:
-        print(f"Error: Can't convert '{value_str}' to int: {e}")
+# Convert to int
+as_int: int = int(original)
+print(f"As int: {as_int} (type: {type(as_int).__name__})")
 
-casting_chain("42")
-casting_chain("abc")
+# Convert to float
+as_float: float = float(as_int)
+print(f"As float: {as_float} (type: {type(as_float).__name__})")
+
+# Convert back to string
+back_to_str: str = str(as_float)
+print(f"Back to string: '{back_to_str}' (type: {type(back_to_str).__name__})")
+
+# Compare original vs final
+print(f"\nOriginal: '{original}'")
+print(f"Final: '{back_to_str}'")
+print(f"Same value? {original == back_to_str}")
+
+# TODO: Try with different starting values like "0", "100", "-5"
+# What happens when you start with "3.14"?
 ```
 
 ### Exercise 3: Implicit vs Explicit Conversion
