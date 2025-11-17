@@ -1,15 +1,14 @@
-import React, { useState, useCallback, useEffect, useRef } from 'react';
-import Link from '@docusaurus/Link';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import { useColorMode } from '@docusaurus/theme-common';
-import { useSearch } from '@/contexts/SearchContext';
-import type { SearchResult } from '@/contexts/SearchContext';
-import { useSidebarControl } from '@/contexts/SidebarContext';
 import { useBookmarks } from '@/contexts/BookmarkContext';
-import RightDrawer from './RightDrawer';
-import SelectionToolbar from './SelectionToolbar';
+import { useSearch } from '@/contexts/SearchContext';
+import { useSidebarControl } from '@/contexts/SidebarContext';
+import Link from '@docusaurus/Link';
+import { useColorMode } from '@docusaurus/theme-common';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import Assistant from '../PanaChat';
 import './customNavbar.css';
+import RightDrawer from './RightDrawer';
+import SelectionToolbar from './SelectionToolbar';
 
 interface NavButtonProps {
   label: string;
@@ -33,7 +32,7 @@ const CustomNavbar: React.FC = () => {
   const { colorMode, setColorMode } = useColorMode();
   const { search, isLoading: searchLoading } = useSearch();
   const { isSidebarCollapsed, collapseSidebar, expandSidebar } = useSidebarControl();
-  const { tocMode, setTocMode } = useBookmarks();
+  const { setSelectedText, setInitialView, tocMode, setTocMode } = useBookmarks();
   const [searchFocused, setSearchFocused] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -46,9 +45,13 @@ const CustomNavbar: React.FC = () => {
     setColorMode(colorMode === 'dark' ? 'light' : 'dark');
   }, [colorMode, setColorMode]);
 
-  const openDrawer = useCallback((title: string) => {
+  const openDrawer = useCallback((title: string, viewMode: 'add' | 'view' = 'view') => {
     setDrawerTitle(title);
     setDrawerOpen(true);
+    // Set the initial view mode for bookmark panel
+    if (title === 'Bookmark') {
+      setInitialView(viewMode);
+    }
     // Collapse left sidebar when opening right drawer for maximum space
     collapseSidebar();
   }, [collapseSidebar]);
@@ -57,13 +60,19 @@ const CustomNavbar: React.FC = () => {
     setDrawerOpen(false);
   }, []);
 
-  const handleSelectionAction = useCallback((action: string, selectedText: string) => {
-    // Open the drawer with the selected action
-    openDrawer(action);
+  const handleSelectionAction = useCallback((action: string, selectedTextParam: string) => {
+    // Store the selected text in context
+    if (action === 'Bookmark') {
+      setSelectedText(selectedTextParam);
+      // Open the drawer in 'add' mode with selected text
+      openDrawer(action, 'add');
+    } else {
+      // For other actions, open normally
+      openDrawer(action, 'view');
+    }
 
-    // You can also store the selected text for use in the drawer
-    console.log(`Action: ${action}, Selected Text: ${selectedText}`);
-  }, [openDrawer]);
+    console.log(`Action: ${action}, Selected Text: ${selectedTextParam}`);
+  }, [openDrawer, setSelectedText]);
 
   const toggleChat = useCallback(() => {
     setChatOpen((prev) => !prev);
@@ -421,10 +430,10 @@ const CustomNavbar: React.FC = () => {
             )}
           </button>
           <div className="custom-navbar__nav-buttons">
-            <NavButton label="Bookmark" onClick={() => openDrawer('Bookmark')} />
-            <NavButton label="Mindmap" onClick={() => openDrawer('Mindmap')} />
-            <NavButton label="Notes" onClick={() => openDrawer('Notes')} />
-            <NavButton label="Assessment" onClick={() => openDrawer('Assessment')} />
+            <NavButton label="Bookmark" onClick={() => openDrawer('Bookmark', 'view')} />
+            <NavButton label="Mindmap" onClick={() => openDrawer('Mindmap', 'view')} />
+            <NavButton label="Notes" onClick={() => openDrawer('Notes', 'view')} />
+            <NavButton label="Assessment" onClick={() => openDrawer('Assessment', 'view')} />
           </div>
           <button
             className="custom-navbar__toc-toggle"
