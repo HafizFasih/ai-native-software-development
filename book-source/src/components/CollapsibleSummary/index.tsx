@@ -3,10 +3,10 @@ import styles from './styles.module.css';
 
 interface CollapsibleSummaryProps {
   pagePath: string;
-  pageContent: string;
+  pageTitle: string;
 }
 
-const CollapsibleSummary: React.FC<CollapsibleSummaryProps> = ({ pagePath, pageContent }) => {
+const CollapsibleSummary: React.FC<CollapsibleSummaryProps> = ({ pagePath, pageTitle }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [summary, setSummary] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -42,9 +42,9 @@ const CollapsibleSummary: React.FC<CollapsibleSummaryProps> = ({ pagePath, pageC
     setIsOpen(newIsOpen);
 
     // Only generate if opening for the first time and no summary exists
-    // if (newIsOpen && !summary && !isLoading && hasCheckedCache) {
-    //   await generateSummary();
-    // }
+    if (newIsOpen && !summary && !isLoading && hasCheckedCache) {
+      await generateSummary();
+    }
   };
 
   const generateSummary = async () => {
@@ -59,7 +59,7 @@ const CollapsibleSummary: React.FC<CollapsibleSummaryProps> = ({ pagePath, pageC
         },
         body: JSON.stringify({
           pagePath,
-          pageContent,
+          pageTitle,
         }),
       });
 
