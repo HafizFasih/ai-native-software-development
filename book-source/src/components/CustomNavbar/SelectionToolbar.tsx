@@ -39,6 +39,41 @@ const SelectionToolbar: React.FC<SelectionToolbarProps> = ({ onAction }) => {
   const toolbarRef = useRef<HTMLDivElement>(null);
   const colorPickerRef = useRef<HTMLDivElement>(null);
 
+  const calculateToolbarPosition = useCallback(() => {
+    const selection = window.getSelection();
+    if (!selection || selection.rangeCount === 0) return null;
+
+    const range = selection.getRangeAt(0);
+    const rect = range.getBoundingClientRect();
+
+    // Get actual toolbar dimensions if it exists
+    const toolbarWidth = toolbarRef.current?.offsetWidth || 320;
+    const toolbarHeight = toolbarRef.current?.offsetHeight || 48;
+    const gap = 5; // 5px gap between toolbar and selection
+
+    // Calculate vertical position - position above the selection (viewport coordinates)
+    // Use rect.top directly since position: fixed uses viewport coordinates
+    let top = rect.top - toolbarHeight - gap;
+
+    // If not enough space above, position below the selection
+    if (top < 10) {
+      // Not enough space above, position below
+      top = rect.bottom + gap;
+    }
+
+    // Calculate horizontal position - centered on selection
+    let left = rect.left + (rect.width / 2) - (toolbarWidth / 2);
+
+    // Prevent toolbar from going off-screen horizontally
+    const viewportWidth = window.innerWidth;
+    const minLeft = 10;
+    const maxLeft = viewportWidth - toolbarWidth - 10;
+
+    left = Math.max(minLeft, Math.min(left, maxLeft));
+
+    return { top, left };
+  }, []);
+
   const handleSelection = useCallback(() => {
     const selection = window.getSelection();
     const text = selection?.toString().trim();
@@ -96,40 +131,10 @@ const SelectionToolbar: React.FC<SelectionToolbarProps> = ({ onAction }) => {
         return;
       }
 
-      const rect = range?.getBoundingClientRect();
+      const newPosition = calculateToolbarPosition();
 
-      if (rect) {
-        // Calculate position above the selected text
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
-
-        // Toolbar dimensions
-        const toolbarWidth = 280; // Approximate width of toolbar
-        const toolbarHeight = 48; // Approximate height with padding
-        const gap = 8; // Gap between toolbar and selection
-
-        // Calculate vertical position - exactly above the selection
-        const top = rect.top + scrollTop - toolbarHeight - gap;
-
-        // Calculate horizontal position - centered on selection
-        let left = rect.left + scrollLeft + (rect.width / 2) - (toolbarWidth / 2);
-
-        // Prevent toolbar from going off-screen horizontally
-        const viewportWidth = window.innerWidth;
-        const minLeft = scrollLeft + 10; // 10px padding from left edge
-        const maxLeft = scrollLeft + viewportWidth - toolbarWidth - 10; // 10px padding from right edge
-
-        if (left < minLeft) {
-          left = minLeft;
-        } else if (left > maxLeft) {
-          left = maxLeft;
-        }
-
-        // Prevent toolbar from going off-screen vertically (top)
-        const minTop = scrollTop + 10; // 10px padding from top
-        const finalTop = Math.max(top, minTop);
-
-        setPosition({ top: finalTop, left });
+      if (newPosition) {
+        setPosition(newPosition);
         setSelectedText(text);
         setVisible(true);
       }
@@ -137,7 +142,7 @@ const SelectionToolbar: React.FC<SelectionToolbarProps> = ({ onAction }) => {
       setVisible(false);
       setSelectedText('');
     }
-  }, []);
+  }, [calculateToolbarPosition]);
 
   const handleAction = useCallback((action: string) => {
     if (selectedText) {
@@ -321,6 +326,16 @@ const SelectionToolbar: React.FC<SelectionToolbarProps> = ({ onAction }) => {
     setShowColorPicker(prev => !prev);
   }, []);
 
+  // Reposition toolbar after it's rendered to get accurate dimensions
+  useEffect(() => {
+    if (visible && toolbarRef.current) {
+      const newPosition = calculateToolbarPosition();
+      if (newPosition) {
+        setPosition(newPosition);
+      }
+    }
+  }, [visible, calculateToolbarPosition]);
+
   useEffect(() => {
     // Add selection listeners
     document.addEventListener('mouseup', handleSelection);
@@ -344,14 +359,26 @@ const SelectionToolbar: React.FC<SelectionToolbarProps> = ({ onAction }) => {
       }
     };
 
+    // Update toolbar position on scroll when visible
+    const handleScroll = () => {
+      if (visible) {
+        const newPosition = calculateToolbarPosition();
+        if (newPosition) {
+          setPosition(newPosition);
+        }
+      }
+    };
+
     document.addEventListener('mousedown', handleClickOutside);
+    window.addEventListener('scroll', handleScroll, true); // Use capture phase for all scroll events
 
     return () => {
       document.removeEventListener('mouseup', handleSelection);
       document.removeEventListener('keyup', handleSelection);
       document.removeEventListener('mousedown', handleClickOutside);
+      window.removeEventListener('scroll', handleScroll, true);
     };
-  }, [handleSelection]);
+  }, [handleSelection, visible, calculateToolbarPosition]);
 
   const removeHighlight = useCallback((highlightId: string, element: HTMLElement) => {
     // Remove just this specific highlight element

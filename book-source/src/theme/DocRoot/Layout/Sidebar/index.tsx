@@ -10,7 +10,6 @@ import {prefersReducedMotion, ThemeClassNames} from '@docusaurus/theme-common';
 import {useDocsSidebar} from '@docusaurus/plugin-content-docs/client';
 import {useLocation} from '@docusaurus/router';
 import DocSidebar from '@theme/DocSidebar';
-import ExpandButton from '@theme/DocRoot/Layout/Sidebar/ExpandButton';
 import styles from './styles.module.css';
 
 // Reset sidebar state when sidebar changes
@@ -111,7 +110,6 @@ export default function DocRootLayoutSidebar({
             onCollapse={toggleSidebar}
             isHidden={hiddenSidebar}
           />
-          {hiddenSidebar && <ExpandButton toggleSidebar={toggleSidebar} />}
         </div>
       </ResetOnSidebarChange>
     </aside>

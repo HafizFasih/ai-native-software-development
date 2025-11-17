@@ -22,7 +22,7 @@
 /* Selection Toolbar - Appears above selected text */
 
 .selection-toolbar {
-  position: absolute;
+  position: fixed;
   display: flex;
   align-items: center;
   gap: 0;
@@ -36,6 +36,7 @@
   pointer-events: all;
   user-select: none;
   will-change: transform, opacity;
+  transition: top 0.1s ease-out, left 0.1s ease-out;
 }
 
 @keyframes selectionToolbarFadeIn {
@@ -190,7 +191,11 @@
   /* Slight border radius for smooth edges at line breaks */
   border-radius: 3px;
   /* Force dark text color for readability on light backgrounds */
-  color: #1a1a1a !important;
+  color: #0f172a !important;
+  /* Override gradient text effects (e.g., H1 headings) */
+  -webkit-text-fill-color: #0f172a !important;
+  -webkit-background-clip: initial !important;
+  background-clip: initial !important;
 }
 
 .text-highlight:hover {
@@ -198,11 +203,53 @@
 }
 
 /* Apply highlight color and dark text to all child elements while preserving their layout */
-.text-highlight * {
+.text-highlight *,
+.text-highlight h1,
+.text-highlight h2,
+.text-highlight h3,
+.text-highlight h4,
+.text-highlight h5,
+.text-highlight h6,
+.text-highlight a,
+.text-highlight strong,
+.text-highlight em,
+.text-highlight span,
+.text-highlight code {
   background-color: inherit !important;
   box-decoration-break: inherit;
   -webkit-box-decoration-break: inherit;
-  color: inherit !important;
+  color: #0f172a !important;
+  text-shadow: none !important;
+  /* Override gradient text effects */
+  -webkit-text-fill-color: #0f172a !important;
+  -webkit-background-clip: initial !important;
+  background-clip: initial !important;
+}
+
+/* Ensure headings inside highlights always have dark text */
+h1 .text-highlight,
+h2 .text-highlight,
+h3 .text-highlight,
+h4 .text-highlight,
+h5 .text-highlight,
+h6 .text-highlight {
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+  -webkit-background-clip: initial !important;
+  background-clip: initial !important;
+}
+
+h1 .text-highlight *,
+h2 .text-highlight *,
+h3 .text-highlight *,
+h4 .text-highlight *,
+h5 .text-highlight *,
+h6 .text-highlight * {
+  color: #0f172a !important;
+  text-shadow: none !important;
+  -webkit-text-fill-color: #0f172a !important;
+  -webkit-background-clip: initial !important;
+  background-clip: initial !important;
 }
 
 /* Delete Button - appears on hover at top-left edge of highlight */
@@ -356,4 +403,60 @@
 
 [data-theme='light'] .selection-toolbar__button:active {
   background-color: #ebebeb;
+}
+
+/* Light Mode - Highlight text color */
+[data-theme='light'] .text-highlight,
+[data-theme='light'] .text-highlight *,
+[data-theme='light'] .text-highlight h1,
+[data-theme='light'] .text-highlight h2,
+[data-theme='light'] .text-highlight h3,
+[data-theme='light'] .text-highlight h4,
+[data-theme='light'] .text-highlight h5,
+[data-theme='light'] .text-highlight h6,
+[data-theme='light'] h1 .text-highlight,
+[data-theme='light'] h2 .text-highlight,
+[data-theme='light'] h3 .text-highlight,
+[data-theme='light'] h4 .text-highlight,
+[data-theme='light'] h5 .text-highlight,
+[data-theme='light'] h6 .text-highlight,
+[data-theme='light'] h1 .text-highlight *,
+[data-theme='light'] h2 .text-highlight *,
+[data-theme='light'] h3 .text-highlight *,
+[data-theme='light'] h4 .text-highlight *,
+[data-theme='light'] h5 .text-highlight *,
+[data-theme='light'] h6 .text-highlight * {
+  color: #0f172a !important;
+  text-shadow: none !important;
+  -webkit-text-fill-color: #0f172a !important;
+  -webkit-background-clip: initial !important;
+  background-clip: initial !important;
+}
+
+/* Dark Mode - Highlight text color */
+[data-theme='dark'] .text-highlight,
+[data-theme='dark'] .text-highlight *,
+[data-theme='dark'] .text-highlight h1,
+[data-theme='dark'] .text-highlight h2,
+[data-theme='dark'] .text-highlight h3,
+[data-theme='dark'] .text-highlight h4,
+[data-theme='dark'] .text-highlight h5,
+[data-theme='dark'] .text-highlight h6,
+[data-theme='dark'] h1 .text-highlight,
+[data-theme='dark'] h2 .text-highlight,
+[data-theme='dark'] h3 .text-highlight,
+[data-theme='dark'] h4 .text-highlight,
+[data-theme='dark'] h5 .text-highlight,
+[data-theme='dark'] h6 .text-highlight,
+[data-theme='dark'] h1 .text-highlight *,
+[data-theme='dark'] h2 .text-highlight *,
+[data-theme='dark'] h3 .text-highlight *,
+[data-theme='dark'] h4 .text-highlight *,
+[data-theme='dark'] h5 .text-highlight *,
+[data-theme='dark'] h6 .text-highlight * {
+  color: #0f172a !important;
+  text-shadow: none !important;
+  -webkit-text-fill-color: #0f172a !important;
+  -webkit-background-clip: initial !important;
+  background-clip: initial !important;
 }

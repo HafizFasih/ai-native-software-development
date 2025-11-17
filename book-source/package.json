@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
-    "start": "docusaurus start",
+    "start": "npm run search:index && docusaurus start",
     "build": "npm run search:index && docusaurus build",
     "build:fast": "docusaurus build",
     "search:index": "node scripts/generate-search-index.mjs",
@@ -22,6 +22,7 @@
     "@docusaurus/preset-classic": "3.9.2",
     "@docusaurus/theme-common": "3.9.2",
     "@mdx-js/react": "^3.0.0",
+    "@xyflow/react": "^12.9.3",
     "cheerio": "^1.1.2",
     "clsx": "^2.0.0",
     "gray-matter": "^4.0.3",
