@@ -1,16 +1,27 @@
 /* Right Drawer - Push Content Layout (No Overlay) */
 
-/* Body class for drawer state - used as trigger for content adjustments */
-/* No direct layout changes to body - margin applied to .main-wrapper instead */
-body.drawer-open {
-  /* Transition handled by .main-wrapper */
-}
-
 /* Apply margin-right to main wrapper to push content left when drawer opens */
 /* This creates space for the drawer without affecting body/html layout calculations */
 body.drawer-open .main-wrapper {
-  margin-right: 440px !important;
+  margin-right: 0 !important;
+  padding-right: 0 !important;
+  box-sizing: border-box !important;
   transition: margin-right 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* Allow docs container to stretch so content sits close to the drawer */
+body.drawer-open .docMainContainer,
+body.drawer-open .container {
+  max-width: none !important;
+  width: 100% !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+body.drawer-open .docMainContainer {
+  margin-right: 440px !important;
+  width: calc(100% - 440px) !important;
+  padding-right: 0 !important;
 }
 
 /* Keep navbar positioning correct when drawer opens */
@@ -35,6 +46,14 @@ body.drawer-open .col.col--3 {
 body.drawer-open .row > .col:not(.col--3) {
   flex: 0 0 100% !important;
   max-width: 100% !important;
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+}
+
+body.drawer-open .container .row {
+  gap: 0 !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
 }
 
 /* Ensure article/content wrapper uses available space */
@@ -44,9 +63,15 @@ body.drawer-open .markdown {
   max-width: 100% !important;
 }
 
+/* Allow main doc item column to stretch fully */
+body.drawer-open .docItemCol {
+  flex: 1 1 auto !important;
+}
+
 /* Responsive - full width drawer on mobile */
 @media (max-width: 768px) {
   body.drawer-open .main-wrapper {
+    padding-right: 0 !important;
     margin-right: 100vw !important; /* Push content completely off-screen for full-width drawer */
   }
 }

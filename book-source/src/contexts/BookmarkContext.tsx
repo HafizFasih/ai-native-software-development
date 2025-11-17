@@ -1,6 +1,12 @@
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
 
+// Controls visibility/behavior of the page Table of Contents
+// - 'hidden'   => only the small "Show Table of Contents" button is visible
+// - 'expanded' => full TOC panel is visible (default once user chooses to show)
+// - 'collapsed' is kept for forward-compatibility but not currently used
+export type TocMode = 'expanded' | 'collapsed' | 'hidden';
+
 export interface Bookmark {
   id: string;
   pageTitle: string;
@@ -22,15 +28,20 @@ interface BookmarkContextValue {
   // Global TOC visibility state
   hideTOC: boolean;
   setHideTOC: (hide: boolean) => void;
+  tocMode: TocMode;
+  setTocMode: (mode: TocMode) => void;
 }
 
 const BookmarkContext = createContext<BookmarkContextValue | undefined>(undefined);
 
 const STORAGE_KEY = 'pageBookmarks';
+const TOC_PREFS_KEY = 'tocPreferences';
 
 export const BookmarkProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [bookmarks, setBookmarks] = useState<Record<string, Bookmark>>({});
   const [hideTOC, setHideTOC] = useState(false);
+  // Start with TOC hidden by default; user can explicitly choose to show it
+  const [tocMode, setTocMode] = useState<TocMode>('hidden');
 
   // Load bookmarks from localStorage on mount
   useEffect(() => {
@@ -45,6 +56,18 @@ export const BookmarkProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     } catch (error) {
       console.error('Error loading bookmarks:', error);
     }
+
+    try {
+      const tocPrefsRaw = localStorage.getItem(TOC_PREFS_KEY);
+      if (tocPrefsRaw) {
+        const tocPrefs = JSON.parse(tocPrefsRaw) as { mode?: TocMode };
+        if (tocPrefs.mode === 'expanded' || tocPrefs.mode === 'collapsed' || tocPrefs.mode === 'hidden') {
+          setTocMode(tocPrefs.mode);
+        }
+      }
+    } catch (error) {
+      console.error('Error loading TOC preferences:', error);
+    }
   }, []);
 
   // Save bookmarks to localStorage whenever they change
@@ -57,6 +80,17 @@ export const BookmarkProvider: React.FC<{ children: React.ReactNode }> = ({ chil
       console.error('Error saving bookmarks:', error);
     }
   }, [bookmarks]);
+
+  // Persist TOC mode so users keep their preference
+  useEffect(() => {
+    if (!ExecutionEnvironment.canUseDOM) return;
+
+    try {
+      localStorage.setItem(TOC_PREFS_KEY, JSON.stringify({ mode: tocMode }));
+    } catch (error) {
+      console.error('Error saving TOC preferences:', error);
+    }
+  }, [tocMode]);
 
   const addBookmark = useCallback((bookmark: Omit<Bookmark, 'id' | 'timestamp'>) => {
     const id = `bookmark_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
@@ -111,6 +145,8 @@ export const BookmarkProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     isBookmarked,
     hideTOC,
     setHideTOC,
+    tocMode,
+    setTocMode,
   };
 
   return <BookmarkContext.Provider value={value}>{children}</BookmarkContext.Provider>;

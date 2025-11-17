@@ -1,11 +1,4 @@
-/**
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-import React, {type ReactNode, useState, useEffect} from 'react';
+import React, {type ReactNode, useState} from 'react';
 import clsx from 'clsx';
 import {ThemeClassNames} from '@docusaurus/theme-common';
 import {
@@ -39,48 +32,6 @@ export default function DocSidebarDesktopContent({
   className,
 }: Props): ReactNode {
   const showAnnouncementBar = useShowAnnouncementBar();
-
-  // Listen for collapse all sections event
-  useEffect(() => {
-    const handleCollapseAll = () => {
-      console.log('🟢 Received collapseAllSidebarSections event');
-
-      // Find all category links (sublist items)
-      const allCategoryLinks = document.querySelectorAll('.menu__link--sublist');
-      console.log('📋 Total category links found:', allCategoryLinks.length);
-
-      // Filter and collapse only expanded ones (those WITHOUT the collapsed class)
-      let collapsedCount = 0;
-      allCategoryLinks.forEach((categoryLink) => {
-        const parent = categoryLink.parentElement;
-        const isCollapsed = parent?.classList.contains('menu__list-item--collapsed');
-        console.log('Category:', categoryLink.textContent?.trim(), 'isCollapsed:', isCollapsed);
-
-        // Only click if NOT collapsed (i.e., currently expanded)
-        if (parent && !isCollapsed) {
-          console.log('🔽 Collapsing:', categoryLink.textContent?.trim());
-          (categoryLink as HTMLElement).click();
-          collapsedCount++;
-        }
-      });
-
-      console.log(`✅ Collapsed ${collapsedCount} categories`);
-
-      // Redirect to docs landing page after collapsing
-      setTimeout(() => {
-        console.log('🏠 Redirecting to docs landing page');
-        window.location.href = '/docs/preface-agent-native';
-      }, 300); // Small delay to allow collapse animation
-    };
-
-    console.log('🔵 Setting up collapseAllSidebarSections event listener');
-    window.addEventListener('collapseAllSidebarSections', handleCollapseAll);
-
-    return () => {
-      console.log('🔴 Cleaning up collapseAllSidebarSections event listener');
-      window.removeEventListener('collapseAllSidebarSections', handleCollapseAll);
-    };
-  }, []);
 
   return (
     <nav

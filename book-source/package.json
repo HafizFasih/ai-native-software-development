@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
-    "start": "npm run search:index && docusaurus start",
+    "start": "concurrently \"pnpm run start:docusaurus\" \"pnpm run start:api-server\"",
+    "start:docusaurus": "npm run search:index && docusaurus start",
+    "start:api-server": "cd server && npm start",
     "build": "npm run search:index && docusaurus build",
     "build:fast": "docusaurus build",
     "search:index": "node scripts/generate-search-index.mjs",
@@ -16,6 +18,9 @@
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
     "typecheck": "tsc"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
   },
   "dependencies": {
     "@docusaurus/plugin-content-docs": "^3.0.0",
