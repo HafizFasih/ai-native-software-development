@@ -639,7 +639,7 @@ Please provide the summary now.`;
         </svg>
         <span>Bookmark</span>
       </button>
-
+{/* 
       <button
         className="selection-toolbar__button"
         onClick={() => handleAction('Mindmap')}
@@ -652,9 +652,10 @@ Please provide the summary now.`;
           <circle cx="3" cy="13" r="1.5" stroke="currentColor" strokeWidth="1.5" />
           <circle cx="13" cy="13" r="1.5" stroke="currentColor" strokeWidth="1.5" />
           <path d="M6.5 7L4 4.5M9.5 7L12 4.5M6.5 9L4 11.5M9.5 9L12 11.5" stroke="currentColor" strokeWidth="1.5" />
-        </svg>
+          </svg>
         <span>Mindmap</span>
       </button>
+*/}
 
       <button
         className="selection-toolbar__button"
@@ -674,6 +675,7 @@ Please provide the summary now.`;
         <span>Notes</span>
       </button>
 
+{/* 
       <button
         className="selection-toolbar__button"
         onClick={() => handleAction('Assessment')}
@@ -691,7 +693,8 @@ Please provide the summary now.`;
           <path d="M8 5H10M8 8H10M8 11H10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
         </svg>
         <span>Assessment</span>
-      </button>
+        </button>
+*/}
 
       {/* Summary with Style Picker */}
       <div className="selection-toolbar__summary">
