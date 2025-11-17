@@ -1,15 +1,14 @@
-import React, { useState, useCallback, useEffect, useRef } from 'react';
-import Link from '@docusaurus/Link';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import { useColorMode } from '@docusaurus/theme-common';
-import { useSearch } from '@/contexts/SearchContext';
-import type { SearchResult } from '@/contexts/SearchContext';
-import { useSidebarControl } from '@/contexts/SidebarContext';
 import { useBookmarks } from '@/contexts/BookmarkContext';
-import RightDrawer from './RightDrawer';
-import SelectionToolbar from './SelectionToolbar';
+import { useSearch } from '@/contexts/SearchContext';
+import { useSidebarControl } from '@/contexts/SidebarContext';
+import Link from '@docusaurus/Link';
+import { useColorMode } from '@docusaurus/theme-common';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import Assistant from '../PanaChat';
 import './customNavbar.css';
+import RightDrawer from './RightDrawer';
+import SelectionToolbar from './SelectionToolbar';
 
 interface NavButtonProps {
   label: string;
@@ -33,7 +32,7 @@ const CustomNavbar: React.FC = () => {
   const { colorMode, setColorMode } = useColorMode();
   const { search, isLoading: searchLoading } = useSearch();
   const { isSidebarCollapsed, collapseSidebar, expandSidebar } = useSidebarControl();
-  const { setSelectedText, setInitialView } = useBookmarks();
+  const { setSelectedText, setInitialView, tocMode, setTocMode } = useBookmarks();
   const [searchFocused, setSearchFocused] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -54,9 +53,8 @@ const CustomNavbar: React.FC = () => {
       setInitialView(viewMode);
     }
     // Collapse left sidebar when opening right drawer for maximum space
-    console.log('🔴 Dispatching collapseSidebar event');
-    window.dispatchEvent(new CustomEvent('collapseSidebar'));
-  }, [setInitialView]);
+    collapseSidebar();
+  }, [collapseSidebar]);
 
   const closeDrawer = useCallback(() => {
     setDrawerOpen(false);
@@ -92,6 +90,35 @@ const CustomNavbar: React.FC = () => {
     }
   }, [isSidebarCollapsed, collapseSidebar, expandSidebar]);
 
+  const toggleTOC = useCallback(() => {
+    setTocMode(tocMode === 'hidden' ? 'expanded' : 'hidden');
+  }, [tocMode, setTocMode]);
+
+  // Add body class based on sidebar state
+  useEffect(() => {
+    if (!isSidebarCollapsed) {
+      document.body.classList.add('sidebar-expanded');
+    } else {
+      document.body.classList.remove('sidebar-expanded');
+    }
+
+    return () => {
+      document.body.classList.remove('sidebar-expanded');
+    };
+  }, [isSidebarCollapsed]);
+
+  // Listen for external chat open events (e.g., from Summary feature)
+  useEffect(() => {
+    const handleOpenChatEvent = () => {
+      setChatOpen(true);
+    };
+
+    window.addEventListener('openPanaChatWithMessage', handleOpenChatEvent);
+
+    return () => {
+      window.removeEventListener('openPanaChatWithMessage', handleOpenChatEvent);
+    };
+  }, []);
 
   // Use the real search function from context
   const filteredResults = searchQuery ? search(searchQuery) : [];
@@ -408,6 +435,33 @@ const CustomNavbar: React.FC = () => {
             <NavButton label="Notes" onClick={() => openDrawer('Notes', 'view')} />
             <NavButton label="Assessment" onClick={() => openDrawer('Assessment', 'view')} />
           </div>
+          <button
+            className="custom-navbar__toc-toggle"
+            onClick={toggleTOC}
+            aria-label={tocMode === 'hidden' ? 'Show Table of Contents' : 'Hide Table of Contents'}
+            title={tocMode === 'hidden' ? 'Show Table of Contents' : 'Hide Table of Contents'}
+          >
+            {tocMode === 'hidden' ? (
+              // Show TOC icon - list with lines
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="8" y1="6" x2="21" y2="6"/>
+                <line x1="8" y1="12" x2="21" y2="12"/>
+                <line x1="8" y1="18" x2="21" y2="18"/>
+                <line x1="3" y1="6" x2="3.01" y2="6"/>
+                <line x1="3" y1="12" x2="3.01" y2="12"/>
+                <line x1="3" y1="18" x2="3.01" y2="18"/>
+              </svg>
+            ) : (
+              // Hide TOC icon - list with x
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="8" y1="6" x2="21" y2="6"/>
+                <line x1="8" y1="12" x2="21" y2="12"/>
+                <line x1="8" y1="18" x2="21" y2="18"/>
+                <line x1="2" y1="4" x2="5" y2="7"/>
+                <line x1="5" y1="4" x2="2" y2="7"/>
+              </svg>
+            )}
+          </button>
         </div>
       </nav>
 
