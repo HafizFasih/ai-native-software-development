@@ -1,12 +1,13 @@
-import React, {type ReactNode} from 'react';
-import clsx from 'clsx';
-import {ThemeClassNames} from '@docusaurus/theme-common';
-import {useDoc} from '@docusaurus/plugin-content-docs/client';
+import { useDoc } from '@docusaurus/plugin-content-docs/client';
+import { ThemeClassNames } from '@docusaurus/theme-common';
+import CollapsibleSummary from '@site/src/components/CollapsibleSummary';
+import { useBookmarks } from '@site/src/contexts/BookmarkContext';
+import { usePageContent } from '@site/src/hooks/usePageContent';
+import type { Props } from '@theme/DocItem/Content';
 import Heading from '@theme/Heading';
 import MDXContent from '@theme/MDXContent';
-import type {Props} from '@theme/DocItem/Content';
-import CollapsibleSummary from '@site/src/components/CollapsibleSummary';
-import {usePageContent} from '@site/src/hooks/usePageContent';
+import clsx from 'clsx';
+import { type ReactNode, useEffect } from 'react';
 
 /**
  Title can be declared inside md content or declared through
@@ -31,6 +32,23 @@ function useSyntheticTitle(): string | null {
 export default function DocItemContent({children}: Props): ReactNode {
   const syntheticTitle = useSyntheticTitle();
   const {isChapterPage, pagePath, pageTitle} = usePageContent();
+  const doc = useDoc();
+  const {setCurrentDoc} = useBookmarks();
+
+  // Publish current doc TOC and metadata to BookmarkContext for the bookmark drawer
+  useEffect(() => {
+    setCurrentDoc({
+      toc: doc.toc,
+      metadata: {
+        title: doc.metadata.title,
+        permalink: doc.metadata.permalink,
+      },
+    });
+
+    return () => {
+      setCurrentDoc(null);
+    };
+  }, [doc.toc, doc.metadata.title, doc.metadata.permalink, setCurrentDoc]);
 
   return (
     <div className={clsx(ThemeClassNames.docs.docMarkdown, 'markdown')}>

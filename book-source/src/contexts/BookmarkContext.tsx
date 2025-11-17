@@ -1,5 +1,5 @@
-import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
+import React, { createContext, useCallback, useContext, useEffect, useState } from 'react';
 
 // Controls visibility/behavior of the page Table of Contents
 // - 'hidden'   => only the small "Show Table of Contents" button is visible
@@ -9,13 +9,27 @@ export type TocMode = 'expanded' | 'collapsed' | 'hidden';
 
 export interface Bookmark {
   id: string;
+  name: string;
   pageTitle: string;
   pageUrl: string;
-  headingId?: string;
-  headingText?: string;
-  headingLevel?: number;
   note: string;
   timestamp: number;
+  isEntirePage: boolean;
+}
+
+// Lightweight representation of the current doc's TOC + metadata,
+// populated from the DocItem component via useDoc().
+export interface CurrentDocInfo {
+  toc: readonly {
+    value: string;
+    id: string;
+    level: number;
+    children: CurrentDocInfo['toc'];
+  }[];
+  metadata: {
+    title: string;
+    permalink: string;
+  };
 }
 
 interface BookmarkContextValue {
@@ -24,12 +38,21 @@ interface BookmarkContextValue {
   deleteBookmark: (id: string) => void;
   updateBookmarkNote: (id: string, note: string) => void;
   getBookmarksByPage: (pageUrl: string) => Bookmark[];
-  isBookmarked: (pageUrl: string, headingId?: string) => boolean;
+  isBookmarked: (pageUrl: string) => boolean;
   // Global TOC visibility state
   hideTOC: boolean;
   setHideTOC: (hide: boolean) => void;
   tocMode: TocMode;
   setTocMode: (mode: TocMode) => void;
+  // Current doc info (TOC + metadata)
+  currentDoc: CurrentDocInfo | null;
+  setCurrentDoc: (doc: CurrentDocInfo | null) => void;
+  // Selected text for bookmarking
+  selectedText: string;
+  setSelectedText: (text: string) => void;
+  // Initial view mode
+  initialView: 'add' | 'view';
+  setInitialView: (view: 'add' | 'view') => void;
 }
 
 const BookmarkContext = createContext<BookmarkContextValue | undefined>(undefined);
@@ -42,6 +65,12 @@ export const BookmarkProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   const [hideTOC, setHideTOC] = useState(false);
   // Start with TOC hidden by default; user can explicitly choose to show it
   const [tocMode, setTocMode] = useState<TocMode>('hidden');
+  // Current doc info (set from DocItem via useDoc)
+  const [currentDoc, setCurrentDoc] = useState<CurrentDocInfo | null>(null);
+  // Selected text for bookmarking
+  const [selectedText, setSelectedText] = useState<string>('');
+  // Initial view mode
+  const [initialView, setInitialView] = useState<'add' | 'view'>('view');
 
   // Load bookmarks from localStorage on mount
   useEffect(() => {
@@ -61,7 +90,11 @@ export const BookmarkProvider: React.FC<{ children: React.ReactNode }> = ({ chil
       const tocPrefsRaw = localStorage.getItem(TOC_PREFS_KEY);
       if (tocPrefsRaw) {
         const tocPrefs = JSON.parse(tocPrefsRaw) as { mode?: TocMode };
-        if (tocPrefs.mode === 'expanded' || tocPrefs.mode === 'collapsed' || tocPrefs.mode === 'hidden') {
+        if (
+          tocPrefs.mode === 'expanded' ||
+          tocPrefs.mode === 'collapsed' ||
+          tocPrefs.mode === 'hidden'
+        ) {
           setTocMode(tocPrefs.mode);
         }
       }
@@ -124,17 +157,21 @@ export const BookmarkProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     }));
   }, []);
 
-  const getBookmarksByPage = useCallback((pageUrl: string) => {
-    return Object.values(bookmarks).filter((bookmark) => bookmark.pageUrl === pageUrl);
-  }, [bookmarks]);
+  const getBookmarksByPage = useCallback(
+    (pageUrl: string) => {
+      return Object.values(bookmarks).filter((bookmark) => bookmark.pageUrl === pageUrl);
+    },
+    [bookmarks],
+  );
 
-  const isBookmarked = useCallback((pageUrl: string, headingId?: string) => {
-    return Object.values(bookmarks).some(
-      (bookmark) =>
-        bookmark.pageUrl === pageUrl &&
-        (headingId ? bookmark.headingId === headingId : !bookmark.headingId)
-    );
-  }, [bookmarks]);
+  const isBookmarked = useCallback(
+    (pageUrl: string) => {
+      return Object.values(bookmarks).some(
+        (bookmark) => bookmark.pageUrl === pageUrl && bookmark.isEntirePage,
+      );
+    },
+    [bookmarks],
+  );
 
   const value: BookmarkContextValue = {
     bookmarks,
@@ -147,6 +184,12 @@ export const BookmarkProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     setHideTOC,
     tocMode,
     setTocMode,
+    currentDoc,
+    setCurrentDoc,
+    selectedText,
+    setSelectedText,
+    initialView,
+    setInitialView,
   };
 
   return <BookmarkContext.Provider value={value}>{children}</BookmarkContext.Provider>;
