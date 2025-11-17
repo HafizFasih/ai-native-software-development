@@ -6,7 +6,7 @@ const router = express.Router();
 // Generate summary for a specific page
 router.post('/generate', async (req, res) => {
   try {
-    const { pagePath, pageContent } = req.body;
+    const { pagePath, pageTitle } = req.body;
 
     if (!pagePath || typeof pagePath !== 'string') {
       return res.status(400).json({
@@ -14,13 +14,13 @@ router.post('/generate', async (req, res) => {
       });
     }
 
-    if (!pageContent || typeof pageContent !== 'string') {
+    if (!pageTitle || typeof pageTitle !== 'string') {
       return res.status(400).json({
-        error: 'pageContent is required and must be a string'
+        error: 'pageTitle is required and must be a string'
       });
     }
 
-    const summary = await generateSummary(pagePath, pageContent);
+    const summary = await generateSummary(pagePath, pageTitle);
 
     res.json({
       success: true,

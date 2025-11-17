@@ -72,7 +72,19 @@ class SummaryService {
     }
   }
 
-  async generateSummary(pagePath, pageContent) {
+  async readMarkdownFile(pagePath) {
+    try {
+      // pagePath is like "docs/01-Introducing-AI-Driven-Development/01-ai-development-revolution/readme.md"
+      const fullPath = path.join(__dirname, '../../', pagePath);
+      const content = await fs.readFile(fullPath, 'utf-8');
+      return content;
+    } catch (error) {
+      console.error('Error reading markdown file:', error);
+      throw new Error(`Failed to read file: ${error.message}`);
+    }
+  }
+
+  async generateSummary(pagePath, pageTitle) {
     try {
       // Check if summary already exists
       const existingSummary = await this.getSummary(pagePath);
@@ -81,24 +93,27 @@ class SummaryService {
         return existingSummary;
       }
 
-      const prompt = `You are an expert technical summarizer for educational content about AI-Native Software Development.
+      // Read the raw markdown file from filesystem
+      const pageContent = await this.readMarkdownFile(pagePath);
 
-Your task is to create a comprehensive, well-structured summary of the following page content.
+      const prompt = `Create a comprehensive, well-structured summary of the following page content.
 
 REQUIREMENTS:
 1. Maximum length: 500 words
-2. Structure the summary with clear sections using markdown headings (##, ###)
-3. Focus on key concepts, main ideas, and actionable takeaways
-4. Use bullet points for lists and important points
-5. Maintain technical accuracy and clarity
-6. Make it readable and scannable
-7. Do not include any meta-commentary (like "This page discusses..." or "The content covers...")
-8. Start directly with the content summary
+2. The first line MUST be: # ${pageTitle}
+3. After the title, structure the summary with clear sections using markdown headings (##, ###)
+4. Focus on key concepts, main ideas, and actionable takeaways
+5. Use bullet points for lists and important points
+6. Maintain technical accuracy and clarity
+7. Make it readable and scannable
+8. Do NOT include any meta-commentary (like "This page discusses..." or "The content covers...")
+9. Summarize ONLY the content below, nothing else
+10. Start the summary content immediately after the title
 
 PAGE CONTENT:
 ${pageContent}
 
-Generate a well-structured summary now:`;
+Generate the summary now (remember to start with # ${pageTitle}):`;
 
       const result = await this.model.generateContent(prompt);
       const response = result.response;
@@ -119,8 +134,8 @@ Generate a well-structured summary now:`;
 
 const summaryService = new SummaryService();
 
-async function generateSummary(pagePath, pageContent) {
-  return await summaryService.generateSummary(pagePath, pageContent);
+async function generateSummary(pagePath, pageTitle) {
+  return await summaryService.generateSummary(pagePath, pageTitle);
 }
 
 async function getSummary(pagePath) {

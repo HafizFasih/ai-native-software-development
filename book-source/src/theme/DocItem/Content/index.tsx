@@ -30,7 +30,7 @@ function useSyntheticTitle(): string | null {
 
 export default function DocItemContent({children}: Props): ReactNode {
   const syntheticTitle = useSyntheticTitle();
-  const {content, isChapterPage, pagePath} = usePageContent();
+  const {isChapterPage, pagePath, pageTitle} = usePageContent();
 
   return (
     <div className={clsx(ThemeClassNames.docs.docMarkdown, 'markdown')}>
@@ -40,8 +40,8 @@ export default function DocItemContent({children}: Props): ReactNode {
         </header>
       )}
       <MDXContent>{children}</MDXContent>
-      {isChapterPage && content && (
-        <CollapsibleSummary pagePath={pagePath} pageContent={content} />
+      {isChapterPage && (
+        <CollapsibleSummary pagePath={pagePath} pageTitle={pageTitle} />
       )}
     </div>
   );
