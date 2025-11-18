@@ -248,8 +248,10 @@ const SelectionToolbar: React.FC<SelectionToolbarProps> = ({ onAction }) => {
       }
 
       onAction(action, selectedText, elementId, textAnchor);
-      // Collapse left sidebar when opening right drawer for maximum space
-      window.dispatchEvent(new CustomEvent('collapseSidebar'));
+      // Do NOT collapse left sidebar when opening right drawer
+      // The drawer CSS will handle the layout adjustment properly
+      // This allows both sidebar and drawer to remain open for better UX
+
       // Clear selection after action
       window.getSelection()?.removeAllRanges();
       setVisible(false);

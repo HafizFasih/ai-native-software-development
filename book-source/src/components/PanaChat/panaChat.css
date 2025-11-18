@@ -505,28 +505,34 @@ html[data-theme='dark'] .pana-chat__footer {
   will-change: border-color, box-shadow;
   resize: none;
   overflow-y: auto;
+  overflow-x: hidden;
   max-height: 150px;
   min-height: 48px;
   line-height: 1.5;
   word-wrap: break-word;
   white-space: pre-wrap;
+  box-sizing: border-box;
 }
 
 .pana-chat__input::-webkit-scrollbar {
-  width: 4px;
+  width: 6px;
 }
 
 .pana-chat__input::-webkit-scrollbar-track {
   background: transparent;
+  margin: 10px 0;
 }
 
 .pana-chat__input::-webkit-scrollbar-thumb {
   background: rgba(0, 31, 63, 0.2);
-  border-radius: 2px;
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: content-box;
 }
 
 .pana-chat__input::-webkit-scrollbar-thumb:hover {
   background: rgba(0, 31, 63, 0.3);
+  background-clip: content-box;
 }
 
 /* Listening state - active voice input */
@@ -587,6 +593,18 @@ html[data-theme='dark'] .pana-chat__input:focus {
 
 html[data-theme='dark'] .pana-chat__input::placeholder {
   color: #666666;
+}
+
+html[data-theme='dark'] .pana-chat__input::-webkit-scrollbar-thumb {
+  background: rgba(170, 170, 170, 0.3);
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+html[data-theme='dark'] .pana-chat__input::-webkit-scrollbar-thumb:hover {
+  background: rgba(170, 170, 170, 0.4);
+  background-clip: content-box;
 }
 
 /* Voice Wave Indicator - shows active listening */

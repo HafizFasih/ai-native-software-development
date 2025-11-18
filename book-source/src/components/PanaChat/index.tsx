@@ -700,7 +700,7 @@ const Assistant: React.FC<AssistantProps> = ({ isOpen, onClose }) => {
     }
   };
 
-  // Text-to-speech functionality
+  // Text-to-speech functionality with natural, conversational voice
   const handleTextToSpeech = (text: string, messageId: string) => {
     if (typeof window === 'undefined' || !('speechSynthesis' in window)) {
       alert('Text-to-speech is not supported in your browser.');
@@ -720,11 +720,77 @@ const Assistant: React.FC<AssistantProps> = ({ isOpen, onClose }) => {
       window.speechSynthesis.cancel();
     }
 
-    // Create speech synthesis utterance
-    const utterance = new SpeechSynthesisUtterance(text);
+    // Process text to add natural pauses for better conversational flow
+    const processTextForSpeech = (rawText: string): string => {
+      let processed = rawText;
+
+      // Add longer pauses after sentences (periods, exclamation, question marks)
+      processed = processed.replace(/([.!?])\s+/g, '$1... ');
+
+      // Add medium pauses after commas for natural breathing
+      processed = processed.replace(/,\s+/g, ', ');
+
+      // Add slight pauses after colons and semicolons
+      processed = processed.replace(/([;:])\s+/g, '$1. ');
+
+      return processed;
+    };
+
+    // Create speech synthesis utterance with processed text
+    const utterance = new SpeechSynthesisUtterance(processTextForSpeech(text));
+
+    // Get available voices and select a natural-sounding one
+    const setNaturalVoice = () => {
+      const voices = window.speechSynthesis.getVoices();
+
+      // Preferred voices in order of naturalness
+      const preferredVoices = [
+        'Google US English',
+        'Microsoft Zira - English (United States)',
+        'Microsoft David - English (United States)',
+        'Samantha',
+        'Alex',
+        'Karen',
+        'Daniel',
+        'Google UK English Female',
+        'Google UK English Male',
+      ];
+
+      // Find the first available preferred voice
+      let selectedVoice = null;
+      for (const voiceName of preferredVoices) {
+        selectedVoice = voices.find(voice => voice.name === voiceName);
+        if (selectedVoice) break;
+      }
+
+      // Fallback: find any English voice that's not a default system voice
+      if (!selectedVoice) {
+        selectedVoice = voices.find(voice =>
+          voice.lang.startsWith('en') && !voice.name.includes('Default')
+        );
+      }
+
+      // Final fallback: use any English voice
+      if (!selectedVoice) {
+        selectedVoice = voices.find(voice => voice.lang.startsWith('en'));
+      }
+
+      if (selectedVoice) {
+        utterance.voice = selectedVoice;
+      }
+    };
+
+    // Set voice (voices might load asynchronously)
+    if (window.speechSynthesis.getVoices().length > 0) {
+      setNaturalVoice();
+    } else {
+      window.speechSynthesis.onvoiceschanged = setNaturalVoice;
+    }
+
+    // Conversational speech parameters
     utterance.lang = 'en-US';
-    utterance.rate = 1.0;
-    utterance.pitch = 1.0;
+    utterance.rate = 0.95; // Slightly slower for clarity and naturalness
+    utterance.pitch = 1.05; // Slightly higher pitch for friendliness
     utterance.volume = 1.0;
 
     utterance.onstart = () => {
@@ -996,7 +1062,7 @@ const Assistant: React.FC<AssistantProps> = ({ isOpen, onClose }) => {
                 <textarea
                   ref={inputRef}
                   className="pana-chat__input"
-                  placeholder="Type your message or use voice input..."
+                  placeholder="Type your message"
                   value={inputValue}
                   onChange={handleInputChange}
                   onKeyDown={handleKeyPress}

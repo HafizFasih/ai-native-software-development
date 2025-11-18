@@ -12,9 +12,9 @@ export function usePageContent(): PageContentResult {
   // Get the source file path from metadata
   const sourcePath = metadata.source;
 
-  // Check if this is a chapter page (under numbered directories)
-  // Pattern: docs/01-Introducing-AI-Driven-Development/...
-  const isChapterPage = /^@site\/docs\/\d{2}-[^/]+\//.test(sourcePath);
+  // Check if this is a documentation page (any page under /docs/)
+  // This ensures the summary appears on ALL documentation pages, not just numbered chapters
+  const isChapterPage = /^@site\/docs\//.test(sourcePath);
 
   // Get clean page path for summary storage
   const pagePath = metadata.source.replace('@site/', '').replace(/\\/g, '/');

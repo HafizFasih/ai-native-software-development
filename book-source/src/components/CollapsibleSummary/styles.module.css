@@ -66,10 +66,11 @@
 .cachedBadge {
   font-size: 12px;
   padding: 4px 10px;
-  background: var(--ifm-color-success-light);
-  color: var(--ifm-color-success-dark);
+  background: rgba(0, 31, 63, 0.15);
+  color: #001f3f;
   border-radius: 12px;
   font-weight: 500;
+  border: 1px solid rgba(0, 31, 63, 0.2);
 }
 
 .sizeSelector {
@@ -117,13 +118,14 @@
 }
 
 .summaryCard {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #001428 0%, #001f3f 50%, #003366 100%);
   border-radius: 12px;
   padding: 24px;
-  box-shadow: 0 8px 24px rgba(102, 126, 234, 0.25);
+  box-shadow: 0 8px 24px rgba(0, 31, 63, 0.3);
   color: white;
   position: relative;
   overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .summaryCard::before {
@@ -133,7 +135,7 @@
   right: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 70%);
   pointer-events: none;
 }
 
@@ -220,7 +222,7 @@
 .retryButton {
   padding: 10px 24px;
   background: white;
-  color: #667eea;
+  color: #001f3f;
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -273,12 +275,15 @@
 }
 
 [data-theme='dark'] .cachedBadge {
-  background: var(--ifm-color-success-dark);
-  color: var(--ifm-color-success-light);
+  background: rgba(170, 170, 170, 0.2);
+  color: #dddddd;
+  border-color: rgba(170, 170, 170, 0.3);
 }
 
 [data-theme='dark'] .summaryCard {
-  background: linear-gradient(135deg, #4c51bf 0%, #553c9a 100%);
+  background: linear-gradient(135deg, #2a2a2a 0%, #333333 50%, #444444 100%);
+  border-color: rgba(170, 170, 170, 0.15);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
 
 /* Light mode specific adjustments */
@@ -306,5 +311,6 @@
 }
 
 [data-theme='light'] .summaryCard {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #001428 0%, #001f3f 50%, #003366 100%);
+  box-shadow: 0 8px 24px rgba(0, 31, 63, 0.25);
 }
