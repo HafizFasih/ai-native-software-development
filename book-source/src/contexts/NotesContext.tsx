@@ -3,33 +3,49 @@ import React, { createContext, useCallback, useContext, useEffect, useState } fr
 
 export interface Note {
   id: string;
-  title: string;
+  name: string;
   content: string;
-  timestamp: number;
+  pageTitle: string;
+  pageUrl: string;
+  timestamp: number;        // Creation timestamp
+  lastModified: number;     // Last modification timestamp
+  // Text-based anchoring (works for any text selection)
+  textAnchor?: {
+    selectedText: string;      // The exact text that was selected
+    prefix: string;             // Text before selection (for context)
+    suffix: string;             // Text after selection (for context)
+    startOffset: number;        // Character offset within container
+    endOffset: number;          // Character offset within container
+  };
 }
 
 interface NotesContextValue {
   notes: Record<string, Note>;
-  addNote: (note: Omit<Note, 'id' | 'timestamp'>) => void;
-  updateNote: (id: string, updates: Partial<Omit<Note, 'id' | 'timestamp'>>) => void;
+  addNote: (note: Omit<Note, 'id' | 'timestamp' | 'lastModified'>) => void;
+  updateNote: (id: string, updates: { name?: string; content?: string }) => void;
   deleteNote: (id: string) => void;
-  searchNotes: (query: string) => Note[];
-  // Active note for editing
-  activeNoteId: string | null;
-  setActiveNoteId: (id: string | null) => void;
-  // View mode
-  view: 'list' | 'add' | 'edit';
-  setView: (view: 'list' | 'add' | 'edit') => void;
+  getNotesByPage: (pageUrl: string) => Note[];
+  getAllNotes: () => Note[];
+  // Selected text for note creation
+  selectedText: string;
+  setSelectedText: (text: string) => void;
+  // Initial view mode
+  initialView: 'add' | 'view';
+  setInitialView: (view: 'add' | 'view') => void;
+  // Current note being viewed/edited
+  currentNoteId: string | null;
+  setCurrentNoteId: (id: string | null) => void;
 }
 
 const NotesContext = createContext<NotesContextValue | undefined>(undefined);
 
-const STORAGE_KEY = 'userNotes';
+const STORAGE_KEY = 'pageNotes';
 
 export const NotesProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [notes, setNotes] = useState<Record<string, Note>>({});
-  const [activeNoteId, setActiveNoteId] = useState<string | null>(null);
-  const [view, setView] = useState<'list' | 'add' | 'edit'>('list');
+  const [selectedText, setSelectedText] = useState<string>('');
+  const [initialView, setInitialView] = useState<'add' | 'view'>('view');
+  const [currentNoteId, setCurrentNoteId] = useState<string | null>(null);
 
   // Load notes from localStorage on mount
   useEffect(() => {
@@ -57,12 +73,14 @@ export const NotesProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     }
   }, [notes]);
 
-  const addNote = useCallback((note: Omit<Note, 'id' | 'timestamp'>) => {
+  const addNote = useCallback((note: Omit<Note, 'id' | 'timestamp' | 'lastModified'>) => {
     const id = `note_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+    const now = Date.now();
     const newNote: Note = {
       ...note,
       id,
-      timestamp: Date.now(),
+      timestamp: now,
+      lastModified: now,
     };
 
     setNotes((prev) => ({
@@ -70,10 +88,10 @@ export const NotesProvider: React.FC<{ children: React.ReactNode }> = ({ childre
       [id]: newNote,
     }));
 
-    return id;
+    return id; // Return the ID for potential immediate use
   }, []);
 
-  const updateNote = useCallback((id: string, updates: Partial<Omit<Note, 'id' | 'timestamp'>>) => {
+  const updateNote = useCallback((id: string, updates: { name?: string; content?: string }) => {
     setNotes((prev) => {
       if (!prev[id]) return prev;
 
@@ -81,7 +99,9 @@ export const NotesProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         ...prev,
         [id]: {
           ...prev[id],
-          ...updates,
+          ...(updates.name !== undefined && { name: updates.name }),
+          ...(updates.content !== undefined && { content: updates.content }),
+          lastModified: Date.now(),
         },
       };
     });
@@ -95,34 +115,30 @@ export const NotesProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     });
   }, []);
 
-  const searchNotes = useCallback(
-    (query: string): Note[] => {
-      if (!query.trim()) {
-        return Object.values(notes).sort((a, b) => b.timestamp - a.timestamp);
-      }
-
-      const lowerQuery = query.toLowerCase();
-      return Object.values(notes)
-        .filter(
-          (note) =>
-            note.title.toLowerCase().includes(lowerQuery) ||
-            note.content.toLowerCase().includes(lowerQuery)
-        )
-        .sort((a, b) => b.timestamp - a.timestamp);
+  const getNotesByPage = useCallback(
+    (pageUrl: string) => {
+      return Object.values(notes).filter((note) => note.pageUrl === pageUrl);
     },
-    [notes]
+    [notes],
   );
+
+  const getAllNotes = useCallback(() => {
+    return Object.values(notes).sort((a, b) => b.lastModified - a.lastModified);
+  }, [notes]);
 
   const value: NotesContextValue = {
     notes,
     addNote,
     updateNote,
     deleteNote,
-    searchNotes,
-    activeNoteId,
-    setActiveNoteId,
-    view,
-    setView,
+    getNotesByPage,
+    getAllNotes,
+    selectedText,
+    setSelectedText,
+    initialView,
+    setInitialView,
+    currentNoteId,
+    setCurrentNoteId,
   };
 
   return <NotesContext.Provider value={value}>{children}</NotesContext.Provider>;
