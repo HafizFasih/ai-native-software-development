@@ -6,6 +6,7 @@ import { useNoteMarkers } from '@/hooks/useNoteMarkers';
 import Link from '@docusaurus/Link';
 import { useColorMode } from '@docusaurus/theme-common';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import { useLocation } from '@docusaurus/router';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import Assistant from '../PanaChat';
 import './customNavbar.css';
@@ -30,6 +31,8 @@ const NavButton: React.FC<NavButtonProps> = ({ label, onClick, isActive }) => {
 };
 
 const CustomNavbar: React.FC = () => {
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
   const { siteConfig } = useDocusaurusContext();
   const { colorMode, setColorMode } = useColorMode();
   const { search, isLoading: searchLoading } = useSearch();
@@ -470,7 +473,8 @@ const CustomNavbar: React.FC = () => {
           </div>
         </div>
 
-        {/* Secondary Navigation Row - Tab-like buttons */}
+        {!isHomePage && (
+          <>
         <div className="custom-navbar__secondary">
           <button
             className="custom-navbar__sidebar-toggle"
@@ -528,6 +532,8 @@ const CustomNavbar: React.FC = () => {
             )}
           </button>
         </div>
+          </>
+        )}
       </nav>
 
       {/* Right Drawer */}
