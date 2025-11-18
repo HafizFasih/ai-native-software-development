@@ -6,12 +6,18 @@ interface CollapsibleSummaryProps {
   pageTitle: string;
 }
 
-type SummarySize = 'short' | 'medium' | 'long';
+type SummarySize = 'bulleted' | 'short' | 'long';
 
-const SIZE_SENTENCE_LIMITS = {
-  short: '2 sentences',
-  medium: '4 sentences',
-  long: '6 sentences',
+const SIZE_DESCRIPTIONS = {
+  bulleted: 'Bulleted List (concise bullet points)',
+  short: 'Short Paragraph (up to 200 words)',
+  long: 'Long Paragraph (up to 400 words)',
+};
+
+const SIZE_INSTRUCTIONS = {
+  bulleted: 'Provide a concise bulleted list summary with the most important points. Keep each bullet point brief and focused. Use markdown bullet points (-).',
+  short: 'Provide a short paragraph summary of up to 200 words covering the key points and main takeaways.',
+  long: 'Provide a comprehensive paragraph summary of up to 400 words covering all important concepts, details, and implications.',
 };
 
 const CollapsibleSummary: React.FC<CollapsibleSummaryProps> = ({ pagePath, pageTitle }) => {
@@ -20,7 +26,7 @@ const CollapsibleSummary: React.FC<CollapsibleSummaryProps> = ({ pagePath, pageT
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [hasCheckedCache, setHasCheckedCache] = useState(false);
-  const [selectedSize, setSelectedSize] = useState<SummarySize>('medium');
+  const [selectedSize, setSelectedSize] = useState<SummarySize>('short'); // Default to Short Paragraph
 
   const API_BASE = 'http://localhost:3001/api/summary';
 
@@ -162,9 +168,9 @@ const CollapsibleSummary: React.FC<CollapsibleSummaryProps> = ({ pagePath, pageT
             className={styles.sizeDropdown}
             aria-label="Summary size"
           >
-            <option value="short">Short (2 sentences)</option>
-            <option value="medium">Medium (4 sentences)</option>
-            <option value="long">Long (6 sentences)</option>
+            <option value="bulleted">Bulleted List</option>
+            <option value="short">Short Paragraph (200 words)</option>
+            <option value="long">Long Paragraph (400 words)</option>
           </select>
         </div>
       </div>

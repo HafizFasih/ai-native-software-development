@@ -85,7 +85,7 @@ class SummaryService {
     }
   }
 
-  async generateSummary(pagePath, pageTitle, size = 'medium') {
+  async generateSummary(pagePath, pageTitle, size = 'short') {
     try {
       console.log('\n🎯 [Service] generateSummary called with:', {
         pagePath,
@@ -93,34 +93,44 @@ class SummaryService {
         size,
       });
 
-      // Map size to exact sentence counts with examples
+      // Map size to format configurations
       const sizeConfig = {
-        short: {
-          sentences: 2,
-          example: 'This technology revolutionizes software development through AI collaboration. It enables faster iteration and better code quality.'
+        bulleted: {
+          format: 'bulleted',
+          instruction: 'Provide a concise bulleted list summary with the most important points. Keep each bullet point brief and focused. Use markdown bullet points (-).',
+          wordLimit: null,
+          example: '- Key concept one explained concisely\n- Important point two with context\n- Critical takeaway three\n- Additional insight four'
         },
-        medium: {
-          sentences: 4,
+        short: {
+          format: 'paragraph',
+          instruction: 'Provide a short paragraph summary of up to 200 words covering the key points and main takeaways.',
+          wordLimit: 200,
           example: 'This technology revolutionizes software development through AI collaboration. It enables faster iteration and better code quality. Developers write specifications first before generating code. The approach reduces errors and improves maintainability.'
         },
         long: {
-          sentences: 6,
-          example: 'This technology revolutionizes software development through AI collaboration. It enables faster iteration and better code quality. Developers write specifications first before generating code. The approach reduces errors and improves maintainability. Teams can scale development while maintaining high standards. The methodology has proven effective across various project sizes.'
+          format: 'paragraph',
+          instruction: 'Provide a comprehensive paragraph summary of up to 400 words covering all important concepts, details, and implications.',
+          wordLimit: 400,
+          example: 'This technology revolutionizes software development through AI collaboration. It enables faster iteration and better code quality. Developers write specifications first before generating code. The approach reduces errors and improves maintainability. Teams can scale development while maintaining high standards. The methodology has proven effective across various project sizes. Implementation involves careful planning and execution. Results demonstrate significant productivity improvements.'
         }
       };
 
-      const config = sizeConfig[size] || sizeConfig['medium'];
+      const config = sizeConfig[size] || sizeConfig['short'];
 
       console.log('⚙️ [Service] Using config:', {
         size,
-        targetSentences: config.sentences,
+        format: config.format,
+        wordLimit: config.wordLimit,
       });
 
       // Check if summary already exists for this size
       const existingSummary = await this.getSummary(pagePath, size);
       if (existingSummary) {
         console.log(`✅ [Service] Summary already exists for ${pagePath} (${size}), returning cached version`);
-        console.log(`📊 [Service] Cached summary has ${this.countSentences(existingSummary)} sentences`);
+        const stats = config.format === 'bulleted'
+          ? `${this.countBulletPoints(existingSummary)} bullet points`
+          : `${this.countWords(existingSummary)} words`;
+        console.log(`📊 [Service] Cached summary has ${stats}`);
         return existingSummary;
       }
 
@@ -129,40 +139,77 @@ class SummaryService {
       // Read the raw markdown file from filesystem
       const pageContent = await this.readMarkdownFile(pagePath);
 
-      const prompt = `You are a summarization expert. Your task is to create a summary with EXACTLY ${config.sentences} sentences.
+      // Generate format-specific prompt
+      const prompt = config.format === 'bulleted'
+        ? `You are a summarization expert. Create a concise bulleted list summary.
 
 ===== CRITICAL RULES (MUST FOLLOW) =====
 
 1. OUTPUT FORMAT:
-   - Plain text ONLY
-   - NO markdown (#, ##, *, -, etc.)
-   - NO bullet points or lists
-   - NO tables
-   - NO code blocks
-   - Just plain sentences with periods
+   - Use markdown bullet points (- ) ONLY
+   - Each bullet should be on its own line
+   - Start each line with "- " (dash space)
+   - 4-6 bullet points maximum
+   - Each bullet point should be concise and focused
+   - NO headings, NO numbered lists, NO other formatting
 
-2. SENTENCE COUNT (MOST IMPORTANT):
-   - Write EXACTLY ${config.sentences} sentences
-   - Each sentence must end with a period (.)
-   - Count before submitting: ${Array.from({length: config.sentences}, (_, i) => i + 1).join(', ')}
+2. BULLET POINT STRUCTURE:
+   - Keep each bullet under 25 words
+   - Focus on key concepts and takeaways
+   - Professional and clear language
+   - Direct statements (no fluff)
 
-3. EXAMPLE OF ${config.sentences}-SENTENCE OUTPUT:
-   "${config.example}"
+3. EXAMPLE OUTPUT FORMAT:
+"${config.example}"
 
 4. CONTENT RULES:
-   - Focus on key concepts only
-   - No meta-commentary
+   - Extract the most important information
+   - No meta-commentary about the content
+   - No introductory or closing statements
    - Professional tone
-   - Direct and clear
 
 ===== PAGE CONTENT TO SUMMARIZE =====
 ${pageContent}
 
 ===== YOUR TASK =====
-Write exactly ${config.sentences} plain text sentences summarizing the above content.
-Do NOT write anything except the ${config.sentences} sentences.
+${config.instruction}
+Output ONLY the bulleted list, nothing else.
 
-OUTPUT (${config.sentences} sentences):`;
+OUTPUT (bulleted list):`
+        : `You are a summarization expert. Create a ${config.wordLimit}-word paragraph summary.
+
+===== CRITICAL RULES (MUST FOLLOW) =====
+
+1. OUTPUT FORMAT:
+   - Plain text paragraph ONLY
+   - NO markdown (#, ##, *, -, etc.)
+   - NO bullet points or lists
+   - NO tables, NO code blocks
+   - Just flowing sentences with periods
+
+2. WORD LIMIT (MOST IMPORTANT):
+   - Maximum ${config.wordLimit} words
+   - Count every word before submitting
+   - Better to be slightly under than over
+
+3. EXAMPLE OUTPUT:
+"${config.example}"
+
+4. CONTENT RULES:
+   - Focus on key concepts and main points
+   - No meta-commentary
+   - Professional tone
+   - Clear and concise
+   - Logical flow between sentences
+
+===== PAGE CONTENT TO SUMMARIZE =====
+${pageContent}
+
+===== YOUR TASK =====
+${config.instruction}
+Output ONLY the paragraph summary, nothing else.
+
+OUTPUT (up to ${config.wordLimit} words):`;
 
       console.log('🤖 [Service] Calling Gemini AI...');
 
@@ -173,22 +220,33 @@ OUTPUT (${config.sentences} sentences):`;
       console.log('📝 [Service] Raw AI response length:', summary.length);
       console.log('📝 [Service] Raw AI response preview:', summary.substring(0, 200) + '...');
 
-      // Strip any markdown that might have slipped through
-      summary = this.stripMarkdown(summary);
-      console.log('🧹 [Service] After markdown strip length:', summary.length);
+      // Process based on format
+      if (config.format === 'bulleted') {
+        // For bulleted format, preserve markdown bullets but clean up
+        summary = this.cleanBulletedSummary(summary);
+        const bulletCount = this.countBulletPoints(summary);
+        console.log(`📊 [Service] Bulleted summary has ${bulletCount} bullet points`);
+        console.log('✅ [Service] Final summary:', summary);
+      } else {
+        // For paragraph format, strip markdown and enforce word limit
+        summary = this.stripMarkdown(summary);
+        console.log('🧹 [Service] After markdown strip length:', summary.length);
 
-      // Enforce exact sentence count
-      const beforeEnforce = this.countSentences(summary);
-      summary = this.enforceSentenceCount(summary, config.sentences);
-      const afterEnforce = this.countSentences(summary);
+        const beforeEnforce = this.countWords(summary);
+        summary = this.enforceWordLimit(summary, config.wordLimit);
+        const afterEnforce = this.countWords(summary);
 
-      console.log(`📊 [Service] Sentence count: ${beforeEnforce} → ${afterEnforce} (target: ${config.sentences})`);
-      console.log('✅ [Service] Final summary:', summary);
+        console.log(`📊 [Service] Word count: ${beforeEnforce} → ${afterEnforce} (limit: ${config.wordLimit})`);
+        console.log('✅ [Service] Final summary:', summary);
+      }
 
       // Save the generated summary
       await this.saveSummary(pagePath, summary, size);
 
-      console.log(`✓ Generated and saved ${size} summary (${config.sentences} sentences) for ${pagePath}`);
+      const stats = config.format === 'bulleted'
+        ? `${this.countBulletPoints(summary)} bullet points`
+        : `${this.countWords(summary)} words`;
+      console.log(`✓ Generated and saved ${size} summary (${stats}) for ${pagePath}`);
 
       return summary;
     } catch (error) {
@@ -255,15 +313,78 @@ OUTPUT (${config.sentences} sentences):`;
     // Return as-is if correct count or too short (we trust AI for correct generation)
     return validSentences.join(' ');
   }
+
+  countWords(text) {
+    // Split by whitespace and filter out empty strings
+    const words = text.trim().split(/\s+/).filter(word => word.length > 0);
+    return words.length;
+  }
+
+  enforceWordLimit(text, maxWords) {
+    const words = text.trim().split(/\s+/);
+
+    if (words.length <= maxWords) {
+      return text;
+    }
+
+    // Truncate to word limit
+    const truncated = words.slice(0, maxWords);
+    let result = truncated.join(' ');
+
+    // Ensure it ends with proper punctuation
+    if (!/[.!?]$/.test(result)) {
+      result += '.';
+    }
+
+    return result;
+  }
+
+  countBulletPoints(text) {
+    // Count lines that start with "- " (markdown bullets)
+    const bullets = text.split('\n').filter(line => line.trim().startsWith('- '));
+    return bullets.length;
+  }
+
+  cleanBulletedSummary(text) {
+    // Split into lines and process each
+    const lines = text.split('\n');
+    const cleanedLines = [];
+
+    for (const line of lines) {
+      const trimmed = line.trim();
+
+      // Skip empty lines
+      if (!trimmed) continue;
+
+      // Ensure line starts with "- "
+      if (trimmed.startsWith('- ')) {
+        cleanedLines.push(trimmed);
+      } else if (trimmed.startsWith('-')) {
+        // Fix missing space after dash
+        cleanedLines.push('- ' + trimmed.substring(1).trim());
+      } else if (trimmed.startsWith('* ')) {
+        // Convert asterisk to dash
+        cleanedLines.push('- ' + trimmed.substring(2));
+      } else if (trimmed.startsWith('•')) {
+        // Convert bullet character to dash
+        cleanedLines.push('- ' + trimmed.substring(1).trim());
+      } else {
+        // Line doesn't start with bullet marker - add one
+        cleanedLines.push('- ' + trimmed);
+      }
+    }
+
+    return cleanedLines.join('\n');
+  }
 }
 
 const summaryService = new SummaryService();
 
-async function generateSummary(pagePath, pageTitle, size = 'medium') {
+async function generateSummary(pagePath, pageTitle, size = 'short') {
   return await summaryService.generateSummary(pagePath, pageTitle, size);
 }
 
-async function getSummary(pagePath, size = 'medium') {
+async function getSummary(pagePath, size = 'short') {
   return await summaryService.getSummary(pagePath, size);
 }
 

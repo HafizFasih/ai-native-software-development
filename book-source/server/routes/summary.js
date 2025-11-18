@@ -9,7 +9,7 @@ router.post('/generate', async (req, res) => {
     console.log('\n📨 [Backend Route] Received generate request');
     console.log('📦 [Backend Route] Request body:', req.body);
 
-    const { pagePath, pageTitle, size = 'medium' } = req.body;
+    const { pagePath, pageTitle, size = 'short' } = req.body;
 
     console.log('🔍 [Backend Route] Extracted values:', {
       pagePath,
@@ -30,10 +30,10 @@ router.post('/generate', async (req, res) => {
     }
 
     // Validate size parameter
-    const validSizes = ['short', 'medium', 'long'];
+    const validSizes = ['bulleted', 'short', 'long'];
     if (size && !validSizes.includes(size)) {
       return res.status(400).json({
-        error: 'size must be one of: short, medium, long'
+        error: 'size must be one of: bulleted, short, long'
       });
     }
 
@@ -62,7 +62,7 @@ router.post('/generate', async (req, res) => {
 // Check if summary exists for a page
 router.get('/check', async (req, res) => {
   try {
-    const { pagePath, size = 'medium' } = req.query;
+    const { pagePath, size = 'short' } = req.query;
 
     if (!pagePath || typeof pagePath !== 'string') {
       return res.status(400).json({
@@ -71,10 +71,10 @@ router.get('/check', async (req, res) => {
     }
 
     // Validate size parameter
-    const validSizes = ['short', 'medium', 'long'];
+    const validSizes = ['bulleted', 'short', 'long'];
     if (size && !validSizes.includes(size)) {
       return res.status(400).json({
-        error: 'size must be one of: short, medium, long'
+        error: 'size must be one of: bulleted, short, long'
       });
     }
 
