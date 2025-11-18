@@ -107,9 +107,9 @@ body.drawer-open .docItemCol {
 
 /* Dark mode override for drawer panel */
 html[data-theme='dark'] .right-drawer__panel {
-  background-color: #0a0a0a !important;
-  border-left-color: #1f1f1f !important;
-  box-shadow: -4px 0 24px rgba(0, 0, 0, 0.5) !important;
+  background: linear-gradient(180deg, #1a1a1a 0%, #111111 100%) !important;
+  border-left-color: rgba(170, 170, 170, 0.15) !important;
+  box-shadow: -4px 0 24px rgba(0, 0, 0, 0.6) !important;
 }
 
 .right-drawer__panel--open {
@@ -127,7 +127,8 @@ html[data-theme='dark'] .right-drawer__panel {
 }
 
 html[data-theme='dark'] .right-drawer__header {
-  border-bottom-color: #1f1f1f;
+  border-bottom-color: rgba(170, 170, 170, 0.12);
+  background: linear-gradient(135deg, #2a2a2a 0%, #333333 50%, #444444 100%);
 }
 
 .right-drawer__title {
@@ -165,11 +166,11 @@ html[data-theme='dark'] .right-drawer__title {
 }
 
 html[data-theme='dark'] .right-drawer__close-button {
-  color: #888888;
+  color: #aaaaaa;
 }
 
 html[data-theme='dark'] .right-drawer__close-button:hover {
-  background-color: #1a1a1a;
+  background-color: rgba(170, 170, 170, 0.1);
   color: #ffffff;
 }
 
@@ -206,12 +207,12 @@ html[data-theme='dark'] .right-drawer__close-button:hover {
 }
 
 html[data-theme='dark'] .right-drawer__content::-webkit-scrollbar-thumb {
-  background: #333333;
-  border-color: #0a0a0a;
+  background: rgba(170, 170, 170, 0.3);
+  border-color: #1a1a1a;
 }
 
 html[data-theme='dark'] .right-drawer__content::-webkit-scrollbar-thumb:hover {
-  background: #404040;
+  background: rgba(170, 170, 170, 0.4);
 }
 
 /* Placeholder Content */
@@ -286,24 +287,24 @@ html[data-theme='dark'] .right-drawer__label {
 }
 
 html[data-theme='dark'] .right-drawer__input {
-  background-color: #1a1a1a;
-  border-color: #2a2a2a;
-  color: #ffffff;
+  background-color: rgba(170, 170, 170, 0.05);
+  border-color: rgba(170, 170, 170, 0.15);
+  color: #dddddd;
 }
 
 html[data-theme='dark'] .right-drawer__input::placeholder {
-  color: #666666;
+  color: #888888;
 }
 
 html[data-theme='dark'] .right-drawer__input:hover {
-  border-color: #333333;
-  background-color: #1f1f1f;
+  border-color: rgba(170, 170, 170, 0.25);
+  background-color: rgba(170, 170, 170, 0.08);
 }
 
 html[data-theme='dark'] .right-drawer__input:focus {
-  border-color: #444444;
-  background-color: #1f1f1f;
-  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.05);
+  border-color: rgba(170, 170, 170, 0.35);
+  background-color: rgba(170, 170, 170, 0.1);
+  box-shadow: 0 0 0 3px rgba(170, 170, 170, 0.08);
 }
 
 /* Action Buttons */
