@@ -137,7 +137,7 @@ contacts: dict[str, str] = {
 alice_phone = contacts["Alice"]  # ✓
 ```
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 > In AI-native development, you're not memorizing how Python sorts dicts (insertion order in 3.7+). You're understanding the *intent*: lists when order is semantically meaningful, dicts when you need named lookup. Structure choice is communication.
 
 ---

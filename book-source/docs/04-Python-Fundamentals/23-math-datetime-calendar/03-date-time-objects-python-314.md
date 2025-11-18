@@ -96,7 +96,7 @@ print(f"Day: {my_birthday.day}, Month: {my_birthday.month}, Year: {my_birthday.y
 
 **What's happening**: The `date` constructor takes three parameters: `year`, `month` (1-12), and `day` (1-31, depending on the month). The type hint `date` tells Python (and anyone reading your code) that the variable holds a date object.
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > In AI-native development, you don't memorize date constructor parameters—you type `date(` in your IDE and let AI autocomplete show you the parameters. Your job: understand that a date object separates year/month/day into distinct attributes.
 
@@ -271,7 +271,7 @@ All parse to the same date object because Python internally stores dates the sam
 
 **CRITICAL FOR USERS**: When you receive a date string, you need to know its format. If the user enters "11/09/2025", is that November 9 (US) or September 11 (EU)? Always clarify the expected format in your application!
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > Before Python 3.14, parsing dates required workarounds. Now you parse directly—syntax is cheap, knowing WHEN to parse (user input) vs construct (programmatic dates) is gold. Ask AI when you're unsure about format codes; you don't memorize all 30+.
 
@@ -475,7 +475,7 @@ invalid: date | None = parse_birthday("not-a-date")
 5. ✅ Includes type hints throughout
 6. ✅ Tested with valid and invalid input
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > Notice the error handling: When the user enters "not-a-date", Python raises `ValueError` with a descriptive message. Your job isn't to memorize error messages—it's to catch them and provide helpful feedback to the user. AI helps you understand what went wrong.
 

@@ -1,7 +1,7 @@
 ---
 title: "Specify Phase - Writing Complete Specifications"
 chapter: 31
-lesson: 3
+lesson: 4
 duration_minutes: 120
 
 # HIDDEN SKILLS METADATA (Institutional Integration Layer)

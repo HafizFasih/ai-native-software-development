@@ -543,7 +543,7 @@ Before implementing, study the provided skeleton code above. Notice:
 
 Your job: **Implement `ai_agent_query()` function** using TaskGroup and InterpreterPoolExecutor.
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > In AI-native development, you don't code from scratch. You understand a pattern, see a skeleton, and ask AI to help fill the gaps. The `ai_agent_query()` function is that gap—it's where all concepts combine. You're not memorizing how to use TaskGroup and InterpreterPoolExecutor in isolation. You're architecting a system where both work together, optimally using I/O concurrency and CPU parallelism.
 

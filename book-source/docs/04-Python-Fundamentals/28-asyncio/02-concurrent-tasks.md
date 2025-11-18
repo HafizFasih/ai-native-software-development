@@ -259,7 +259,7 @@ results = await asyncio.gather(
 
 It's much more concise than creating and awaiting individual tasks.
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > In AI-native development, you don't memorize which pattern to use—you understand the tradeoff. `create_task()` gives you fine-grained control (inspect tasks, cancel them individually). `gather()` is cleaner for "run these concurrently and give me all results." Syntax is cheap; architectural clarity is gold.
 

@@ -1,7 +1,7 @@
 ---
 title: "Clarify Phase - Refining Specs with /sp.clarify"
 chapter: 31
-lesson: 4
+lesson: 5
 duration_minutes: 90
 
 # HIDDEN SKILLS METADATA (Institutional Integration Layer)

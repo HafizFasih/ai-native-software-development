@@ -113,7 +113,7 @@ Notice the type hint: `float`. The `.time()` function returns a floating-point n
 
 This timestamp is universal—your computer in New York and a server in Tokyo both get the same number at the same instant. That's powerful for logs, databases, and distributed systems.
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 Timestamps might look like random numbers (1731120456.7382598), but they're just seconds since a fixed point—perfect for calculations. The key insight: let AI handle converting between timestamp numbers and human-readable dates; you focus on understanding **why timestamps matter** for storage, comparison, and calculations. In AI-native development, you specify what you want ("get current time in readable format"), and AI handles the conversion.
 

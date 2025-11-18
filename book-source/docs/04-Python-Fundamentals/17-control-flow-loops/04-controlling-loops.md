@@ -404,7 +404,7 @@ Now that you understand the basics, let's explore more complex patterns with you
 
 Ask your AI to generate this scenario:
 
-#### 🎓 Note: You Might See try-except in AI Responses
+#### 🎓 Expert Insight: You Might See try-except in AI Responses
 
 When you ask your AI to validate user input, it might generate code using `try` and `except` keywords. This is **exception handling**—a powerful Python feature you'll learn in **Chapter 21**. For now:
 

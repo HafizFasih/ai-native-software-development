@@ -163,7 +163,7 @@ major_stats: dict[str, dict[str, float | int]] = {
 
 We use a **dict mapping major names to summary stats** (another dict containing counts and averages).
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > In AI-native development, you don't just code—you design. Notice how we chose list for "ordered records" (we care about having all students), dict for "key-value lookup by student field", and dict again for "meaningful keys in aggregations". Structure choice is communication. When future you (or a teammate) reads this code, the structures tell the story.
 
@@ -356,7 +356,7 @@ Notice the pattern:
 3. **Accumulate**: `stats[major]["count"] += 1`
 4. **Calculate final value**: `average_gpa = total_gpa / count`
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > This aggregation pattern appears everywhere: calculating totals, counting occurrences, tracking minimums/maximums. You're learning a skill that applies to data analysis, reporting, analytics dashboards, and more. The dict-based accumulator is fundamental. Syntax is cheap—understanding this pattern is gold.
 

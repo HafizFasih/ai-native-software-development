@@ -107,7 +107,7 @@ def fetch_data_with_retry(url: str, max_retries: int = 3) -> str:
 
 > "Show me the difference between retry logic and just catching an exception and returning a default value. When would you choose retry vs. fallback?"
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > In AI-native development, you don't guess at error handling—you analyze the error type. Transient errors (network timeouts) demand retry. Permanent errors (file not found) demand fallback or graceful degradation.
 

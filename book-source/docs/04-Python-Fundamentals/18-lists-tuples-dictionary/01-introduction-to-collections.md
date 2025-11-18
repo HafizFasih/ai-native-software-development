@@ -175,7 +175,7 @@ Think of it like a phone book: you don't ask for "person #5", you ask for "Alice
 - Order doesn't matter
 - You want fast lookups by key ("find this student's grade instantly")
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > In AI-native development, you're not memorizing index numbers or key names. You're understanding the **intent**: Am I working with ordered items, or am I looking things up by meaningful names? That conceptual difference is what matters. AI will handle syntax; you think about structure.
 
@@ -393,7 +393,7 @@ Notice how each structure serves its purpose:
 - **Tuple**: stores the unchanging enrollment date
 - **Dict**: enables fast lookup of student records by ID
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > This is the fundamental insight: collections aren't features to memorize—they're architectural decisions. You're not asking "How do I use a list?" You're asking "What's the best way to organize this data?" The collection type is the answer.
 

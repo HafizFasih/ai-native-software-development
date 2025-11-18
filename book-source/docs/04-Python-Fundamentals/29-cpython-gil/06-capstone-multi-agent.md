@@ -181,7 +181,7 @@ This difference is revolutionary for AI-native development—multi-agent reasoni
 
 > "Explain how a multi-agent system differs from a traditional multi-threaded application. What makes agents independent units? How does free-threading change the performance characteristics?"
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > In AI-native development, you don't design multi-agent systems by accident. You understand that agent independence unlocks parallelism, and free-threading unlocks the hardware you paid for. This capstone teaches you to think architecturally about concurrency.
 

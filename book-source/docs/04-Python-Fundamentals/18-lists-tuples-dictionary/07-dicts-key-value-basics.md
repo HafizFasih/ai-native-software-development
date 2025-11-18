@@ -151,7 +151,7 @@ empty_dict: dict[str, int] = {}
 
 **Notice the type hints**: Each one tells you what types keys and values expect.
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > In AI-native development, type hints like `dict[str, int]` aren't just syntax—they're **communication**. You're telling Python tools, your teammates, and AI collaborators: "Keys are strings, values are integers." This clarity unlocks better suggestions from AI and catches mismatches early.
 
@@ -354,7 +354,7 @@ Age (updated): 21
 
 This is how real programs track data—with dictionaries, not mysterious lists.
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > Notice we used f-strings for output: `f"Name: {student['name']}"`. This is readable Python. The dictionary structure (meaningful keys) makes the code self-documenting. When you read this code in 6 months, you'll instantly understand what's stored and why.
 

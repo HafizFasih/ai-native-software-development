@@ -1,7 +1,7 @@
 ---
 title: "Tasks Phase - Atomic Work Units and Checkpoints"
 chapter: 31
-lesson: 6
+lesson: 7
 duration_minutes: 90
 
 # HIDDEN SKILLS METADATA (Institutional Integration Layer)

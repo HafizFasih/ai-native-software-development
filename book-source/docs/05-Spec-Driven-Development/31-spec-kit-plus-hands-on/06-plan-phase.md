@@ -1,7 +1,7 @@
 ---
 title: "Plan Phase - Architecture Decisions and ADRs"
 chapter: 31
-lesson: 5
+lesson: 6
 duration_minutes: 120
 
 # HIDDEN SKILLS METADATA (Institutional Integration Layer)

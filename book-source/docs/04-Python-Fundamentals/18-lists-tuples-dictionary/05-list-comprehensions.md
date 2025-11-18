@@ -147,7 +147,7 @@ Execution:
 
 Notice: the expression runs for each item in the iterable, and the result of each expression becomes an element in the new list.
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > In AI-native development, you don't memorize the syntax—you understand the intent: "I want to transform each item from a source list." The syntax is just Python's way of expressing that idea concisely. When syntax feels confusing, ask AI: "Break down this comprehension step-by-step."
 

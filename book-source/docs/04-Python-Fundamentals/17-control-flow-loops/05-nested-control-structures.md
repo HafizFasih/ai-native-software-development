@@ -386,7 +386,7 @@ Processing cart items:
 
 ---
 
-#### 🎓 Note: You Might See Functions in AI Responses
+#### 🎓 Expert Insight: You Might See Functions in AI Responses
 
 When you ask your AI to generate code examples, it might create code using `def` keyword to define **functions**. Functions are reusable blocks of code—a powerful Python feature you'll learn in **Chapter 20**.
 

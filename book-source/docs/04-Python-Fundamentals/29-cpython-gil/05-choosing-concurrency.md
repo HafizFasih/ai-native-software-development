@@ -138,7 +138,7 @@ The most important table in concurrent programming is simple: **workload type ma
 
 **Read this table carefully.** This single framework drives 80% of concurrency decisions. Everything in this lesson builds from it.
 
-#### 💬 AI Colearning Prompt (15 min mark)
+#### 💬 AI Colearning Prompt
 
 Let's test your understanding:
 
@@ -194,7 +194,7 @@ if __name__ == "__main__":
     # Later: any parallel approach must beat this to justify overhead
 ```
 
-#### 🎓 Instructor Commentary (20 min mark)
+#### 🎓 Expert Insight
 
 In AI-native development, you don't guess at concurrency. You **measure the baseline first**. Syntax and frameworks are cheap—understanding when overhead is justified is gold. Many developers add threading/multiprocessing and wonder why it's slower. The reason: they didn't measure the baseline.
 
@@ -380,7 +380,7 @@ These commands show you:
 - How long each has been running
 - Stack traces for debugging deadlocks
 
-#### 💬 AI Colearning Prompt (42 min mark)
+#### 💬 AI Colearning Prompt
 
 > "I'm debugging an asyncio program that seems stuck. One task finished, but two others never completed. How do I use `python -m asyncio ps` and `pstree` to diagnose what's happening? Show me the commands and explain what the output tells me."
 
@@ -427,7 +427,7 @@ Python 3.14 improves event loop speed by ~10-20% through optimizations in task s
 
 Error messages now clearly indicate which task failed and why, making debugging significantly faster.
 
-#### 🎓 Instructor Commentary (55 min mark)
+#### 🎓 Expert Insight
 
 Production systems live or die on debuggability. Python 3.14's asyncio CLI tools transform asyncio from "black box" to "transparent." You can now see exactly what's running, what's blocked, and why.
 
@@ -563,7 +563,7 @@ def measure_approach(approach_name: str, func, n: int, runs: int = 3) -> tuple[f
 | **1.2-2.0x** | Worth considering; check overhead for your scale | Use if workload is large |
 | **> 2.0x** | Clear winner; go with this | Use in production |
 
-#### 💬 AI Colearning Prompt (58 min mark)
+#### 💬 AI Colearning Prompt
 
 > "Ask your AI: What factors besides execution time matter when choosing a concurrency approach? Consider: memory usage (how many processes/threads can I create?), complexity (how hard to debug?), latency (is 95th percentile important?), and maintainability (can my team understand this code?)."
 
@@ -687,7 +687,7 @@ Use this decision tree when facing a new problem:
    - YES → **Free-Threaded + Asyncio Hybrid**
    - NO → You've already chosen in steps 1-4
 
-#### 🎓 Instructor Commentary (78 min mark)
+#### 🎓 Expert Insight
 
 Memorizing this tree won't help you. Understanding the WHY behind each decision makes you production-ready. Every choice reflects trade-offs: overhead vs speedup, isolation vs sharing, simplicity vs performance.
 

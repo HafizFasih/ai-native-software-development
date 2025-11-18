@@ -181,7 +181,7 @@ print(car.describe())  # A Toyota with 4 doors
 
 The key insight: **`super()` respects the parent's initialization**, ensuring both parent and child set up their state correctly. This is critical for avoiding bugs.
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > In AI-native development, inheritance hierarchies model agent types and capabilities. Understanding super() prevents subtle bugs where initialization gets skipped. In multi-agent systems, a misconfigured agent might seem to have a capability it doesn't actually have because its parent's initialization was skipped.
 
@@ -325,7 +325,7 @@ The MRO tells us: Check D, then B, then C, then A, then object. That's the order
 2. **Inheritance order preserved** — If a class inherits from (B, C), search B before C
 3. **No class visited twice** — Once A is in the search order, it appears exactly once, at the deepest level
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > C3 Linearization prevents the chaos of older languages where the diamond problem could cause the same parent method to be called twice. Python solved this elegantly: every class appears exactly once, in a consistent order. This matters profoundly in AI agent hierarchies where you might have BaseAgent → SpecializedAgent → (ChatMixin, ToolMixin) → SomeAgent. Without C3, you'd have ambiguous behavior.
 

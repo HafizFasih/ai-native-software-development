@@ -1,7 +1,7 @@
 ---
 title: "Implement Phase - AI-Driven Code Generation and Validation"
 chapter: 31
-lesson: 7
+lesson: 8
 duration_minutes: 150
 
 # HIDDEN SKILLS METADATA (Institutional Integration Layer)

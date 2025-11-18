@@ -141,7 +141,7 @@ def heavy_calculation(iterations: int) -> int:
 
 This function spends 100% of its time doing math—no waiting for I/O. Perfect for testing parallelism.
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > In AI-native development, you don't memorize the GIL limitation—you recognize the pattern: "My task is CPU-heavy, so threading won't help." That recognition is worth more than any theory.
 
@@ -412,7 +412,7 @@ ProcessPoolExecutor (4 workers): 2.34s (more startup overhead)
 InterpreterPoolExecutor (4 workers): 1.15s (lighter weight)
 ```
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > The GIL isn't a bug—it's a design tradeoff. Python 3.14 gives you tools to work around it when you need true parallelism. For most code, you'll prefer `InterpreterPoolExecutor` over `ProcessPoolExecutor` because it's lighter and faster.
 

@@ -190,7 +190,7 @@ result = asyncio.run(fetch_user_async(1))
 print(result)  # {'id': 1, 'name': 'Alice'}
 ```
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > In AI-native development, you don't memorize the difference between `async def` and `def`—you understand *why it matters*. Async functions let tasks overlap. That's the insight. Syntax is cheap; architecture is gold.
 

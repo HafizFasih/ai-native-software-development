@@ -167,7 +167,7 @@ p             # In shell: Person(name='Alice', age=30) (calls __repr__)
 
 **The convention**: `__str__()` is for end users. `__repr__()` is for developers debugging code. Ideally, `repr()` output should be valid Python code that recreates the object.
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > In AI-native development, these methods become critical when you log agent state or debug multi-agent systems. A well-implemented `__repr__()` tells you exactly what you're looking at. A readable `__str__()` makes agent output feel natural to users.
 
@@ -314,7 +314,7 @@ for num in Countdown(5):
 
 **Critical pattern**: `__iter__()` returns an iterator object (often `self`). `__next__()` returns the next value and raises `StopIteration` when done. This is the protocol Python's `for` loop expects.
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > In AI-native development, iteration protocols enable elegant APIs. Imagine an AgentQueue that yields agents in priority order, or a DataStream that yields batches of training data. Proper iteration protocols make your systems read naturally: `for agent in queue:`.
 
@@ -536,7 +536,7 @@ unique_amounts = {Money(100), Money(100), Money(50)}
 print(len(unique_amounts))             # 2 (duplicates removed by hash/eq)
 ```
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > This Money class demonstrates why special methods matter. Without them, arithmetic on currency would be clunky: `Money.add(wallet, purchase)`. With special methods, it's natural: `wallet + purchase`. Natural syntax is professional code.
 

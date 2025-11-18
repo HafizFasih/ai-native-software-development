@@ -1,33 +1,12 @@
 ---
-title: "Installation & Setup - AI-Native SDD Toolkit"
+title: "Installation & Setup - Getting Spec-Kit Plus Running"
 chapter: 31
-lesson: 1
-duration_minutes: 90
+lesson: 2
+duration_minutes: 60
 
 # HIDDEN SKILLS METADATA (Institutional Integration Layer)
 # Not visible to students; enables competency assessment and differentiation
 skills:
-  - name: "Understanding Spec-Kit Plus Architecture"
-    proficiency_level: "A2"
-    category: "Technical"
-    bloom_level: "Understand"
-    digcomp_area: "Information Literacy"
-    measurable_at_this_level: "Student can explain that Spec-Kit Plus is an independent framework working with Claude Code or Gemini CLI"
-
-  - name: "Recognizing Vertical Intelligence Pattern"
-    proficiency_level: "A2"
-    category: "Conceptual"
-    bloom_level: "Understand"
-    digcomp_area: "Communication & Collaboration"
-    measurable_at_this_level: "Student can identify the three-tier architecture: Human → Orchestrator → Specialized Subagents"
-
-  - name: "Understanding Horizontal Intelligence"
-    proficiency_level: "A2"
-    category: "Conceptual"
-    bloom_level: "Remember, Understand"
-    digcomp_area: "Information Literacy"
-    measurable_at_this_level: "Student recognizes that ADRs and PHRs capture organizational knowledge"
-
   - name: "Tool Configuration (Claude Code vs Gemini CLI)"
     proficiency_level: "A2"
     category: "Technical"
@@ -42,12 +21,14 @@ skills:
     digcomp_area: "Problem-Solving"
     measurable_at_this_level: "Student can identify and explain the purpose of `.specify/`, `specs/`, and `history/` directories"
 
-learning_objectives:
-  - objective: "Explain the difference between Spec-Kit Plus framework and AI tool, and why they are separate"
+  - name: "Installation Verification"
     proficiency_level: "A2"
-    bloom_level: "Understand"
-    assessment_method: "Verbal explanation or written response"
+    category: "Technical"
+    bloom_level: "Apply"
+    digcomp_area: "Problem-Solving"
+    measurable_at_this_level: "Student can verify Spec-Kit Plus installation and run test commands successfully"
 
+learning_objectives:
   - objective: "Install Spec-Kit Plus framework successfully on your development machine"
     proficiency_level: "A2"
     bloom_level: "Apply"
@@ -69,8 +50,8 @@ learning_objectives:
     assessment_method: "Successful command execution with expected output"
 
 cognitive_load:
-  new_concepts: 5
-  assessment: "5 new concepts (Spec-Kit Plus framework, Horizontal Intelligence, Vertical Intelligence, AI tool options, Project structure) within A2 limit of 7 ✓"
+  new_concepts: 3
+  assessment: "3 new concepts (Tool configuration, Project structure navigation, Installation verification) within A2 limit of 7 ✓"
 
 differentiation:
   extension_for_advanced: "Explore multi-tool setup-configure both Claude Code and Gemini CLI; compare workflows between the two"
@@ -80,140 +61,21 @@ differentiation:
 generated_by: "content-implementer v3.0.0"
 source_spec: "specs/10-chapter-31-redesign/spec.md"
 created: "2025-11-05"
-last_modified: "2025-11-05"
+last_modified: "2025-11-18"
 git_author: "Claude Code"
 workflow: "manual-implementation"
-version: "1.0.0"
+version: "2.0.0"
 ---
 
-# Installation & Setup - AI-Native SDD Toolkit
+# Installation & Setup - Getting Spec-Kit Plus Running
 
-Welcome to hands-on Spec-Kit Plus development! Chapter 30 taught you **why** specification-driven development matters. This chapter teaches you **how** to do it-by building a real calculator project from specification to working code using Spec-Kit Plus and your AI companion.
+In Lesson 1, you learned WHAT Spec-Kit Plus is (three-tier architecture, Horizontal/Vertical Intelligence) and WHY this book uses it (implements SDD-RI concepts). Now you'll install the framework and verify everything works.
 
-This lesson gets your toolkit ready. By the end, you'll have Spec-Kit Plus installed, your AI tool configured, and a test project initialized. More importantly, you'll understand the architecture behind Spec-Kit Plus-why it's independent of any single AI tool, and how the three-tier Vertical Intelligence pattern (You → Orchestrator → Specialized Subagents) enables efficient workflow management.
-
----
-
-## Part A: What Is Spec-Kit Plus? 
-
-Before installing anything, let's clarify what Spec-Kit Plus actually is.
-
-### The Architecture: Three Independent Layers
-
-Spec-Kit Plus is an Opiniated ToolKit for SDD. It has three independent but integrated components:
-
-**1. The Framework** (The actual Spec-Kit Plus toolkit)
-- File templates for specifications, plans, tasks
-- Directory structure enforcing Spec → Plan → Tasks progression
-- Slash commands (`/sp.specify`, `/sp.plan`, `/sp.tasks`, `/sp.implement`, etc.)
-- Prompt templates and evaluation guides
-- Storage for artifacts (ADRs, PHRs)
-
-**2. The AI Orchestrator** (Your chosen AI tool)
-- Claude Code (recommended for this book)
-- Gemini CLI (alternative option)
-- Or any AI tool that can execute slash commands
-- Acts as the "main collaborator" who understands Spec-Kit Plus workflow
-
-**3. The Vertical Intelligence Layer** (Delegated AI capabilities)
-
-**The Critical Insight**: Spec-Kit Plus is **not** a tool that requires a specific AI service. It's an **opinionated methodology framework** that works with Claude Code, Gemini CLI, or any AI tool capable of understanding slash commands and specialized roles.
-
-### Horizontal Intelligence vs. Vertical Intelligence
-
-To understand how Spec-Kit Plus works, you need to distinguish two types of organizational intelligence:
-
-**Horizontal Intelligence: Knowledge Across Time**
-
-Horizontal intelligence captures decisions and learnings in a permanent, searchable form so future you (or future team members) can learn from past work.
-
-- **ADRs** (Architectural Decision Records): Document the "why" behind significant decisions
-  - Example: "Why did we choose error codes over exceptions? Because..."
-  - Stored in: `history/adr/`
-  - Created explicitly via `/sp.adr <title>` when architectural decisions are made
-
-- **PHRs** (Prompt History Records): Automatically capture AI collaboration sessions
-  - Example: "AI suggested this pattern for error handling. We chose it because..."
-  - Stored in: `history/prompts/<feature>/`
-  - Created automatically (you don't manually run a PHR command)
-
-**Vertical Intelligence: Knowledge Through Hierarchy**
-
-You can optionally build Vertical intelligence at start of each project. This is like onboarding the specialized skilled workers in your team. It is how YOU work with AI orchestrators and specialized subagents:
-
-```
-┌─────────────────────────────────────────────────────────┐
-│  👤 YOU (Architect/Validator)                           │
-│  Strategic Decisions & Quality Control                  │
-│                                                          │
-│  "What to build?" ──────────────┐                       │
-│                                  ↓                       │
-│                   ┌──────────────────────────┐          │
-│                   │  🤖 AI ORCHESTRATOR      │          │
-│                   │  Main Collaborator       │          │
-│                   │  Routes work to experts  │          │
-│                   └──────────────────────────┘          │
-│                            ↓                             │
-│         ┌──────────────────┼──────────────────┐         │
-│         ↓                  ↓                  ↓          │
-│  ┌────────────┐   ┌────────────┐   ┌────────────┐      │
-│  │ 📝 Spec    │   │ 🏗️ Plan    │   │ ⚙️ Impl    │      │
-│  │ Subagent   │   │ Subagent   │   │ Subagent   │      │
-│  │            │   │            │   │            │      │
-│  │ Writes     │   │ Creates    │   │ Generates  │      │
-│  │ clear      │   │ plans      │   │ code +     │      │
-│  │ specs      │   │            │   │ tests      │      │
-│  └────────────┘   └────────────┘   └────────────┘      │
-│         │                  │                  │          │
-│         └──────────────────┼──────────────────┘         │
-│                            ↓                             │
-│                   ┌────────────────┐                     │
-│                   │ ✅ Validation  │                     │
-│                   │ Subagent       │                     │
-│                   │ Reviews quality│                     │
-│                   └────────────────┘                     │
-│                            │                             │
-│  ← Review & Approve ───────┘                            │
-└─────────────────────────────────────────────────────────┘
-```
-
-**How Vertical Intelligence Works**:
-
-1. **You describe intent** - "Build a calculator with 5 operations"
-2. **Orchestrator delegates** - Routes to appropriate subagent (e.g., Specification Subagent for writing specs)
-3. **Subagent executes** - Specification Subagent asks clarifying questions, identifies gaps, returns complete spec
-4. **You validate** - Review spec and approve (or iterate)
-5. **Orchestrator delegates next phase** - Routes to Planning Subagent
-6. **Cycle repeats** through Plan → Tasks → Implementation
-
-**Why This Matters**: You don't need to memorize specification templates, planning methodologies, or code patterns. The orchestrator knows which expert to consult for which task. Your job is **thinking clearly about intent and validating results**, not memorizing frameworks.
-
-#### 💬 AI Colearning Prompt
-> "Explain the difference between Horizontal Intelligence (ADRs/PHRs capturing knowledge across time) and Vertical Intelligence (orchestrator delegating to specialized subagents). Why does a project need both?"
-
-#### 🎓 Expert Insight
-> In AI-native development, you don't memorize framework details—you understand the architecture. Spec-Kit Plus's three-tier pattern (You → Orchestrator → Subagents) mirrors how professional teams work: architects make strategic decisions, managers route work to specialists, and specialists execute with expertise. AI simply accelerates what was always the right workflow.
-
-### Why Spec-Kit Plus Exists (Problem It Solves)
-
-Chapter 30 introduced you to four SDD approaches:
-
-- **Kiro** - Extremely simple (just folders, no automation)
-- **GitHub Spec-Kit** - GitHub-based workflow with templates
-- **Spec-Kit Plus** (Panaversity's approach) - Templates + ADRs + PHRs + Vertical Intelligence
-- **Tessel** - Code-generation focused (spec as source of truth)
-
-We chose Spec-Kit Plus for this book because:
-
-- **Opinionated workflow**: Enforces Spec → Clarify → Plan → Tasks → Implement sequence (the cascade)
-- **Knowledge capture**: ADRs preserve "why" decisions; PHRs capture AI collaboration history
-- **Vertical Intelligence**: Orchestrator + subagents = efficient, scalable workflow
-- **Flexible tooling**: Works with Claude Code, Gemini CLI, or any capable AI tool
-- **Proven in practice**: Used by teams at Anthropic, Google, and OpenAI
+By the end of this lesson, you'll have Spec-Kit Plus installed, your AI tool configured, and a test project initialized. You'll execute your first slash command and confirm the orchestrator can route work to specialized subagents.
 
 ---
 
-## Part B: Install Spec-Kit Plus Framework
+## Install Spec-Kit Plus Framework
 
 Now let's install the actual Spec-Kit Plus framework. This is independent of your AI tool choice.
 
@@ -344,7 +206,7 @@ calculator-project/
 
 ---
 
-## Part C: Verify Commands Work 
+## Verify Commands Work
 
 Now let's test that everything is connected.
 

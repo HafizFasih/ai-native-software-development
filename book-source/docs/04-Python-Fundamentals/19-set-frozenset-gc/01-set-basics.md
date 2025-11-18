@@ -95,7 +95,7 @@ Before we dive into syntax, let's understand what sets actually do. A **set** is
 
 This question gets at the heart of why sets exist. Your AI can walk you through the performance difference and explain when the choice matters practically.
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > In AI-native development, you don't memorize when to use which collection type. You understand the properties—uniqueness, speed of lookup, unordered nature—and choose based on what your code needs. Your AI assistant can explain trade-offs instantly.
 

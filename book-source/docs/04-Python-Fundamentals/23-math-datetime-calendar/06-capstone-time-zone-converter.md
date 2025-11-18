@@ -133,7 +133,7 @@ Before you write a single line of code, you're going to architect your applicati
 
 Take that suggestion and adapt it. Maybe you want to add more functions. Maybe you want to combine some. The point is: **you decide the design with AI's help, not AI deciding for you**.
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > In AI-native development, architecture comes from thinking clearly about requirements, not from memorizing design patterns. You described what you need, AI suggested a structure, and now you're taking ownership of that design. This is what professionals do every day.
 
@@ -390,7 +390,7 @@ def format_output(dt: datetime, tz_name: str) -> str:
 
 **What you're doing**: Combining learned concepts into one function.
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > This is synthesis—you're not learning new datetime methods here. You're taking `strftime()` from Lesson 4, combining it with timestamp from Lesson 2, and building one function that displays multiple formats. This is how professionals build real applications: by composing smaller pieces you already understand into larger wholes.
 

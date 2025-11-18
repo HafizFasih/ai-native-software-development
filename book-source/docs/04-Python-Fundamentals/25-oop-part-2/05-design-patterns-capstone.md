@@ -196,7 +196,7 @@ print(f"Agents in manager2: {manager2.list_agents()}")  # ['chat_bot', 'code_bot
 2. `__init__()` might be called multiple times (once per reference), so we guard initialization with `_initialized` flag.
 3. Result: `AgentManager()` always returns the exact same object, no matter how many times you call it.
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > Singletons are controversial in software engineering. **Use for**: configuration managers, loggers, connection pools—stateless or simple-state resources. **Avoid for**: anything that needs different state in tests or multiple independent instances. The controversy exists because global state makes testing and reasoning about code harder. But for true global coordination points (like the agent manager), Singleton is appropriate.
 
@@ -339,7 +339,7 @@ Ask your AI Co-Teacher:
 
 **Expected Outcome**: You'll understand how to decouple class registration from class creation, enabling true plugin-like architecture.
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > The Factory pattern is critical in AI systems. Your agent creation might be dynamic—loading from configuration, database, or user choice. Factory decouples "which agent type" (decided at runtime) from "how to create it" (stateless factory code). This is professional architecture.
 
@@ -629,7 +629,7 @@ print(agent.make_decision(context))
 3. `Agent` holds a reference to a strategy and delegates decisions to it.
 4. `set_strategy()` switches strategies at runtime without changing Agent code.
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > Strategy pattern is essential in AI systems. Different models, different reasoning approaches, different risk profiles—all are strategies. By encapsulating them, agents adapt their behavior without core logic changes. This is how real AI systems handle A/B testing and experimentation.
 
@@ -726,7 +726,7 @@ These patterns work together seamlessly because each solves one specific problem
 - Observer handles *loose coupling communication*
 - Strategy handles *algorithm selection*
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > This integrated system represents professional architecture. In production AI systems:
 > - Singleton coordinates resources (expensive to create, need single instance)

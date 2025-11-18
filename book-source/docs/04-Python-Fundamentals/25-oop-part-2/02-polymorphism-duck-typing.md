@@ -270,7 +270,7 @@ for agent in agents:
 #   Processing: Code analysis result for: Hello
 ```
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > In AI-native development, ABCs are **critical**. You cannot deploy an agent that doesn't implement `process()`. Python checks this at instantiation (when you create the object), not at runtime (when you call the method). This shifts errors from "oh no, the production system crashed" to "oops, my agent class isn't complete yet."
 
@@ -473,7 +473,7 @@ checkout(crypto_processor, 29.99, wallet_address="0x123abc456def789...")
 
 **No `Payment` base class. No `@abstractmethod` decorators. Just objects that do what we need them to do.**
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > Duck typing is the heart of Python's philosophy. It's more flexible than inheritance because you don't need to plan a hierarchy ahead of time. If you need a new processor, just implement `process_payment()` and it works. No inheritance chain, no complex base class design—just implement the interface you need.
 

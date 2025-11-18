@@ -165,7 +165,7 @@ The `.cpython-314.pyc` filename tells you:
 - `314`: This is Python 3.14
 - `.pyc`: Compiled Python code
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 In AI-native development, you don't memorize what bytecode looks like or how to read it. What matters is understanding **when** bytecode affects your workflow:
 

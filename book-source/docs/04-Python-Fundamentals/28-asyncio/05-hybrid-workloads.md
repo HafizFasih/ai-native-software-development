@@ -141,7 +141,7 @@ While you're **fetching** item #2, you're **processing** item #1 (CPU cores stay
 
 This is what **hybrid workloads** achieve: **parallel execution of fundamentally different types of work**.
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > In AI-native development, you don't choose between concurrency and parallelism—you use both. This is why Python 3.14's InterpreterPoolExecutor paired with asyncio creates such powerful systems. The pattern is: "concurrent I/O boundaries" around "parallel CPU cores."
 
@@ -529,7 +529,7 @@ if __name__ == "__main__":
 - **Throughput**: Queues decouple stages, each stage keeps busy
 - **Resource Control**: Queues have max sizes, preventing runaway memory
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > Pipeline patterns are everywhere in production systems: data ETL, stream processing, real-time inference. The pattern is simple: decouple stages with queues, run concurrently, and watch throughput improve. This is why asyncio + queues are so powerful for backend systems.
 

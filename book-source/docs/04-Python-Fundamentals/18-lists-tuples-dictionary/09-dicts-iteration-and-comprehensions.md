@@ -260,7 +260,7 @@ grapes            15 units
 ⚠️ grapes is low: 15 units
 ```
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > In AI-native development, you don't memorize "use `.items()` for both". You understand: "I need both key and value, so `.items()` is my tool." The same logic applies to `.keys()` and `.values()`—they match your intent. Syntax is cheap; recognizing "I need X from this dictionary" is the skill.
 
@@ -467,7 +467,7 @@ Bob:
   grade: 87
 ```
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > Nested dictionaries are powerful for organizing complex data. But remember: clarity is essential. If a structure becomes too deeply nested (more than 2-3 levels), consider whether a simpler design exists. In professional code, deeply nested structures often become hard to understand.
 

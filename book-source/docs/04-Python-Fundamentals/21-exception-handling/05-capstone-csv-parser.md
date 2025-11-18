@@ -180,7 +180,7 @@ def validate_name(name: str) -> str:
     return name.strip()
 ```
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > Notice that validation functions *raise* exceptions rather than returning success/failure flags. This is professional Python style. Your function either returns the validated data or signals an error. No ambiguity.
 

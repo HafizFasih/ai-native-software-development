@@ -179,7 +179,7 @@ Critical distinction: **The GIL is not removed. It's optional.**
 - Backward compatibility is preserved: existing code works on both builds
 - You choose which version to install based on your workload
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 > Free-threading isn't just a feature—it's a fundamental shift in how Python executes. Understanding this prepares you for the next 30 years of Python development, not just today's code. The GIL defined Python's capabilities for 30 years. Its optionality defines the next era.
 
 ---
@@ -284,7 +284,7 @@ Think of it like this: "This dict is usually accessed by Thread 1, so optimize f
 
 This optimization keeps the 5-10% overhead small. If every lock access required expensive synchronization, overhead would be much higher.
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 > Benchmarks show 2-10x gains, but YOUR workload may differ. Always measure. Professional developers don't trust marketing claims—they validate with real data. Free-threading's benefits depend on: (1) CPU-bound workloads, (2) multi-core hardware, (3) sufficient parallelism to justify overhead.
 
 ---
@@ -665,7 +665,7 @@ if __name__ == "__main__":
 
 **Expected Outcome**: You'll understand the break-even analysis and when to choose free-threading.
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 > Don't believe claims about free-threading speedup. Ask your AI: "Generate a realistic benchmark for my AI workload. Measure traditional threading vs free-threaded vs multiprocessing. Show me the data." Measurement is your friend. Professional developers validate everything.
 
 ---
@@ -858,7 +858,7 @@ Tell your AI Co-Teacher:
 
 **Expected Outcome**: You'll understand why free-threading is the right choice for multi-agent AI systems and when to use alternatives.
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 > This is where theory meets practice. Multi-agent systems are the book's core focus. Free-threading in 3.14 makes this practical on a single machine. In Parts 10-14 you'll scale this to Kubernetes and Ray. Today you learn the foundation.
 
 ---

@@ -203,7 +203,7 @@ PyList_SetItem(list, 0, PyLong_FromLong(42)); // Safe!
 
 This simplification is enormous. Without the GIL, every C extension would need complex thread-safety code. With the GIL, extensions just execute knowing they're protected.
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 Here's the professional perspective: the GIL made perfect sense in 1989 when Guido van Rossum created Python. Single-core machines. No parallelism benefit possible anyway. The GIL simplified interpreter design and C API—huge wins for a language trying to be extensible and pragmatic.
 
@@ -553,7 +553,7 @@ print("Result: Threading is often SLOWER than single-threaded for CPU work.")
 - 2-8 threads: similar or slightly slower (GIL overhead dominates)
 - Never a speedup (GIL prevents it)
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 Understanding WHY this benchmark shows no speedup is more valuable than memorizing THAT it does. Here's the professional insight:
 
@@ -742,7 +742,7 @@ This solves the 30-year constraint. But how? By using **biased reference countin
 
 Result: Remove the global lock while maintaining thread safety. That's the innovation behind Lesson 4.
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 Understanding the GIL means understanding **technological constraints and their evolution**. The GIL wasn't a mistake—it was the right call for 1989. The problem was that constraints which made sense for single-core machines became bottlenecks for multi-core machines 30 years later.
 

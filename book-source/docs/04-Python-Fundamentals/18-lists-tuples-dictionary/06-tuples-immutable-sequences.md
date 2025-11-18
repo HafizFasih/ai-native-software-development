@@ -186,7 +186,7 @@ last: float = point[-1]         # -74.0060 (last element)
 first_two: tuple[float, ...] = point[0:2]  # (40.7128, -74.0060)
 ```
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > In AI-native development, you don't memorize whether tuples support indexing. You understand: "Tuples are sequences, so they have an order and positions." The syntax—that's what AI handles.
 
@@ -326,7 +326,7 @@ first_three: int = numbers.index(3)  # 2 (position 2)
 
 Unlike lists, tuples have **no mutation methods** (`append`, `remove`, etc.)—because tuples can't be modified.
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > Tuple methods are read-only: `count()` and `index()`. They answer questions ("How many?" and "Where?") but never change the tuple. This reflects immutability throughout the API.
 

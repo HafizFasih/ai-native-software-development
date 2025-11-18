@@ -191,7 +191,7 @@ print(store_stock)
 # Output: {'milk': 18, 'bread': 12, 'eggs': 28}
 ```
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > In AI-native development, you're not memorizing "add vs update" methods. Python treats them as one operation: assign to a key. Your job is understanding the business intent: "Am I creating a new entry or modifying an existing one?" The code is the same; the context determines which.
 
@@ -598,7 +598,7 @@ for item in items_to_delete:
     del inventory[item]
 ```
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > These patterns show that dictionaries follow consistent, predictable rules once you understand the core concepts. "Increment a count" is always: get-current-or-default, add-one, store-back. "Delete safely" is always: pop-with-default. You're not memorizing methods—you're applying the same logical patterns repeatedly.
 

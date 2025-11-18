@@ -138,7 +138,7 @@ print(car.stop())   # Toyota: Engine stopped
 
 Notice: `Car` doesn't inherit from `Engine`. Instead, `Car` has an `Engine` as an attribute. When you call `car.start()`, the car delegates to its engine's `start()` method.
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > In AI-native development, composition is the default pattern. Multi-agent systems use composition—an orchestrator agent *has* specialized sub-agents. Understanding composition is more critical than mastering inheritance hierarchies.
 
@@ -427,7 +427,7 @@ Now the design makes sense:
 - `Manager` IS-AN `Employee` (inheritance for real "is-a" relationships)
 - `Manager` HAS-A `Printer` (composition for optional capabilities)
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > The rule: **Inheritance models unchanging identity ("is-a"), composition models changeable capabilities ("has-a")**. An object's type rarely changes, but its capabilities often do.
 

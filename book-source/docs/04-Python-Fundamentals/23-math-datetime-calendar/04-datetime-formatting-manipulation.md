@@ -131,7 +131,7 @@ print(friendly)  # Sunday, November 09, 2025 at 02:30 PM
 
 Notice how the same `moment` looks different depending on the format. Your job isn't to remember these strings—it's to choose the right format for your audience.
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > In AI-native development, you don't memorize all 30+ format codes. You understand the pattern (`%Y` = year, `%m` = month, `%d` = day) and ask AI when you need a specific format. **Syntax is cheap; knowing WHEN to use ISO 8601 vs localized format is gold.** ISO for data storage and APIs. Friendly format for user interfaces.
 
@@ -265,7 +265,7 @@ else:
 
 Notice we calculate remaining and check if it's positive. This is the pattern for deadlines, event scheduling, and countdowns.
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > You're not calculating duration by hand (that's error-prone and wasteful). You subtract two datetime objects and timedelta does the work. **Syntax is cheap; knowing to subtract datetime objects and handle the result is gold.** This is why we use timedelta.
 
@@ -431,7 +431,7 @@ Tokyo: Monday 11:30 PM
 
 This is real production code. You're solving an actual problem: helping people understand when a meeting happens in their timezone.
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > You don't calculate timezone offsets in your head (that's why timezones exist as objects). You understand: "UTC is the reference, offsets are +/- hours, astimezone() does the conversion." **Syntax is cheap; knowing to keep everything in UTC internally and convert on display is gold.** This pattern prevents bugs.
 

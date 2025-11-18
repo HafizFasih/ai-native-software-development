@@ -1,7 +1,7 @@
 ---
 title: "Constitution Phase - Project-Wide Rules"
 chapter: 31
-lesson: 2
+lesson: 3
 duration_minutes: 90
 
 # HIDDEN SKILLS METADATA (Institutional Integration Layer)

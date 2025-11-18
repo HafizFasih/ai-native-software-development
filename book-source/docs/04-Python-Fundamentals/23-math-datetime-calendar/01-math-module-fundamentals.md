@@ -156,7 +156,7 @@ print(safe_sqrt(2.25))    # 1.5
 
 The key insight: **validation before operation**. Check your inputs first, handle errors gracefully, and give users clear feedback.
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > In AI-native development, you don't memorize every function's constraints—you understand the principle: some operations are mathematically impossible. You ask AI to help you understand error messages and explain *why* an operation failed. Syntax is cheap; understanding mathematical validity is gold.
 

@@ -128,7 +128,7 @@ print(f"2025 is a leap year: {is_leap}")
 
 These functions solve real scheduling problems: "What day of the week should I display this date?" and "How many days should this calendar have?"
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 > In AI-native development, you don't memorize calendar functions—you understand WHEN you need them (scheduling logic, date calculations, UI layout). You know what functions exist (`weekday()`, `monthrange()`, `isleap()`) and ask AI when you need them. Syntax is cheap; recognizing "I need to know the first weekday of a month" is gold.
 

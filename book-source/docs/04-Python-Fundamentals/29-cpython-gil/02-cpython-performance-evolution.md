@@ -164,7 +164,7 @@ Less impact on:
 - Short-lived scripts (overhead is amortized over few instructions)
 - I/O-heavy code (waiting dominates; interpreter overhead is negligible)
 
-#### 🎓 Instructor Commentary
+#### 🎓 Expert Insight
 
 Here's a professional insight: modern CPython developers don't memorize bytecode instruction sets or interpreter dispatch details. What they understand is **where overhead occurs** and **how to measure it**. When you hit a performance bottleneck, you don't manually optimize the interpreter—you measure, profile, and ask AI for interpretation.
 
