@@ -10991,14 +10991,6 @@
   },
   {
     "type": "page",
-    "title": "Part 7: AI Cloud Native Development",
-    "breadcrumb": "AI Cloud Native Development",
-    "description": "AI Cloud Native Development",
-    "url": "/docs/AI-Cloud-Native-Development",
-    "_filePath": "07-AI-Cloud-Native-Development\\README.md"
-  },
-  {
-    "type": "page",
     "title": "Preface: Welcome to the AI-Native Era",
     "breadcrumb": "",
     "description": "",
