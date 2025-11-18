@@ -1,6 +1,4 @@
 import React, { useState, useRef, useEffect } from 'react';
-import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
 import './panaChat.css';
 
 interface AssistantProps {
@@ -128,9 +126,12 @@ const Assistant: React.FC<AssistantProps> = ({ isOpen, onClose }) => {
   const [isListening, setIsListening] = useState(false);
   const [isVoiceSupported, setIsVoiceSupported] = useState(false);
   const [isProcessingVoice, setIsProcessingVoice] = useState(false);
+  const [speakingMessageId, setSpeakingMessageId] = useState<string | null>(null);
+  const [copiedMessageId, setCopiedMessageId] = useState<string | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
-  const inputRef = useRef<HTMLInputElement>(null);
+  const inputRef = useRef<HTMLTextAreaElement>(null);
   const recognitionRef = useRef<any>(null);
+  const speechSynthesisRef = useRef<SpeechSynthesisUtterance | null>(null);
   const finalTranscriptRef = useRef<string>('');
   const interimTranscriptRef = useRef<string>('');
   const updateTimeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -514,6 +515,12 @@ const Assistant: React.FC<AssistantProps> = ({ isOpen, onClose }) => {
     updateCurrentSessionMessages((prev) => [...prev, userMessage]);
     const currentInput = inputValue;
     setInputValue('');
+
+    // Reset textarea height after sending
+    if (inputRef.current) {
+      inputRef.current.style.height = 'auto';
+    }
+
     setIsLoading(true);
 
     // Auto-generate title from first user message
@@ -599,8 +606,9 @@ const Assistant: React.FC<AssistantProps> = ({ isOpen, onClose }) => {
     }
   };
 
-  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter') {
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
       handleSendMessage();
     }
   };
@@ -655,10 +663,15 @@ const Assistant: React.FC<AssistantProps> = ({ isOpen, onClose }) => {
     }
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const newValue = e.target.value;
     setInputValue(newValue);
-    
+
+    // Auto-resize textarea
+    const textarea = e.target;
+    textarea.style.height = 'auto';
+    textarea.style.height = `${Math.min(textarea.scrollHeight, 150)}px`;
+
     // Stop voice recognition if user starts typing manually
     if (isListening && recognitionRef.current) {
       recognitionRef.current.stop();
@@ -672,6 +685,141 @@ const Assistant: React.FC<AssistantProps> = ({ isOpen, onClose }) => {
   const toggleMinimize = () => {
     setIsMinimized(!isMinimized);
   };
+
+  // Copy message text to clipboard
+  const handleCopyText = async (text: string, messageId: string) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopiedMessageId(messageId);
+      // Reset copied state after 2 seconds
+      setTimeout(() => {
+        setCopiedMessageId(null);
+      }, 2000);
+    } catch (error) {
+      console.error('Failed to copy text:', error);
+    }
+  };
+
+  // Text-to-speech functionality with natural, conversational voice
+  const handleTextToSpeech = (text: string, messageId: string) => {
+    if (typeof window === 'undefined' || !('speechSynthesis' in window)) {
+      alert('Text-to-speech is not supported in your browser.');
+      return;
+    }
+
+    // If already speaking this message, stop it
+    if (speakingMessageId === messageId) {
+      window.speechSynthesis.cancel();
+      setSpeakingMessageId(null);
+      speechSynthesisRef.current = null;
+      return;
+    }
+
+    // If speaking another message, stop it first
+    if (speakingMessageId) {
+      window.speechSynthesis.cancel();
+    }
+
+    // Process text to add natural pauses for better conversational flow
+    const processTextForSpeech = (rawText: string): string => {
+      let processed = rawText;
+
+      // Add longer pauses after sentences (periods, exclamation, question marks)
+      processed = processed.replace(/([.!?])\s+/g, '$1... ');
+
+      // Add medium pauses after commas for natural breathing
+      processed = processed.replace(/,\s+/g, ', ');
+
+      // Add slight pauses after colons and semicolons
+      processed = processed.replace(/([;:])\s+/g, '$1. ');
+
+      return processed;
+    };
+
+    // Create speech synthesis utterance with processed text
+    const utterance = new SpeechSynthesisUtterance(processTextForSpeech(text));
+
+    // Get available voices and select a natural-sounding one
+    const setNaturalVoice = () => {
+      const voices = window.speechSynthesis.getVoices();
+
+      // Preferred voices in order of naturalness
+      const preferredVoices = [
+        'Google US English',
+        'Microsoft Zira - English (United States)',
+        'Microsoft David - English (United States)',
+        'Samantha',
+        'Alex',
+        'Karen',
+        'Daniel',
+        'Google UK English Female',
+        'Google UK English Male',
+      ];
+
+      // Find the first available preferred voice
+      let selectedVoice = null;
+      for (const voiceName of preferredVoices) {
+        selectedVoice = voices.find(voice => voice.name === voiceName);
+        if (selectedVoice) break;
+      }
+
+      // Fallback: find any English voice that's not a default system voice
+      if (!selectedVoice) {
+        selectedVoice = voices.find(voice =>
+          voice.lang.startsWith('en') && !voice.name.includes('Default')
+        );
+      }
+
+      // Final fallback: use any English voice
+      if (!selectedVoice) {
+        selectedVoice = voices.find(voice => voice.lang.startsWith('en'));
+      }
+
+      if (selectedVoice) {
+        utterance.voice = selectedVoice;
+      }
+    };
+
+    // Set voice (voices might load asynchronously)
+    if (window.speechSynthesis.getVoices().length > 0) {
+      setNaturalVoice();
+    } else {
+      window.speechSynthesis.onvoiceschanged = setNaturalVoice;
+    }
+
+    // Conversational speech parameters
+    utterance.lang = 'en-US';
+    utterance.rate = 0.95; // Slightly slower for clarity and naturalness
+    utterance.pitch = 1.05; // Slightly higher pitch for friendliness
+    utterance.volume = 1.0;
+
+    utterance.onstart = () => {
+      setSpeakingMessageId(messageId);
+    };
+
+    utterance.onend = () => {
+      setSpeakingMessageId(null);
+      speechSynthesisRef.current = null;
+    };
+
+    utterance.onerror = (event) => {
+      console.error('Speech synthesis error:', event);
+      setSpeakingMessageId(null);
+      speechSynthesisRef.current = null;
+    };
+
+    speechSynthesisRef.current = utterance;
+    window.speechSynthesis.speak(utterance);
+  };
+
+  // Cleanup speech synthesis on unmount
+  useEffect(() => {
+    return () => {
+      if (window.speechSynthesis) {
+        window.speechSynthesis.cancel();
+      }
+    };
+  }, []);
 
   if (!isOpen) return null;
 
@@ -783,41 +931,121 @@ const Assistant: React.FC<AssistantProps> = ({ isOpen, onClose }) => {
                     message.isBot ? 'pana-chat__message--bot' : 'pana-chat__message--user'
                   }`}
                 >
-                  <div className="pana-chat__message-text">
-                    {message.text === '__LOADING__' ? (
-                      <div className="pana-chat__loading">
-                        <div className="pana-chat__loading-dot"></div>
-                        <div className="pana-chat__loading-dot"></div>
-                        <div className="pana-chat__loading-dot"></div>
-                      </div>
-                    ) : (
-                      <div className="pana-chat__markdown">
-                        <ReactMarkdown
-                          remarkPlugins={[remarkGfm]}
-                          components={{
-                            a: ({ node, ...props }) => (
-                              <a {...props} target="_blank" rel="noreferrer" />
-                            ),
-                          }}
+                  <div className="pana-chat__message-wrapper">
+                    <div className="pana-chat__message-text">
+                      {message.text === '__LOADING__' ? (
+                        <div className="pana-chat__loading">
+                          <div className="pana-chat__loading-dot"></div>
+                          <div className="pana-chat__loading-dot"></div>
+                          <div className="pana-chat__loading-dot"></div>
+                        </div>
+                      ) : (
+                        message.text
+                      )}
+                      {message.metadata && message.metadata.sources && message.metadata.sources.length > 0 && (
+                        <div className="pana-chat__message-sources">
+                          <div className="pana-chat__sources-label">Sources:</div>
+                          {message.metadata.sources.map((source, idx) => (
+                            <div key={idx} className="pana-chat__source-item">
+                              {source.title || source.path || 'Project file'}
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                      {message.metadata && message.metadata.usedBrowserSearch && (
+                        <div className="pana-chat__message-note">
+                          <span className="pana-chat__note-icon">🌐</span>
+                          Used external search to enhance answer
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Action buttons - Copy and Text-to-Speech */}
+                    {message.text !== '__LOADING__' && (
+                      <div className="pana-chat__message-actions">
+                        <button
+                          className={`pana-chat__action-btn ${copiedMessageId === message.id ? 'pana-chat__action-btn--active' : ''}`}
+                          onClick={() => handleCopyText(message.text, message.id)}
+                          aria-label={copiedMessageId === message.id ? 'Copied!' : 'Copy message'}
+                          title={copiedMessageId === message.id ? 'Copied!' : 'Copy message'}
                         >
-                          {message.text}
-                        </ReactMarkdown>
-                      </div>
-                    )}
-                    {message.metadata && message.metadata.sources && message.metadata.sources.length > 0 && (
-                      <div className="pana-chat__message-sources">
-                        <div className="pana-chat__sources-label">Sources:</div>
-                        {message.metadata.sources.map((source, idx) => (
-                          <div key={idx} className="pana-chat__source-item">
-                            {source.title || source.path || 'Project file'}
-                          </div>
-                        ))}
-                      </div>
-                    )}
-                    {message.metadata && message.metadata.usedBrowserSearch && (
-                      <div className="pana-chat__message-note">
-                        <span className="pana-chat__note-icon">🌐</span>
-                        Used external search to enhance answer
+                          {copiedMessageId === message.id ? (
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                              <path
+                                d="M20 6L9 17l-5-5"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                              />
+                            </svg>
+                          ) : (
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                              <rect
+                                x="9"
+                                y="9"
+                                width="13"
+                                height="13"
+                                rx="2"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                              />
+                              <path
+                                d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                              />
+                            </svg>
+                          )}
+                        </button>
+                        <button
+                          className={`pana-chat__action-btn ${speakingMessageId === message.id ? 'pana-chat__action-btn--active' : ''}`}
+                          onClick={() => handleTextToSpeech(message.text, message.id)}
+                          aria-label={speakingMessageId === message.id ? 'Stop speaking' : 'Read aloud'}
+                          title={speakingMessageId === message.id ? 'Stop speaking' : 'Read aloud'}
+                        >
+                          {speakingMessageId === message.id ? (
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                              <rect
+                                x="6"
+                                y="4"
+                                width="4"
+                                height="16"
+                                rx="1"
+                                fill="currentColor"
+                              />
+                              <rect
+                                x="14"
+                                y="4"
+                                width="4"
+                                height="16"
+                                rx="1"
+                                fill="currentColor"
+                              />
+                            </svg>
+                          ) : (
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                              <path
+                                d="M11 5L6 9H2v6h4l5 4V5z"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                              />
+                              <path
+                                d="M15.54 8.46a5 5 0 010 7.07M19.07 4.93a10 10 0 010 14.14"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                              />
+                            </svg>
+                          )}
+                        </button>
                       </div>
                     )}
                   </div>
@@ -831,14 +1059,14 @@ const Assistant: React.FC<AssistantProps> = ({ isOpen, onClose }) => {
           <div className="pana-chat__footer">
             <div className="pana-chat__input-wrapper">
               <div className="pana-chat__input-container">
-                <input
+                <textarea
                   ref={inputRef}
-                  type="text"
                   className="pana-chat__input"
-                  placeholder="Type your message or use voice input..."
+                  placeholder="Type your message"
                   value={inputValue}
                   onChange={handleInputChange}
-                  onKeyPress={handleKeyPress}
+                  onKeyDown={handleKeyPress}
+                  rows={1}
                 />
                 {/* Small mic button - appears when input has text, shows listening state */}
                 {inputValue.trim() && isVoiceSupported && (

@@ -301,8 +301,14 @@ html[data-theme='dark'] .pana-chat__messages::-webkit-scrollbar-thumb:hover {
   justify-content: flex-end;
 }
 
-.pana-chat__message-text {
+.pana-chat__message-wrapper {
   max-width: 85%;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.pana-chat__message-text {
   padding: 16px 20px;
   border-radius: 18px;
   font-size: 14.5px;
@@ -420,6 +426,84 @@ html[data-theme='dark'] .pana-chat__message--user .pana-chat__message-text {
   box-shadow: 0 4px 12px rgba(170, 170, 170, 0.15);
 }
 
+/* Message Action Buttons */
+.pana-chat__message-actions {
+  display: flex;
+  gap: 8px;
+  padding: 0 4px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.pana-chat__message-wrapper:hover .pana-chat__message-actions {
+  opacity: 1;
+}
+
+.pana-chat__action-btn {
+  background: rgba(0, 31, 63, 0.06);
+  border: 1px solid rgba(0, 31, 63, 0.12);
+  border-radius: 8px;
+  padding: 6px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: rgba(0, 31, 63, 0.7);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 12px;
+  gap: 4px;
+}
+
+.pana-chat__action-btn:hover {
+  background: rgba(0, 31, 63, 0.12);
+  border-color: rgba(0, 31, 63, 0.2);
+  color: rgba(0, 31, 63, 0.9);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 31, 63, 0.1);
+}
+
+.pana-chat__action-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 3px rgba(0, 31, 63, 0.08);
+}
+
+.pana-chat__action-btn--active {
+  background: rgba(76, 175, 80, 0.15);
+  border-color: rgba(76, 175, 80, 0.3);
+  color: rgba(76, 175, 80, 0.9);
+}
+
+.pana-chat__action-btn--active:hover {
+  background: rgba(76, 175, 80, 0.2);
+  border-color: rgba(76, 175, 80, 0.4);
+  color: rgba(76, 175, 80, 1);
+}
+
+/* Dark mode action buttons */
+html[data-theme='dark'] .pana-chat__action-btn {
+  background: rgba(170, 170, 170, 0.08);
+  border-color: rgba(170, 170, 170, 0.15);
+  color: rgba(170, 170, 170, 0.7);
+}
+
+html[data-theme='dark'] .pana-chat__action-btn:hover {
+  background: rgba(170, 170, 170, 0.15);
+  border-color: rgba(170, 170, 170, 0.25);
+  color: rgba(170, 170, 170, 0.95);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+html[data-theme='dark'] .pana-chat__action-btn--active {
+  background: rgba(76, 175, 80, 0.2);
+  border-color: rgba(76, 175, 80, 0.35);
+  color: rgba(129, 199, 132, 1);
+}
+
+html[data-theme='dark'] .pana-chat__action-btn--active:hover {
+  background: rgba(76, 175, 80, 0.25);
+  border-color: rgba(76, 175, 80, 0.45);
+}
+
 /* Loading Animation */
 .pana-chat__loading {
   display: flex;
@@ -476,14 +560,14 @@ html[data-theme='dark'] .pana-chat__footer {
 .pana-chat__input-wrapper {
   display: flex;
   gap: 12px;
-  align-items: center;
+  align-items: flex-end;
 }
 
 .pana-chat__input-container {
   flex: 1;
   position: relative;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
 }
 
 .pana-chat__input {
@@ -500,6 +584,36 @@ html[data-theme='dark'] .pana-chat__footer {
   color: #1a1a1a;
   font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', system-ui, sans-serif;
   will-change: border-color, box-shadow;
+  resize: none;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 150px;
+  min-height: 48px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  box-sizing: border-box;
+}
+
+.pana-chat__input::-webkit-scrollbar {
+  width: 6px;
+}
+
+.pana-chat__input::-webkit-scrollbar-track {
+  background: transparent;
+  margin: 10px 0;
+}
+
+.pana-chat__input::-webkit-scrollbar-thumb {
+  background: rgba(0, 31, 63, 0.2);
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+.pana-chat__input::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 31, 63, 0.3);
+  background-clip: content-box;
 }
 
 /* Listening state - active voice input */
@@ -562,6 +676,18 @@ html[data-theme='dark'] .pana-chat__input::placeholder {
   color: #666666;
 }
 
+html[data-theme='dark'] .pana-chat__input::-webkit-scrollbar-thumb {
+  background: rgba(170, 170, 170, 0.3);
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+html[data-theme='dark'] .pana-chat__input::-webkit-scrollbar-thumb:hover {
+  background: rgba(170, 170, 170, 0.4);
+  background-clip: content-box;
+}
+
 /* Voice Wave Indicator - shows active listening */
 .pana-chat__voice-indicator {
   position: absolute;
@@ -619,6 +745,7 @@ html[data-theme='dark'] .pana-chat__voice-wave span {
 .pana-chat__small-voice-btn {
   position: absolute;
   right: 12px;
+  bottom: 10px;
   width: 28px;
   height: 28px;
   border-radius: 50%;

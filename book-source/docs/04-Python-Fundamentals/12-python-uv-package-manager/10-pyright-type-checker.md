@@ -50,7 +50,7 @@ differentiation:
   extension_for_advanced: "Explore strict mode and advanced types (Union, Optional, Callable)"
   remedial_for_struggling: "Focus on basic: type hints are optional; function parameters and return types are the essential pieces"
 
-generated_by: "lesson-writer v3.0.0"
+generated_by: "content-implementer v3.0.0"
 source_spec: "specs/001-chapter-12-lightning-python-stack/plan.md"
 created: "2025-01-15"
 last_modified: "2025-01-15"
@@ -323,48 +323,133 @@ For now, just know: Pyright can run in your editor, showing errors as you type�
 
 ---
 
-## Try With AI
+## Try With AI: Type-Safe Project Capstone
 
-Use your AI companion for these exercises.
+This capstone integrates ALL Chapter 12 concepts: UV project setup, dependency management, Ruff formatting, and Pyright type checking.
 
-### Prompt 1: Install & Run (Tier 1 — Direct)
+### Part 1: Design a Type-Safe Calculator (Your Turn First)
 
-```
-1. Install Pyright in a uv project: `uv add pyright --dev`
-2. Create a Python file with a function that has type hints
-3. Add a function call with the wrong type (string instead of int)
-4. Run `uv run pyright` and show me the error
+**Before asking AI**, plan a typed calculator module:
 
-Show me the exact commands and the error message.
-```
+**Your design task**:
+1. Create a UV project called `calc-app`
+2. Design functions: `add()`, `subtract()`, `multiply()`, `divide()`
+3. For EACH function, write type hints (parameters and return type)
+4. Predict: What type error would occur if someone passes a string to `add()`?
 
-**Expected outcome:** Pyright installed, catches type error, you understand error message.
-
-### Prompt 2: Understand Type Hints (Tier 1 — Learn)
-
-```
-Show me Python 3.13+ type hint syntax for:
-1. A function that accepts two integers and returns a string
-2. A function that accepts an optional string (string or None)
-3. A function that accepts a list of integers
-
-For each, show an example function with realistic code.
+**Write pseudocode with type hints** (on paper/notes):
+```python
+def add(x: ???, y: ???) -> ???:
+    # What types should x, y, and return be?
 ```
 
-**Expected outcome:** Understand modern Python 3.13+ type hint syntax (using `|` for unions).
+---
 
-### Prompt 3: Configure Pyright (Tier 2 — AI Generates)
+### Part 2: AI Guides Project Setup (Discovery)
 
-```
-Configure Pyright in my pyproject.toml with:
-- Standard type checking mode (not strict)
-- Python 3.13 target
-- Report missing imports as warnings (not errors)
+Now build the project with AI assistance:
 
-Show me the [tool.pyright] section.
-```
+> "Let's build a type-safe calculator project. I need:
+>
+> **Project Setup**:
+> 1. Create UV project `calc-app`
+> 2. Add Pyright and Ruff as dev dependencies
+> 3. Configure Pyright for standard type checking (Python 3.13)
+>
+> **Calculator Module** (`calc.py`):
+> 1. Functions: `add`, `subtract`, `multiply`, `divide`
+> 2. All functions take two numbers, return a number
+> 3. Use Python 3.13+ type hint syntax
+> 4. For `divide`: Handle division by zero (return `None` if divisor is zero)
+>
+> Show me the complete setup commands and the `calc.py` code with type hints."
 
-**Expected outcome:** Configuration snippet; you add it to your pyproject.toml.
+**Your evaluation task**:
+- Does AI's `divide()` function use `int | None` or `float | None` as return type?
+- Run `uv run pyright calc.py`. Do you get any type errors? Why or why not?
+- Compare your pseudocode to AI's implementation. What did you miss?
+
+---
+
+### Part 3: Student Teaches AI (Break Type Safety)
+
+Challenge AI with intentional type errors:
+
+> "Let's intentionally break type safety to understand Pyright:
+>
+> **Create `test_errors.py`**:
+> 1. Import `add` from `calc.py`
+> 2. Call `add("5", "10")` (strings, not numbers)
+> 3. Call `add(5, None)` (None is not a number)
+> 4. Store result of `divide(10, 0)` in a variable, then try to do math with it (what happens if it's None?)
+>
+> For EACH error:
+> - Show me the exact Pyright error message
+> - Explain WHY Pyright caught it
+> - Propose a fix WITHOUT changing type hints (handle edge cases properly)"
+
+**Your debugging task**:
+- Which error message is most confusing? Ask AI to clarify in simpler terms.
+- Can you now explain to someone else the difference between a type error (Pyright catches) and a runtime error (crashes when running)?
+
+---
+
+### Part 4: Add Production Dependencies (Integration)
+
+Extend the project with real dependencies:
+
+> "Let's make this calculator interactive using `rich` library for beautiful terminal output:
+>
+> **Requirements**:
+> 1. Add `rich` as a PRODUCTION dependency (why production, not dev?)
+> 2. Create `main.py` with type hints
+> 3. Use `rich.console.Console` to display results
+> 4. Accept user input for two numbers and operation (+, -, *, /)
+> 5. Handle invalid input gracefully (type hints should guide error handling)
+>
+> Show me:
+> - The `uv add` command for `rich`
+> - The complete `main.py` with type hints
+> - How type hints help validate user input"
+
+**Refinement**:
+> "This doesn't handle when user enters text instead of numbers. Add type-safe input validation that converts strings to floats, handling ValueError."
+
+---
+
+### Part 5: Configure Full Toolchain (Convergence)
+
+Create a production-ready project configuration:
+
+> "Let's set up the complete toolchain in `pyproject.toml`:
+>
+> **Ruff Configuration**:
+> - Line length 88 (Python community standard)
+> - Format on save (preview mode)
+>
+> **Pyright Configuration**:
+> - Standard mode
+> - Python 3.13
+> - Report missing type hints as warnings (not errors)
+>
+> **Testing Setup**:
+> - Add pytest as dev dependency
+> - Show me one test for `add()` function with type hints
+>
+> Then run this sequence:
+> 1. `uv run ruff format .` (format all code)
+> 2. `uv run pyright` (check types)
+> 3. `uv run pytest` (run tests)
+>
+> All three should PASS. If not, debug together."
+
+**Final validation**:
+> "Create a checklist: What steps would a new teammate run to set up this project on their machine? Include environment sync, dependency install, and verification commands."
+
+---
+
+**Time**: 45-60 minutes total
+**Outcome**: You've built a complete type-safe Python project using UV, Pyright, Ruff, and pytest—integrating ALL Chapter 12 tools into a cohesive workflow. You understand the relationship between type hints, testing, and code quality.
 
 ---
 

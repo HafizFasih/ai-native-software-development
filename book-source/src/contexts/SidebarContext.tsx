@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useCallback, ReactNode } from 'react';
+import React, { createContext, useContext, useState, useCallback, useEffect, ReactNode } from 'react';
 
 interface SidebarContextType {
   collapseSidebar: () => void;
@@ -21,6 +21,27 @@ export const SidebarProvider: React.FC<{ children: ReactNode }> = ({ children })
     setIsSidebarCollapsed(false);
     // Dispatch custom event to trigger sidebar expand
     window.dispatchEvent(new CustomEvent('expandSidebar'));
+  }, []);
+
+  // Listen for external sidebar events and sync state
+  // This ensures state stays in sync when events are dispatched directly
+  // (e.g., from SelectionToolbar)
+  useEffect(() => {
+    const handleExternalCollapse = () => {
+      setIsSidebarCollapsed(true);
+    };
+
+    const handleExternalExpand = () => {
+      setIsSidebarCollapsed(false);
+    };
+
+    window.addEventListener('collapseSidebar', handleExternalCollapse);
+    window.addEventListener('expandSidebar', handleExternalExpand);
+
+    return () => {
+      window.removeEventListener('collapseSidebar', handleExternalCollapse);
+      window.removeEventListener('expandSidebar', handleExternalExpand);
+    };
   }, []);
 
   return (

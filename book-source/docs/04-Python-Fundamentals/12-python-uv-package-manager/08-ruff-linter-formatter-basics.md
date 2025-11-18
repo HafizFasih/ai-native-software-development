@@ -50,7 +50,7 @@ differentiation:
   extension_for_advanced: "Explore Ruff rule codes (F, E, B, I) and understand what each category detects"
   remedial_for_struggling: "Focus on two commands: `uv run ruff format .` (fixes style) and `uv run ruff check .` (finds problems)"
 
-generated_by: "lesson-writer v3.0.0"
+generated_by: "content-implementer v3.0.0"
 source_spec: "specs/001-chapter-12-lightning-python-stack/plan.md"
 created: "2025-01-15"
 last_modified: "2025-01-15"
@@ -274,60 +274,115 @@ For now, just know:
 
 ---
 
-## Try With AI
+## Try With AI: The Code Quality Discovery Challenge
 
-Use your AI companion for these exercises.
+### Part 1: Create Messy Code (Your Turn First)
 
-### Prompt 1: Install & Run (Tier 1 — Direct)
+**Before asking AI**, write intentionally bad Python code to understand what Ruff catches:
 
-```
-1. Install Ruff in a uv project: `uv add ruff --dev`
-2. Create a messy Python file with inconsistent spacing and quotes
-3. Run `uv run ruff format .` and show me the before/after
+Create a file `messy_code.py` with these problems:
+```python
+import os
+import sys
+import json
 
-Show me the exact commands and what the file looks like after formatting.
-```
+def calculate(x,y,z):
+    result=x+y+z
+    return result
 
-**Expected outcome:** Ruff installed, formatting works, you see code cleaned up.
-
-### Prompt 2: Find Lint Errors (Tier 1 — Direct)
-
-```
-Create a Python file with:
-- Unused import (import os but don't use it)
-- A long line (>88 characters)
-
-Run `uv run ruff check .` and show me the errors. What does each error code mean?
+print('hello world')
 ```
 
-**Expected outcome:** Understand that Ruff catches unused imports (F401) and line length (E501).
-
-### Prompt 3: Fix With AI (Tier 2 — AI Assistance)
-
-```
-I have lint errors in my Python file. Run `uv run ruff check .` and show me the errors.
-Then run `uv run ruff check . --fix` and explain what changed.
-Why can some errors be auto-fixed and others not?
-```
-
-**Expected outcome:** Understand `--fix` flag, learn which errors are auto-fixable, see real workflow.
+**Your analysis task**: Before running Ruff, identify issues:
+- List every style problem you notice (spacing, quotes, formatting)
+- List every logic problem (unused imports, unnecessary code)
+- Predict: Which problems will Ruff fix automatically vs just warn about?
 
 ---
 
-## Red Flags to Watch
+### Part 2: AI Explains Linting Categories (Discovery)
 
-**Problem**: "Ruff says E501 (line too long) but I don't know how to fix it"
-- **What it means**: Your line has >88 characters; Ruff wants it shorter
-- **What to do**: Break the line into multiple lines (Lesson 9 will cover config for this)
-- **For now**: Ask AI: "My line is too long: [paste line]. How should I break it up?"
+Run Ruff and share results with AI:
 
-**Problem**: "`uv run ruff` says 'command not found'"
-- **What it means**: You forgot `--dev` when installing, or didn't run `uv add ruff --dev`
-- **What to do**: Run `uv add ruff --dev` again
-- **Key reminder**: Always use `uv run` to execute tools; don't try `ruff format` directly
+> "I installed Ruff and ran it on this code:
+> [paste your messy_code.py]
+>
+> When I ran `uv run ruff check .`, I got these errors:
+> [paste the error output]
+>
+> Questions:
+> 1. What's the difference between 'formatting' and 'linting'?
+> 2. Why are error codes like F401, E501 important? What do the letters mean?
+> 3. Some errors show [*] (fixable). How does Ruff know which are fixable?
+> 4. If I run `ruff format` vs `ruff check`, what's the difference in what they do?"
 
-**Problem**: "Ruff formatted my file but changed things I didn't want"
-- **What it means**: Ruff's defaults don't match your style (happens with quotes, line length)
-- **What to do**: This is why Lesson 9 teaches configuration. For now, accept Ruff's changes or ask AI to customize rules
-- **Normal**: This is expected; Lesson 9 fixes it
+**Your evaluation task**:
+- Can you categorize each error as "style" vs "logic" vs "safety"?
+- Which would you fix first if you couldn't fix all at once?
+
+---
+
+### Part 3: Student Teaches AI (False Positives)
+
+Challenge AI with legitimate code that Ruff complains about:
+
+> "Ruff is flagging code I think is correct. For EACH scenario:
+>
+> **Scenario A**: I have a long URL string that's 120 characters. Ruff says E501 (line too long). Breaking it makes it unreadable. Is this a false positive?
+>
+> **Scenario B**: I imported `logging` at the top but only use it in an exception handler. Ruff says F401 (unused). It IS used, but conditionally.
+>
+> **Scenario C**: I intentionally used single quotes for SQL strings and double quotes for Python strings. Ruff wants all double quotes. Can I keep my convention?
+>
+> For EACH:
+> 1. Is this a false positive or legitimate warning?
+> 2. Show me how to ignore this specific rule (for this line only)
+> 3. Show me how to configure Ruff to allow this pattern project-wide
+> 4. Explain when to ignore vs when to fix"
+
+**Your debugging task**:
+- Actually run Scenario A in your test project
+- Use `# noqa: E501` to ignore the line length warning
+- Verify Ruff stops complaining about that specific line
+
+---
+
+### Part 4: Build Code Quality Workflow (Convergence)
+
+Create a pre-commit code quality checklist with AI:
+
+> "Generate a complete Ruff workflow for UV Python projects. Include:
+>
+> **Daily development** (as you code):
+> - When to run format vs check
+> - How to fix errors incrementally
+> - What to do when you disagree with Ruff
+>
+> **Before committing** (quality gate):
+> - Commands to run in sequence
+> - How to verify no errors remain
+> - Handling unfixable errors
+>
+> **Team standards** (configuration):
+> - Which error categories to enable (F, E, W, I, N)
+> - Which to ignore for learning projects
+> - How to document exceptions (# noqa usage)
+>
+> For EACH step:
+> - The exact command with flags
+> - Expected output (success vs errors)
+> - How to interpret results (what to fix first)"
+
+**Refinement**:
+> "Show me how to combine Ruff with Zed IDE:
+> 1. Run Ruff automatically on file save
+> 2. Show Ruff errors inline in the editor (not just terminal)
+> 3. Quick-fix command for auto-fixable errors
+>
+> What's the optimal workflow: fix in editor or fix in terminal?"
+
+---
+
+**Time**: 25-30 minutes
+**Outcome**: You'll understand the difference between style enforcement and bug detection, know when to fix vs ignore errors, and have a reproducible workflow for maintaining code quality throughout development.
 

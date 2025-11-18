@@ -50,7 +50,7 @@ differentiation:
   extension_for_advanced: "Configure Zed keybindings for faster Python navigation (Cmd+Shift+P, Cmd+P)"
   remedial_for_struggling: "Focus on basic: 'Zed is a text editor that shows your code and terminal together'"
 
-generated_by: "lesson-writer v3.0.0"
+generated_by: "content-implementer v3.0.0"
 source_spec: "specs/001-chapter-12-lightning-python-stack/plan.md"
 created: "2025-01-15"
 last_modified: "2025-01-15"
@@ -275,40 +275,109 @@ These tools integrate with Zed via LSP, making it a complete professional enviro
 
 ---
 
-## Try With AI
+## Try With AI: The IDE Configuration Challenge
 
-Use your AI companion for these exercises.
+### Part 1: Install and Explore (Your Turn First)
 
-### Prompt 1: Install & Verify (Tier 1 — Direct)
+**Before asking AI**, set up Zed and discover its interface:
 
-```
-I'm on [macOS/Windows/Linux].
-1. Install Zed IDE
-2. Create a simple Python project with `uv init hello-world`
-3. Open it in Zed with `zed .`
-4. Take a screenshot showing the project tree and terminal
+1. Install Zed for your platform (see installation section above)
+2. Create a test project: `uv init ide-exploration`
+3. Open it in Zed: `zed .`
+4. Spend 5 minutes clicking around: File tree, terminal toggle, command palette
 
-Show me the commands and what to expect at each step.
-```
+**Your exploration task**: Document what you discover:
+- Where is the integrated terminal? (Try `Ctrl+`` to toggle it)
+- Can you find the command palette? (Try `Cmd+Shift+P` or `Ctrl+Shift+P`)
+- Open `pyproject.toml`—what syntax highlighting do you see?
+- Look at the bottom-right status bar—what information does Zed show?
 
-**Expected outcome:** Zed installed, project opens, you see file tree and integrated terminal.
+---
 
-### Prompt 2: Understand IDE Purpose (Tier 2 — AI Explains)
+### Part 2: AI Explains IDE Architecture (Discovery)
 
-```
-Why is it better to use Zed (with a terminal) than editing code in Notepad and running commands in a separate terminal window? What's the benefit of an IDE?
-```
+Share your observations with AI:
 
-**Expected outcome:** AI explains integrated workflow, reduced context switching, better feedback loops.
+> "I installed Zed and opened a UV project. I notice:
+>
+> - A status bar says 'LSP not connected'
+> - The command palette has hundreds of commands
+> - Terminal opens at the bottom when I press Ctrl+`
+> - File tree shows .venv folder (grayed out)
+>
+> Questions:
+> 1. What does LSP mean and why isn't it connected yet?
+> 2. Why is an integrated terminal better than switching windows?
+> 3. What's the difference between Zed's 'AI-first' design and VS Code?
+> 4. Why is .venv grayed out in the file tree?"
 
-### Prompt 3: Zed Keybindings (Tier 2 — Configuration)
+**Your evaluation task**:
+- Can you explain to someone why IDE workflow is faster than separate editor + terminal?
+- What features would you miss if you went back to a plain text editor?
 
-```
-Show me the most useful Zed keybindings for Python development (on [Mac/Windows/Linux]).
-Include: opening terminal, finding files, formatting code.
-```
+---
 
-**Expected outcome:** Quick reference for common commands you'll use repeatedly.
+### Part 3: Student Teaches AI (Workflow Problems)
+
+Challenge AI with realistic setup issues:
+
+> "I'm setting up Zed for a UV Python project. Here are problems I'm encountering:
+>
+> **Problem A**: I opened my project but terminal commands run in the wrong directory. How do I ensure terminal opens in the project root?
+>
+> **Problem B**: When I use `Cmd+P` (or `Ctrl+P`) to find files, it shows hundreds of files from .venv. How do I exclude virtual environment from search?
+>
+> **Problem C**: I have three UV projects open. How do I switch between them quickly in Zed without closing/reopening?
+>
+> For EACH:
+> 1. Show the exact setting or command to fix it
+> 2. Explain where to configure it (settings file path)
+> 3. Verify the fix worked (what should I see?)"
+
+**Your debugging task**:
+- Actually try Problem B in your test project
+- Use AI's solution to exclude .venv from file search
+- Verify that `Cmd+P` now only shows your source files
+
+---
+
+### Part 4: Build Custom IDE Configuration (Convergence)
+
+Create a Zed configuration template for UV projects with AI:
+
+> "Generate a Zed settings.json configuration optimized for UV Python development. Include:
+>
+> **Editor settings**:
+> - Tab size and indentation for Python
+> - Auto-save on focus change
+> - Show hidden files (like .python-version)
+>
+> **Terminal settings**:
+> - Default terminal opens in project root
+> - Shell preference (bash/zsh/powershell by platform)
+>
+> **Python-specific**:
+> - File associations (.py, .toml, .lock)
+> - Exclude .venv from search and file watchers
+> - Syntax highlighting for TOML files
+>
+> For EACH setting:
+> - The JSON key and value
+> - Why it improves UV Python workflow
+> - Where to put this config (user vs workspace settings)"
+
+**Refinement**:
+> "Now add keybindings for these actions:
+> 1. Quick open terminal (if Ctrl+` doesn't work on my platform)
+> 2. Toggle file tree visibility
+> 3. Split editor vertically (for pyproject.toml + code side-by-side)
+>
+> Show me the keybindings.json structure."
+
+---
+
+**Time**: 20-25 minutes
+**Outcome**: You'll have a customized Zed setup that makes UV Python development fast and efficient, with proper exclusions, keybindings, and workspace settings you can reuse across all projects.
 
 ---
 
