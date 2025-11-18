@@ -849,15 +849,47 @@
   },
   {
     "type": "page",
-    "title": "Chapter 12: Python UV Quiz",
+    "title": "Zed IDE for Python Development",
     "breadcrumb": "Python Fundamentals › Python Uv Package Manager",
     "description": "Python Fundamentals › Python Uv Package Manager",
-    "url": "/docs/Python-Fundamentals/python-uv-package-manager/07_chapter_12_quiz",
-    "_filePath": "04-Python-Fundamentals\\12-python-uv-package-manager\\07_chapter_12_quiz.md"
+    "url": "/docs/Python-Fundamentals/python-uv-package-manager/zed-ide-for-python-development",
+    "_filePath": "04-Python-Fundamentals\\12-python-uv-package-manager\\07-zed-ide-for-python-development.md"
   },
   {
     "type": "page",
-    "title": "Chapter 12: Python UV - The Fastest Python Package Manager",
+    "title": "Ruff Linter & Formatter Basics",
+    "breadcrumb": "Python Fundamentals › Python Uv Package Manager",
+    "description": "Python Fundamentals › Python Uv Package Manager",
+    "url": "/docs/Python-Fundamentals/python-uv-package-manager/ruff-linter-formatter-basics",
+    "_filePath": "04-Python-Fundamentals\\12-python-uv-package-manager\\08-ruff-linter-formatter-basics.md"
+  },
+  {
+    "type": "page",
+    "title": "Ruff Configuration with AI",
+    "breadcrumb": "Python Fundamentals › Python Uv Package Manager",
+    "description": "Python Fundamentals › Python Uv Package Manager",
+    "url": "/docs/Python-Fundamentals/python-uv-package-manager/advanced-ruff-configuration",
+    "_filePath": "04-Python-Fundamentals\\12-python-uv-package-manager\\09-advanced-ruff-configuration.md"
+  },
+  {
+    "type": "page",
+    "title": "Pyright Type Checker",
+    "breadcrumb": "Python Fundamentals › Python Uv Package Manager",
+    "description": "Python Fundamentals › Python Uv Package Manager",
+    "url": "/docs/Python-Fundamentals/python-uv-package-manager/pyright-type-checker",
+    "_filePath": "04-Python-Fundamentals\\12-python-uv-package-manager\\10-pyright-type-checker.md"
+  },
+  {
+    "type": "page",
+    "title": "Chapter 12: Python UV Quiz",
+    "breadcrumb": "Python Fundamentals › Python Uv Package Manager",
+    "description": "Python Fundamentals › Python Uv Package Manager",
+    "url": "/docs/Python-Fundamentals/python-uv-package-manager/11_chapter_12_quiz",
+    "_filePath": "04-Python-Fundamentals\\12-python-uv-package-manager\\11_chapter_12_quiz.md"
+  },
+  {
+    "type": "page",
+    "title": "Chapter 12: The Lightning Python Stack — uv, Zed, Ruff & Pyright",
     "breadcrumb": "Python Fundamentals › Python Uv Package Manager",
     "description": "Python Fundamentals › Python Uv Package Manager",
     "url": "/docs/Python-Fundamentals/python-uv-package-manager",

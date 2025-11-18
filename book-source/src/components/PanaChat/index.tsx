@@ -1,4 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import './panaChat.css';
 
 interface AssistantProps {
@@ -789,7 +791,18 @@ const Assistant: React.FC<AssistantProps> = ({ isOpen, onClose }) => {
                         <div className="pana-chat__loading-dot"></div>
                       </div>
                     ) : (
-                      message.text
+                      <div className="pana-chat__markdown">
+                        <ReactMarkdown
+                          remarkPlugins={[remarkGfm]}
+                          components={{
+                            a: ({ node, ...props }) => (
+                              <a {...props} target="_blank" rel="noreferrer" />
+                            ),
+                          }}
+                        >
+                          {message.text}
+                        </ReactMarkdown>
+                      </div>
                     )}
                     {message.metadata && message.metadata.sources && message.metadata.sources.length > 0 && (
                       <div className="pana-chat__message-sources">

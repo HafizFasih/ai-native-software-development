@@ -313,6 +313,87 @@ html[data-theme='dark'] .pana-chat__messages::-webkit-scrollbar-thumb:hover {
   transition: all 0.2s ease;
 }
 
+.pana-chat__markdown {
+  white-space: normal;
+  color: inherit;
+}
+
+.pana-chat__markdown p {
+  margin: 0 0 0.85rem;
+}
+
+.pana-chat__markdown p:last-child {
+  margin-bottom: 0;
+}
+
+.pana-chat__markdown h1,
+.pana-chat__markdown h2,
+.pana-chat__markdown h3,
+.pana-chat__markdown h4,
+.pana-chat__markdown h5,
+.pana-chat__markdown h6 {
+  margin: 0 0 0.6rem;
+  font-weight: 600;
+  color: inherit;
+  line-height: 1.3;
+}
+
+.pana-chat__markdown h1 {
+  font-size: 1.4rem;
+}
+
+.pana-chat__markdown h2 {
+  font-size: 1.25rem;
+}
+
+.pana-chat__markdown h3 {
+  font-size: 1.15rem;
+}
+
+.pana-chat__markdown ul,
+.pana-chat__markdown ol {
+  margin: 0 0 0.85rem 1.25rem;
+  padding-left: 1rem;
+}
+
+.pana-chat__markdown li + li {
+  margin-top: 0.25rem;
+}
+
+.pana-chat__markdown code {
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  background: rgba(0, 0, 0, 0.06);
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+html[data-theme='dark'] .pana-chat__markdown code {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.pana-chat__markdown pre {
+  background: rgba(0, 0, 0, 0.75);
+  padding: 0.85rem;
+  border-radius: 10px;
+  overflow-x: auto;
+  font-size: 0.85em;
+  margin-bottom: 0.85rem;
+}
+
+html[data-theme='dark'] .pana-chat__markdown pre {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.pana-chat__markdown a {
+  color: #0055aa;
+  text-decoration: underline;
+}
+
+html[data-theme='dark'] .pana-chat__markdown a {
+  color: #7ab6ff;
+}
+
 .pana-chat__message--bot .pana-chat__message-text {
   background: linear-gradient(135deg, #f8f9fa 0%, #f1f3f5 100%);
   color: #1a1a1a;
