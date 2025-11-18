@@ -235,7 +235,7 @@ Having the right tools (like UV) means:
 
 UV puts professional tooling in your hands from day one.
 
-## Try With AI: Package Manager Decision Challenge
+## Try With AI
 
 ### Part 1: Identify Your Pain Points (Your Turn First)
 
@@ -297,8 +297,3 @@ Create a personalized tool selection guide with AI:
 
 **Refinement if needed**:
 > "This decision tree doesn't account for [specific scenario you care about]. Add that case and explain the reasoning."
-
----
-
-**Time**: 25-30 minutes total
-**Outcome**: You've built a personalized mental model of when to use UV vs. alternatives, grounded in your actual workflow and concerns—not just abstract theory.
