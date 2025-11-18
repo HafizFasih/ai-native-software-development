@@ -164,7 +164,8 @@ export const AnalyticsTracker: React.FC<AnalyticsTrackerProps> = ({
   return (
     <>
       {children}
-      {isDevelopment && (
+      {/* temporary false */}
+      {isDevelopment && false && (
         <div
           style={{
             position: "fixed",
