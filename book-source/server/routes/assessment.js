@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 import express from 'express';
 import { generateAssessment } from '../services/assessmentService.js';
+=======
+const express = require('express');
+const { generateAssessment, extractTopics } = require('../services/assessmentService');
+>>>>>>> 8cb196e3b9ad2b8e81354156f7ae425af041c121
 
 const router = express.Router();
 
@@ -10,6 +15,7 @@ router.post('/generate', async (req, res) => {
       difficulty = 'medium',
       topic = 'AI Native Software Development',
       examType = 'General Assessment',
+      pageContent,
     } = req.body || {};
 
     const parsedCount = Number(questionCount);
@@ -17,11 +23,14 @@ router.post('/generate', async (req, res) => {
       return res.status(400).json({ error: 'questionCount must be a positive number' });
     }
 
+    console.log('📝 Generating assessment with page content:', !!pageContent, 'length:', pageContent?.length || 0);
+
     const payload = await generateAssessment({
       questionCount: parsedCount,
       difficulty: String(difficulty).toLowerCase(),
       topic,
       examType,
+      pageContent,
     });
 
     res.json(payload);
@@ -34,4 +43,34 @@ router.post('/generate', async (req, res) => {
   }
 });
 
+<<<<<<< HEAD
 export const assessmentRouter = router;
+=======
+router.post('/extract-topics', async (req, res) => {
+  try {
+    const { content } = req.body || {};
+
+    if (!content || typeof content !== 'string') {
+      return res.status(400).json({ error: 'content is required and must be a string' });
+    }
+
+    if (content.trim().length < 50) {
+      return res.status(400).json({ error: 'content is too short (minimum 50 characters)' });
+    }
+
+    const payload = await extractTopics({ content });
+
+    res.json(payload);
+  } catch (error) {
+    console.error('Topic extraction failed:', error);
+    res.status(500).json({
+      error: 'Failed to extract topics',
+      message: error.message,
+    });
+  }
+});
+
+module.exports = { assessmentRouter: router };
+
+
+>>>>>>> 8cb196e3b9ad2b8e81354156f7ae425af041c121

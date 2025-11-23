@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
 import { jsPDF } from 'jspdf';
+import { useBookmarks } from '@site/src/contexts/BookmarkContext';
 import './assessmentContent.css';
 
 let useDocSafe: any = null;
@@ -62,17 +63,24 @@ const AssessmentContent: React.FC<AssessmentContentProps> = ({ onClose }) => {
     docContext = null;
   }
 
+  const { currentDoc } = useBookmarks();
   const apiBase = useMemo(() => resolveApiBase(), []);
   const defaultTopic = docContext?.metadata?.title || 'AI Native Software Development';
+  const currentPageUrl = ExecutionEnvironment.canUseDOM ? window.location.pathname : '';
 
   const [phase, setPhase] = useState<Phase>('setup');
   const [questionCount, setQuestionCount] = useState(5);
   const [customQuestionCount, setCustomQuestionCount] = useState('');
   const [difficulty, setDifficulty] = useState<Difficulty>('medium');
   const [topic, setTopic] = useState(defaultTopic);
+  const [isCustomTopic, setIsCustomTopic] = useState(false);
+  const [customTopicText, setCustomTopicText] = useState('');
   const [examType, setExamType] = useState(examTypes[0]);
   const [loadingHint, setLoadingHint] = useState('Preparing your adaptive assessment…');
   const [error, setError] = useState<string | null>(null);
+  const [aiTopics, setAiTopics] = useState<string[]>([]);
+  const [isAnalyzingTopics, setIsAnalyzingTopics] = useState(false);
+  const [topicsError, setTopicsError] = useState<string | null>(null);
 
   const [questions, setQuestions] = useState<AssessmentQuestion[]>([]);
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -85,6 +93,50 @@ const AssessmentContent: React.FC<AssessmentContentProps> = ({ onClose }) => {
   const [breakdown, setBreakdown] = useState<
     { question: AssessmentQuestion; userAnswer: number | null }[]
   >([]);
+
+  // Load cached topics from localStorage on mount
+  React.useEffect(() => {
+    if (!ExecutionEnvironment.canUseDOM || !currentPageUrl) return;
+
+    const cacheKey = `ai-topics:${currentPageUrl}`;
+    const cached = localStorage.getItem(cacheKey);
+
+    if (cached) {
+      try {
+        const { topics, timestamp } = JSON.parse(cached);
+        // Cache expires after 24 hours
+        const isExpired = Date.now() - timestamp > 24 * 60 * 60 * 1000;
+
+        if (!isExpired && Array.isArray(topics) && topics.length > 0) {
+          setAiTopics(topics);
+        }
+      } catch (e) {
+        console.error('Failed to parse cached topics:', e);
+      }
+    }
+  }, [currentPageUrl]);
+
+  // Extract topic options from AI-generated topics
+  const topicOptions = useMemo(() => {
+    const options: { value: string; label: string }[] = [
+      { value: '', label: `📄 Entire Page: "${defaultTopic}"` }
+    ];
+
+    // Add AI-generated topics
+    if (aiTopics.length > 0) {
+      aiTopics.forEach((topicName) => {
+        options.push({
+          value: topicName,
+          label: topicName
+        });
+      });
+    }
+
+    // Add custom topic option at the end
+    options.push({ value: '__custom__', label: '✏️ Custom Topic...' });
+
+    return options;
+  }, [aiTopics, defaultTopic]);
 
   const finalQuestionCount = customQuestionCount
     ? Math.max(1, Number(customQuestionCount))
@@ -106,6 +158,101 @@ const AssessmentContent: React.FC<AssessmentContentProps> = ({ onClose }) => {
     const parsed = Number(value);
     if (!Number.isNaN(parsed) && parsed > 0) {
       setQuestionCount(parsed);
+    }
+  };
+
+  const handleTopicChange = (value: string) => {
+    if (value === '__custom__') {
+      setIsCustomTopic(true);
+      setTopic(customTopicText || defaultTopic);
+    } else {
+      setIsCustomTopic(false);
+      setTopic(value || defaultTopic);
+    }
+  };
+
+  const handleCustomTopicChange = (value: string) => {
+    setCustomTopicText(value);
+    setTopic(value || defaultTopic);
+  };
+
+  const extractPageContent = () => {
+    if (!ExecutionEnvironment.canUseDOM) return '';
+
+    // Try to get the main content from markdown area
+    const articleElement = document.querySelector('article.markdown, .markdown, main article');
+
+    if (articleElement) {
+      // Get text content and clean it up
+      const text = articleElement.textContent || '';
+      // Remove excessive whitespace and newlines
+      return text.replace(/\s+/g, ' ').trim();
+    }
+
+    return '';
+  };
+
+  const handleAnalyzeTopics = async () => {
+    try {
+      setIsAnalyzingTopics(true);
+      setTopicsError(null);
+
+      const content = extractPageContent();
+      console.log('📄 Extracted content length:', content.length);
+      console.log('📄 Content preview:', content.substring(0, 200));
+
+      if (!content || content.length < 50) {
+        throw new Error('Could not extract enough content from the page');
+      }
+
+      const endpoint = `${apiBase}/assessment/extract-topics`;
+      console.log('🌐 Calling endpoint:', endpoint);
+
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ content }),
+      });
+
+      console.log('📡 Response status:', response.status);
+
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        console.error('❌ API Error:', errorData);
+        throw new Error(errorData.message || errorData.error || 'Failed to analyze topics. Please try again.');
+      }
+
+      const data = await response.json();
+      console.log('✅ Received data:', data);
+
+      const extractedTopics = data.topics || [];
+
+      if (extractedTopics.length === 0) {
+        throw new Error('No topics could be extracted from this page');
+      }
+
+      console.log('✅ Extracted topics:', extractedTopics);
+
+      // Store in state
+      setAiTopics(extractedTopics);
+
+      // Cache in localStorage
+      if (ExecutionEnvironment.canUseDOM && currentPageUrl) {
+        const cacheKey = `ai-topics:${currentPageUrl}`;
+        localStorage.setItem(
+          cacheKey,
+          JSON.stringify({
+            topics: extractedTopics,
+            timestamp: Date.now(),
+          })
+        );
+        console.log('💾 Cached topics for:', currentPageUrl);
+      }
+    } catch (err: any) {
+      console.error('❌ Topic analysis failed:', err);
+      setTopicsError(err.message || 'Failed to analyze topics');
+    } finally {
+      setIsAnalyzingTopics(false);
     }
   };
 
@@ -214,6 +361,11 @@ const AssessmentContent: React.FC<AssessmentContentProps> = ({ onClose }) => {
       setPhase('loading');
       setLoadingHint(mode === 'pdf' ? 'Building a printable PDF…' : 'Generating your adaptive test…');
 
+      // Extract page content to send with the request
+      const pageContent = extractPageContent();
+
+      console.log('📝 Sending quiz request with page content length:', pageContent.length);
+
       const response = await fetch(`${apiBase}/assessment/generate`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -222,6 +374,7 @@ const AssessmentContent: React.FC<AssessmentContentProps> = ({ onClose }) => {
           difficulty,
           topic,
           examType,
+          pageContent: pageContent || undefined, // Send page content
         }),
       });
 
@@ -235,6 +388,8 @@ const AssessmentContent: React.FC<AssessmentContentProps> = ({ onClose }) => {
       if (!generatedQuestions.length) {
         throw new Error('The AI did not return any questions. Please try again.');
       }
+
+      console.log('✅ Quiz generated. Based on page content:', data.meta?.basedOnPageContent);
 
       if (mode === 'pdf') {
         downloadPdf(generatedQuestions, data.meta);
@@ -317,14 +472,45 @@ const AssessmentContent: React.FC<AssessmentContentProps> = ({ onClose }) => {
 
           <label className="assessment-field">
             <span>Topic</span>
-            <input
-              type="text"
-              value={topic}
-              onChange={(event) => setTopic(event.target.value)}
-              placeholder="e.g. Zooming in SQL"
-            />
+            {aiTopics.length === 0 && (
+              <button
+                type="button"
+                className="assessment-secondary"
+                onClick={handleAnalyzeTopics}
+                disabled={isAnalyzingTopics}
+                style={{ marginBottom: '0.5rem' }}
+              >
+                {isAnalyzingTopics ? '🤖 Analyzing content...' : '🤖 Analyze Topics with AI'}
+              </button>
+            )}
+            {topicsError && (
+              <small style={{ color: '#d32f2f', marginBottom: '0.5rem' }}>
+                {topicsError}
+              </small>
+            )}
+            <select
+              value={isCustomTopic ? '__custom__' : (topic || '')}
+              onChange={(event) => handleTopicChange(event.target.value)}
+            >
+              {topicOptions.map((opt) => (
+                <option key={opt.value} value={opt.value}>
+                  {opt.label}
+                </option>
+              ))}
+            </select>
+            {isCustomTopic && (
+              <input
+                type="text"
+                value={customTopicText}
+                onChange={(event) => handleCustomTopicChange(event.target.value)}
+                placeholder="e.g. Zooming in SQL"
+                style={{ marginTop: '0.5rem' }}
+              />
+            )}
             <small className="field-hint">
-              Leave blank to automatically use “{defaultTopic}”
+              {aiTopics.length > 0
+                ? `${aiTopics.length} AI-generated topics available`
+                : 'Click "Analyze Topics" to extract topics from this page'}
             </small>
           </label>
         </div>
