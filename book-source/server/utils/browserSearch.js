@@ -1,22 +1,23 @@
 // Browser search utility for out-of-tone queries
 // This simulates web search results and relates them back to the project
 
-class BrowserSearch {
+import { GoogleGenerativeAI } from '@google/generative-ai';
+
+export class BrowserSearch {
   constructor() {
     // In a real implementation, you would integrate with:
     // - Google Custom Search API
     // - SerpAPI
     // - DuckDuckGo API
     // - Or use web scraping (with proper rate limiting and respect for robots.txt)
-    
+
     // For now, we'll use a smart prompt-based approach with Gemini
     // that simulates web search by generating relevant external context
   }
 
   async search(query, options = {}) {
-    const { GoogleGenerativeAI } = require('@google/generative-ai');
     const apiKey = process.env.GEMINI_API_KEY;
-    
+
     if (!apiKey) {
       return 'External search unavailable. API key not configured.';
     }
@@ -72,10 +73,7 @@ Format as a concise summary (2-3 paragraphs) that bridges the external topic wit
       return [];
     }
     */
-    
+
     return [];
   }
 }
-
-module.exports = { BrowserSearch };
-

@@ -720,4 +720,83 @@ pre code {
 /* ============================================================================
    FIXED LAYOUT - Fixed sidebar and TOC positioning
    ============================================================================ */
+/* ============================================================================
+   FIXED LAYOUT - Fixed sidebar and TOC positioning
+   ============================================================================ */
 @import "./fixed-layout.css";
+
+/* ============================================================================
+   FORM INPUTS & AUTOFILL FIXES
+   ============================================================================ */
+
+/* Global Input Styling */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+select,
+textarea {
+    background-color: var(--ifm-background-surface-color);
+    color: var(--ifm-color-content);
+    border: 1px solid var(--ifm-color-emphasis-300);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 1rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    width: 100%;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--ifm-color-primary);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(var(--ifm-color-primary-rgb), 0.2);
+}
+
+/* Dark Mode Input Overrides */
+[data-theme="dark"] input,
+[data-theme="dark"] select,
+[data-theme="dark"] textarea {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+}
+
+[data-theme="dark"] input:focus,
+[data-theme="dark"] select:focus,
+[data-theme="dark"] textarea:focus {
+    border-color: var(--ifm-color-primary);
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Chrome/Edge Autofill Fix - Forces background and text color */
+/* For Dark Mode / Dark Auth Pages */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px var(--ifm-background-surface-color) inset !important;
+    -webkit-text-fill-color: var(--ifm-color-content) !important;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+[data-theme="dark"] input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px #252526 inset !important;
+    -webkit-text-fill-color: #ffffff !important;
+}
+
+/* Specific class for the forced-dark Login/Signup pages */
+.auth-input {
+    background-color: #252526 !important;
+    color: #ffffff !important;
+    border: 1px solid #3e444a !important;
+}
+
+.auth-input:-webkit-autofill,
+.auth-input:-webkit-autofill:hover,
+.auth-input:-webkit-autofill:focus,
+.auth-input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px #252526 inset !important;
+    -webkit-text-fill-color: #ffffff !important;
+}

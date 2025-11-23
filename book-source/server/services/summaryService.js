@@ -1,8 +1,12 @@
-const { GoogleGenerativeAI } = require('@google/generative-ai');
-const fs = require('fs').promises;
-const path = require('path');
+import { GoogleGenerativeAI } from '@google/generative-ai';
+import fs from 'fs/promises';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-class SummaryService {
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+export class SummaryService {
   constructor() {
     const apiKey = process.env.GEMINI_API_KEY;
     if (!apiKey) {
@@ -93,25 +97,22 @@ class SummaryService {
         size,
       });
 
-      // Map size to format configurations
+      // Map size to format configurations - Always use detailed Markdown format
       const sizeConfig = {
         bulleted: {
-          format: 'bulleted',
-          instruction: 'Provide a concise bulleted list summary with the most important points. Keep each bullet point brief and focused. Use markdown bullet points (-).',
+          format: 'markdown',
+          instruction: 'Create a comprehensive summary using proper Markdown formatting. Include multiple sections with headings (##), bullet points (-), and clear structure. The longer the original content, the more detailed the summary should be.',
           wordLimit: null,
-          example: '- Key concept one explained concisely\n- Important point two with context\n- Critical takeaway three\n- Additional insight four'
         },
         short: {
-          format: 'paragraph',
-          instruction: 'Provide a short paragraph summary of up to 200 words covering the key points and main takeaways.',
-          wordLimit: 200,
-          example: 'This technology revolutionizes software development through AI collaboration. It enables faster iteration and better code quality. Developers write specifications first before generating code. The approach reduces errors and improves maintainability.'
+          format: 'markdown',
+          instruction: 'Create a detailed summary using proper Markdown formatting. Include headings (##), bullet points (-), and structured sections. Aim for 300-500 words with clear organization.',
+          wordLimit: 500,
         },
         long: {
-          format: 'paragraph',
-          instruction: 'Provide a comprehensive paragraph summary of up to 400 words covering all important concepts, details, and implications.',
-          wordLimit: 400,
-          example: 'This technology revolutionizes software development through AI collaboration. It enables faster iteration and better code quality. Developers write specifications first before generating code. The approach reduces errors and improves maintainability. Teams can scale development while maintaining high standards. The methodology has proven effective across various project sizes. Implementation involves careful planning and execution. Results demonstrate significant productivity improvements.'
+          format: 'markdown',
+          instruction: 'Create a comprehensive, detailed summary using proper Markdown formatting. Include multiple sections with headings (##), sub-headings (###), bullet points (-), and thorough explanations. The summary should be proportional to the original content length - longer content should have more detailed summaries. Aim for 600-1000 words with excellent structure and clarity.',
+          wordLimit: 1000,
         }
       };
 
@@ -139,77 +140,46 @@ class SummaryService {
       // Read the raw markdown file from filesystem
       const pageContent = await this.readMarkdownFile(pagePath);
 
-      // Generate format-specific prompt
-      const prompt = config.format === 'bulleted'
-        ? `You are a summarization expert. Create a concise bulleted list summary.
+      // Generate Markdown-formatted prompt
+      const prompt = `You are an expert technical summarizer. Create a comprehensive, well-structured summary of the following content.
 
-===== CRITICAL RULES (MUST FOLLOW) =====
+===== CRITICAL FORMATTING RULES =====
 
-1. OUTPUT FORMAT:
-   - Use markdown bullet points (- ) ONLY
-   - Each bullet should be on its own line
-   - Start each line with "- " (dash space)
-   - 4-6 bullet points maximum
-   - Each bullet point should be concise and focused
-   - NO headings, NO numbered lists, NO other formatting
+1. USE PROPER MARKDOWN:
+   - Use ## for main section headings
+   - Use ### for sub-sections
+   - Use - for bullet points
+   - Use **bold** for emphasis on key terms
+   - Use \`code\` for technical terms and code references
+   - Create clear, logical sections
 
-2. BULLET POINT STRUCTURE:
-   - Keep each bullet under 25 words
-   - Focus on key concepts and takeaways
-   - Professional and clear language
-   - Direct statements (no fluff)
+2. STRUCTURE REQUIREMENTS:
+   - Start with a brief overview paragraph
+   - Organize content into logical sections with headings
+   - Use bullet points for lists of features, concepts, or steps
+   - Include concrete examples where relevant
+   - End with key takeaways or implications
 
-3. EXAMPLE OUTPUT FORMAT:
-"${config.example}"
+3. CONTENT DEPTH:
+   - ${config.instruction}
+   - Scale detail based on source content length
+   - Include all important concepts and details
+   - Maintain technical accuracy
+   - Use clear, professional language
 
-4. CONTENT RULES:
-   - Extract the most important information
-   - No meta-commentary about the content
-   - No introductory or closing statements
-   - Professional tone
+4. WHAT TO AVOID:
+   - No meta-commentary ("This document discusses...")
+   - No introductory phrases ("In summary...")
+   - No repetition
+   - No vague statements
 
-===== PAGE CONTENT TO SUMMARIZE =====
+===== CONTENT TO SUMMARIZE =====
 ${pageContent}
 
 ===== YOUR TASK =====
-${config.instruction}
-Output ONLY the bulleted list, nothing else.
+Create a detailed, well-structured Markdown summary following all rules above.
 
-OUTPUT (bulleted list):`
-        : `You are a summarization expert. Create a ${config.wordLimit}-word paragraph summary.
-
-===== CRITICAL RULES (MUST FOLLOW) =====
-
-1. OUTPUT FORMAT:
-   - Plain text paragraph ONLY
-   - NO markdown (#, ##, *, -, etc.)
-   - NO bullet points or lists
-   - NO tables, NO code blocks
-   - Just flowing sentences with periods
-
-2. WORD LIMIT (MOST IMPORTANT):
-   - Maximum ${config.wordLimit} words
-   - Count every word before submitting
-   - Better to be slightly under than over
-
-3. EXAMPLE OUTPUT:
-"${config.example}"
-
-4. CONTENT RULES:
-   - Focus on key concepts and main points
-   - No meta-commentary
-   - Professional tone
-   - Clear and concise
-   - Logical flow between sentences
-
-===== PAGE CONTENT TO SUMMARIZE =====
-${pageContent}
-
-===== YOUR TASK =====
-${config.instruction}
-Output ONLY the paragraph summary, nothing else.
-
-OUTPUT (up to ${config.wordLimit} words):`;
+OUTPUT (Markdown format):`;
 
       console.log('🤖 [Service] Calling Gemini AI...');
 
@@ -218,35 +188,19 @@ OUTPUT (up to ${config.wordLimit} words):`;
       let summary = response.text().trim();
 
       console.log('📝 [Service] Raw AI response length:', summary.length);
-      console.log('📝 [Service] Raw AI response preview:', summary.substring(0, 200) + '...');
+      console.log('📝 [Service] Raw AI response preview:', summary.substring(0, 300) + '...');
 
-      // Process based on format
-      if (config.format === 'bulleted') {
-        // For bulleted format, preserve markdown bullets but clean up
-        summary = this.cleanBulletedSummary(summary);
-        const bulletCount = this.countBulletPoints(summary);
-        console.log(`📊 [Service] Bulleted summary has ${bulletCount} bullet points`);
-        console.log('✅ [Service] Final summary:', summary);
-      } else {
-        // For paragraph format, strip markdown and enforce word limit
-        summary = this.stripMarkdown(summary);
-        console.log('🧹 [Service] After markdown strip length:', summary.length);
+      // Clean up the Markdown but preserve formatting
+      summary = this.cleanMarkdownSummary(summary);
 
-        const beforeEnforce = this.countWords(summary);
-        summary = this.enforceWordLimit(summary, config.wordLimit);
-        const afterEnforce = this.countWords(summary);
-
-        console.log(`📊 [Service] Word count: ${beforeEnforce} → ${afterEnforce} (limit: ${config.wordLimit})`);
-        console.log('✅ [Service] Final summary:', summary);
-      }
+      const wordCount = this.countWords(summary);
+      console.log(`📊 [Service] Markdown summary has ${wordCount} words`);
+      console.log('✅ [Service] Final summary preview:', summary.substring(0, 300) + '...');
 
       // Save the generated summary
       await this.saveSummary(pagePath, summary, size);
 
-      const stats = config.format === 'bulleted'
-        ? `${this.countBulletPoints(summary)} bullet points`
-        : `${this.countWords(summary)} words`;
-      console.log(`✓ Generated and saved ${size} summary (${stats}) for ${pagePath}`);
+      console.log(`✓ Generated and saved ${size} Markdown summary (${wordCount} words) for ${pagePath}`);
 
       return summary;
     } catch (error) {
@@ -345,6 +299,22 @@ OUTPUT (up to ${config.wordLimit} words):`;
     return bullets.length;
   }
 
+  cleanMarkdownSummary(text) {
+    let clean = text;
+
+    // Remove code block markers but keep content
+    clean = clean.replace(/```[\w]*\n/g, '');
+    clean = clean.replace(/```/g, '');
+
+    // Remove excessive blank lines (more than 2)
+    clean = clean.replace(/\n{3,}/g, '\n\n');
+
+    // Trim whitespace
+    clean = clean.trim();
+
+    return clean;
+  }
+
   cleanBulletedSummary(text) {
     // Split into lines and process each
     const lines = text.split('\n');
@@ -380,12 +350,12 @@ OUTPUT (up to ${config.wordLimit} words):`;
 
 const summaryService = new SummaryService();
 
-async function generateSummary(pagePath, pageTitle, size = 'short') {
+export async function generateSummary(pagePath, pageTitle, size = 'short') {
   return await summaryService.generateSummary(pagePath, pageTitle, size);
 }
 
-async function getSummary(pagePath, size = 'short') {
+export async function getSummary(pagePath, size = 'short') {
   return await summaryService.getSummary(pagePath, size);
 }
 
-module.exports = { generateSummary, getSummary, SummaryService };
+export { SummaryService as SummaryServiceClass };

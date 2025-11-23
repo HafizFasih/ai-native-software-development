@@ -1,6 +1,6 @@
-const { GoogleGenerativeAI } = require('@google/generative-ai');
+import { GoogleGenerativeAI } from '@google/generative-ai';
 
-class JSONConversionAgent {
+export class JSONConversionAgent {
   constructor() {
     const apiKey = process.env.GEMINI_API_KEY;
     if (!apiKey) {
@@ -36,7 +36,7 @@ Return ONLY valid JSON, no additional text.`;
       const result = await this.model.generateContent(prompt);
       const response = await result.response;
       const text = response.text().trim();
-      
+
       // Extract JSON from response (handle markdown code blocks if present)
       let jsonText = text;
       if (text.includes('```json')) {
@@ -44,9 +44,9 @@ Return ONLY valid JSON, no additional text.`;
       } else if (text.includes('```')) {
         jsonText = text.split('```')[1].split('```')[0].trim();
       }
-      
+
       const structured = JSON.parse(jsonText);
-      
+
       // Ensure all required fields exist
       return {
         intent: structured.intent || 'question',
@@ -70,6 +70,3 @@ Return ONLY valid JSON, no additional text.`;
     }
   }
 }
-
-module.exports = { JSONConversionAgent };
-

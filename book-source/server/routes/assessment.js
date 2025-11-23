@@ -1,5 +1,5 @@
-const express = require('express');
-const { generateAssessment } = require('../services/assessmentService');
+import express from 'express';
+import { generateAssessment } from '../services/assessmentService.js';
 
 const router = express.Router();
 
@@ -34,6 +34,4 @@ router.post('/generate', async (req, res) => {
   }
 });
 
-module.exports = { assessmentRouter: router };
-
-
+export const assessmentRouter = router;

@@ -1,5 +1,5 @@
-const express = require('express');
-const { generateSummary, getSummary } = require('../services/summaryService');
+import express from 'express';
+import { generateSummary, getSummary } from '../services/summaryService.js';
 
 const router = express.Router();
 
@@ -95,4 +95,4 @@ router.get('/check', async (req, res) => {
   }
 });
 
-module.exports = { summaryRouter: router };
+export const summaryRouter = router;

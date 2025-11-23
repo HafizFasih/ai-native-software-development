@@ -1,7 +1,7 @@
-const { GoogleGenerativeAI } = require('@google/generative-ai');
-const { BrowserSearch } = require('../utils/browserSearch');
+import { GoogleGenerativeAI } from '@google/generative-ai';
+import { BrowserSearch } from '../utils/browserSearch.js';
 
-class AnswerAgent {
+export class AnswerAgent {
   constructor() {
     const apiKey = process.env.GEMINI_API_KEY;
     if (!apiKey) {
@@ -31,9 +31,9 @@ class AnswerAgent {
       // Build conversation history context (skip for summaries to keep focused)
       const historyContext = !isSummary
         ? conversationHistory
-            .slice(-5) // Last 5 messages
-            .map(msg => `${msg.isBot ? 'Assistant' : 'User'}: ${msg.text}`)
-            .join('\n')
+          .slice(-5) // Last 5 messages
+          .map(msg => `${msg.isBot ? 'Assistant' : 'User'}: ${msg.text}`)
+          .join('\n')
         : '';
 
       // Use specialized prompt for summaries
@@ -57,10 +57,10 @@ Your role is to:
 3. When information is not in the project, use external knowledge but relate it back to the project's domain
 4. Be conversational, clear, and educational
 
-${toneResult.isInTone 
-  ? 'This query is RELATED to the project context. Use the provided project context to answer.'
-  : 'This query is LESS RELATED to the project. Use external information but connect it back to AI Native Software Development concepts when possible.'
-}
+${toneResult.isInTone
+          ? 'This query is RELATED to the project context. Use the provided project context to answer.'
+          : 'This query is LESS RELATED to the project. Use external information but connect it back to AI Native Software Development concepts when possible.'
+        }
 
 PROJECT CONTEXT DATA:
 ${contextToUse || 'No specific project context found for this query.'}
@@ -99,7 +99,7 @@ Format your response naturally and conversationally. If you reference external i
 
   extractSources(text, projectContext) {
     const sources = [];
-    
+
     // Check if project context has file references
     if (projectContext.files && projectContext.files.length > 0) {
       projectContext.files.slice(0, 3).forEach(file => {
@@ -169,6 +169,3 @@ INSTRUCTIONS:
 Now provide the summary:`;
   }
 }
-
-module.exports = { AnswerAgent };
-

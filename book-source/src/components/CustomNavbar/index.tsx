@@ -12,6 +12,7 @@ import Assistant from '../PanaChat';
 import './customNavbar.css';
 import RightDrawer from './RightDrawer';
 import SelectionToolbar from './SelectionToolbar';
+import { useSession, signOut } from '@/lib/auth-client';
 
 interface NavButtonProps {
   label: string;
@@ -50,6 +51,7 @@ const CustomNavbar: React.FC = () => {
   const [drawerTitle, setDrawerTitle] = useState('');
   const [chatOpen, setChatOpen] = useState(false);
   const searchInputRef = useRef<HTMLInputElement>(null);
+  const { data: session } = useSession();
 
   const toggleColorMode = useCallback(() => {
     setColorMode(colorMode === 'dark' ? 'light' : 'dark');
@@ -431,9 +433,80 @@ const CustomNavbar: React.FC = () => {
 
           {/* Right Section - Chat, GitHub, Theme Toggle */}
           <div className="custom-navbar__right">
-            <button onClick={toggleChat} className="custom-navbar__link custom-navbar__link--button">
-              Chat
-            </button>
+            {session ? (
+              <div className="navbar__item dropdown dropdown--hoverable dropdown--right">
+                <a className="navbar__link custom-navbar__link" href="#" style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  padding: '4px 12px',
+                  borderRadius: '20px',
+                  transition: 'background-color 0.2s'
+                }}>
+                  {session.user?.image ? (
+                    <img
+                      src={session.user.image}
+                      alt={session.user.name || 'User'}
+                      style={{
+                        width: '32px',
+                        height: '32px',
+                        borderRadius: '50%',
+                        objectFit: 'cover',
+                        border: '2px solid var(--ifm-color-primary)'
+                      }}
+                    />
+                  ) : (
+                    <div style={{
+                      width: '32px',
+                      height: '32px',
+                      borderRadius: '50%',
+                      backgroundColor: 'var(--ifm-color-primary)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      color: '#fff',
+                      fontWeight: 'bold',
+                      fontSize: '14px'
+                    }}>
+                      {session.user?.name?.charAt(0).toUpperCase() || 'U'}
+                    </div>
+                  )}
+                  <span style={{
+                    fontWeight: '500',
+                    maxWidth: '120px',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    whiteSpace: 'nowrap'
+                  }}>
+                    {session.user?.name || 'User'}
+                  </span>
+                </a>
+                <ul className="dropdown__menu">
+                  <li>
+                    <Link className="dropdown__link" to="/profile">
+                      <i className="fas fa-user" style={{ marginRight: '8px' }}></i>
+                      Edit Profile
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className="dropdown__link" to="/onboarding">
+                      <i className="fas fa-sliders-h" style={{ marginRight: '8px' }}></i>
+                      Preferences
+                    </Link>
+                  </li>
+                  <li>
+                    <a className="dropdown__link" onClick={() => signOut()} style={{ cursor: 'pointer' }}>
+                      <i className="fas fa-sign-out-alt" style={{ marginRight: '8px' }}></i>
+                      Logout
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            ) : (
+              <Link to="/login" className="button button--primary" style={{ marginLeft: '10px', padding: '8px 20px' }}>
+                Sign In
+              </Link>
+            )}
             <a
               href="https://github.com/panaversity/ai-native-software-development"
               className="custom-navbar__link"
@@ -475,63 +548,63 @@ const CustomNavbar: React.FC = () => {
 
         {!isHomePage && (
           <>
-        <div className="custom-navbar__secondary">
-          <button
-            className="custom-navbar__sidebar-toggle"
-            onClick={toggleSidebarCollapse}
-            aria-label={isSidebarCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
-            title={isSidebarCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
-          >
-            {isSidebarCollapsed ? (
-              // Expand icon - panel-right-open
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <rect x="3" y="3" width="18" height="18" rx="2"/>
-                <path d="M15 3v18"/>
-                <path d="M8 9l3 3-3 3"/>
-              </svg>
-            ) : (
-              // Collapse icon - panel-left-close
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <rect x="3" y="3" width="18" height="18" rx="2"/>
-                <path d="M9 3v18"/>
-                <path d="M14 9l-3 3 3 3"/>
-              </svg>
-            )}
-          </button>
-          <div className="custom-navbar__nav-buttons">
-            <NavButton label="Bookmark" onClick={() => openDrawer('Bookmark', 'view')} />
-            <NavButton label="Mindmap" onClick={() => openDrawer('Mindmap', 'view')} />
-            <NavButton label="Notes" onClick={() => openDrawer('Notes', 'view')} />
-            <NavButton label="Assessment" onClick={() => openDrawer('Assessment', 'view')} />
-          </div>
-          <button
-            className="custom-navbar__toc-toggle"
-            onClick={toggleTOC}
-            aria-label={tocMode === 'hidden' ? 'Show Table of Contents' : 'Hide Table of Contents'}
-            title={tocMode === 'hidden' ? 'Show Table of Contents' : 'Hide Table of Contents'}
-          >
-            {tocMode === 'hidden' ? (
-              // Show TOC icon - list with lines
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <line x1="8" y1="6" x2="21" y2="6"/>
-                <line x1="8" y1="12" x2="21" y2="12"/>
-                <line x1="8" y1="18" x2="21" y2="18"/>
-                <line x1="3" y1="6" x2="3.01" y2="6"/>
-                <line x1="3" y1="12" x2="3.01" y2="12"/>
-                <line x1="3" y1="18" x2="3.01" y2="18"/>
-              </svg>
-            ) : (
-              // Hide TOC icon - list with x
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <line x1="8" y1="6" x2="21" y2="6"/>
-                <line x1="8" y1="12" x2="21" y2="12"/>
-                <line x1="8" y1="18" x2="21" y2="18"/>
-                <line x1="2" y1="4" x2="5" y2="7"/>
-                <line x1="5" y1="4" x2="2" y2="7"/>
-              </svg>
-            )}
-          </button>
-        </div>
+            <div className="custom-navbar__secondary">
+              <button
+                className="custom-navbar__sidebar-toggle"
+                onClick={toggleSidebarCollapse}
+                aria-label={isSidebarCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
+                title={isSidebarCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
+              >
+                {isSidebarCollapsed ? (
+                  // Expand icon - panel-right-open
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="3" y="3" width="18" height="18" rx="2" />
+                    <path d="M15 3v18" />
+                    <path d="M8 9l3 3-3 3" />
+                  </svg>
+                ) : (
+                  // Collapse icon - panel-left-close
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="3" y="3" width="18" height="18" rx="2" />
+                    <path d="M9 3v18" />
+                    <path d="M14 9l-3 3 3 3" />
+                  </svg>
+                )}
+              </button>
+              <div className="custom-navbar__nav-buttons">
+                <NavButton label="Bookmark" onClick={() => openDrawer('Bookmark', 'view')} />
+                <NavButton label="Mindmap" onClick={() => openDrawer('Mindmap', 'view')} />
+                <NavButton label="Notes" onClick={() => openDrawer('Notes', 'view')} />
+                <NavButton label="Assessment" onClick={() => openDrawer('Assessment', 'view')} />
+              </div>
+              <button
+                className="custom-navbar__toc-toggle"
+                onClick={toggleTOC}
+                aria-label={tocMode === 'hidden' ? 'Show Table of Contents' : 'Hide Table of Contents'}
+                title={tocMode === 'hidden' ? 'Show Table of Contents' : 'Hide Table of Contents'}
+              >
+                {tocMode === 'hidden' ? (
+                  // Show TOC icon - list with lines
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="8" y1="6" x2="21" y2="6" />
+                    <line x1="8" y1="12" x2="21" y2="12" />
+                    <line x1="8" y1="18" x2="21" y2="18" />
+                    <line x1="3" y1="6" x2="3.01" y2="6" />
+                    <line x1="3" y1="12" x2="3.01" y2="12" />
+                    <line x1="3" y1="18" x2="3.01" y2="18" />
+                  </svg>
+                ) : (
+                  // Hide TOC icon - list with x
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="8" y1="6" x2="21" y2="6" />
+                    <line x1="8" y1="12" x2="21" y2="12" />
+                    <line x1="8" y1="18" x2="21" y2="18" />
+                    <line x1="2" y1="4" x2="5" y2="7" />
+                    <line x1="5" y1="4" x2="2" y2="7" />
+                  </svg>
+                )}
+              </button>
+            </div>
           </>
         )}
       </nav>

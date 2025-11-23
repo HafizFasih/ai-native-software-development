@@ -1,6 +1,6 @@
-const { GoogleGenerativeAI } = require('@google/generative-ai');
+import { GoogleGenerativeAI } from '@google/generative-ai';
 
-class AssessmentService {
+export class AssessmentService {
   constructor() {
     const apiKey = process.env.GEMINI_API_KEY;
     if (!apiKey) {
@@ -101,10 +101,8 @@ Rules:
 
 const assessmentService = new AssessmentService();
 
-async function generateAssessment(payload) {
+export async function generateAssessment(payload) {
   return assessmentService.generateAssessment(payload);
 }
 
-module.exports = { generateAssessment };
-
-
+export { AssessmentService as AssessmentServiceClass };

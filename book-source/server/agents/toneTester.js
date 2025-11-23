@@ -1,6 +1,6 @@
-const { GoogleGenerativeAI } = require('@google/generative-ai');
+import { GoogleGenerativeAI } from '@google/generative-ai';
 
-class ToneTester {
+export class ToneTester {
   constructor() {
     const apiKey = process.env.GEMINI_API_KEY;
     if (!apiKey) {
@@ -8,7 +8,7 @@ class ToneTester {
     }
     this.genAI = new GoogleGenerativeAI(apiKey);
     this.model = this.genAI.getGenerativeModel({ model: 'gemini-2.0-flash' });
-    
+
     // Project domain keywords and topics
     this.projectDomain = {
       keywords: [
@@ -42,7 +42,7 @@ class ToneTester {
     try {
       // Quick keyword-based pre-check
       const quickCheck = this.quickToneCheck(query);
-      
+
       // If high confidence from quick check, return early
       if (quickCheck.confidence > 0.8) {
         return quickCheck;
@@ -77,7 +77,7 @@ Return ONLY valid JSON, no additional text.`;
       const result = await this.model.generateContent(prompt);
       const response = await result.response;
       const text = response.text().trim();
-      
+
       // Extract JSON
       let jsonText = text;
       if (text.includes('```json')) {
@@ -85,9 +85,9 @@ Return ONLY valid JSON, no additional text.`;
       } else if (text.includes('```')) {
         jsonText = text.split('```')[1].split('```')[0].trim();
       }
-      
+
       const toneResult = JSON.parse(jsonText);
-      
+
       return {
         isInTone: toneResult.isInTone !== undefined ? toneResult.isInTone : true,
         confidence: toneResult.confidence !== undefined ? Math.max(0, Math.min(1, toneResult.confidence)) : 0.7,
@@ -133,6 +133,3 @@ Return ONLY valid JSON, no additional text.`;
     };
   }
 }
-
-module.exports = { ToneTester };
-

@@ -1,9 +1,9 @@
-const { JSONConversionAgent } = require('../agents/jsonConversionAgent');
-const { AnswerAgent } = require('../agents/answerAgent');
-const { ToneTester } = require('../agents/toneTester');
-const { ProjectContextIndexer } = require('../utils/projectContextIndexer');
+import { JSONConversionAgent } from '../agents/jsonConversionAgent.js';
+import { AnswerAgent } from '../agents/answerAgent.js';
+import { ToneTester } from '../agents/toneTester.js';
+import { ProjectContextIndexer } from '../utils/projectContextIndexer.js';
 
-class ChatService {
+export class ChatService {
   constructor() {
     this.jsonAgent = new JSONConversionAgent();
     this.answerAgent = new AnswerAgent();
@@ -92,7 +92,7 @@ class ChatService {
         conversationHistory,
         isSummary: isSummaryRequest
       });
-      
+
       return {
         message: answer.text,
         isInTone: toneResult.isInTone,
@@ -160,9 +160,8 @@ class ChatService {
 
 const chatService = new ChatService();
 
-async function processChatMessage(message, conversationHistory) {
+export async function processChatMessage(message, conversationHistory) {
   return await chatService.processMessage(message, conversationHistory);
 }
 
-module.exports = { processChatMessage, ChatService };
-
+export { ChatService as ChatServiceClass };
